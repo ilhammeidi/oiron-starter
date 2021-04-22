@@ -21,12 +21,12 @@ class MyDocument extends Document {
           >
             <img
               style={{
-                opacity: 0.5,
+                opacity: 0.2,
                 position: 'fixed',
                 top: 'calc(50% - 50px)',
                 left: 'calc(50% - 50px)'
               }}
-              src="/images/loading.gif"
+              src="/images/preloader.gif"
               alt="loading"
             />
           </div>

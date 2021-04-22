@@ -28,6 +28,7 @@ if (typeof Storage !== 'undefined') { // eslint-disable-line
 }
 
 function MyApp(props) {
+  const loadingTime = 1500;
   const [loading, setLoading] = useState(0);
   const [theme, setTheme] = useState({
     ...appTheme('mainTheme', themeType),
@@ -43,12 +44,12 @@ function MyApp(props) {
     if (preloader !== null || undefined) {
       setTimeout(() => {
         preloader.remove();
-      }, 1500);
+      }, loadingTime);
     }
 
     // Remove loading bar
     setLoading(0);
-    setTimeout(() => { setLoading(100); }, 2000);
+    setTimeout(() => { setLoading(100); }, loadingTime + 500);
 
     // Refresh JSS in SSR
     const jssStyles = document.querySelector('#jss-server-side');
@@ -92,7 +93,7 @@ function MyApp(props) {
             className="top-loading-bar"
           />
           <div id="main-wrap">
-            <PageTransition timeout={300} classNames="page-fade-transition">
+            <PageTransition timeout={loadingTime} classNames="page-fade-transition">
               <Component
                 {...pageProps}
                 onToggleDark={toggleDarkTheme}

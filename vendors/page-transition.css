@@ -2,9 +2,9 @@
   opacity: 0;
 }
 
-.page-fade-transition-enter-active {
+.page-fade-transition-enter-done {
   opacity: 1;
-  transition: opacity 300ms;
+  transition: opacity 500ms;
 }
 
 .page-fade-transition-exit {

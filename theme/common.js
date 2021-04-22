@@ -1,5 +1,62 @@
 import { makeStyles } from '@material-ui/core/styles';
 
+const sectionMargin = margin => (margin * 15);
+export const useSpacing = makeStyles(theme => ({
+  mainWrap: {
+    position: 'relative',
+    width: '100%',
+    overflow: 'hidden',
+  },
+  spaceBottom: {
+    marginBottom: sectionMargin(theme.spacing(1)),
+    [theme.breakpoints.down('md')]: {
+      marginBottom: sectionMargin(6)
+    }
+  },
+  spaceTop: {
+    marginTop: sectionMargin(theme.spacing(1)),
+    [theme.breakpoints.down('md')]: {
+      marginTop: sectionMargin(6)
+    }
+  },
+  spaceBottomShort: {
+    marginBottom: sectionMargin(theme.spacing(1) / 2)
+  },
+  spaceTopShort: {
+    marginTop: sectionMargin(theme.spacing(1) / 2)
+  },
+  containerWrap: {
+    '& > section': {
+      position: 'relative'
+    }
+  },
+  containerGeneral: {
+    position: 'relative',
+    paddingTop: 32,
+    marginTop: theme.spacing(7),
+    marginBottom: theme.spacing(5),
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: 32,
+      paddingRight: 32
+    }
+  },
+  fullScreenContainer: {
+    height: '100vh',
+    display: 'flex'
+  },
+  maintenanceIcon: {
+    margin: '10px 20px',
+    background: 'rgba(255,255,255,0.6)',
+    color: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.main,
+    width: 100,
+    height: 100,
+    boxShadow: theme.shadows[4],
+    '& svg': {
+      fontSize: 64,
+    },
+  }
+}));
+
 export const useTextAlign = makeStyles({
   textCenter: {
     textAlign: 'center'
@@ -126,4 +183,8 @@ export const useHidden = makeStyles(theme => ({
       display: 'none'
     }
   }
+}));
+
+export const useFlipRtl = makeStyles(theme => ({
+  transform: theme.direction === 'rtl' ? 'scale(-1)' : 'none'
 }));
