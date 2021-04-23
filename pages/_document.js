@@ -6,7 +6,7 @@ import HeadComponent from '../components/head';
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en" dir="ltr">
+      <Html lang="de" dir="ltr">
         <HeadComponent />
         <body>
           <div
@@ -74,7 +74,6 @@ MyDocument.getInitialProps = async ctx => {
 
   return {
     ...initialProps,
-    namespacesRequired: ['common', 'starter-landing'],
     // Styles fragment is rendered after the app and page rendering finish.
     styles: (
       <React.Fragment>

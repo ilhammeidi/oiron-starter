@@ -1,0 +1,1 @@
+(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[13],{"+Fm1":function(e){e.exports=JSON.parse('{"title":"Um exemplo simples","description_text":"Comece a construir sua p\xe1gina aqui."}')}}]);

@@ -1,0 +1,1 @@
+(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[7],{r2cx:function(e){e.exports=JSON.parse('{"title":"Ein einfaches Beispiel","description_text":"Baue deine Seite mit here auf"}')}}]);

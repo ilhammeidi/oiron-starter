@@ -12,7 +12,6 @@ import { PageTransition } from 'next-page-transitions';
 import rtl from 'jss-rtl';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import LoadingBar from 'react-top-loading-bar';
-import { i18n, appWithTranslation } from '../i18n';
 import appTheme from '../theme/appTheme';
 /* import css vendors */
 import '../node_modules/animate.css/animate.css';
@@ -21,6 +20,8 @@ import '../vendors/react-top-loading-bar.css';
 import '../vendors/page-transition.css';
 import '../vendors/slick/slick.css';
 import '../vendors/slick/slick-theme.css';
+import '../vendors/animate-slider.css';
+import '../vendors/hamburger-menu.css';
 
 let themeType = 'light';
 if (typeof Storage !== 'undefined') { // eslint-disable-line
@@ -32,12 +33,12 @@ function MyApp(props) {
   const [loading, setLoading] = useState(0);
   const [theme, setTheme] = useState({
     ...appTheme('mainTheme', themeType),
-    direction: i18n.language === 'ar' ? 'rtl' : 'ltr'
+    // direction: lang === 'ar' ? 'rtl' : 'ltr'
   });
 
   useEffect(() => {
     // Set layout direction
-    document.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    // document.dir = lang === 'ar' ? 'rtl' : 'ltr';
 
     // Remove preloader
     const preloader = document.getElementById('preloader');
@@ -115,4 +116,4 @@ MyApp.propTypes = {
 
 MyApp.getInitialProps = async (appContext) => ({...await App.getInitialProps(appContext) })
 
-export default appWithTranslation(MyApp);
+export default MyApp;

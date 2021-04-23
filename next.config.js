@@ -1,8 +1,8 @@
-const withCSS = require('@zeit/next-css')
-const withImages = require('next-images');
+const nextTranslate = require('next-translate')
+const withImages = require('next-images')
 
 module.exports = withImages(
-  withCSS({
+  nextTranslate({
     exportTrailingSlash: true,
     exportPathMap: function() {
       return {

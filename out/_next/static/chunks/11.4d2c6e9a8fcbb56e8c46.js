@@ -1,0 +1,1 @@
+(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[11],{"9BbN":function(a){a.exports=JSON.parse('{"title":"Contoh sederhana","description_text":"Mulai buat halaman Anda dari sini."}')}}]);

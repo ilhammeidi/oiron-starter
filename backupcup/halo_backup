@@ -1,0 +1,25 @@
+import React, { Fragment } from 'react';
+import Head from 'next/head';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import brand from '~/public/text/brand';
+
+function Collection() {
+  return (
+    <Fragment>
+      <Head>
+        <title>
+          { brand.starter.name }
+          &nbsp; - Blank page
+        </title>
+      </Head>
+      <CssBaseline />
+      <div>
+        <main>
+          <h1>Hallo</h1>
+        </main>
+      </div>
+    </Fragment>
+  );
+}
+
+export default Collection;
