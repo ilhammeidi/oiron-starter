@@ -1,0 +1,9 @@
+{
+  "header_feature": "feature",
+  "header_testimonials": "testimonials",
+  "header_pricing": "pricing",
+  "header_blog": "blog",
+  "header_subscribe": "subscribe",
+  "banner_title": "Welcome to Starter Project",
+  "banner_subtitle": "Create your project from scratch with main components and basic styles."
+}

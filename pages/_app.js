@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import App from 'next/app';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
 import {
   ThemeProvider,
@@ -38,7 +39,7 @@ function MyApp(props) {
   useEffect(() => {
     // Set layout direction
     document.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
-
+    console.log(i18n);
     // Remove preloader
     const preloader = document.getElementById('preloader');
     if (preloader !== null || undefined) {
@@ -83,6 +84,12 @@ function MyApp(props) {
   const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
   return (
     <div>
+      <Head>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+        />
+      </Head>
       <StylesProvider jss={jss}>
         <ThemeProvider theme={muiTheme}>
           <CssBaseline />
@@ -113,6 +120,6 @@ MyApp.propTypes = {
   pageProps: PropTypes.object.isRequired
 };
 
-MyApp.getInitialProps = async (appContext) => ({...await App.getInitialProps(appContext) })
+MyApp.getInitialProps = async (appContext) => ({ ...await App.getInitialProps(appContext) });
 
 export default appWithTranslation(MyApp);
