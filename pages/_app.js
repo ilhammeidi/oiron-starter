@@ -39,7 +39,6 @@ function MyApp(props) {
   useEffect(() => {
     // Set layout direction
     document.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
-    console.log(i18n);
     // Remove preloader
     const preloader = document.getElementById('preloader');
     if (preloader !== null || undefined) {
