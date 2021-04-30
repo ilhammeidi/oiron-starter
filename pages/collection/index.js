@@ -6,6 +6,7 @@ import ProfileCards from '~/components/Cards/ProfileCard';
 import ProductCards from '~/components/Cards/ProductCard';
 import MediaCard from '~/components/Cards/MediaCard';
 import NewsCard from '~/components/Cards/NewsCard';
+import PostCard from '~/components/Cards/PostCard';
 import brand from '~/public/text/brand';
 
 function Collection() {
@@ -124,6 +125,30 @@ function Collection() {
                   headline="news"
                   orientation="landscape"
                   type="oval"
+                  img="https://source.unsplash.com/random"
+                  href="#"
+                />
+              </Grid>
+            </Grid>
+            <Grid container spacing={3}>
+              <Grid item sm={3}>
+                <PostCard
+                  title="Maecenas rutrum dolor sed nisi"
+                  date="12 Nov 2021"
+                  desc="Proin pretium arcu eget metus porta consectetur Pellentesque habitant"
+                  orientation="portrait"
+                  type="oval"
+                  img="https://source.unsplash.com/random"
+                  href="#"
+                />
+              </Grid>
+              <Grid item sm={8}>
+                <PostCard
+                  title="Maecenas rutrum dolor sed nisi"
+                  date="12 Nov 2021"
+                  desc="Vestibulum faucibus eget erat eget pretium. Donec commodo convallis ligula, eget suscipit orci. Suspendisse potenti. Proin pretium arcu eget metus porta consectetur Pellentesque habitant. Vestibulum faucibus eget erat eget pretium. Donec commodo convallis ligula, eget suscipit orci. Suspendisse potenti. Proin pretium arcu eget metus porta consectetur Pellentesque habitant"
+                  orientation="landscape"
+                  type="round"
                   img="https://source.unsplash.com/random"
                   href="#"
                 />

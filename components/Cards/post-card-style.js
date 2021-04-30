@@ -17,28 +17,43 @@ const cardsStyles = makeStyles(theme => ({
         transform: 'translateX(-50%)'
       }
     },
-    '& p': {
-      fontSize: 18,
-      marginTop: theme.spacing(2),
-      fontWeight: theme.typography.fontWeightMedium
-    }
+  },
+  properties: {
+    flex: 1
   },
   media: {
     height: '100%'
   },
+  action: {
+    padding: theme.spacing(2, 3)
+  },
   desc: {
-    flex: 1,
+    whiteSpace: 'initial',
+    '-webkit-line-clamp': 3,
+    '-webkit-box-orient': 'vertical',
+    display: '-webkit-box',
+    height: 80,
+    overflow: 'hidden',
+    marginBottom: 16,
+    padding: 0,
+    fontSize: 18
   },
   text: {
     padding: theme.spacing(0, 1),
   },
   title: {
-    fontWeight: theme.typography.fontWeightBold,
-    textTransform: 'uppercase',
+    whiteSpace: 'nowrap',
+    width: '100%',
+    fontSize: 16,
+    fontWeight: theme.typography.fontWeightBold
+  },
+  caption: {
+    display: 'block',
+    margin: theme.spacing(2, 0),
     color: theme.palette.text.secondary,
   },
   btn: {
-    marginTop: theme.spacing(1),
+    minWidth: 200,
     color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
   },
   /* Orientation */
@@ -51,30 +66,9 @@ const cardsStyles = makeStyles(theme => ({
     '& $figure': {
       width: 200,
     },
-    '& $desc': {
-      [theme.breakpoints.up('sm')]: {
-        padding: theme.spacing(3),
-        marginLeft: theme.spacing(-12),
-        paddingLeft: theme.spacing(13),
-      },
-      [theme.breakpoints.down('xs')]: {
-        paddingTop: 230,
-        marginTop: -200,
-        padding: theme.spacing(3, 1),
-      }
-    }
   },
   portrait: {
     flexDirection: 'column',
-    '& $desc': {
-      marginTop: -200,
-      padding: theme.spacing(1),
-      paddingTop: 230,
-      [theme.breakpoints.down('xs')]: {
-        paddingLeft: theme.spacing(),
-        paddingRight: theme.spacing(),
-      }
-    },
     '& $figure': {
       height: 200,
     }

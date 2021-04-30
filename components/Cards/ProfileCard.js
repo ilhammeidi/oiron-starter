@@ -117,7 +117,7 @@ ProfileCard.defaultProps = {
   connection: 0,
   favorites: 0,
   albums: 0,
-  type: 'full',
+  type: 'full', // available props: full, rounded, over, oval
   orientation: 'portrait',
   href: '#'
 };
