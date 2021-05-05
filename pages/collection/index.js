@@ -15,7 +15,7 @@ function Collection() {
       <Head>
         <title>
           { brand.starter.name }
-          &nbsp; - Blank page
+          &nbsp; - Card Collection
         </title>
       </Head>
       <CssBaseline />
