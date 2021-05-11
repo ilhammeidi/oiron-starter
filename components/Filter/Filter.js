@@ -56,7 +56,13 @@ function Filter(props) {
   };
 
   const handleChangeCheck = (event) => {
-    changeCheck({ ...filterCheck, [event.target.name]: event.target.checked });
+    const val = event.target.value;
+    const index = filterCheck.indexOf(val);
+    if (event.target.checked) {
+      changeCheck([...filterCheck, val]);
+    } else {
+      changeCheck(currentCheck => currentCheck.filter((check, i) => i !== index));
+    }
   };
 
   const handleCheckAll = () => {
@@ -141,9 +147,7 @@ function Filter(props) {
             <ListItemText
               secondary="Minimum 1 star rating"
               primary={(
-                <Fragment>
-                  <Rating value={1} readOnly />
-                </Fragment>
+                <Rating value={1} readOnly />
               )}
             />
           </ListItem>
@@ -155,9 +159,7 @@ function Filter(props) {
             <ListItemText
               secondary="Minimum 2 star rating"
               primary={(
-                <Fragment>
-                  <Rating value={2} readOnly />
-                </Fragment>
+                <Rating value={2} readOnly />
               )}
             />
           </ListItem>
@@ -169,9 +171,7 @@ function Filter(props) {
             <ListItemText
               secondary="Minimum 3 star rating"
               primary={(
-                <Fragment>
-                  <Rating value={3} readOnly />
-                </Fragment>
+                <Rating value={3} readOnly />
               )}
             />
           </ListItem>
@@ -183,9 +183,7 @@ function Filter(props) {
             <ListItemText
               secondary="Minimum 4 star rating"
               primary={(
-                <Fragment>
-                  <Rating value={4} readOnly />
-                </Fragment>
+                <Rating value={4} readOnly />
               )}
             />
           </ListItem>
@@ -197,9 +195,7 @@ function Filter(props) {
             <ListItemText
               secondary="Minimum 5 star rating"
               primary={(
-                <Fragment>
-                  <Rating value={5} readOnly />
-                </Fragment>
+                <Rating value={5} readOnly />
               )}
             />
           </ListItem>
@@ -216,7 +212,8 @@ function Filter(props) {
                 type="checkbox"
                 name="tag_one"
                 onChange={(event) => handleChangeTag(event)}
-                value="tag_one"
+                checked={filterTag.indexOf('tag-one') > -1}
+                value="tag-one"
               />
               Tag One
             </label>
@@ -228,7 +225,8 @@ function Filter(props) {
                 type="checkbox"
                 name="tag_two"
                 onChange={(event) => handleChangeTag(event)}
-                value="tag_two"
+                checked={filterTag.indexOf('tag-two') > -1}
+                value="tag-two"
               />
               Tag Two
             </label>
@@ -240,7 +238,8 @@ function Filter(props) {
                 type="checkbox"
                 name="tag_three"
                 onChange={(event) => handleChangeTag(event)}
-                value="tag_three"
+                checked={filterTag.indexOf('tag-three') > -1}
+                value="tag-three"
               />
               Tag Three
             </label>
@@ -252,7 +251,8 @@ function Filter(props) {
                 type="checkbox"
                 name="tag_four"
                 onChange={(event) => handleChangeTag(event)}
-                value="tag_four"
+                checked={filterTag.indexOf('tag-four') > -1}
+                value="tag-four"
               />
               Tag Four
             </label>
@@ -303,38 +303,80 @@ function Filter(props) {
               </ListItem>
               <ListItem className={classes.checklist} button>
                 <FormControlLabel
-                  control={<Checkbox checked={filterCheck.a} onChange={(event) => handleChangeCheck(event)} name="a" />}
                   label="Check A"
+                  control={(
+                    <Checkbox
+                      checked={filterCheck.indexOf('check-a') > -1}
+                      value="check-a"
+                      onChange={(event) => handleChangeCheck(event)}
+                      name="a"
+                    />
+                  )}
                 />
               </ListItem>
               <ListItem className={classes.checklist} button>
                 <FormControlLabel
-                  control={<Checkbox checked={filterCheck.b} onChange={(event) => handleChangeCheck(event)} name="b" />}
                   label="Check B"
+                  control={(
+                    <Checkbox
+                      checked={filterCheck.indexOf('check-b') > -1}
+                      value="check-b"
+                      onChange={(event) => handleChangeCheck(event)}
+                      name="b"
+                    />
+                  )}
                 />
               </ListItem>
               <ListItem className={classes.checklist} button>
                 <FormControlLabel
-                  control={<Checkbox checked={filterCheck.c} onChange={(event) => handleChangeCheck(event)} name="c" />}
                   label="Check C"
+                  control={(
+                    <Checkbox
+                      checked={filterCheck.indexOf('check-c') > -1}
+                      value="check-c"
+                      onChange={(event) => handleChangeCheck(event)}
+                      name="c"
+                    />
+                  )}
                 />
               </ListItem>
               <ListItem className={classes.checklist} button>
                 <FormControlLabel
-                  control={<Checkbox checked={filterCheck.d} onChange={(event) => handleChangeCheck(event)} name="d" />}
                   label="Check D"
+                  control={(
+                    <Checkbox
+                      checked={filterCheck.indexOf('check-d') > -1}
+                      value="check-d"
+                      onChange={(event) => handleChangeCheck(event)}
+                      name="d"
+                    />
+                  )}
                 />
               </ListItem>
               <ListItem className={classes.checklist} button>
                 <FormControlLabel
-                  control={<Checkbox checked={filterCheck.e} onChange={(event) => handleChangeCheck(event)} name="e" />}
                   label="Check E"
+                  control={(
+                    <Checkbox
+                      checked={filterCheck.indexOf('check-e') > -1}
+                      value="check-e"
+                      onChange={(event) => handleChangeCheck(event)}
+                      name="e"
+                    />
+                  )}
                 />
               </ListItem>
               <ListItem className={classes.checklist} button>
                 <FormControlLabel
-                  control={<Checkbox checked={filterCheck.f} onChange={(event) => handleChangeCheck(event)} name="f" />}
                   label="Check F"
+                  control={(
+                    <Checkbox
+                      checked={filterCheck.indexOf('check-f') > -1}
+                      value="check-f"
+                      onChange={(event) => handleChangeCheck(event)}
+                      name="f"
+                    />
+                  )}
                 />
               </ListItem>
             </FormGroup>
@@ -369,7 +411,7 @@ Filter.propTypes = {
   filterTag: PropTypes.array.isRequired,
   changeTag: PropTypes.func.isRequired,
   changeRange: PropTypes.func.isRequired,
-  filterCheck: PropTypes.object.isRequired,
+  filterCheck: PropTypes.array.isRequired,
   changeCheck: PropTypes.func.isRequired,
   checkAll: PropTypes.func.isRequired,
   filterRadio: PropTypes.string.isRequired,

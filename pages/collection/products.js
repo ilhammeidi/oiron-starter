@@ -12,14 +12,14 @@ import brand from '~/public/text/brand';
 import products from '~/public/api/products';
 import { useSpacing } from '~/theme/common';
 
-const checkAll = {
-  a: true,
-  b: true,
-  c: true,
-  d: true,
-  e: true,
-  f: true
-};
+const checkAll = [
+  'check-a',
+  'check-b',
+  'check-c',
+  'check-d',
+  'check-e',
+  'check-f'
+];
 
 function Collection() {
   const spacing = useSpacing();
@@ -27,16 +27,72 @@ function Collection() {
 
   const [toggleView, setView] = useState('grid');
   const [keyword, setKeyword] = useState('');
-  const [sortBySelected, setSortBy] = useState('price-asc');
   const [category, setCategory] = useState('all');
   const [rating, setRating] = useState(0);
   const [radio, setRadio] = useState('all');
   const [check, setCheck] = useState(checkAll);
-  const [range, setRange] = useState({});
-  const [tag, setTag] = useState([]);
+  const [range, setRange] = useState({
+    from: 0,
+    to: 100
+  });
+  const [tag, setTag] = useState(['tag-one', 'tag-two', 'tag-three', 'tag-four']);
+  const [sortBySelected, setBySelected] = useState('');
+  const [sortBy, setSortBy] = useState('');
+  const [sortFrom, setFrom] = useState(-1);
+  const [sortTo, setTo] = useState(1);
 
   const handleGetRange = val => {
     setRange(val);
+  };
+
+  const handleSortBy = val => {
+    setBySelected(val);
+    switch (val) {
+      case 'title-asc':
+        setSortBy('title');
+        setFrom(1);
+        setTo(-1);
+        break;
+      case 'title-desc':
+        setSortBy('title');
+        setFrom(-1);
+        setTo(1);
+        break;
+      case 'price-asc':
+        setSortBy('price');
+        setFrom(-1);
+        setTo(1);
+        break;
+      default:
+        setSortBy('price');
+        setFrom(1);
+        setTo(-1);
+    }
+  };
+
+  const filteredItems = () => {
+    // Compare same tag
+    const intersection = (firstArray, secondArray) => firstArray
+      .filter(element => secondArray.includes(element));
+
+    // Check is all categories checked
+    const checkFilter = (item, filterData) => {
+      if (filterData !== 'all') {
+        return item === filterData;
+      }
+      return true;
+    };
+    console.log(rating);
+    return products
+      .filter(cardItem => cardItem.rating >= rating)
+      .sort(
+        (a, b) => {
+          if (a[sortBy] > b[sortBy]) {
+            return sortFrom;
+          }
+          return sortTo;
+        }
+      );
   };
 
   return (
@@ -52,13 +108,11 @@ function Collection() {
         <div className={spacing.containerWrap}>
           <Search value={keyword} updateValue={setKeyword} />
           <section>
-            {range.from} - {range.to}
-            {tag.map((item, index) => (<i key={index.toString()}>{item}</i>))}
             <Sorter
               view={toggleView}
-              resultLength={0}
+              resultLength={filteredItems().length}
               sortBySelected={sortBySelected}
-              sortBy={setSortBy}
+              sortBy={handleSortBy}
               switchView={setView}
             />
             <Box m={2}>
@@ -81,31 +135,39 @@ function Collection() {
                 </Grid>
                 <Grid item lg={10} md={9}>
                   <Grid container>
-                    {products.map((item, index) => (
-                      <Grid
-                        item
-                        key={index.toString()}
-                        sm={toggleView === 'grid' ? 4 : 12}
-                      >
-                        <Box
-                          display={toggleView === 'grid' ? 'flex' : 'block'}
-                          justifyContent={toggleView === 'grid' ? 'center' : 'flex-start'}
-                          mb={4}
-                          px={2}
-                        >
-                          <ProductCards
-                            rating={item.rating}
-                            price={item.price}
-                            title={item.title}
-                            desc={`Category: ${item.category} ~ Tag: ${item.tag} ~ Check: ${item.check} ~ Radio: ${item.radio}`}
-                            orientation={toggleView === 'grid' ? 'portrait' : 'landscape'}
-                            img="https://source.unsplash.com/random"
-                            type="round"
-                            href="/collection/detail-product"
-                          />
-                        </Box>
+                    {filteredItems().length < 1 && (
+                      <Grid item sm={12}>
+                        <h3>Not found</h3>
                       </Grid>
-                    ))}
+                    )}
+                    {filteredItems()
+                      .map((item, index) => item.title.toLowerCase()
+                        .indexOf(keyword) > -1 && (
+                          <Grid
+                            item
+                            key={index.toString()}
+                            sm={toggleView === 'grid' ? 4 : 12}
+                          >
+                            <Box
+                              display={toggleView === 'grid' ? 'flex' : 'block'}
+                              justifyContent={toggleView === 'grid' ? 'center' : 'flex-start'}
+                              mb={4}
+                              px={2}
+                            >
+                              <ProductCards
+                                rating={item.rating}
+                                price={item.price}
+                                title={item.title}
+                                desc={`Category: ${item.category} ~ Tag: ${item.tag} ~ Check: ${item.check} ~ Radio: ${item.radio}`}
+                                orientation={toggleView === 'grid' ? 'portrait' : 'landscape'}
+                                img="https://source.unsplash.com/random"
+                                type="round"
+                                href="/collection/detail-product"
+                              />
+                            </Box>
+                          </Grid>
+                      )
+                    )}
                   </Grid>
                 </Grid>
               </Grid>
