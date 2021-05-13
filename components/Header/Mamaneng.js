@@ -44,7 +44,7 @@ function Header(props) {
   const [fixed, setFixed] = useState(false);
   const [open, setOpen] = useState(false);
   const [menuName, setName] = useState('');
-  const [menuName2, setName2] = useState([]);
+  const [menuName2, setName2] = useState('');
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorEl2, setAnchorEl2] = useState(null);
   const anchorRef = useRef(null);
@@ -56,9 +56,8 @@ function Header(props) {
   };
 
   const handleToggle2 = (event, name) => {
-    setName2([...menuName2, name]);
+    setName2(name);
     setAnchorEl2(event.currentTarget);
-    console.log(anchorEl2);
   };
 
   const handleClose = (event) => {
@@ -67,15 +66,21 @@ function Header(props) {
     setOpen(false);
   };
 
-  const handleClose2 = (event, name) => {
+  const handleClose2 = (event) => {
     console.log('close2');
-    const index = menuName2.indexOf(name);
-    setName2(currentName => currentName.filter((n, i) => i !== index));
-    // setName2('');
+    setName2('');
     setOpen(false);
   };
 
   const prevOpen = useRef(open);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
 
   let flagFixed = false;
   const handleScroll = () => {
@@ -87,15 +92,6 @@ function Header(props) {
       flagFixed = newFlagFixed;
     }
   };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
-    }
-
-    prevOpen.current = open;
-  }, [open]);
 
   const classes = useStyles();
   const theme = useTheme();
@@ -166,10 +162,10 @@ function Header(props) {
                                     <MenuItem
                                       onClick={handleClose}
                                       onMouseEnter={(e) => handleToggle2(e, 'profile')}
-                                      onMouseLeave={(e) => handleClose2(e, 'profile')}
+                                      onMouseLeave={(e) => handleClose2(e)}
                                     >
                                       Profile
-                                      <Popper anchorEl={anchorEl2} open={menuName2.indexOf('profile') > -1} placement="right-start" transition disablePortal>
+                                      <Popper anchorEl={anchorEl2} open={menuName2 === 'profile'} placement="right-start" transition disablePortal>
                                         {({ TransitionProps, placement }) => (
                                           <Grow
                                             {...TransitionProps}
@@ -180,10 +176,10 @@ function Header(props) {
                                                 <MenuItem
                                                   onClick={handleClose}
                                                   onMouseEnter={(e) => handleToggle2(e, 'ihiw')}
-                                                  onMouseLeave={(e) => handleClose2(e, 'ihiw')}
+                                                  onMouseLeave={(e) => handleClose2(e)}
                                                 >
                                                   ihiw
-                                                  <Popper anchorEl={anchorEl2} open={menuName2.indexOf('ihiw') > -1} placement="right-start" transition disablePortal>
+                                                  <Popper anchorEl={anchorEl2} open={menuName2 === 'ihiw'} placement="right-start" transition disablePortal>
                                                     {({ TransitionProps, placement }) => (
                                                       <Grow
                                                         {...TransitionProps}

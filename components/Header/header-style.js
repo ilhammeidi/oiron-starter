@@ -109,13 +109,17 @@ const headerStyles = makeStyles(theme => ({
         margin: theme.spacing(0, 1),
       },
     },
-    '& ul': {
+    '& ul li': {
+      overflow: 'visible'
+    },
+    '& > ul': {
       listStyle: 'none',
-      '& li': {
+      position: 'relative',
+      '& > li': {
+        display: 'inline-block',
+        position: 'relative',
         margin: theme.spacing(0, 1),
         listStyle: 'none',
-        position: 'relative',
-        display: 'inline-block',
         '&[class="active"]': {
           '&:after': {
             content: '""',
