@@ -46,7 +46,7 @@ function Header(props) {
   const [menuName, setName] = useState('');
   const [menuName2, setName2] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [anchorEl2, setAnchorEl2] = useState(null);
+  const [anchorEl2, setAnchorEl2] = useState({});
   const anchorRef = useRef(null);
 
   const handleToggle = (event, name) => {
@@ -57,7 +57,11 @@ function Header(props) {
 
   const handleToggle2 = (event, name) => {
     setName2([...menuName2, name]);
-    setAnchorEl2(event.currentTarget);
+    // setAnchorEl2(event.currentTarget);
+    setAnchorEl2({
+      ...anchorEl2,
+      [name]: event.currentTarget
+    });
     console.log(anchorEl2);
   };
 
@@ -71,7 +75,10 @@ function Header(props) {
     console.log('close2');
     const index = menuName2.indexOf(name);
     setName2(currentName => currentName.filter((n, i) => i !== index));
-    // setName2('');
+    setAnchorEl2({
+      ...anchorEl2,
+      [name]: null
+    });
     setOpen(false);
   };
 
@@ -169,7 +176,7 @@ function Header(props) {
                                       onMouseLeave={(e) => handleClose2(e, 'profile')}
                                     >
                                       Profile
-                                      <Popper anchorEl={anchorEl2} open={menuName2.indexOf('profile') > -1} placement="right-start" transition disablePortal>
+                                      <Popper anchorEl={anchorEl2['profile'] || null} open={menuName2.indexOf('profile') > -1} placement="right-start" transition disablePortal>
                                         {({ TransitionProps, placement }) => (
                                           <Grow
                                             {...TransitionProps}
@@ -183,7 +190,7 @@ function Header(props) {
                                                   onMouseLeave={(e) => handleClose2(e, 'ihiw')}
                                                 >
                                                   ihiw
-                                                  <Popper anchorEl={anchorEl2} open={menuName2.indexOf('ihiw') > -1} placement="right-start" transition disablePortal>
+                                                  <Popper anchorEl={anchorEl2['ihiw'] || null} open={menuName2.indexOf('ihiw') > -1} placement="right-start" transition disablePortal>
                                                     {({ TransitionProps, placement }) => (
                                                       <Grow
                                                         {...TransitionProps}
