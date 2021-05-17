@@ -148,7 +148,7 @@ function Header(props) {
               <div className={classes.logo}>
                 <AnchorLink href="#home">
                   <img src={logo} alt="logo" />
-                  Header 1
+                  Header 2
                 </AnchorLink>
               </div>
               {isDesktop && (
