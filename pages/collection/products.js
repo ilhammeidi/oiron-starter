@@ -82,9 +82,16 @@ function Collection() {
       }
       return true;
     };
-    console.log(rating);
+
     return products
-      .filter(cardItem => cardItem.rating >= rating)
+      .filter(cardItem => checkFilter(cardItem.category, category)
+        && checkFilter(cardItem.radio, radio)
+        && cardItem.price >= range.from
+        && cardItem.price <= range.to
+        && cardItem.rating >= rating
+        && check.indexOf(cardItem.check) > -1
+        && intersection(tag, cardItem.tag).length > 0
+      )
       .sort(
         (a, b) => {
           if (a[sortBy] > b[sortBy]) {

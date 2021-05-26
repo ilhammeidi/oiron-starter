@@ -206,54 +206,54 @@ function Filter(props) {
         <FormLabel component="legend">Filter Tag</FormLabel>
         <form>
           <span className={classes.btnTag}>
+            <input
+              id="tag_one"
+              type="checkbox"
+              name="tag_one"
+              onChange={(event) => handleChangeTag(event)}
+              checked={filterTag.indexOf('tag-one') > -1}
+              value="tag-one"
+            />
             <label htmlFor="tag_one">
-              <input
-                id="tag_one"
-                type="checkbox"
-                name="tag_one"
-                onChange={(event) => handleChangeTag(event)}
-                checked={filterTag.indexOf('tag-one') > -1}
-                value="tag-one"
-              />
               Tag One
             </label>
           </span>
           <span className={classes.btnTag}>
+            <input
+              id="tag_two"
+              type="checkbox"
+              name="tag_two"
+              onChange={(event) => handleChangeTag(event)}
+              checked={filterTag.indexOf('tag-two') > -1}
+              value="tag-two"
+            />
             <label htmlFor="tag_two">
-              <input
-                id="tag_two"
-                type="checkbox"
-                name="tag_two"
-                onChange={(event) => handleChangeTag(event)}
-                checked={filterTag.indexOf('tag-two') > -1}
-                value="tag-two"
-              />
               Tag Two
             </label>
           </span>
           <span className={classes.btnTag}>
+            <input
+              id="tag_three"
+              type="checkbox"
+              name="tag_three"
+              onChange={(event) => handleChangeTag(event)}
+              checked={filterTag.indexOf('tag-three') > -1}
+              value="tag-three"
+            />
             <label htmlFor="tag_three">
-              <input
-                id="tag_three"
-                type="checkbox"
-                name="tag_three"
-                onChange={(event) => handleChangeTag(event)}
-                checked={filterTag.indexOf('tag-three') > -1}
-                value="tag-three"
-              />
               Tag Three
             </label>
           </span>
           <span className={classes.btnTag}>
+            <input
+              id="tag_four"
+              type="checkbox"
+              name="tag_four"
+              onChange={(event) => handleChangeTag(event)}
+              checked={filterTag.indexOf('tag-four') > -1}
+              value="tag-four"
+            />
             <label htmlFor="tag_four">
-              <input
-                id="tag_four"
-                type="checkbox"
-                name="tag_four"
-                onChange={(event) => handleChangeTag(event)}
-                checked={filterTag.indexOf('tag-four') > -1}
-                value="tag-four"
-              />
               Tag Four
             </label>
           </span>

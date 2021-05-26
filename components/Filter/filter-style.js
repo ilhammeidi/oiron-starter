@@ -32,6 +32,29 @@ const filterStyles = makeStyles(theme => ({
   },
   iconButton: {
     padding: 10,
+  },
+  btnTag: {
+    position: 'relative',
+    cursor: 'pointer',
+    '& label': {
+      display: 'inline-block',
+      padding: '1px 6px',
+      margin: 4,
+      borderRadius: theme.rounded.small,
+      border: `1px solid ${theme.palette.primary.main}`,
+      cursor: 'pointer',
+      position: 'relative',
+      transition: 'all 0.3s ease',
+      background: theme.palette.background.default,
+    },
+    '& input': {
+      opacity: 0,
+      position: 'absolute',
+      '&:checked + label': {
+        color: theme.palette.common.white,
+        background: theme.palette.primary.main
+      }
+    }
   }
 }));
 

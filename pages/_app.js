@@ -33,12 +33,12 @@ function MyApp(props) {
   const [loading, setLoading] = useState(0);
   const [theme, setTheme] = useState({
     ...appTheme('mainTheme', themeType),
-    direction: i18n.language === 'ar' ? 'rtl' : 'ltr'
+    direction: i18n.language === 'ara' ? 'rtl' : 'ltr'
   });
 
   useEffect(() => {
     // Set layout direction
-    document.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    document.dir = i18n.language === 'ara' ? 'rtl' : 'ltr';
     // Remove preloader
     const preloader = document.getElementById('preloader');
     if (preloader !== null || undefined) {

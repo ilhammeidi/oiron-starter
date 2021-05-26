@@ -67,11 +67,12 @@ function Footer(props) {
   const classes = useStyles();
   const align = useTextAlign();
   const [values, setValues] = useState({
-    lang: 'eng'
+    lang: ''
   });
 
   useEffect(() => {
     setValues({ lang: i18n.language });
+    console.log(i18n)
     setCtn(document.getElementById('main-wrap'));
   }, []);
 
