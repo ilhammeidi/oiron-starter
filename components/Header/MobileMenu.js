@@ -7,7 +7,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import useStyles from './header-style';
-import navMenu from './menu';
+import navMenu from './data/single';
 
 function MobileMenu(props) {
   const classes = useStyles();
