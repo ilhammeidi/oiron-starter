@@ -11,10 +11,6 @@ const HeadComponent = () => (
       name="description"
       content={brand.starter.desc}
     />
-    <meta
-      name="viewport"
-      content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-    />
     {/* Favicon */}
     <link rel="shortcut icon" href="/favicons/favicon.ico" />
     <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png" />
@@ -41,6 +37,7 @@ const HeadComponent = () => (
     />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
     {/*  Facebook */}
     <meta property="author" content="oiron" />
     <meta property="og:site_name" content="oiron.indisains.com" />

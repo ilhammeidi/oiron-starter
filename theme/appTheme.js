@@ -98,9 +98,6 @@ const appTheme = (color, mode) => ({
       root: {
         fontWeight: 600,
       },
-      sizeSmall: {
-        padding: '7px 12px'
-      },
       outlinedPrimary: {
         borderColor: mode === 'dark' ? palette[color].palette.primary.light : palette[color].palette.primary.main,
         color: mode === 'dark' ? palette[color].palette.primary.light : palette[color].palette.primary.dark,

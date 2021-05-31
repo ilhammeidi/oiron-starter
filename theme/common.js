@@ -185,6 +185,27 @@ export const useHidden = makeStyles(theme => ({
   }
 }));
 
+export const useFlexBox = makeStyles(() => ({
+  justifyStart: {
+    justifyContent: 'flex-star'
+  },
+  justifyCenter: {
+    justifyContent: 'center'
+  },
+  justifyEnd: {
+    justifyContent: 'flex-end'
+  },
+  alignStart: {
+    alignItems: 'flex-star'
+  },
+  alignCenter: {
+    alignItems: 'center'
+  },
+  alignEnd: {
+    alignItems: 'flex-end'
+  },
+}));
+
 export const useFlipRtl = makeStyles(theme => ({
   transform: theme.direction === 'rtl' ? 'scale(-1)' : 'none'
 }));

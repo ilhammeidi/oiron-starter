@@ -44,9 +44,11 @@ function ProductCard(props) {
         </CardContent>
         <div>
           <CardActions className={classes.property}>
-            <div className={classes.rating}>
-              <Rating defaultValue={rating} readOnly />
-            </div>
+            {rating > 0 ? (
+              <div className={classes.rating}>
+                <Rating value={rating} readOnly />
+              </div>
+            ) : ''}
             {price > 0 && (
               <strong>
                 $
