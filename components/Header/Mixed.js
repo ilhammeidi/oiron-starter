@@ -2,17 +2,15 @@ import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import clsx from 'clsx';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import MobileMenu from './MobileMenu';
-import Settings from './TopNav/Settings';
-import HeaderMenu from './TopNav/MixedNav';
 import logo from '~/public/images/logo.svg';
-import '~/vendors/hamburger-menu.css';
+import MobileMenu from './MobileMenu';
+import HeaderMenu from './TopNav/MixedNav';
+import UserMenu from './TopNav/UserMenu';
 import useStyles from './header-style';
 import navMenu from './data/single';
 import samplePages from './data/sample-pages';
@@ -33,19 +31,8 @@ const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disabl
 
 function Mixed(props) {
   const [fixed, setFixed] = useState(false);
-  let flagFixed = false;
-  const handleScroll = () => {
-    const doc = document.documentElement;
-    const scroll = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-    const newFlagFixed = (scroll > 80);
-    if (flagFixed !== newFlagFixed) {
-      setFixed(newFlagFixed);
-      flagFixed = newFlagFixed;
-    }
-  };
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-  }, []);
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
   const classes = useStyles();
   const theme = useTheme();
   const { onToggleDark, onToggleDir } = props;
@@ -58,10 +45,34 @@ function Mixed(props) {
     createData(navMenu[3], '#' + navMenu[3]),
     createData(navMenu[4], '#' + navMenu[4]),
   ]);
-  const [openDrawer, setOpenDrawer] = useState(false);
+  let flagFixed = false;
+
+  const handleScroll = () => {
+    const doc = document.documentElement;
+    const scroll = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+    const newFlagFixed = (scroll > 80);
+    if (flagFixed !== newFlagFixed) {
+      setFixed(newFlagFixed);
+      flagFixed = newFlagFixed;
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+
   const handleOpenDrawer = () => {
     setOpenDrawer(!openDrawer);
   };
+
+  const handleToggle = () => {
+    setOpenMenu((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = () => {
+    setOpenMenu(false);
+  };
+
   return (
     <Fragment>
       { isMobile && (<MobileMenu open={openDrawer} toggleDrawer={handleOpenDrawer} />) }
@@ -70,6 +81,7 @@ function Mixed(props) {
         id="header"
         className={clsx(
           classes.header,
+          openMenu && classes.noShadow,
           fixed && classes.fixed,
           openDrawer && classes.openDrawer
         )}
@@ -94,16 +106,17 @@ function Mixed(props) {
               </div>
               {isDesktop && (
                 <div className={classes.mainMenu}>
-                  <HeaderMenu menuPrimary={menuList} menuSecondary={samplePages} />
+                  <HeaderMenu
+                    open={openMenu}
+                    menuPrimary={menuList}
+                    menuSecondary={samplePages}
+                    toggle={handleToggle}
+                    close={handleClose}
+                  />
                 </div>
               )}
             </nav>
-            <nav className={classes.userMenu}>
-              { isDesktop && <Button href="#">Login</Button> }
-              <Button variant="contained" color="primary" href="#">Register</Button>
-              { isDesktop && <span className={classes.vDivider} /> }
-              <Settings toggleDark={onToggleDark} toggleDir={onToggleDir} />
-            </nav>
+            <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
           </div>
         </Container>
       </AppBar>

@@ -74,6 +74,9 @@ const headerStyles = makeStyles(theme => ({
       boxShadow: 'none',
     }
   },
+  noShadow: {
+    boxShadow: 'none !important',
+  },
   headerContent: {
     display: 'flex',
     alignItems: 'center',
@@ -111,7 +114,9 @@ const headerStyles = makeStyles(theme => ({
     },
     '& ul li': {
       overflow: 'visible'
-    },
+    }
+  },
+  mainMenu: {
     '& > ul': {
       listStyle: 'none',
       position: 'relative',
@@ -130,6 +135,9 @@ const headerStyles = makeStyles(theme => ({
             bottom: -14,
             left: 0,
           }
+        },
+        '& button, & a': {
+          textTransform: 'capitalize'
         }
       }
     }
@@ -167,6 +175,27 @@ const headerStyles = makeStyles(theme => ({
       width: 300,
     },
   },
+  megaMenuRoot: {
+    width: '100%'
+  },
+  megaMenu: {
+    marginTop: 20,
+    padding: theme.spacing(4, 0),
+    borderRadius: 0,
+    maxHeight: 480,
+    overflow: 'auto',
+  },
+  thumbMenu: {
+    width: 200,
+    height: 78,
+    borderRadius: theme.rounded.small,
+    margin: theme.spacing(0, 1, 2)
+  },
+  titleMega: {
+    textTransform: 'uppercase',
+    fontWeight: theme.typography.fontWeightBold,
+    fontSize: 11
+  },
   mobileMenu: {
     marginRight: theme.spacing(),
     '& $bar': {
@@ -192,10 +221,8 @@ const headerStyles = makeStyles(theme => ({
     }
   },
   menuList: {
+    fontSize: 14,
     textTransform: 'capitalize',
-    '& span': {
-      fontSize: 24
-    }
   }
 }));
 

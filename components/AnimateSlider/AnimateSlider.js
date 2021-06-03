@@ -5,9 +5,7 @@ import Slider from 'react-animated-slider';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import useStyles from './slider-style';
-import 'react-animated-slider/build/horizontal.css';
 import { withTranslation } from '~/i18n';
-import '~/vendors/animate-slider.css';
 import imgAPI from '~/public/images/imgAPI';
 
 const content = [
