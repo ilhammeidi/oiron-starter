@@ -94,7 +94,7 @@ function MixedNav(props) {
                       <Grid container>
                         {menuSecondary.map((subitem, index) => (
                           <Grid item sm={3} key={index.toString()}>
-                            <ListSubheader component="div" className={classes.titleMega}>
+                            <ListSubheader disableSticky component="div" className={classes.titleMega}>
                               {subitem.name}
                             </ListSubheader>
                             <img src={subitem.thumb} alt="thumbnail" className={classes.thumbMenu} />

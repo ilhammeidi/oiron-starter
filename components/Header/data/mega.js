@@ -1,5 +1,5 @@
 import sample from './sample-pages';
-import imgAPI from '~/static/images/imgAPI';
+import imgAPI from '~/public/images/imgAPI';
 
 const grandChild = [
   {
@@ -18,12 +18,11 @@ const grandChild = [
     name: 'Praesent Tristique',
     link: '#'
   }
-]
-
-
+];
 
 const mega = [
   {
+    id: 'menu1',
     name: 'First Menu',
     child: [
       {
@@ -69,6 +68,7 @@ const mega = [
     ]
   },
   {
+    id: 'menu2',
     name: 'Second Menu',
     child: [
       {
@@ -114,6 +114,7 @@ const mega = [
     ]
   },
   {
+    id: 'menu3',
     name: 'Third Menu',
     child: [
       {
@@ -159,6 +160,7 @@ const mega = [
     ]
   },
   {
+    id: 'menu4',
     name: 'Fourth Menu',
     child: [
       {
@@ -204,9 +206,10 @@ const mega = [
     ]
   },
   {
+    id: 'sample',
     name: 'Sample Pages',
     child: sample
   }
-]
+];
 
-export default mega
+export default mega;
