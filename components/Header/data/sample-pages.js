@@ -2,6 +2,7 @@ import imgAPI from '~/public/images/imgAPI';
 
 const sample = [
   {
+    id: 'company',
     name: 'company',
     thumb: imgAPI.ui[3],
     child: [
@@ -24,6 +25,7 @@ const sample = [
     ],
   },
   {
+    id: 'form',
     name: 'Form',
     thumb: imgAPI.ui[1],
     child: [
@@ -46,6 +48,7 @@ const sample = [
     ],
   },
   {
+    id: 'items',
     name: 'items',
     thumb: imgAPI.ui[0],
     child: [
@@ -64,6 +67,7 @@ const sample = [
     ],
   },
   {
+    id: 'utilities',
     name: 'utilities',
     thumb: imgAPI.ui[2],
     child: [

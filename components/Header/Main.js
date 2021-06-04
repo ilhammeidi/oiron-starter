@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import uiState from '~/reducer/ui';
 import Mixed from './Mixed';
 import Mega from './Mega';
+import DropList from './DropList';
 
 function Main(props) {
   const [state] = useReducer(null, uiState);
@@ -11,6 +12,7 @@ function Main(props) {
     <div>
       { state.header === 'mixed' && <Mixed home={home} onToggleDark={onToggleDark} onToggleDir={onToggleDir} />}
       { state.header === 'mega' && <Mega onToggleDark={onToggleDark} onToggleDir={onToggleDir} />}
+      { state.header === 'droplist' && <DropList onToggleDark={onToggleDark} onToggleDir={onToggleDir} />}
     </div>
   );
 }

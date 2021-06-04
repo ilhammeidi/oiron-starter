@@ -18,7 +18,7 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import Icon from '@material-ui/core/Icon';
 import useStyles from '../header-style';
 
-function MixedNav(props) {
+function MegaMenu(props) {
   const {
     dataMenu,
     open,
@@ -110,10 +110,10 @@ function MixedNav(props) {
   );
 }
 
-MixedNav.propTypes = {
+MegaMenu.propTypes = {
   dataMenu: PropTypes.array.isRequired,
   toggle: PropTypes.func.isRequired,
   open: PropTypes.object.isRequired
 };
 
-export default MixedNav;
+export default MegaMenu;
