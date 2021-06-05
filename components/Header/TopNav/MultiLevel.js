@@ -79,14 +79,26 @@ function MultiLevel(props) {
     });
   };
 
-  const handleCloseChild = (event, name) => {
+  const handleCloseChild = (event, parent) => {
+    let menuClose = {};
+    let anchorClose = {};
+    for (let i = 0; i < parent.child.length; i += 1) {
+      menuClose = {
+        ...menuClose,
+        [parent.child[i].id]: false
+      };
+      anchorClose = {
+        ...anchorClose,
+        [parent.child[i].id]: null
+      };
+    }
     setMenuChild({
       ...menuChild,
-      [name]: false
+      ...menuClose,
     });
     setAnchorChild({
       ...anchorChild,
-      [name]: null
+      ...anchorClose,
     });
   };
 
@@ -119,11 +131,12 @@ function MultiLevel(props) {
                         { childMenu(menuChild, subitem, anchorChild) }
                         <ListItemIcon>
                           <ChevronRightIcon fontSize="small" />
-                          <ChevronRightIcon fontSize="small" />
                         </ListItemIcon>
                       </MenuItem>
                     ) : (
-                      <MenuItem onClick={handleClose}>{subitem.name}</MenuItem>
+                      <MenuItem onMouseEnter={(e) => handleCloseChild(e, item)} onClick={handleClose}>
+                        {subitem.name}
+                      </MenuItem>
                     )}
                   </div>
                 ))}
@@ -170,7 +183,7 @@ function MultiLevel(props) {
                                     </ListItemIcon>
                                   </MenuItem>
                                 ) : (
-                                  <MenuItem onClick={handleClose}>
+                                  <MenuItem onMouseEnter={(e) => handleCloseChild(e, item)} onClick={handleClose}>
                                     {subitem.name}
                                   </MenuItem>
                                 )}
