@@ -6,15 +6,15 @@ const defaultChild = id => [
     link: '#'
   },
   {
-    id,
-    name: '2Lorem',
+    id: 'id_' + id,
+    name: 'Lorem 2',
     child: [
       {
-        name: '1Vivamus Condimentum',
+        name: 'Vivamus Condimentum ',
         link: '#'
       },
       {
-        name: '1Vivamus Condimentum',
+        name: 'Vivamus Condimentum 2',
         link: '#'
       },
     ]

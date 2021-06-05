@@ -22,90 +22,6 @@ const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disabl
   return <AnchorLink to={props.to} {...props} innerRef={ref} />; // eslint-disable-line
 });
 
-function ChildMenu(props) {
-  const {
-    menu,
-    anchor,
-    item,
-    closeParent,
-    toggle,
-    close
-  } = props;
-
-
-  // Child state
-  const [menuChild, setMenuChild] = useState([]);
-  const [anchorChild, setAnchorChild] = useState({});
-
-  // const mainAnchor = anchorChild ? anchorChild[item.id] : null;
-  // const openMenu = menuChild ? menuChild.indexOf(item.id) > -1 : false;
-
-  // Child function
-  const handleToggleChild = (event, name) => {
-    console.log(name);
-    setMenuChild([...menuChild, name]);
-    setAnchorChild({
-      ...anchorChild,
-      [name]: event.currentTarget
-    });
-  };
-
-  const handleCloseChild = (event, name) => {
-    const index = menuChild.indexOf(name);
-    setMenuChild(currentName => currentName.filter((n, i) => i !== index));
-    setAnchorChild({
-      ...anchorChild,
-      [name]: null
-    });
-  };
-  return (
-    <Popper anchorEl={anchor[item.id] || null} open={menu.indexOf(item.id) > -1} placement="right-start" transition disablePortal>
-      {({ TransitionPropsChild, placement }) => (
-        <Grow
-          {...TransitionPropsChild}
-          style={{ transformOrigin: placement === 'bottom' ? 'center bottom' : 'center top' }}
-        >
-          <Paper>
-            <MenuList id="menu-list-grow">
-              {item.child ? (
-                <MenuItem
-                  onClick={closeParent}
-                  onMouseEnter={(e) => toggle(e, item.id)}
-                  onMouseLeave={(e) => close(e, item.id)}
-                >
-                  {item.name}
-                  <ChildMenu
-                    item={item}
-                    menu={menuChild}
-                    anchor={anchorChild}
-                    toggle={handleToggleChild}
-                    close={handleCloseChild}
-                    closeParent={closeParent}
-                  />
-                  <ListItemIcon>
-                    <ChevronRightIcon fontSize="small" />
-                  </ListItemIcon>
-                </MenuItem>
-              ) : (
-                <MenuItem onClick={closeParent}>{item.name}</MenuItem>
-              )}
-            </MenuList>
-          </Paper>
-        </Grow>
-      )}
-    </Popper>
-  );
-}
-
-ChildMenu.propTypes = {
-  item: PropTypes.object.isRequired,
-  anchor: PropTypes.object.isRequired,
-  menu: PropTypes.array.isRequired,
-  closeParent: PropTypes.func.isRequired,
-  toggle: PropTypes.func.isRequired,
-  close: PropTypes.func.isRequired,
-};
-
 function MultiLevel(props) {
   const classes = useStyles();
   const { dataMenu } = props;
@@ -118,7 +34,7 @@ function MultiLevel(props) {
   const prevOpen = useRef(open);
 
   // Child state
-  const [menuChild, setMenuChild] = useState([]);
+  const [menuChild, setMenuChild] = useState({});
   const [anchorChild, setAnchorChild] = useState({});
 
   // Parent function
@@ -131,20 +47,43 @@ function MultiLevel(props) {
   const handleClose = () => {
     setName('');
     setOpen(false);
+    setMenuChild({});
+    setAnchorChild({});
   };
 
   // Child function
-  const handleToggleChild = (event, name) => {
-    setMenuChild([...menuChild, name]);
+  const handleToggleChild = (event, parent, id) => {
+    let menuClose = {};
+    let anchorClose = {};
+    for (let i = 0; i < parent.child.length; i += 1) {
+      if (parent.child[i].id !== id) {
+        menuClose = {
+          ...menuClose,
+          [parent.child[i].id]: false
+        };
+        anchorClose = {
+          ...anchorClose,
+          [parent.child[i].id]: null
+        };
+      }
+    }
+    setMenuChild({
+      ...menuChild,
+      ...menuClose,
+      [id]: true
+    });
     setAnchorChild({
       ...anchorChild,
-      [name]: event.currentTarget
+      ...anchorClose,
+      [id]: event.currentTarget
     });
   };
 
   const handleCloseChild = (event, name) => {
-    const index = menuChild.indexOf(name);
-    setMenuChild(currentName => currentName.filter((n, i) => i !== index));
+    setMenuChild({
+      ...menuChild,
+      [name]: false
+    });
     setAnchorChild({
       ...anchorChild,
       [name]: null
@@ -159,6 +98,43 @@ function MultiLevel(props) {
     prevOpen.current = open;
   }, [open]);
 
+  const childMenu = (menu, item, anchor) => (
+    <Popper anchorEl={anchor[item.id] || null} open={menu[item.id] || false} placement="right-start" transition disablePortal>
+      {({ TransitionProps, placement }) => (
+        <Grow
+          {...TransitionProps}
+          style={{ transformOrigin: placement === 'bottom' ? 'center bottom' : 'center top' }}
+        >
+          <Paper>
+            <ClickAwayListener onClickAway={handleClose}>
+              <MenuList id="menu-list-grow">
+                {item.child.map((subitem, index) => (
+                  <div key={index.toString()}>
+                    {subitem.child ? (
+                      <MenuItem
+                        onClick={handleClose}
+                        onMouseEnter={(e) => handleToggleChild(e, item, subitem.id)}
+                      >
+                        { subitem.name }
+                        { childMenu(menuChild, subitem, anchorChild) }
+                        <ListItemIcon>
+                          <ChevronRightIcon fontSize="small" />
+                          <ChevronRightIcon fontSize="small" />
+                        </ListItemIcon>
+                      </MenuItem>
+                    ) : (
+                      <MenuItem onClick={handleClose}>{subitem.name}</MenuItem>
+                    )}
+                  </div>
+                ))}
+              </MenuList>
+            </ClickAwayListener>
+          </Paper>
+        </Grow>
+      )}
+    </Popper>
+  );
+
   return (
     <ul className={classes.multiMenu}>
       {dataMenu.map((item, index) => (
@@ -171,7 +147,7 @@ function MultiLevel(props) {
             >
               <div>
                 <Button endIcon={<Icon>expand_more</Icon>}>{item.name}</Button>
-                <Popper open={menuName === item.name} anchorEl={anchorEl} role={undefined} transition disablePortal>
+                <Popper open={menuName === item.name} anchorEl={anchorEl || null} role={undefined} transition disablePortal>
                   {({ TransitionProps, placement }) => (
                     <Grow
                       {...TransitionProps}
@@ -182,21 +158,13 @@ function MultiLevel(props) {
                           <MenuList autoFocusItem={open} id="menu-list-grow">
                             {item.child.map((subitem, indexChild) => (
                               <div key={indexChild.toString()}>
-                                {subitem.child !== undefined ? (
+                                {subitem.child ? (
                                   <MenuItem
                                     onClick={handleClose}
-                                    onMouseEnter={(e) => handleToggleChild(e, subitem.id)}
-                                    onMouseLeave={(e) => handleCloseChild(e, subitem.id)}
+                                    onMouseEnter={(e) => handleToggleChild(e, item, subitem.id)}
                                   >
                                     {subitem.name}
-                                    <ChildMenu
-                                      item={subitem}
-                                      closeParent={handleClose}
-                                      menu={menuChild}
-                                      anchor={anchorChild}
-                                      toggle={handleToggleChild}
-                                      close={handleCloseChild}
-                                    />
+                                    {childMenu(menuChild, subitem, anchorChild)}
                                     <ListItemIcon>
                                       <ChevronRightIcon fontSize="small" />
                                     </ListItemIcon>
