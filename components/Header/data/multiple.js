@@ -2,6 +2,10 @@ import sample from './sample-pages';
 
 const defaultChild = id => [
   {
+    name: '1Vivamus Condimentum',
+    link: '#'
+  },
+  {
     id: 'id_' + id,
     name: 'Lorem 2',
     child: [
@@ -14,10 +18,6 @@ const defaultChild = id => [
         link: '#'
       },
     ]
-  },
-  {
-    name: '1Vivamus Condimentum',
-    link: '#'
   },
   {
     name: '3Eu Rhoncus Odio',

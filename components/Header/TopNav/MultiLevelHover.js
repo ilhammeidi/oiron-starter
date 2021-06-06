@@ -22,7 +22,7 @@ const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disabl
   return <AnchorLink to={props.to} {...props} innerRef={ref} />; // eslint-disable-line
 });
 
-function MultiLevel(props) {
+function MultiLevelHover(props) {
   const classes = useStyles();
   const { dataMenu } = props;
 
@@ -120,10 +120,11 @@ function MultiLevel(props) {
           <Paper>
             <ClickAwayListener onClickAway={handleClose}>
               <MenuList id="menu-list-grow">
-                {item.child.map((subitem, index) => (
-                  <div key={index.toString()}>
-                    {subitem.child ? (
+                {item.child.map((subitem, index) => {
+                  if (subitem.child) {
+                    return (
                       <MenuItem
+                        key={index.toString()}
                         onClick={handleClose}
                         onMouseEnter={(e) => handleToggleChild(e, item, subitem.id)}
                       >
@@ -133,13 +134,18 @@ function MultiLevel(props) {
                           <ChevronRightIcon fontSize="small" />
                         </ListItemIcon>
                       </MenuItem>
-                    ) : (
-                      <MenuItem onMouseEnter={(e) => handleCloseChild(e, item)} onClick={handleClose}>
-                        {subitem.name}
-                      </MenuItem>
-                    )}
-                  </div>
-                ))}
+                    );
+                  }
+                  return (
+                    <MenuItem
+                      key={index.toString()}
+                      onMouseEnter={(e) => handleCloseChild(e, item)}
+                      onClick={handleClose}
+                    >
+                      {subitem.name}
+                    </MenuItem>
+                  );
+                })}
               </MenuList>
             </ClickAwayListener>
           </Paper>
@@ -169,10 +175,11 @@ function MultiLevel(props) {
                       <Paper>
                         <ClickAwayListener onClickAway={handleClose}>
                           <MenuList autoFocusItem={open} id="menu-list-grow">
-                            {item.child.map((subitem, indexChild) => (
-                              <div key={indexChild.toString()}>
-                                {subitem.child ? (
+                            {item.child.map((subitem, indexChild) => {
+                              if (subitem.child) {
+                                return (
                                   <MenuItem
+                                    key={indexChild.toString()}
                                     onClick={handleClose}
                                     onMouseEnter={(e) => handleToggleChild(e, item, subitem.id)}
                                   >
@@ -182,13 +189,18 @@ function MultiLevel(props) {
                                       <ChevronRightIcon fontSize="small" />
                                     </ListItemIcon>
                                   </MenuItem>
-                                ) : (
-                                  <MenuItem onMouseEnter={(e) => handleCloseChild(e, item)} onClick={handleClose}>
-                                    {subitem.name}
-                                  </MenuItem>
-                                )}
-                              </div>
-                            ))}
+                                );
+                              }
+                              return (
+                                <MenuItem
+                                  key={indexChild.toString()}
+                                  onMouseEnter={(e) => handleCloseChild(e, item)}
+                                  onClick={handleClose}
+                                >
+                                  {subitem.name}
+                                </MenuItem>
+                              );
+                            })}
                           </MenuList>
                         </ClickAwayListener>
                       </Paper>
@@ -210,8 +222,8 @@ function MultiLevel(props) {
   );
 }
 
-MultiLevel.propTypes = {
+MultiLevelHover.propTypes = {
   dataMenu: PropTypes.array.isRequired
 };
 
-export default MultiLevel;
+export default MultiLevelHover;

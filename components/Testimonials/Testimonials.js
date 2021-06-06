@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Carousel from 'react-slick';
@@ -26,7 +26,7 @@ const testiContent = [
   {
     text: 'Sed imperdiet enim ligula, vitae viverra justo porta vel.',
     avatar: imgAPI.avatar[3],
-    name: 'Jovelin - Senior Graphic Designer'
+    name: 'Jovelin Doe - Senior Graphic Designer'
   },
   {
     text: 'Cras convallis lacus orci, tristique tincidunt magna consequat in. In vel pulvinar est, at euismod libero.',
@@ -36,18 +36,19 @@ const testiContent = [
   {
     text: 'Cras convallis lacus orci, tristique tincidunt magna consequat in. In vel pulvinar est, at euismod libero.',
     avatar: imgAPI.avatar[6],
-    name: 'Jovelin - Senior Graphic Designer'
+    name: 'Jovelin Doe - Senior Graphic Designer'
   },
   {
     text: 'Cras convallis lacus orci, tristique tincidunt magna consequat in. In vel pulvinar est, at euismod libero.',
     avatar: imgAPI.avatar[7],
-    name: 'Jovelin - Senior Graphic Designer'
+    name: 'Jovelin Doe - Senior Graphic Designer'
   }
 ];
 
 function Testimonials() {
   const classes = useStyle();
   const align = useTextAlign();
+  const [loaded, setLoaded] = useState(false);
   const settings = {
     dots: true,
     infinite: true,
@@ -76,6 +77,11 @@ function Testimonials() {
       }
     }]
   };
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
   return (
     <div className={classes.testimonialWrap}>
       <Typography gutterBottom variant="h3" className={align.textCenter} display="block">
@@ -85,23 +91,25 @@ function Testimonials() {
         Curabitur egestas consequat lorem, vel fermentum augue porta id.
       </Typography>
       <div className={classes.carousel}>
-        <Carousel {...settings}>
-          {testiContent.map((item, index) => (
-            <div key={index.toString()} className={classes.item}>
-              <Paper className={classes.card}>
-                <Typography variant="body1" display="block">
-                  {item.text}
-                </Typography>
-                <div className={classes.name}>
-                  <Avatar alt={item.name} src={item.avatar} className={classes.avatar} />
-                  <Typography variant="caption">
-                    {item.name}
+        { loaded && (
+          <Carousel {...settings}>
+            {testiContent.map((item, index) => (
+              <div key={index.toString()} className={classes.item}>
+                <Paper className={classes.card}>
+                  <Typography variant="body1" display="block">
+                    {item.text}
                   </Typography>
-                </div>
-              </Paper>
-            </div>
-          ))}
-        </Carousel>
+                  <div className={classes.name}>
+                    <Avatar alt={item.name} src={item.avatar} className={classes.avatar} />
+                    <Typography variant="caption">
+                      {item.name}
+                    </Typography>
+                  </div>
+                </Paper>
+              </div>
+            ))}
+          </Carousel>
+        )}
       </div>
     </div>
   );

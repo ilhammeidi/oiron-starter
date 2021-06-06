@@ -39,8 +39,8 @@
   top: 50%;
   margin-top: -2px; }
   .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-    width: 20px;
-    height: 2px;
+    width: 15px;
+    height: 1px;
     background-color: #000;
     border-radius: 4px;
     position: absolute;
@@ -55,13 +55,13 @@
   .hamburger-inner::after {
     bottom: -10px; }
   .hamburger-inner::before {
-    width: 24px
+    width: 20px
   }
   .hamburger-inner::after {
-    width: 24px
+    width: 20px
   }
 .is-active .hamburger-inner {
-  width: 24px
+  width: 20px
 }
 
 

@@ -32,16 +32,6 @@ const flagIcon = {
 };
 
 const headerStyles = makeStyles(theme => ({
-  '@keyframes slideRight': {
-    from: {
-      opacity: 0,
-      transform: 'translateX(-100px)'
-    },
-    to: {
-      opacity: 1,
-      transform: 'none'
-    }
-  },
   fixed: {},
   openDrawer: {},
   header: {
@@ -169,12 +159,6 @@ const headerStyles = makeStyles(theme => ({
   },
   bar: {},
   menu: {},
-  paperNav: {
-    width: '100%',
-    [theme.breakpoints.up(680)]: {
-      width: 300,
-    },
-  },
   megaMenuRoot: {
     width: '100%'
   },
@@ -195,34 +179,6 @@ const headerStyles = makeStyles(theme => ({
     textTransform: 'uppercase',
     fontWeight: theme.typography.fontWeightBold,
     fontSize: 11
-  },
-  mobileMenu: {
-    marginRight: theme.spacing(),
-    '& $bar': {
-      backgroundColor: theme.palette.text.secondary,
-      '&:after, &:before': {
-        backgroundColor: theme.palette.text.secondary,
-      }
-    }
-  },
-  mobileNav: {
-    background: theme.palette.background.paper,
-    '& $menu': {
-      padding: theme.spacing(0, 2),
-      overflow: 'auto',
-      top: 80,
-      width: '100%',
-      position: 'absolute',
-      height: 'calc(100% - 80px)',
-      '& a': {
-        animationName: '$slideRight',
-        animationTimingFunction: 'ease'
-      },
-    }
-  },
-  menuList: {
-    fontSize: 14,
-    textTransform: 'capitalize',
   }
 }));
 
