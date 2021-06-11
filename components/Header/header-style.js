@@ -162,6 +162,20 @@ const headerStyles = makeStyles(theme => ({
   megaMenuRoot: {
     width: '100%'
   },
+  multiMenuRoot: {
+    minWidth: 200,
+    '& ul': {
+      padding: theme.spacing(1),
+      '& li': {
+        borderRadius: theme.rounded.small,
+        minHeight: 48,
+        padding: theme.spacing(1),
+        '& svg': {
+          fill: theme.palette.text.hint
+        }
+      }
+    }
+  },
   megaMenu: {
     marginTop: 20,
     padding: theme.spacing(4, 0),
@@ -177,8 +191,15 @@ const headerStyles = makeStyles(theme => ({
   },
   titleMega: {
     textTransform: 'uppercase',
-    fontWeight: theme.typography.fontWeightBold,
-    fontSize: 11
+    fontWeight: theme.typography.fontWeightBold + '!important',
+    fontSize: '11px !important'
+  },
+  menuItem: {
+    borderRadius: theme.rounded.small
+  },
+  menuList: {
+    textTransform: 'capitalize',
+    fontSize: 14
   }
 }));
 

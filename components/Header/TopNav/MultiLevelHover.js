@@ -14,7 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import useStyles from '../header-style';
 
@@ -128,11 +128,9 @@ function MultiLevelHover(props) {
                         onClick={handleClose}
                         onMouseEnter={(e) => handleToggleChild(e, item, subitem.id)}
                       >
-                        { subitem.name }
+                        <ListItemText primary={subitem.name} />
                         { childMenu(menuChild, subitem, anchorChild) }
-                        <ListItemIcon>
-                          <ChevronRightIcon fontSize="small" />
-                        </ListItemIcon>
+                        <ChevronRightIcon fontSize="small" />
                       </MenuItem>
                     );
                   }
@@ -142,7 +140,7 @@ function MultiLevelHover(props) {
                       onMouseEnter={(e) => handleCloseChild(e, item)}
                       onClick={handleClose}
                     >
-                      {subitem.name}
+                      <ListItemText primary={subitem.name} />
                     </MenuItem>
                   );
                 })}
@@ -166,7 +164,15 @@ function MultiLevelHover(props) {
             >
               <div>
                 <Button endIcon={<Icon>expand_more</Icon>}>{item.name}</Button>
-                <Popper open={menuName === item.name} anchorEl={anchorEl || null} role={undefined} transition disablePortal>
+                <Popper
+                  open={menuName === item.name}
+                  anchorEl={anchorEl || null}
+                  placement="bottom-start"
+                  className={classes.multiMenuRoot}
+                  role={undefined}
+                  transition
+                  disablePortal
+                >
                   {({ TransitionProps, placement }) => (
                     <Grow
                       {...TransitionProps}
@@ -182,12 +188,11 @@ function MultiLevelHover(props) {
                                     key={indexChild.toString()}
                                     onClick={handleClose}
                                     onMouseEnter={(e) => handleToggleChild(e, item, subitem.id)}
+                                    className={classes.menuList}
                                   >
-                                    {subitem.name}
+                                    <ListItemText primary={subitem.name} />
                                     {childMenu(menuChild, subitem, anchorChild)}
-                                    <ListItemIcon>
-                                      <ChevronRightIcon fontSize="small" />
-                                    </ListItemIcon>
+                                    <ChevronRightIcon fontSize="small" />
                                   </MenuItem>
                                 );
                               }
@@ -196,8 +201,9 @@ function MultiLevelHover(props) {
                                   key={indexChild.toString()}
                                   onMouseEnter={(e) => handleCloseChild(e, item)}
                                   onClick={handleClose}
+                                  className={classes.menuList}
                                 >
-                                  {subitem.name}
+                                  <ListItemText primary={subitem.name} />
                                 </MenuItem>
                               );
                             })}

@@ -73,7 +73,13 @@ function MegaMenu(props) {
                       <Grid container>
                         {item.child.map((subitem, childIndex) => (
                           <Grid item sm={3} key={childIndex.toString()}>
-                            <ListSubheader disableSticky component="div" className={classes.titleMega}>
+                            <ListSubheader
+                              disableSticky
+                              component="div"
+                              classes={{
+                                root: classes.titleMega
+                              }}
+                            >
                               {subitem.name}
                             </ListSubheader>
                             <img src={subitem.thumb} alt="thumbnail" className={classes.thumbMenu} />
@@ -82,6 +88,7 @@ function MegaMenu(props) {
                                 <ListItem
                                   key={grandChildIndex.toString()}
                                   button
+                                  className={classes.menuItem}
                                   component="a"
                                   href={granditem.link}
                                   selected={curURL === (curOrigin + langPath + granditem.link)}
