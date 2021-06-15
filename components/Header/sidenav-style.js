@@ -11,17 +11,6 @@ const sidenavStyles = makeStyles(theme => ({
   mobileNav: {
     background: theme.palette.background.paper,
     padding: theme.spacing(10, 0, 3),
-    '& $menu': {
-      overflow: 'auto',
-      top: 80,
-      width: '100%',
-      position: 'absolute',
-      height: 'calc(100% - 80px)',
-      '& a': {
-        animationName: '$slideRight',
-        animationTimingFunction: 'ease'
-      },
-    }
   },
   sideMultilv: {
     padding: theme.spacing(3, 2, 0),

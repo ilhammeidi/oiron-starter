@@ -4,9 +4,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import { useTheme } from '@material-ui/core/styles';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
 import LangIcon from '@material-ui/icons/Language';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -125,13 +125,13 @@ function Footer(props) {
                   </div>
                 )}
                 {isMobile && (
-                  <ExpansionPanel
+                  <Accordion
                     square
                     classes={{
                       root: classes.accordionRoot,
                     }}
                   >
-                    <ExpansionPanelSummary
+                    <AccordionSummary
                       expandIcon={<ExpandMoreIcon className={classes.accordionIcon} />}
                       aria-controls="panel1a-content"
                       id="panel1a-header"
@@ -142,8 +142,8 @@ function Footer(props) {
                       <strong>
                         {footer.title}
                       </strong>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
+                    </AccordionSummary>
+                    <AccordionDetails>
                       <ul>
                         {footer.description.map((item, index) => (
                           <li key={item}>
@@ -153,8 +153,8 @@ function Footer(props) {
                           </li>
                         ))}
                       </ul>
-                    </ExpansionPanelDetails>
-                  </ExpansionPanel>
+                    </AccordionDetails>
+                  </Accordion>
                 )}
               </Grid>
             ))}
