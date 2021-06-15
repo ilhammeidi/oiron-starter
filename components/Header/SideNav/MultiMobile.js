@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import { i18n } from '~/i18n';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -14,6 +15,7 @@ import Collapse from '@material-ui/core/Collapse';
 import { withTranslation } from '~/i18n';
 import useStyles from '../sidenav-style';
 import navMenu from '../data/multiple';
+import link from '~/public/text/link';
 
 function MobileMenu(props) {
   const classes = useStyles();
@@ -21,12 +23,22 @@ function MobileMenu(props) {
   const [expand, setExpand] = useState({});
   const { t } = props;
 
+  const [curURL, setCurURL] = useState('');
+  const [curOrigin, setCurOrigin] = useState('');
+  const [langPath, setLangPath] = useState('');
+
   const handleToggle = (id) => {
     setExpand({
       ...expand,
       [id]: !expand[id]
     });
   };
+
+  useEffect(() => {
+    setCurURL(window.location.href);
+    setCurOrigin(window.location.origin);
+    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
+  }, []);
 
   const childMenu = (menu, item) => (
     <Collapse in={menu[item.id] || false} timeout="auto" unmountOnExit>
@@ -50,7 +62,11 @@ function MobileMenu(props) {
           return (
             <ListItem
               key={index.toString()}
-              className={clsx(classes.noChild, classes.sideGroupLink)}
+              className={clsx(
+                classes.noChild,
+                classes.sideGroupLink,
+                curURL === curOrigin + langPath + subitem.link ? classes.current : ''
+              )}
               component="a"
               href={subitem.link}
               button
@@ -76,7 +92,7 @@ function MobileMenu(props) {
         className={classes.mobileNav}
         role="presentation"
       >
-        <div className={clsx(classes.menu, open && classes.menuOpen)}>
+        <div className={open ? classes.menuOpen : ''}>
           <List
             component="nav"
             aria-labelledby="nested-list-subheader"
@@ -99,7 +115,12 @@ function MobileMenu(props) {
                 );
               }
               return (
-                <ListItem className={classes.noChild} key={index.toString()} button href={item.link}>
+                <ListItem
+                  key={index.toString()}
+                  className={clsx(classes.noChild, curURL === curOrigin + langPath + item.link ? classes.current : '')}
+                  button
+                  href={item.link}
+                >
                   <ListItemText className={classes.menuList} primary={item.name} />
                 </ListItem>
               );
@@ -110,9 +131,9 @@ function MobileMenu(props) {
             {['login', 'register'].map((text, index) => (
               <ListItem
                 key={index.toString()}
-                className={classes.noChild}
+                className={clsx(classes.noChild, curURL === curOrigin + langPath + '/' + text ? classes.current : '')}
                 component="a"
-                href={`/${text}`}
+                href={link.starter[text]}
                 button
               >
                 <ListItemText className={classes.menuList} primary={t('common:' + text)} />

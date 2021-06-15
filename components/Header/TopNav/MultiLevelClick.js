@@ -5,6 +5,8 @@ import React, {
   Fragment
 } from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
+import { i18n } from '~/i18n';
 import Button from '@material-ui/core/Button';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -14,6 +16,7 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import useStyles from '../header-style';
@@ -25,6 +28,10 @@ const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disabl
 function MultiLevelHover(props) {
   const classes = useStyles();
   const { dataMenu } = props;
+
+  const [curURL, setCurURL] = useState('');
+  const [curOrigin, setCurOrigin] = useState('');
+  const [langPath, setLangPath] = useState('');
 
   // Parent state
   const [open, setOpen] = useState(false);
@@ -87,6 +94,9 @@ function MultiLevelHover(props) {
     }
 
     prevOpen.current = open;
+    setCurURL(window.location.href);
+    setCurOrigin(window.location.origin);
+    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
   }, [open]);
 
   const childMenu = (menu, item, anchor) => (
@@ -116,9 +126,11 @@ function MultiLevelHover(props) {
                   <MenuItem
                     key={index.toString()}
                     onClick={(e) => handleClose(e)}
-                    className={classes.menuList}
+                    className={clsx(classes.menuList, curURL === curOrigin + langPath + subitem.link ? classes.current : '')}
                   >
-                    <ListItemText primary={subitem.name} />
+                    <ListItem disableRipple className={classes.link} button component="a" href={subitem.link}>
+                      <ListItemText primary={subitem.name} />
+                    </ListItem>
                   </MenuItem>
                 );
               })}
@@ -177,9 +189,11 @@ function MultiLevelHover(props) {
                                 <MenuItem
                                   key={indexChild.toString()}
                                   onClick={(e) => handleClose(e)}
-                                  className={clsx(classes.menuList, classes.current)}
+                                  className={clsx(classes.menuList, curURL === curOrigin + langPath + subitem.link ? classes.current : '')}
                                 >
-                                  <ListItemText primary={subitem.name} />
+                                  <ListItem disableRipple className={classes.link} button component="a" href={subitem.link}>
+                                    <ListItemText primary={subitem.name} />
+                                  </ListItem>
                                 </MenuItem>
                               );
                             })}

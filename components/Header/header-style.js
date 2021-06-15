@@ -199,8 +199,13 @@ const headerStyles = makeStyles(theme => ({
   },
   menuList: {
     textTransform: 'capitalize',
-    fontWeight: theme.typography.fontWeightBold,
-    fontSize: 11
+    fontSize: 14
+  },
+  link: {
+    padding: 0,
+    '&:hover': {
+      background: 'none'
+    }
   },
   current: {
     background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light, 

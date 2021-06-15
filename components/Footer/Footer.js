@@ -72,7 +72,6 @@ function Footer(props) {
 
   useEffect(() => {
     setValues({ lang: i18n.language });
-    console.log(i18n)
     setCtn(document.getElementById('main-wrap'));
   }, []);
 

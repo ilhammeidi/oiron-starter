@@ -4,13 +4,13 @@ import React, {
   useEffect
 } from 'react';
 import PropTypes from 'prop-types';
+import { i18n } from '~/i18n';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Fade from '@material-ui/core/Fade';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
-import { i18n } from '~/i18n';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -28,6 +28,7 @@ function MegaMenu(props) {
 
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = useState(null);
+
   const [curURL, setCurURL] = useState('');
   const [curOrigin, setCurOrigin] = useState('');
   const [langPath, setLangPath] = useState('');
@@ -40,7 +41,7 @@ function MegaMenu(props) {
   useEffect(() => {
     setCurURL(window.location.href);
     setCurOrigin(window.location.origin);
-    setLangPath('/' + i18n.language);
+    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
   }, []);
 
   return (
