@@ -177,7 +177,7 @@ function MultiLevelHover(props) {
                                 <MenuItem
                                   key={indexChild.toString()}
                                   onClick={(e) => handleClose(e)}
-                                  className={classes.menuList}
+                                  className={clsx(classes.menuList, classes.current)}
                                 >
                                   <ListItemText primary={subitem.name} />
                                 </MenuItem>

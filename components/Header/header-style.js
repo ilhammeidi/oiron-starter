@@ -199,7 +199,12 @@ const headerStyles = makeStyles(theme => ({
   },
   menuList: {
     textTransform: 'capitalize',
-    fontSize: 14
+    fontWeight: theme.typography.fontWeightBold,
+    fontSize: 11
+  },
+  current: {
+    background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light, 
+    color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark, 
   }
 }));
 
