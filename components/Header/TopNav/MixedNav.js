@@ -33,6 +33,7 @@ function MixedNav(props) {
     open,
     toggle,
     close,
+    singleNav,
     t
   } = props;
   const classes = useStyles();
@@ -61,9 +62,15 @@ function MixedNav(props) {
     >
       {menuPrimary.map(item => (
         <li key={item.id.toString()}>
-          <Button component={AnchorLink} href={item.url}>
-            {item.name}
-          </Button>
+          {singleNav ? (
+            <Button component={AnchorLink} href={item.url}>
+              {t('starter-landing:header_' + item.name)}
+            </Button>
+          ) : (
+            <Button href={ '/' + item.url}>
+              {t('starter-landing:header_' + item.name)}
+            </Button>
+          )}
         </li>
       ))}
       <li>
@@ -137,8 +144,13 @@ MixedNav.propTypes = {
   close: PropTypes.func.isRequired,
   toggle: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
+  singleNav: PropTypes.bool,
   t: PropTypes.func.isRequired
 };
+
+MixedNav.defaultProps = {
+  singleNav: false
+}
 
 MixedNav.getInitialProps = async () => ({
   namespacesRequired: ['common', 'starter-landing'],

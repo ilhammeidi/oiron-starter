@@ -4,26 +4,43 @@ import AppBar from '@material-ui/core/AppBar';
 import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import Logo from '../Logo';
 import link from '~/public/text/link';
 import MobileMenu from './SideNav/MultiMobile';
-import HeaderMenu from './TopNav/MegaMenu';
+import HeaderMenu from './TopNav/SingleNav';
 import UserMenu from './TopNav/UserMenu';
 import useStyles from './header-style';
-import mega from './data/mega';
+import navMenu from './data/single';
+import samplePages from './data/sample-pages';
 
-function Mega(props) {
+let counter = 0;
+function createData(name, url) {
+  counter += 1;
+  return {
+    id: counter,
+    name,
+    url,
+  };
+}
+
+function NavScroll(props) {
   const [fixed, setFixed] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [openMenu, setOpenMenu] = useState({});
+  const [openMenu, setOpenMenu] = useState(false);
   const classes = useStyles();
   const theme = useTheme();
-  const { onToggleDark, onToggleDir } = props;
+  const { onToggleDark, onToggleDir, home } = props;
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [menuList] = useState([
+    createData(navMenu[0], '#' + navMenu[0]),
+    createData(navMenu[1], '#' + navMenu[1]),
+    createData(navMenu[2], '#' + navMenu[2]),
+    createData(navMenu[3], '#' + navMenu[3]),
+    createData(navMenu[4], '#' + navMenu[4]),
+  ]);
   let flagFixed = false;
 
   const handleScroll = () => {
@@ -44,30 +61,12 @@ function Mega(props) {
     setOpenDrawer(!openDrawer);
   };
 
-  const handleToggle = (id) => {
-    if (openMenu[id] !== undefined) {
-      console.log('isi');
-      setOpenMenu({
-        ...openMenu,
-        [id]: !openMenu[id],
-      });
-      setTimeout(() => {
-        setOpenMenu({ [id]: !openMenu[id] });
-      }, 100);
-    } else {
-      console.log('kosong');
-      setOpenMenu({
-        ...openMenu,
-        [id]: true
-      });
-      setTimeout(() => {
-        setOpenMenu({ [id]: true });
-      }, 100);
-    }
+  const handleToggle = () => {
+    setOpenMenu((prevOpen) => !prevOpen);
   };
 
   const handleClose = () => {
-    setOpenMenu({});
+    setOpenMenu(false);
   };
 
   return (
@@ -102,15 +101,16 @@ function Mega(props) {
                 </a>
               </div>
               {isDesktop && (
-                <ClickAwayListener onClickAway={handleClose}>
-                  <div className={classes.mainMenu}>
-                    <HeaderMenu
-                      open={openMenu}
-                      dataMenu={mega}
-                      toggle={handleToggle}
-                    />
-                  </div>
-                </ClickAwayListener>
+                <div className={classes.mainMenu}>
+                  <HeaderMenu
+                    open={openMenu}
+                    menuPrimary={menuList}
+                    menuSecondary={samplePages}
+                    toggle={handleToggle}
+                    close={handleClose}
+                    singleNav={home}
+                  />
+                </div>
               )}
             </nav>
             <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
@@ -121,9 +121,14 @@ function Mega(props) {
   );
 }
 
-Mega.propTypes = {
+NavScroll.propTypes = {
   onToggleDark: PropTypes.func.isRequired,
-  onToggleDir: PropTypes.func.isRequired
+  onToggleDir: PropTypes.func.isRequired,
+  home: PropTypes.bool
 };
 
-export default Mega;
+NavScroll.defaultProps = {
+  home: false
+};
+
+export default NavScroll;

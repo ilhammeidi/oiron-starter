@@ -74,7 +74,7 @@ const headerStyles = makeStyles(theme => ({
     '& nav': {
       transition: 'all 0.3s ease',
       alignItems: 'center',
-      padding: theme.spacing(2),
+      padding: theme.spacing(2, 1),
       [theme.breakpoints.down('md')]: {
         padding: theme.spacing(2, 0),
       },
@@ -91,8 +91,6 @@ const headerStyles = makeStyles(theme => ({
     },
     '& img': {
       transition: 'all 0.3s ease',
-      minWidth: '100%',
-      height: 48
     }
   },
   active: {},
@@ -110,6 +108,8 @@ const headerStyles = makeStyles(theme => ({
     '& > ul': {
       listStyle: 'none',
       position: 'relative',
+      padding: 0,
+      margin: 0,
       '& > li': {
         display: 'inline-block',
         position: 'relative',
@@ -140,6 +140,21 @@ const headerStyles = makeStyles(theme => ({
   langMenu: {
     '& i': {
       ...flagIcon
+    }
+  },
+  mobileMenu: {
+    margin: theme.spacing(0, 1),
+    '& $bar': {
+      backgroundColor: theme.palette.text.secondary,
+      '&:after, &:before': {
+        backgroundColor: theme.palette.text.secondary
+      },
+      [theme.breakpoints.down('sm')]: {
+        backgroundColor: theme.palette.common.white,
+        '&:after, &:before': {
+          backgroundColor: theme.palette.common.white
+        },
+      }
     }
   },
   vDivider: {
@@ -210,6 +225,122 @@ const headerStyles = makeStyles(theme => ({
   current: {
     background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light, 
     color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark, 
+  },
+  /* Search */
+  short: {},
+  input: {},
+  flex: {
+    flex: 1
+  },
+  search: {
+    position: 'relative',
+    display: 'flex',
+    maxWidth: 600,
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: theme.spacing(2)
+    },
+    [theme.breakpoints.up('sm')]: {
+      flex: 1
+    },
+    '& form': {
+      width: '100%'
+    },
+    alignItems: 'center',
+    '&$short': {
+      width: 300
+    },
+    '& $input': {
+      width: '100%',
+      paddingRight: theme.spacing(2),
+      background: theme.palette.background.paper,
+      paddingLeft: theme.spacing(5),
+      borderRadius: theme.rounded.small,
+      '& input': {
+        maxHeight: 'none',
+        padding: theme.spacing(1.5, 0)
+      }
+    }
+  },
+  searchIcon: {
+    position: 'absolute',
+    top: 10,
+    left: theme.spacing(1)
+  },
+  /* Hamburger */
+  invert: {},
+  navLogo: {
+    width: '100%',
+    '&$invert': {
+      '& $logo': {
+        '& a': {
+          color: theme.palette.text.primary,
+        }
+      },
+      '& $mobileMenu': {
+        '& $bar': {
+          [theme.breakpoints.down('sm')]: {
+            backgroundColor: theme.palette.text.secondary,
+            '&:after, &:before': {
+              backgroundColor: theme.palette.text.secondary
+            },
+          }
+        }
+      },
+    }
+  },
+  paperNav: {
+    background: theme.palette.background.paper,
+    backdropFilter: 'saturate(180%) blur(20px)',
+    width: '100%',
+    position: 'fixed',
+    zIndex: 50,
+    height: '100%',
+  },
+  mobileNav: {
+    '& $menu': {
+      padding: theme.spacing(0, 2),
+      overflow: 'auto',
+      top: 80,
+      width: '100%',
+      position: 'absolute',
+      height: 'calc(100% - 80px)',
+      listStyle: 'none',
+      '& li': {
+        textAlign: 'center',
+        animationTimingFunction: 'ease',
+        '& a': {
+          fontSize: 24,
+          padding: theme.spacing(1, 4),
+          marginBottom: theme.spacing(),
+          '&:before': {
+            content: '""',
+            position: 'absolute',
+            left: theme.spacing(-2),
+            top: 5,
+            opacity: 0.2,
+            background: `linear-gradient(120deg, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`,
+            height: '75%',
+            width: 0,
+            transition: 'all 0.2s cubic-bezier(0, 0, 0.14, 0.97)'
+          },
+          '&:hover': {
+            color: theme.palette.primary.main,
+            background: 'none',
+            '&:before': {
+              width: '110%'
+            },
+          }
+        }
+      }
+    }
+  },
+  menuList: {
+    textTransform: 'capitalize',
+    '& span': {
+      fontSize: 24
+    }
   }
 }));
 

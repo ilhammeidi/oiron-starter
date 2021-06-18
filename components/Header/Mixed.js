@@ -6,9 +6,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
-import logo from '~/public/images/logo.svg';
-import MobileMenu from './MobileMenu';
+import Logo from '../Logo';
+import link from '~/public/text/link';
+import MobileMenu from './SideNav/MultiMobile';
 import HeaderMenu from './TopNav/MixedNav';
 import UserMenu from './TopNav/UserMenu';
 import useStyles from './header-style';
@@ -25,17 +25,13 @@ function createData(name, url) {
   };
 }
 
-const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disable-line
-  return <AnchorLink to={props.to} {...props} innerRef={ref} />; // eslint-disable-line
-});
-
 function Mixed(props) {
   const [fixed, setFixed] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const classes = useStyles();
   const theme = useTheme();
-  const { onToggleDark, onToggleDir } = props;
+  const { onToggleDark, onToggleDir, home } = props;
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [menuList] = useState([
@@ -100,9 +96,9 @@ function Mixed(props) {
                 </IconButton>
               )}
               <div className={classes.logo}>
-                <AnchorLink href="#home">
-                  <img src={logo} alt="logo" />
-                </AnchorLink>
+                <a href={link.starter.home}>
+                  <Logo type="landscape" />
+                </a>
               </div>
               {isDesktop && (
                 <div className={classes.mainMenu}>
@@ -112,6 +108,7 @@ function Mixed(props) {
                     menuSecondary={samplePages}
                     toggle={handleToggle}
                     close={handleClose}
+                    singleNav={home}
                   />
                 </div>
               )}
@@ -126,7 +123,12 @@ function Mixed(props) {
 
 Mixed.propTypes = {
   onToggleDark: PropTypes.func.isRequired,
-  onToggleDir: PropTypes.func.isRequired
+  onToggleDir: PropTypes.func.isRequired,
+  home: PropTypes.bool
+};
+
+Mixed.defaultProps = {
+  home: false
 };
 
 export default Mixed;

@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.primary,
     display: 'flex',
     '& img': {
-      width: 54,
+      maxWidth: 54,
       height: 54
     }
   },

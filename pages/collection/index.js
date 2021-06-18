@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import ProfileCards from '~/components/Cards/ProfileCard';
@@ -8,8 +9,10 @@ import MediaCard from '~/components/Cards/MediaCard';
 import NewsCard from '~/components/Cards/NewsCard';
 import PostCard from '~/components/Cards/PostCard';
 import brand from '~/public/text/brand';
+import Header from '../../components/Header';
 
-function Collection() {
+function Collection(props) {
+  const { onToggleDark, onToggleDir } = props;
   return (
     <Fragment>
       <Head>
@@ -21,6 +24,10 @@ function Collection() {
       <CssBaseline />
       <div>
         <main>
+          <Header
+            onToggleDark={onToggleDark}
+            onToggleDir={onToggleDir}
+          />
           <section style={{ margin: 24 }}>
             <Grid container spacing={3}>
               <Grid item sm={6}>
@@ -160,5 +167,10 @@ function Collection() {
     </Fragment>
   );
 }
+
+Collection.propTypes = {
+  onToggleDark: PropTypes.func.isRequired,
+  onToggleDir: PropTypes.func.isRequired,
+};
 
 export default Collection;

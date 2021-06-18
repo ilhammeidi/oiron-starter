@@ -1,4 +1,5 @@
 import imgAPI from '~/public/images/imgAPI';
+import link from '~/public/text/link';
 
 const sample = [
   {
@@ -8,19 +9,19 @@ const sample = [
     child: [
       {
         name: 'about',
-        link: '/about'
+        link: link.starter.about
       },
       {
         name: 'team',
-        link: '/about/team'
+        link: link.starter.team
       },
       {
         name: 'blog',
-        link: '/blog'
+        link: link.starter.blog
       },
       {
         name: 'blog detail',
-        link: '/blog/detail-blog'
+        link: link.starter.blogDetail
       }
     ],
   },
@@ -31,19 +32,19 @@ const sample = [
     child: [
       {
         name: 'login',
-        link: '/login'
+        link: link.starter.login
       },
       {
         name: 'register',
-        link: '/register'
+        link: link.starter.register
       },
       {
         name: 'contact',
-        link: '/contact'
+        link: link.starter.contact
       },
       {
         name: 'contact map',
-        link: '/contact/with-map'
+        link: link.starter.contactMap
       }
     ],
   },
@@ -54,15 +55,15 @@ const sample = [
     child: [
       {
         name: 'card',
-        link: '/collection'
+        link: link.starter.card
       },
       {
         name: 'product',
-        link: '/collection/products'
+        link: link.starter.product
       },
       {
         name: 'product detail',
-        link: '/collection/detail-product'
+        link: link.starter.productDetail
       }
     ],
   },
@@ -73,19 +74,19 @@ const sample = [
     child: [
       {
         name: 'pricing',
-        link: '/utils/pricing'
+        link: link.starter.pricing
       },
       {
         name: 'faq',
-        link: '/utils/faq'
+        link: link.starter.faq
       },
       {
         name: 'maintenance',
-        link: '/utils/maintenance'
+        link: link.starter.maintenance
       },
       {
         name: 'coming soon',
-        link: '/utils/coming-soon'
+        link: link.starter.comingSoon
       },
       {
         name: 'error',

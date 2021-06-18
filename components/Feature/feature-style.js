@@ -16,7 +16,9 @@ const featureStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(20)
   },
   featureWrap: {
-    position: 'relative'
+    position: 'relative',
+    minHeight: 1900,
+    overflow: 'hidden'
   },
   icon: {},
   featureList: {
