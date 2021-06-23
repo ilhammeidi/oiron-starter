@@ -15,7 +15,7 @@ import link from '~/public/text/link';
 import UserMenu from './TopNav/UserMenu';
 import useStyles from './header-style';
 import multiple from './data/multiple';
-import MultiLevel from './TopNav/MultiLevelHover';
+import MultiLevel from './TopNav/MultiLevelClick';
 import MobileMenu from './SideNav/MultiMobile';
 
 function Header(props) {
@@ -57,7 +57,7 @@ function Header(props) {
           openDrawer && classes.openDrawer
         )}
       >
-        <Container fixed>
+        <Container fixed={isDesktop}>
           <div className={classes.headerContent}>
             <nav className={classes.navMenu}>
               { isMobile && (

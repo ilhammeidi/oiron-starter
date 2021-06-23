@@ -149,12 +149,6 @@ const headerStyles = makeStyles(theme => ({
       '&:after, &:before': {
         backgroundColor: theme.palette.text.secondary
       },
-      [theme.breakpoints.down('sm')]: {
-        backgroundColor: theme.palette.common.white,
-        '&:after, &:before': {
-          backgroundColor: theme.palette.common.white
-        },
-      }
     }
   },
   vDivider: {
@@ -302,7 +296,7 @@ const headerStyles = makeStyles(theme => ({
     '& $menu': {
       padding: theme.spacing(0, 2),
       overflow: 'auto',
-      top: 80,
+      top: theme.spacing(15),
       width: '100%',
       position: 'absolute',
       height: 'calc(100% - 80px)',
@@ -317,7 +311,7 @@ const headerStyles = makeStyles(theme => ({
           '&:before': {
             content: '""',
             position: 'absolute',
-            left: theme.spacing(-2),
+            left: 0,
             top: 5,
             opacity: 0.2,
             background: `linear-gradient(120deg, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`,
@@ -329,7 +323,7 @@ const headerStyles = makeStyles(theme => ({
             color: theme.palette.primary.main,
             background: 'none',
             '&:before': {
-              width: '110%'
+              width: '100%'
             },
           }
         }
@@ -338,9 +332,7 @@ const headerStyles = makeStyles(theme => ({
   },
   menuList: {
     textTransform: 'capitalize',
-    '& span': {
-      fontSize: 24
-    }
+    fontSize: 14
   }
 }));
 

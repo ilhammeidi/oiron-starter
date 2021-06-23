@@ -6,17 +6,16 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItemText from '@material-ui/core/ListItemText';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import ArrowDropUp from '@material-ui/icons/ArrowDropUp';
-import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import Collapse from '@material-ui/core/Collapse';
 import useStyles from '../sidenav-style';
-import navMenu from '../data/multiple';
+import navMenu from '../data/mega';
 import link from '~/public/text/link';
 
-function MobileMenu(props) {
+function MegaMobile(props) {
   const classes = useStyles();
   const { toggleDrawer, open } = props;
   const [expand, setExpand] = useState({});
@@ -41,40 +40,39 @@ function MobileMenu(props) {
 
   const childMenu = (menu, item) => (
     <Collapse in={menu[item.id] || false} timeout="auto" unmountOnExit>
-      <List className={classes.sideGroup} component="div" disablePadding>
-        {item.child.map((subitem, index) => {
-          if (subitem.child) {
-            return (
-              <div key={index.toString()}>
-                <ListItem
-                  button
-                  className={clsx(menu[subitem.id] ? classes.current : '', classes.hasGrandChild)}
-                  onClick={() => handleToggle(subitem.id)}
-                >
-                  {menu[subitem.id] ? <ArrowDropUp /> : <ArrowDropDown />}
-                  <ListItemText className={classes.menuList} primary={subitem.name} />
-                </ListItem>
-                { childMenu(expand, subitem) }
-              </div>
-            );
-          }
-          return (
+      {item.child.map((subitem, index) => (
+        <List
+          key={index.toString()}
+          className={classes.groupChild}
+          component="div"
+          disablePadding
+          subheader={(
+            <ListSubheader
+              className={classes.titleMega}
+              disableSticky
+              component="div"
+              id="nested-list-subheader"
+            >
+              {subitem.name}
+            </ListSubheader>
+          )}
+        >
+          {subitem.child.map((granditem, indexChild) => (
             <ListItem
-              key={index.toString()}
+              key={indexChild.toString()}
               className={clsx(
                 classes.noChild,
-                classes.sideGroupLink,
-                curURL === curOrigin + langPath + subitem.link ? classes.current : ''
+                curURL === curOrigin + langPath + granditem.link ? classes.current : ''
               )}
               component="a"
-              href={subitem.link}
+              href={granditem.link}
               button
             >
-              <ListItemText className={classes.menuList} primary={subitem.name} />
+              <ListItemText className={classes.menuList} primary={granditem.name} />
             </ListItem>
-          );
-        })}
-      </List>
+          ))}
+        </List>
+      ))}
     </Collapse>
   );
 
@@ -146,14 +144,14 @@ function MobileMenu(props) {
 }
 
 
-MobileMenu.propTypes = {
+MegaMobile.propTypes = {
   toggleDrawer: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired
 };
 
-MobileMenu.getInitialProps = async () => ({
+MegaMobile.getInitialProps = async () => ({
   namespacesRequired: ['common'],
 });
 
-export default withTranslation(['common'])(MobileMenu);
+export default withTranslation(['common'])(MegaMobile);

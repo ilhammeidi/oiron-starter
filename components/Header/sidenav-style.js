@@ -18,6 +18,9 @@ const sidenavStyles = makeStyles(theme => ({
       marginLeft: 0,
     }
   },
+  sideSinglelv: {
+    padding: theme.spacing(3, 2),
+  },
   userMenu: {
     padding: theme.spacing(2)
   },
@@ -44,13 +47,17 @@ const sidenavStyles = makeStyles(theme => ({
       padding: theme.spacing(1, 0),
     }
   },
+  groupChild: {
+    padding: theme.spacing(2, 0, 2, 3)
+  },
   sideGroupLink: {
     paddingLeft: identation
   },
   titleMega: {
     textTransform: 'uppercase',
     fontWeight: theme.typography.fontWeightBold,
-    fontSize: 11
+    fontSize: 11,
+    color: theme.palette.primary.main
   },
   current: {
     background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,

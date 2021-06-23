@@ -50,7 +50,7 @@ function Basic(props) {
           fixed && classes.fixed,
         )}
       >
-        <Container fixed>
+        <Container fixed={isDesktop}>
           <div className={classes.headerContent}>
             <nav className={clsx(classes.navMenu, classes.flex)}>
               <div className={classes.logo}>

@@ -59,7 +59,7 @@ function BlogHeader(props) {
           openDrawer && classes.openDrawer
         )}
       >
-        <Container fixed>
+        <Container fixed={isDesktop}>
           <div className={classes.headerContent}>
             <nav className={classes.navMenu}>
               { isMobile && (

@@ -9,7 +9,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import Logo from '../Logo';
 import link from '~/public/text/link';
-import MobileMenu from './SideNav/MultiMobile';
+import MobileMenu from './SideNav/MegaMobile';
 import HeaderMenu from './TopNav/MegaMenu';
 import UserMenu from './TopNav/UserMenu';
 import useStyles from './header-style';
@@ -83,7 +83,7 @@ function Mega(props) {
           openDrawer && classes.openDrawer
         )}
       >
-        <Container fixed>
+        <Container fixed={isDesktop}>
           <div className={classes.headerContent}>
             <nav className={classes.navMenu}>
               { isMobile && (
