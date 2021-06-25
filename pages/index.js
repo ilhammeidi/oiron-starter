@@ -15,7 +15,7 @@ import Pricing from '../components/Pricing';
 import Blog from '../components/Blog';
 import Subscribe from '../components/Subscribe';
 import Footer from '../components/Footer';
-import PageNav from '../components/PageNav';
+import Corner from '../components/Corner';
 import Notification from '../components/Notification';
 import brand from '../public/text/brand';
 
@@ -83,8 +83,8 @@ function Landing(props) {
             <Subscribe />
           </section>
         </main>
-        <Hidden mdDown>
-          <PageNav />
+        <Hidden smDown>
+          <Corner />
         </Hidden>
         <Footer toggleDir={onToggleDir} />
         <Hidden mdDown>
