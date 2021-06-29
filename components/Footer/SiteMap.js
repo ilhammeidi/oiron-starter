@@ -22,10 +22,10 @@ import TwitterIcon from 'react-ionicons/lib/LogoTwitter';
 import InstagramIcon from 'react-ionicons/lib/LogoInstagram';
 import LinkedinIcon from 'react-ionicons/lib/LogoLinkedin';
 import { i18n, withTranslation } from '~/i18n';
-import logo from '~/public/images/logo.svg';
+import logo from '~/public/images/logo-starter.svg';
 import brand from '~/public/text/brand';
 import { useTextAlign } from '~/theme/common';
-import useStyles from './footer-style';
+import useStyles from './sitemap-style';
 
 function Copyright() {
   return (
