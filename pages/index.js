@@ -6,8 +6,9 @@ import Head from 'next/head';
 import Hidden from '@material-ui/core/Hidden';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useSpacing } from '../theme/common';
 import Header from '../components/Header';
-import AnimateSlider from '../components/AnimateSlider';
+import BannerSlider from '../components/BannerSlider';
 import Feature from '../components/Feature';
 import Counter from '../components/Counter';
 import Testimonials from '../components/Testimonials';
@@ -20,25 +21,9 @@ import Notification from '../components/Notification';
 import brand from '../public/text/brand';
 
 const sectionMargin = margin => (margin * 15);
-const useStyles = makeStyles(theme => ({
-  mainWrap: {
-    position: 'relative',
-    width: '100%',
-    overflow: 'hidden',
-  },
-  spaceBottom: {
-    marginBottom: sectionMargin(theme.spacing())
-  },
-  spaceTop: {
-    paddingTop: sectionMargin(theme.spacing())
-  },
-  containerWrap: {
-    marginTop: theme.spacing(15)
-  },
-}));
 
 function Landing(props) {
-  const classes = useStyles();
+  const classes = useSpacing();
   const { onToggleDark, onToggleDir } = props;
   return (
     <React.Fragment>
@@ -57,17 +42,15 @@ function Landing(props) {
           home
         />
         <main className={classes.containerWrap}>
-          <section>
-            <Container fixed>
-              <AnimateSlider />
-            </Container>
+          <section id="home">
+            <BannerSlider />
           </section>
-          <section className={clsx(classes.spaceTop, classes.spaceBottom)} id="feature">
+          <section className={clsx(classes.spaceTop, classes.spaceBottomShort)} id="feature">
             <Container fixed>
               <Feature />
             </Container>
           </section>
-          <section className={classes.pageSection}>
+          <section>
             <Counter />
           </section>
           <section className={classes.spaceTop} id="testimonials">

@@ -26,6 +26,7 @@ export const useSpacing = makeStyles(theme => ({
     marginTop: sectionMargin(theme.spacing(1) / 2)
   },
   containerWrap: {
+    marginTop: theme.spacing(5),
     '& > section': {
       position: 'relative'
     }

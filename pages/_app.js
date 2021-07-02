@@ -16,7 +16,6 @@ import LoadingBar from 'react-top-loading-bar';
 import { i18n, appWithTranslation } from '../i18n';
 import appTheme from '../theme/appTheme';
 /* import css vendors */
-import 'react-animated-slider/build/horizontal.css';
 import '~/vendors/animate-slider.css';
 import '~/vendors/hamburger-menu.css';
 import '../node_modules/animate.css/animate.css';

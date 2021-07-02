@@ -43,7 +43,6 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-anchor-link-smooth-scroll": "^1.0.12",
-    "react-animated-slider": "^2.0.0",
     "react-countup": "^4.2.0",
     "react-dom": "^16.13.1",
     "react-i18next": "^11.8.13",
