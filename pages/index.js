@@ -4,7 +4,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import clsx from 'clsx';
 import Head from 'next/head';
 import Hidden from '@material-ui/core/Hidden';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useSpacing } from '../theme/common';
 import Header from '../components/Header';
@@ -19,8 +18,6 @@ import Footer from '../components/Footer';
 import Corner from '../components/Corner';
 import Notification from '../components/Notification';
 import brand from '../public/text/brand';
-
-const sectionMargin = margin => (margin * 15);
 
 function Landing(props) {
   const classes = useSpacing();

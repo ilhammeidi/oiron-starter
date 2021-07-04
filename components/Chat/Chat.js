@@ -5,7 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Fab from '@material-ui/core/Fab';
 import TextField from '@material-ui/core/TextField';
 import visitorAvatar from '~/public/images/avatars/pp_boy4.svg';
-import { useTextAlign } from '~/theme/common';
+import { useFlexBox } from '~/theme/common';
 import useStyles from './chat-style';
 
 function Chat() {
@@ -57,7 +57,7 @@ function Chat() {
   };
 
   const classes = useStyles();
-  const textAlign = useTextAlign();
+  const flex = useFlexBox();
 
   return (
     <div className={classes.chat}>
@@ -79,7 +79,7 @@ function Chat() {
             {conversation.map((item, index) => (
               <li
                 key={index.toString()}
-                className={clsx(classes.item, item.visitor ? textAlign.alignRight : '')}
+                className={clsx(classes.item, item.visitor ? flex.justifyEnd : '')}
               >
                 {!item.visitor && (
                   <Avatar className={classes.avatar}>

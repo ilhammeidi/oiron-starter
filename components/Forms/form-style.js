@@ -1,124 +1,95 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { fade, darken } from '@material-ui/core/styles/colorManipulator';
+import { darken } from '@material-ui/core/styles/colorManipulator';
 
 const contactStyles = makeStyles(theme => ({
-  title: {},
   pageWrap: {
-    padding: theme.spacing(11, 5),
+    minHeight: '100%',
     position: 'relative',
-    textAlign: 'center',
-    [theme.breakpoints.down('sm')]: {
-      padding: theme.spacing(4, 0),
-    },
-    '& $title': {
-      fontWeight: theme.typography.fontWeightBold,
-      [theme.breakpoints.down('xs')]: {
-        fontSize: 32
-      }
+    width: '100%',
+    alignItems: 'center',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex'
     },
     '& a': {
-      color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+      color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
       textTransform: 'none',
       fontSize: 16,
       textDecoration: 'none',
-      fontWeight: theme.typography.fontWeightRegular
+      fontWeight: theme.typography.fontWeightRegular,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 14
+      }
     }
   },
-  innerWrap: {
-    textAlign: 'left',
-  },
-  fullFromWrap: {
-    background: theme.palette.background.paper,
-    padding: theme.spacing(9, 0),
+  fullFormWrap: {
+    paddingTop: theme.spacing(8),
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: theme.spacing(4)
+    }
   },
   formBox: {
-    borderRadius: 10,
     overflow: 'hidden',
-    position: 'relative',
-    background: fade(theme.palette.background.paper, 0.7),
-    boxShadow: '0 0 12px 2px rgba(0, 0, 0, 0.05)',
+    background: 'transparent',
+    border: `1px solid ${theme.palette.primary.main}`,
   },
-  desc: {
-    fontSize: 20,
-    textAlign: 'center',
-    padding: theme.spacing(0, 15),
-    [theme.breakpoints.down('sm')]: {
-      padding: theme.spacing(0, 5)
-    },
-    [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing(0, 2),
-      fontSize: 16
+  mapForm: {
+    [theme.breakpoints.up('md')]: {
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
+      borderRight: 'none',
     }
   },
-  light: {},
-  input: {
-    width: '100%',
-    '& label': {
-      left: theme.spacing(0.5),
-    },
-    '& > div': {
-      overflow: 'hidden',
-      background: theme.palette.type === 'dark' ? 'rgba(255, 255, 255, 0.1)' : '#eeeeee',
-      '&:hover': {
-        background: darken(theme.palette.background.paper, 0.1)
-      },
-      '& input, textarea': {
-        paddingLeft: theme.spacing(2),
-        '&:focus': {
-          background: theme.palette.background.default
-        },
-      }
-    },
-    '&$light': {
-      '& label': {
-        color: theme.palette.common.white,
-      },
-      '& > div': {
-        border: `1px solid ${fade(theme.palette.primary.light, 0.5)}`,
-        '& input': {
-          color: theme.palette.common.white,
-          '&:focus': {
-            background: fade(theme.palette.text.hint, 0.2)
-          },
-          '&:hover': {
-            background: fade(theme.palette.text.hint, 0.2)
-          }
-        },
-      }
+  desc: {
+    textAlign: 'center',
+    padding: theme.spacing(0, 10),
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(0, 2)
     }
   },
   form: {
-    textAlign: 'left',
     position: 'relative',
-    padding: theme.spacing(0, 15, 10),
     marginTop: theme.spacing(8),
-    [theme.breakpoints.down('sm')]: {
-      padding: theme.spacing(0, 6, 10),
+    padding: theme.spacing(0, 8, 10),
+    [theme.breakpoints.down('md')]: {
+      padding: theme.spacing(0, 4, 8)
     },
     [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing(0, 2, 10),
-    },
+      padding: theme.spacing(0, 2, 6)
+    }
   },
   formHelper: {
     display: 'flex',
-    marginTop: theme.spacing(),
     justifyContent: 'space-between',
     alignItems: 'flex-start',
+    fontSize: 14,
     [theme.breakpoints.down('xs')]: {
       flexDirection: 'column',
-      alignItems: 'center'
-    },
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
   },
+  link: {},
   flex: {},
   btnArea: {
-    marginTop: theme.spacing(5),
-    '& button': {
-      marginTop: theme.spacing(2)
+    justifyContent: 'space-between',
+    [theme.breakpoints.up('md')]: {
+      marginTop: theme.spacing(3),
+      display: 'flex'
+    },
+    [theme.breakpoints.down('sm')]: {
+      '& button': {
+        marginTop: theme.spacing(4),
+        width: '100%'
+      }
+    },
+    [theme.breakpoints.down('xs')]: {
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(3)
     },
     '& span': {
-      '& a': {
+      '& $link': {
         textDecoration: 'none !important',
-        color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+        color: theme.palette.secondary.main
       }
     },
     '&$flex': {
@@ -127,30 +98,19 @@ const contactStyles = makeStyles(theme => ({
       [theme.breakpoints.down('sm')]: {
         display: 'block'
       }
-    },
+    }
+  },
+  buttonLarge: {
+    marginTop: theme.spacing(2),
+    minHeight: 48,
+    minWidth: 180
   },
   rightIcon: {
-    marginLeft: theme.spacing()
-  },
-  backtohome: {
-    width: 80,
-    height: 80,
-    position: 'absolute',
-    marginTop: 20,
-    marginLeft: 20,
-    zIndex: 20,
-    [theme.breakpoints.down('md')]: {
-      display: 'none'
-    },
-    '& svg': {
-      width: 32,
-      height: 32,
-      fill: theme.palette.text.primary
-    }
+    marginRight: theme.spacing(1)
   },
   check: {
     '& svg': {
-      fill: theme.palette.primary.main
+      fill: theme.palette.secondary.main
     }
   },
   authFrame: {
@@ -158,45 +118,25 @@ const contactStyles = makeStyles(theme => ({
     position: 'relative',
   },
   greeting: {
-    padding: theme.spacing(15, 6),
+    display: 'flex',
+    paddingTop: theme.spacing(5),
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     height: '100%',
-    background: theme.palette.primary.light,
-    '& h4': {
-      fontWeight: theme.typography.fontWeightBold,
-    },
+    textAlign: 'center',
     '& h6': {
-      fontWeight: theme.typography.fontWeightMedium,
+      color: theme.palette.primary.main,
+      fontWeight: theme.typography.fontWeightRegular
     }
   },
-  logoHeader: {},
-  logo: {
-    display: 'flex',
-    alignItems: 'flex-end',
-    marginBottom: theme.spacing(5),
-    '&$logoHeader': {
-      flexDirection: 'column',
-      alignItems: 'center',
-      position: 'relative',
-      zIndex: 10
-    },
-    '& img': {
-      width: 64,
-      marginRight: theme.spacing()
-    },
-    '& p, span': {
-      display: 'block',
-      textTransform: 'lowercase',
-      fontSize: 24,
-      paddingBottom: 4,
-      color: theme.palette.text.secondary,
-      fontWeight: theme.typography.fontWeightMedium
-    }
+  img: {
+    margin: theme.spacing(5, 0)
   },
   head: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    textAlign: 'center',
     marginBottom: theme.spacing(5),
+    textTransform: 'capitalize',
     [theme.breakpoints.down('sm')]: {
       marginTop: theme.spacing(2),
       justifyContent: 'center',
@@ -205,41 +145,39 @@ const contactStyles = makeStyles(theme => ({
       }
     }
   },
-  signArrow: {},
   formWrap: {
-    minHeight: 760,
     background: theme.palette.background.paper,
     position: 'relative',
-    padding: theme.spacing(2),
-    paddingBottom: theme.spacing(10),
-    overflow: 'hidden',
-    '& $frmDeco': {
-      left: '58.333333%',
-      transform: 'translateX(-72%)',
-      bottom: '-75px'
-    },
+    padding: theme.spacing(0, 1),
     [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(8)
+      padding: theme.spacing(5)
     }
   },
   socmedSideLogin: {
     display: 'flex',
     justifyContent: 'space-around',
+    [theme.breakpoints.down('md')]: {
+      justifyContent: 'center'
+    },
+    [theme.breakpoints.down('xs')]: {
+      display: 'block'
+    },
     '& > *': {
       color: theme.palette.common.white,
-      width: 160,
-      padding: theme.spacing(),
-    },
-    '& svg': {
-      fill: theme.palette.common.white,
-      marginRight: theme.spacing()
-    },
-    [theme.breakpoints.down('sm')]: {
-      display: 'block',
-      '& > *': {
-        marginBottom: theme.spacing(2),
+      width: 150,
+      padding: theme.spacing(1),
+      [theme.breakpoints.down('md')]: {
+        margin: theme.spacing(0, 0.5),
+        width: 120
+      },
+      [theme.breakpoints.down('xs')]: {
+        margin: theme.spacing(0, 0, 2),
         width: '100%'
       }
+    },
+    '& i': {
+      color: theme.palette.common.white,
+      marginRight: theme.spacing(1)
     }
   },
   blueBtn: {
@@ -261,29 +199,75 @@ const contactStyles = makeStyles(theme => ({
     }
   },
   separator: {
-    margin: `${theme.spacing(5)}px auto`,
-    maxWidth: 340,
-    minWidth: 256,
+    margin: '40px auto',
+    maxWidth: 300,
+    minWidth: 200,
     textAlign: 'center',
     position: 'relative',
+    color: theme.palette.text.secondary,
     '& p': {
       [theme.breakpoints.down('xs')]: {
         fontSize: 12
-      },
+      }
     },
     '&:before, &:after': {
       content: '""',
-      borderTop: `1px solid ${theme.palette.text.hint}`,
+      borderTop: '1px solid',
+      borderTopColor: theme.palette.text.hint,
       top: '50%',
       position: 'absolute',
       width: '20%'
     },
     '&:before': {
-      left: 0,
+      left: 0
     },
     '&:after': {
-      right: 0,
+      right: 0
     }
+  },
+  formControlLabel: {
+    '& a': {
+      position: 'relative',
+      top: -20,
+    },
+    '& > div': {
+      marginTop: 0
+    }
+  },
+  full: {},
+  map: {
+    position: 'relative',
+    zIndex: 20,
+    overflow: 'hidden',
+    boxShadow: '0 0 20px 1px rgba(0, 0, 0, 0.4)',
+    height: 745,
+    [theme.breakpoints.down('sm')]: {
+      height: '300px !important',
+    },
+    [theme.breakpoints.up('md')]: {
+      borderRadius: '0 12px 12px 0 !important',
+    },
+    '&$full': {
+      height: 952,
+    }
+  },
+  buble: {
+    borderRadius: 10,
+    padding: theme.spacing(2),
+    width: 450,
+    left: -250,
+    top: -300,
+    '& p': {
+      fontSize: 13,
+    },
+  },
+  icon: {
+    color: '#607D8B',
+    marginRight: theme.spacing(1),
+    marginTop: theme.spacing(2),
+    top: 4,
+    position: 'relative',
+    fontSize: 16,
   }
 }));
 

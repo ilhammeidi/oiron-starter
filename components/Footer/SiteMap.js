@@ -100,7 +100,7 @@ function Footer(props) {
             </Typography>
           </div>
           <Typography color="textPrimary" className={classes.footerDesc} gutterBottom>
-            {t('common:starter-landing.description_text')}
+            {t('common:starter-landing.banner_subtitle')}
           </Typography>
           {isDesktop && <Copyright />}
         </Grid>

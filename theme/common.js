@@ -6,6 +6,18 @@ export const useSpacing = makeStyles(theme => ({
     position: 'relative',
     width: '100%',
     overflow: 'hidden',
+    '& ul[class="slick-dots"]': {
+      '& li': {
+        '& button:before': {
+          borderColor: theme.palette.primary.main,
+        },
+        '&[class="slick-active"]': {
+          '& button:before': {
+            background: theme.palette.primary.main
+          }
+        }
+      }
+    }
   },
   spaceBottom: {
     marginBottom: sectionMargin(theme.spacing(1)),

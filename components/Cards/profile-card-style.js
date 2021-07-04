@@ -6,9 +6,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     borderRadius: theme.rounded.medium
   },
-  contentProfile: {
-    flex: '1 0 auto',
-  },
+  contentProfile: {},
   figure: {
     height: 200,
     position: 'relative',
@@ -40,11 +38,12 @@ const useStyles = makeStyles(theme => ({
   title: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    whiteSpace: 'noWrap'
   },
   buttonProfile: {
-    margin: 20,
-    minWidth: 150
+    minWidth: 150,
+    margin: '0 !important'
   },
   properties: {
     padding: theme.spacing(2)
@@ -71,11 +70,15 @@ const useStyles = makeStyles(theme => ({
       paddingRight: theme.spacing(2)
     },
     '& $contentProfile': {
-      marginTop: -70
+      marginTop: -70,
+      flex: '1 0 auto',
+    },
+    '& $buttonProfile': {
+      margin: 20
     }
   },
   landscape: {
-    maxWidth: 820,
+    maxWidth: 600,
     flexDirection: 'row',
     alignItems: 'center',
     height: 160,
@@ -113,13 +116,21 @@ const useStyles = makeStyles(theme => ({
       alignItems: 'center'
     },
     '& $action': {
-      margin: theme.spacing(0, 5),
+      display: 'block',
+      flex: 1,
+      margin: theme.spacing(0, 1),
       [theme.breakpoints.down('xs')]: {
         display: 'none'
       },
       '& $bottomLink': {
         '& > button': {
           whiteSpace: 'nowrap',
+          '& span': {
+            flexDirection: 'row',
+            '& svg': {
+              marginRight: theme.spacing(1)
+            }
+          }
         },
         '& > *:nth-child(1)': {
           [theme.breakpoints.down('sm')]: {

@@ -37,16 +37,20 @@ const headerStyles = makeStyles(theme => ({
   header: {
     position: 'fixed',
     color: theme.palette.text.primary,
-    background: theme.palette.background.paper,
+    background: 'transparent',
     boxShadow: 'none',
     transition: 'all 0.3s ease',
+    zIndex: 1000,
     '& > *': {
       [theme.breakpoints.down('md')]: {
         paddingLeft: 0
       }
     },
     '&$fixed': {
+      background: theme.palette.background.paper,
       boxShadow: theme.shadows[2],
+      top: 0,
+      left: 0,
       '& $logo': {
         '& img': {
           height: 32,
@@ -65,6 +69,7 @@ const headerStyles = makeStyles(theme => ({
     }
   },
   noShadow: {
+    background: theme.palette.background.paper,
     boxShadow: 'none !important',
   },
   headerContent: {
@@ -186,7 +191,6 @@ const headerStyles = makeStyles(theme => ({
     }
   },
   megaMenu: {
-    marginTop: 20,
     padding: theme.spacing(4, 0),
     borderRadius: 0,
     maxHeight: 480,

@@ -81,6 +81,13 @@ const appTheme = (color, mode) => ({
       '0px 11px 15px -7px rgba(128,128,128, 0.2),0px 24px 38px 3px rgba(128,128,128, 0.14),0px 9px 46px 8px rgba(128,128,128, 0.12)',
     ],
   overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        'h1, h2, h3, h4, h5, h6, p': {
+          margin: 0
+        },
+      },
+    },
     MuiPaper: {
       rounded: {
         borderRadius: 12
