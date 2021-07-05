@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -23,8 +24,7 @@ import {
   GoogleApiWrapper,
   InfoWindow
 } from 'google-maps-react';
-import { useText } from '~/theme/common';
-import brand from '~/public/text/brand';
+import { useText, useTextAlign } from '~/theme/common';
 import { withTranslation } from '~/i18n';
 import useStyles from './form-style';
 import Checkbox from './Checkbox';
@@ -67,7 +67,7 @@ function MapContainer(props) {
   const [showingInfoWindow, setShow] = useState(false);
   const { google } = props;
 
-  const onMarkerClick = marker => {
+  const onMarkerClick = (props, marker) => {
     setActive(marker);
     setShow(true);
   };
@@ -83,7 +83,7 @@ function MapContainer(props) {
     <Map
       google={google}
       onClick={onMapClicked}
-      style={{ width: '100%', height: '700px', position: 'relative' }}
+      style={{ width: '100%', height: '876px', position: 'relative' }}
       initialCenter={{
         lat: 37.759703,
         lng: -122.428093
@@ -115,6 +115,7 @@ const MapWithAMarker = GoogleApiWrapper({ apiKey: null })(MapContainer);
 function ContactMap(props) {
   const classes = useStyles();
   const text = useText();
+  const align = useTextAlign();
   const { t, full } = props;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -166,63 +167,69 @@ function ContactMap(props) {
       <Container maxWidth="lg" className={classes.innerWrap}>
         <Grid container>
           <Grid item lg={6} xs={12} className={classes.wrapDeco}>
-            <Paper className={clsx(classes.formBox, full ? classes.full : '')}>
+            <Paper className={clsx(classes.formBox, classes.mapForm)}>
               <div className={classes.fullFromWrap}>
                 <div className={classes.form}>
-                  <Typography variant="h4" className={text.title2}>
+                  <h4 className={clsx(align.textCenter, text.title2)}>
                     {t('common:contact_title2')}
-                  </Typography>
-                  <Typography display="block">
+                  </h4>
+                  <p className={clsx(align.textCenter, text.subtitle2)}>
                     {t('common:contact_subtitle')}
-                  </Typography>
+                  </p>
                   <ValidatorForm
                     onSubmit={handleSubmit}
                     onError={errors => console.log(errors)}
                   >
-                    <Grid container spacing={6}>
-                      <Grid item xs={12}>
-                        <TextValidator
-                          className={classes.input}
-                          label={t('common:form_name')}
-                          onChange={handleChange('name')}
-                          name="Name"
-                          value={values.name}
-                          validators={['required']}
-                          errorMessages={['This field is required']}
-                        />
+                    <Box py={3}>
+                      <Grid container spacing={6}>
+                        <Grid item xs={12}>
+                          <TextValidator
+                            className={classes.input}
+                            fullWidth
+                            label={t('common:form_name')}
+                            onChange={handleChange('name')}
+                            name="Name"
+                            value={values.name}
+                            validators={['required']}
+                            errorMessages={['This field is required']}
+                          />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <TextValidator
+                            className={classes.input}
+                            fullWidth
+                            label={t('common:form_email')}
+                            onChange={handleChange('email')}
+                            name="Email"
+                            value={values.email}
+                            validators={['required', 'isEmail']}
+                            errorMessages={['This field is required', 'email is not valid']}
+                          />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <TextValidator
+                            className={classes.input}
+                            fullWidth
+                            label={t('common:form_phone')}
+                            onChange={handleChange('phone')}
+                            name="Phone"
+                            value={values.phone}
+                          />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <TextValidator
+                            multiline
+                            rows="6"
+                            fullWidth
+                            className={classes.input}
+                            label={t('common:form_message')}
+                            onChange={handleChange('message')}
+                            name="Message"
+                            value={values.message}
+                          />
+                        </Grid>
                       </Grid>
-                      <Grid item xs={12}>
-                        <TextValidator
-                          className={classes.input}
-                          label={t('common:form_email')}
-                          onChange={handleChange('email')}
-                          name="Email"
-                          value={values.email}
-                          validators={['required', 'isEmail']}
-                          errorMessages={['This field is required', 'email is not valid']}
-                        />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextValidator
-                          className={classes.input}
-                          label={t('common:form_phone')}
-                          onChange={handleChange('phone')}
-                          name="Phone"
-                          value={values.phone}
-                        />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextValidator
-                          multiline
-                          rows="6"
-                          className={classes.input}
-                          label={t('common:form_message')}
-                          onChange={handleChange('message')}
-                          name="Message"
-                          value={values.message}
-                        />
-                      </Grid>
-                    </Grid>
+                    </Box>
                     <FormControlLabel
                       className={classes.checkArea}
                       control={(
@@ -246,8 +253,9 @@ function ContactMap(props) {
                       )}
                     />
                     <div className={classes.btnArea}>
-                      <Button variant="contained" fullWidth={isMobile} type="submit" color="primary" size="large">
+                      <Button variant="contained" fullWidth type="submit" color="primary" size="large">
                         {t('common:form_send')}
+                        &nbsp;
                         <SendIcon className={classes.rightIcon} />
                       </Button>
                     </div>
@@ -258,13 +266,8 @@ function ContactMap(props) {
           </Grid>
           <Grid item lg={6} xs={12}>
             <Hidden mdDown>
-              <Paper className={classes.map} elevation={10}>
-                <MapWithAMarker
-                  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-                  loadingElement={<div style={{ height: '100%' }} />}
-                  containerElement={<div style={{ height: '700px' }} />}
-                  mapElement={<div style={{ height: '100%' }} />}
-                />
+              <Paper className={clsx(classes.map, full ? classes.full : '')} elevation={0}>
+                <MapWithAMarker />
               </Paper>
             </Hidden>
           </Grid>
@@ -276,7 +279,7 @@ function ContactMap(props) {
 
 ContactMap.propTypes = {
   t: PropTypes.func.isRequired,
-  full: PropTypes.bool.isRequired
+  full: PropTypes.bool
 };
 
 ContactMap.defaultProps = {

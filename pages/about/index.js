@@ -62,7 +62,7 @@ function Landing(props) {
         <div className={classes.spaceTopShort}>
           <TeamSlider />
         </div>
-        <div className={classes.spaceBottomShort}>
+        <div className={clsx(classes.spaceTopShort, classes.spaceBottomShort)}>
           <PhotoSlider />
         </div>
         <CallAction />

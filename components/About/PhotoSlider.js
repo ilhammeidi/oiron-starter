@@ -6,13 +6,13 @@ import clsx from 'clsx';
 import Container from '@material-ui/core/Container';
 import Lightbox from 'react-image-lightbox';
 import IconButton from '@material-ui/core/IconButton';
+import ButtonBase from '@material-ui/core/ButtonBase';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import Grid from '@material-ui/core/Grid';
 import Carousel from 'react-slick';
 import { useText } from '~/theme/common';
 import { withTranslation } from '~/i18n';
-import MediaCard from '../../components/Cards/MediaCard';
+import MediaCard from '../Cards/MediaCard';
 import useStyles from './about-style';
 
 function PhotoSlider(props) {
@@ -30,7 +30,7 @@ function PhotoSlider(props) {
     'https://source.unsplash.com/random',
     'https://source.unsplash.com/random',
     'https://source.unsplash.com/random'
-  ]
+  ];
 
   // Slider Carousel
   const slider = useRef(null);
@@ -63,12 +63,12 @@ function PhotoSlider(props) {
     setLoaded(true);
   }, []);
 
-  const slickNext = slide => {
-    slider.current.next();
+  const handleNext = () => {
+    slider.current.slickNext();
   };
 
-  const slickPrev = slide => {
-    slider.current.prev();
+  const handlePrev = () => {
+    slider.current.slickPrev();
   };
 
   function showPopup(index) {
@@ -98,13 +98,13 @@ function PhotoSlider(props) {
       )}
       <Container>
         <Box mb={3}>
-          <Typography variant="h4" className={text.title2}>
+          <h4 className={text.title2}>
             {t('common:about_gallery')}
-          </Typography>
+          </h4>
         </Box>
-        <Typography display="block">
+        <p className={text.subtitle2}>
           Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </Typography>
+        </p>
         {loaded && (
           <div className={classes.carousel}>
             <IconButton
@@ -113,14 +113,14 @@ function PhotoSlider(props) {
             >
               <ArrowBackIcon />
             </IconButton>
-            <Carousel {...settings}>
+            <Carousel ref={slider} {...settings}>
               {imgData.map((item, index) => (
-                <div
+                <ButtonBase
                   key={index.toString()}
                   className={classes.item}
                   onClick={() => showPopup(index)}
                 >
-                  <Box px={3}>
+                  <Box px={2}>
                     <MediaCard
                       title="Sed lacinia velit, ut malesuada eros interdum a"
                       orientation="portrait"
@@ -129,11 +129,11 @@ function PhotoSlider(props) {
                       href="#!"
                     />
                   </Box>
-                </div>
+                </ButtonBase>
               ))}
             </Carousel>
             <IconButton
-              onClick={() => () => handlNext()}
+              onClick={() => handleNext()}
               className={clsx(classes.nav, classes.next)}
             >
               <ArrowForwardIcon />

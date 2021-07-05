@@ -49,7 +49,7 @@ const contactStyles = makeStyles(theme => ({
   form: {
     position: 'relative',
     marginTop: theme.spacing(8),
-    padding: theme.spacing(0, 8, 10),
+    padding: theme.spacing(0, 8, 8),
     [theme.breakpoints.down('md')]: {
       padding: theme.spacing(0, 4, 8)
     },
@@ -239,7 +239,6 @@ const contactStyles = makeStyles(theme => ({
     position: 'relative',
     zIndex: 20,
     overflow: 'hidden',
-    boxShadow: '0 0 20px 1px rgba(0, 0, 0, 0.4)',
     height: 745,
     [theme.breakpoints.down('sm')]: {
       height: '300px !important',
@@ -248,7 +247,7 @@ const contactStyles = makeStyles(theme => ({
       borderRadius: '0 12px 12px 0 !important',
     },
     '&$full': {
-      height: 952,
+      height: 876,
     }
   },
   buble: {
