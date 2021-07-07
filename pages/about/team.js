@@ -1,27 +1,37 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import clsx from 'clsx';
 import Head from 'next/head';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
 import { useSpacing } from '../../theme/common';
 import Header from '../../components/Header';
 import Counter from '../../components/Counter';
 import Banner from '../../components/About/Banner';
 import PhotoSlider from '../../components/About/PhotoSlider';
-import TeamSlider from '../../components/About/TeamSlider';
-import AboutVideo from '../../components/About/Video';
-import AboutProgress from '../../components/About/Progress';
-import ContactMap from '../../components/Forms/ContactMap';
+import TeamGrid from '../../components/About/TeamGrid';
 import CallAction from '../../components/CallAction';
 import CompanyLogo from '../../components/CompanyLogo';
 import Footer from '../../components/Footer';
 import brand from '../../public/text/brand';
+import { withTranslation } from '~/i18n';
+import { useTextAlign, useText } from '~/theme/common';
 
-function Landing(props) {
+function Team(props) {
+  // Theme breakpoints
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+   // Translation Function
+  const { t } = props;
+
   const classes = useSpacing();
+  const align = useTextAlign();
+  const text = useText();
+
   const { onToggleDark, onToggleDir } = props;
   return (
     <Fragment>
@@ -43,46 +53,38 @@ function Landing(props) {
           <CompanyLogo />
         </div>
         <Counter />
-        <div className={classes.spaceTopShort}>
+        <div className={clsx(classes.spaceTopShort, classes.spaceBottomShort)}>
           <Container>
-            <Grid container>
-              <Grid item md={6}>
-                <Box px={{ md: 6 }}>
-                  <AboutVideo />
-                </Box>
-              </Grid>
-              <Grid item md={6}>
-                <Box px={{ md: 6 }}>
-                  <AboutProgress />
-                </Box>
-              </Grid>
-            </Grid>
+            <Box mb={3}>
+              <h4 className={clsx(text.title2, isMobile ? align.textCenter : align.textLeft)}>
+                {t('common:about_team')}
+              </h4>
+            </Box>
+            <p className={text.subtitle2}>
+              Vestibulum faucibus eget erat eget pretium. Donec commodo convallis eget suscipit orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+            <TeamGrid />
           </Container>
-        </div>
-        <div className={classes.spaceTopShort}>
-          <TeamSlider />
         </div>
         <div className={clsx(classes.spaceTopShort, classes.spaceBottomShort)}>
           <PhotoSlider />
         </div>
         <CallAction />
-        <div className={classes.spaceTopShort}>
-          <ContactMap full />
-        </div>
         <Footer toggleDir={onToggleDir} />
       </div>
     </Fragment>
   );
 }
 
-Landing.getInitialProps = async () => ({
+Team.getInitialProps = async () => ({
   namespacesRequired: ['common'],
 });
 
-Landing.propTypes = {
+Team.propTypes = {
+  t: PropTypes.func.isRequired,
   onToggleDark: PropTypes.func.isRequired,
   onToggleDir: PropTypes.func.isRequired,
 };
 
 
-export default Landing;
+export default withTranslation(['common'])(Team);

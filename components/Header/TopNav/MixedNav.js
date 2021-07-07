@@ -52,7 +52,7 @@ function MixedNav(props) {
   useEffect(() => {
     setCurURL(window.location.href);
     setCurOrigin(window.location.origin);
-    setLangPath('/' + i18n.language);
+    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
   }, []);
 
   return (

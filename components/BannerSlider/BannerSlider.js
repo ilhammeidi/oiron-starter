@@ -17,7 +17,7 @@ function BannerSlider(props) {
   const slider = useRef(null);
 
   const [loaded, setLoaded] = useState(false);
-  const [curSlide, setCurSlide] = useState(1);
+  const [curSlide, setCurSlide] = useState(0);
 
   const settings = {
     dots: false,
