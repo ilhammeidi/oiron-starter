@@ -157,6 +157,15 @@ export const useText = makeStyles(theme => ({
       fontSize: 14,
       lineHeight: '22px',
     },
+  },
+  capitalize: {
+    textTransform: 'capitalize'
+  },
+  uppercase: {
+    textTransform: 'uppercase'
+  },
+  lowercase: {
+    textTransform: 'lowercase'
   }
 }));
 
