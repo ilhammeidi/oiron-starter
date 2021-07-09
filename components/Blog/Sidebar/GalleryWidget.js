@@ -30,7 +30,7 @@ function GalleryWidget(props) {
   }];
 
   return (
-    <Paper title={t('common:blog_album')} icon="ion-ios-images-outline" whiteBg desc="">
+    <Paper title={t('common:blog_album')} icon="ion-images" whiteBg desc="">
       <div className={classes.albumRoot}>
         <GridList cellHeight={180} className={classes.gridList}>
           {
@@ -40,13 +40,13 @@ function GalleryWidget(props) {
               }
               return (
                 <GridListTile key={index.toString()}>
-                  <img src={tile.img} className={classes.img} alt={tile.title} />
+                  <img src={tile.src} className={classes.img} alt="image" />
                   <GridListTileBar
                     title={tile.title}
                     subtitle={(
                       <span>
                         by:&nbsp;
-                        {tile.author}
+                        John Doe
                       </span>
                     )}
                     actionIcon={(

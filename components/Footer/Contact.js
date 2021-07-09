@@ -113,9 +113,9 @@ function Contact(props) {
               <Paper className={classes.formBox}>
                 <Grid container spacing={6}>
                   <Grid item lg={5} xs={12}>
-                    <Typography className={clsx(classes.title, text.title)} variant="h3">
+                    <h3 className={clsx(classes.title, text.title)}>
                       {t('common:contact_title2')}
-                    </Typography>
+                    </h3>
                   </Grid>
                   <Grid item lg={7} xs={12}>
                     <div className={classes.form}>

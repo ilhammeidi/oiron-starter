@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Head from 'next/head';
 import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import { useSpacing } from '~/theme/common';
-import Header from '../../components/BlogHeader';
+import Header from '../../components/Header/BlogHeader';
 import Article from '../../components/Blog/Article';
 import Sidebar from '../../components/Blog/Sidebar';
 import Footer from '../../components/Footer';
@@ -30,16 +31,18 @@ function BlogDetail(props) {
           onToggleDir={onToggleDir}
         />
         <div className={classes.containerGeneral}>
-          <Container>
-            <Grid container>
-              <Grid item md={8}>
-                <Article />
+          <Box pt={5}>
+            <Container>
+              <Grid container spacing={4}>
+                <Grid item md={8}>
+                  <Article />
+                </Grid>
+                <Grid item md={4}>
+                  <Sidebar />
+                </Grid>
               </Grid>
-              <Grid md={4}>
-                <Sidebar />
-              </Grid>
-            </Grid>
-          </Container>
+            </Container>
+          </Box>
         </div>
         <div id="footer">
           <Footer toggleDir={onToggleDir} />

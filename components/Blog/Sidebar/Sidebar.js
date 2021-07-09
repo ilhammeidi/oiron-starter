@@ -11,15 +11,15 @@ function Sidebar() {
   return (
     <div>
       <SubscribeWidget />
-      <Box py={6} />
+      <Box py={3} />
       <ProfileWidget />
-      <Box py={6} />
+      <Box py={3} />
       <PostWidget />
-      <Box py={6} />
+      <Box py={3} />
       <CommentWidget />
-      <Box py={6} />
+      <Box py={3} />
       <ListWidget />
-      <Box py={6} />
+      <Box py={3} />
       <GalleryWidget />
     </div>
   );

@@ -132,6 +132,7 @@ const headerStyles = makeStyles(theme => ({
           }
         },
         '& button, & a': {
+          background: 'none',
           textTransform: 'capitalize'
         }
       }

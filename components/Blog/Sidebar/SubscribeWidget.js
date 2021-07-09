@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Fab from '@material-ui/core/Fab';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import Send from '@material-ui/icons/Send';
+import Button from '@material-ui/core/Button';
 import { withTranslation } from '~/i18n';
 import Paper from '../../Paper';
 import useStyles from '../blog-style';
@@ -18,7 +17,7 @@ function SidebarBlog(props) {
   };
 
   return (
-    <Paper title={t('common:blog_subscribe')} icon="ion-ios-wifi-outline" colorMode whiteBg noMargin desc="Get lates update from us">
+    <Paper title={t('common:blog_subscribe')} icon="ion-wifi" colorMode whiteBg noMargin desc="Get lates update from us">
       <div className={classes.subscribeForm}>
         <FormControl>
           <TextField
@@ -26,15 +25,17 @@ function SidebarBlog(props) {
             value={email}
             onChange={handleChange}
             margin="normal"
+            required
             classes={{
               root: classes.whiteInputRoot,
               input: classes.whiteInputInput,
+              underline: classes.underline
             }}
           />
         </FormControl>
-        <Fab size="small" color="secondary" type="submit">
-          <Send />
-        </Fab>
+        <Button className={classes.invertBtn} size="small" variant="outlined" type="submit">
+          {t('common:btn_submit')}
+        </Button>
       </div>
     </Paper>
   );

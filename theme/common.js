@@ -6,6 +6,7 @@ export const useSpacing = makeStyles(theme => ({
     position: 'relative',
     width: '100%',
     overflow: 'hidden',
+    background: theme.palette.type === 'dark' ? theme.palette.background.default : theme.palette.background.paper,
     '& ul[class="slick-dots"]': {
       '& li': {
         '& button:before': {

@@ -4,13 +4,13 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Send from '@material-ui/icons/Send';
-import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withTranslation } from '~/i18n';
 import avatarDefault from '~/public/images/avatars/pp_boy4.svg';
-import useStyles from '../blog-style';
+import useStyles from './comment-style';
 
-function Comment(props) {
+function Form(props) {
   const classes = useStyles();
 
   const [comment, setComment] = useState('');
@@ -29,9 +29,11 @@ function Comment(props) {
   return (
     <section className={classes.commentAction}>
       <div className={classes.commentForm}>
-        <Avatar alt="avatar" src={avatar} className={classes.avatarMini} />
-        <Input
+        <Avatar alt="avatar" src={avatar !== '' ? avatar : avatarDefault} className={classes.avatarMini} />
+        <TextField
           placeholder="Write Comment"
+          size="small"
+          variant="outlined"
           onChange={handleChange}
           value={comment}
           className={classes.input}
@@ -39,7 +41,7 @@ function Comment(props) {
             'aria-label': 'Comment',
           }}
         />
-        <Button size="small" color="primary" aria-label="send" className={classes.sendButton}>
+        <Button variant="contained" size="small" color="primary" aria-label="send" className={classes.sendButton}>
           {isMobile ? (<Send />) : t('common:form_send')}
         </Button>
       </div>
@@ -47,13 +49,13 @@ function Comment(props) {
   );
 }
 
-Comment.propTypes = {
+Form.propTypes = {
   t: PropTypes.func.isRequired,
-  avatar: PropTypes.String
+  avatar: PropTypes.string
 };
 
-Comment.defaultProps = {
-  avatar: avatarDefault
+Form.defaultProps = {
+  avatar: ''
 };
 
-export default withTranslation(['common'])(Comment);
+export default withTranslation(['common'])(Form);

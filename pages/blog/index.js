@@ -10,7 +10,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { useSpacing } from '~/theme/common';
 import { withTranslation } from '~/i18n';
-import Header from '../../components/BlogHeader';
+import Header from '../../components/Header/BlogHeader';
 import Headline from '../../components/Blog/Headline';
 import PostCard from '../../components/Cards/PostCard';
 import Sidebar from '../../components/Blog/Sidebar';
@@ -69,16 +69,16 @@ function BlogHome(props) {
                 </Grid>
               </Grid>
             </Box>
-            <Box mt={6}>
-              <Grid container>
+            <Box mt={2}>
+              <Grid spacing={4} container>
                 <Grid item md={8}>
-                  {[...Array(6)].map(index => (
+                  {[...Array(6)].map((e, index) => (
                     <Box
                       key={index.toString()}
-                      mt={index > 1 ? 15 : 0}
+                      mt={index > 0 ? 6 : 0}
                     >
                       <PostCard
-                        href="link.starter.blogDetail"
+                        href={link.starter.blogDetail}
                         img="https://source.unsplash.com/random"
                         title="Maecenas rutrum dolor sed nisi"
                         desc="Maecenas rutrum dolor sed nisi maximus rhoncus. Nunc vel dignissim enim. Proin pretium arcu eget"
@@ -94,14 +94,14 @@ function BlogHome(props) {
                         <ArrowBackIcon />
                         {t('common:btn_prev')}
                       </Button>
-                      <v-btn text>
+                      <Button>
                         {t('common:btn_next')}
                         <ArrowForwardIcon />
-                      </v-btn>
+                      </Button>
                     </Grid>
                   </Box>
                 </Grid>
-                <Grid md={4}>
+                <Grid item md={4}>
                   <Sidebar />
                 </Grid>
               </Grid>

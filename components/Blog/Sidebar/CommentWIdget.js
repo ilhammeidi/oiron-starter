@@ -14,7 +14,7 @@ function CommentWidget(props) {
   const { t } = props;
   const comments = [
     {
-      color: 'teal',
+      color: 'orange',
       name: 'John Doe',
       comment: 'Duis viverra neque eget '
     },
@@ -29,7 +29,7 @@ function CommentWidget(props) {
       comment: 'Duis viverra neque eget '
     },
     {
-      color: 'amber',
+      color: 'indigo',
       name: 'Jihan Doe',
       comment: 'Duis viverra neque eget '
     },
@@ -39,7 +39,7 @@ function CommentWidget(props) {
       comment: 'Duis viverra neque eget '
     },
     {
-      color: 'deepBlue',
+      color: 'green',
       name: 'Johan Doe',
       comment: 'Duis viverra neque eget '
     }
@@ -48,14 +48,14 @@ function CommentWidget(props) {
   const firstChar = str => str.charAt(0);
 
   return (
-    <Paper title={t('common:blog_comment')} icon="ion-ios-text-outline" whiteBg desc="">
+    <Paper title={t('common:blog_comment')} icon="ion-android-textsms" whiteBg desc="">
       <List dense className={classes.profileList}>
         {comments.map((item, index) => (
-          <ListItem key={index.toString()} button>
-            <Avatar className={clsx(classes.avatar, classes.orangeAvatar)}>
+          <ListItem disableGutters key={index.toString()} button>
+            <Avatar className={clsx(classes.avatar, classes[item.color])}>
               {firstChar(item.name)}
             </Avatar>
-            <ListItemText primary={item.name} secondary={item.text} />
+            <ListItemText primary={item.name} secondary={item.comment} />
           </ListItem>
         ))}
       </List>

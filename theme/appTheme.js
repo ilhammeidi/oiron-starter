@@ -83,8 +83,12 @@ const appTheme = (color, mode) => ({
   overrides: {
     MuiCssBaseline: {
       '@global': {
-        'h1, h2, h3, h4, h5, h6, p': {
+        'h1, h2, h3, h4, h5, h6': {
           margin: 0
+        },
+        'p': {
+          marginTop: 0,
+          marginBottom: 16
         },
       },
     },

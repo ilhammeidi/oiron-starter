@@ -6,8 +6,9 @@ const blogStyles = makeStyles(theme => ({
     margin: theme.spacing(1, 1.5),
   },
   footer: {
+    marginTop: theme.spacing(10),
     position: 'relative',
-    padding: theme.spacing(5, 0),
+    paddingBottom: theme.spacing(5),
     '& p': {
       [theme.breakpoints.down('xs')]: {
         textAlign: 'center'

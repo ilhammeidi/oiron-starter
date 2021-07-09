@@ -25,15 +25,13 @@ function ListWidget(props) {
   ];
 
   return (
-    <Paper title={t('common:blog_archived')} icon="ion-ios-folder-open-outline" whiteBg desc="">
+    <Paper title={t('common:blog_archived')} icon="ion-folder" whiteBg desc="">
       <div className={classes.albumRoot}>
         <List>
           {periode.map((item, index) => (
             <ListItem key={index.toString()} button>
               <ListItemText primary={item} />
-              <ListItemIcon>
-                <KeyboardArrowRight />
-              </ListItemIcon>
+              <KeyboardArrowRight />
             </ListItem>
           ))}
         </List>

@@ -17,7 +17,7 @@ function ProfileWidget(props) {
   const { t } = props;
 
   return (
-    <Paper title={t('common:blog_about')} icon="ion-ios-contact-outline" whiteBg noMargin desc="Consectetur adipiscing elit. Suspendisse sed urna in justo euismod condimentum.">
+    <Paper title={t('common:blog_about')} icon="ion-ios-contact-outline" whiteBg noMargin desc="commodo augue. In dictum leo nec odio euismod pretium.">
       <List dense className={classes.profileList}>
         <ListItem>
           <ListItemAvatar>

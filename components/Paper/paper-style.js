@@ -5,7 +5,6 @@ const useStyles = makeStyles(theme => ({
   root: theme.mixins.gutters({
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
-    marginBottom: theme.spacing(3),
     boxShadow: theme.shade.light,
     color: theme.palette.text.primary,
     '&$noMargin': {
@@ -15,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   descBlock: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: theme.spacing(5),
+    marginBottom: theme.spacing(2),
     [theme.breakpoints.down('sm')]: {
       marginBottom: theme.spacing(3),
     }
@@ -26,8 +25,8 @@ const useStyles = makeStyles(theme => ({
   title: {
     position: 'relative',
     textTransform: 'capitalize',
-    fontSize: 24,
-    fontWeight: 400,
+    fontSize: 20,
+    fontWeight: theme.typography.fontWeightBold,
     color: theme.palette.type === 'dark' ? theme.palette.primary.main : theme.palette.primary.dark,
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
@@ -57,6 +56,26 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
   },
   noMargin: {},
+  overflowX: {
+    width: '100%',
+    overflowX: 'auto',
+  },
+  iconTitle: {
+    width: 36,
+    height: 36,
+    textAlign: 'center',
+    lineHeight: '44px',
+    verticalAlign: 'middle',
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.down('xs')]: {
+      display: 'none'
+    },
+    '& i': {
+      fontSize: 40,
+      verticalAlign: 'baseline',
+      color: theme.palette.primary.main
+    }
+  },
   colorMode: {
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.main,
     '& $title': {
@@ -67,32 +86,13 @@ const useStyles = makeStyles(theme => ({
     },
     '& $description': {
       color: theme.palette.grey[100],
-    }
-  },
-  overflowX: {
-    width: '100%',
-    overflowX: 'auto',
-  },
-  iconTitle: {
-    borderRadius: theme.rounded.small,
-    border: theme.palette.type === 'dark' ? 'none' : `1px solid ${lighten(theme.palette.primary.dark, 0.9)}`,
-    boxShadow: `0 2px 15px -5px ${theme.palette.primary.main}`,
-    background: theme.palette.type === 'dark' ? theme.palette.primary.main : lighten(theme.palette.primary.light, 0.5),
-    width: 48,
-    height: 48,
-    textAlign: 'center',
-    lineHeight: '44px',
-    verticalAlign: 'middle',
-    marginRight: theme.spacing(3),
-    [theme.breakpoints.down('xs')]: {
-      display: 'none'
     },
-    '& i': {
-      fontSize: 28,
-      verticalAlign: 'baseline',
-      color: theme.palette.type === 'dark' ? theme.palette.common.white : theme.palette.primary.main
+    '& $iconTitle': {
+      '& i': {
+        color: theme.palette.common.white
+      }
     }
-  }
+  },
 }));
 
 export default useStyles;

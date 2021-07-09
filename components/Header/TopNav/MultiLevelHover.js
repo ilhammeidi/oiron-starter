@@ -151,7 +151,7 @@ function MultiLevelHover(props) {
                       onClick={handleClose}
                       className={clsx(classes.menuList, curURL === curOrigin + langPath + subitem.link ? classes.current : '')}
                     >
-                      <ListItem disableRipple className={classes.link} button component="a" href={subitem.link}>
+                      <ListItem disableGutters disableRipple className={classes.link} button component="a" href={subitem.link}>
                         <ListItemText primary={subitem.name} />
                       </ListItem>
                     </MenuItem>
@@ -216,7 +216,7 @@ function MultiLevelHover(props) {
                                   onClick={handleClose}
                                   className={clsx(classes.menuList, curURL === curOrigin + langPath + subitem.link ? classes.current : '')}
                                 >
-                                  <ListItem disableRipple className={classes.link} button component="a" href={subitem.link}>
+                                  <ListItem disableGutters disableRipple className={classes.link} button component="a" href={subitem.link}>
                                     <ListItemText primary={subitem.name} />
                                   </ListItem>
                                 </MenuItem>

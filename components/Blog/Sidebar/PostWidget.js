@@ -32,7 +32,7 @@ function PostWidget(props) {
   }];
 
   return (
-    <Paper title={t('common:blog_post')} icon="ion-ios-bookmark-outline" whiteBg desc="">
+    <Paper title={t('common:blog_post')} icon="ion-android-bookmark" whiteBg desc="">
       <div className={classes.albumRoot}>
         <List>
           {news.map((item, index) => (

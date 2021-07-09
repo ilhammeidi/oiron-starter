@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import useStyles from '../paper-style';
+import useStyles from './paper-style';
 
 function PapperBlock(props) {
   const {

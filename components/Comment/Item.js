@@ -19,18 +19,18 @@ function Item(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.commentList}>
-      <ListItem>
-        <div className={classes.commentHead}>
-          <Avatar alt="avatar" src={avatar} className={classes.avatarComment} />
+    <div>
+      <ListItem className={classes.commentList}>
+        <Avatar alt="avatar" src={avatar !== '' ? avatar : avatarDefault} className={classes.avatarComment} />
+        <div className={classes.comment}>
           <section>
-            <Typography variant="subtitle1">{name}</Typography>
+            <h6>{name}</h6>
             <Typography variant="caption">{date}</Typography>
           </section>
+          <Typography className={classes.commentText}>{comment}</Typography>
         </div>
-        <Typography className={classes.commentText}>{comment}</Typography>
       </ListItem>
-      {last && <Divider />}
+      {!last && <Divider className={classes.divider} />}
     </div>
   );
 }
@@ -44,7 +44,7 @@ Item.propTypes = {
 };
 
 Item.defaultProps = {
-  avatar: avatarDefault,
+  avatar: '',
   last: false
 };
 

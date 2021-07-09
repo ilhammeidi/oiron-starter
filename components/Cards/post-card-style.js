@@ -25,7 +25,7 @@ const cardsStyles = makeStyles(theme => ({
     height: '100%'
   },
   action: {
-    padding: theme.spacing(2, 3)
+    padding: theme.spacing(0, 3, 2)
   },
   desc: {
     whiteSpace: 'initial',
@@ -34,7 +34,6 @@ const cardsStyles = makeStyles(theme => ({
     display: '-webkit-box',
     height: 80,
     overflow: 'hidden',
-    marginBottom: 16,
     padding: 0,
     fontSize: 18
   },
@@ -44,12 +43,12 @@ const cardsStyles = makeStyles(theme => ({
   title: {
     whiteSpace: 'nowrap',
     width: '100%',
-    fontSize: 16,
+    fontSize: 24,
     fontWeight: theme.typography.fontWeightBold
   },
   caption: {
     display: 'block',
-    margin: theme.spacing(2, 0),
+    margin: theme.spacing(1, 0),
     color: theme.palette.text.secondary,
   },
   btn: {
