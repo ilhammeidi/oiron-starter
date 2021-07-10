@@ -48,7 +48,6 @@
     "react-dom": "^16.13.1",
     "react-i18next": "^11.8.13",
     "react-image-lightbox": "^5.1.1",
-    "react-ionicons": "^3.0.1",
     "react-loading-bar": "^0.0.7",
     "react-material-ui-form-validator": "2.0.9",
     "react-scrollspy": "^3.4.0",

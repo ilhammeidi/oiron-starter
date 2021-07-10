@@ -83,7 +83,7 @@ function MapContainer(props) {
     <Map
       google={google}
       onClick={onMapClicked}
-      style={{ width: '100%', height: '876px', position: 'relative' }}
+      style={{ width: '100%', height: '915px', position: 'relative' }}
       initialCenter={{
         lat: 37.759703,
         lng: -122.428093
@@ -165,9 +165,9 @@ function ContactMap(props) {
         message={<span id="message-id">Message Sent</span>}
       />
       <Container maxWidth="lg" className={classes.innerWrap}>
-        <Grid container>
+        <Grid container alignItems="center">
           <Grid item lg={6} xs={12} className={classes.wrapDeco}>
-            <Paper className={clsx(classes.formBox, classes.mapForm)}>
+            <Paper className={clsx(classes.formBox, full ? classes.mapForm : '')}>
               <div className={classes.fullFromWrap}>
                 <div className={classes.form}>
                   <h4 className={clsx(align.textCenter, text.title2)}>

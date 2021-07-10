@@ -8,7 +8,7 @@ const red300 = red['500'];
 
 const styles = theme => ({
   checkbox: {
-    left: 42,
+    left: 0,
     fontSize: 12,
     color: red300,
     position: 'absolute',

@@ -18,7 +18,7 @@ function Headline() {
         <CardMedia className={classes.media} image="https://source.unsplash.com/random" />
         <CardContent>
           <span className={classes.anchorContent}>
-            <span className={clsx(classes.headlineTitle, text.title)} gutterBottom>
+            <span className={clsx(classes.headlineTitle, text.title)}>
               Pellentesque habitant morbi tristique senectus Proin pretium arcu eget.
             </span>
             <span className={clsx(classes.subtitle, text.subtitle)}>

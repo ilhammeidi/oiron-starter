@@ -47,12 +47,15 @@ export const useSpacing = makeStyles(theme => ({
   containerGeneral: {
     position: 'relative',
     paddingTop: 32,
-    marginTop: theme.spacing(7),
+    marginTop: theme.spacing(8),
     marginBottom: theme.spacing(5),
     [theme.breakpoints.up('sm')]: {
       paddingLeft: 32,
       paddingRight: 32
     }
+  },
+  containerFront: {
+    position: 'relative',
   },
   fullScreenContainer: {
     height: '100vh',

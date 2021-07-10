@@ -6,7 +6,7 @@ const footerStyles = makeStyles(theme => ({
   },
   footer: {
     position: 'relative',
-    marginTop: theme.spacing(15),
+    marginTop: theme.spacing(10),
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(8),
     '& ul': {

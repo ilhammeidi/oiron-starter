@@ -62,11 +62,11 @@ function Landing(props) {
         <div className={classes.spaceTopShort}>
           <TeamSlider />
         </div>
-        <div className={clsx(classes.spaceTopShort, classes.spaceBottomShort)}>
+        <div className={clsx(classes.spaceTopShort, classes.spaceBottom)}>
           <PhotoSlider />
         </div>
         <CallAction />
-        <div className={classes.spaceTopShort}>
+        <div className={classes.spaceTop}>
           <ContactMap full />
         </div>
         <Footer toggleDir={onToggleDir} />

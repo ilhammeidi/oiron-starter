@@ -1,8 +1,5 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import FacebookIcon from 'react-ionicons/lib/LogoFacebook';
-import TwitterIcon from 'react-ionicons/lib/LogoTwitter';
-import GoogleIcon from 'react-ionicons/lib/LogoGoogle';
 import useStyles from './form-style';
 
 function SocialAuth() {
@@ -14,27 +11,24 @@ function SocialAuth() {
         variant="contained"
         className={classes.naviBtn}
         type="button"
-        size="large"
       >
-        <FacebookIcon />
+        <i className="ion-social-facebook" />
         Facebook
       </Button>
       <Button
         variant="contained"
         className={classes.blueBtn}
         type="button"
-        size="large"
       >
-        <TwitterIcon />
+        <i className="ion-social-twitter" />
         Twitter
       </Button>
       <Button
         variant="contained"
         className={classes.redBtn}
         type="button"
-        size="large"
       >
-        <GoogleIcon />
+        <i className="ion-social-google" />
         Google
       </Button>
     </section>

@@ -175,10 +175,12 @@ const headerStyles = makeStyles(theme => ({
   bar: {},
   menu: {},
   megaMenuRoot: {
-    width: '100%'
+    width: '100%',
+    zIndex: 100
   },
   multiMenuRoot: {
     minWidth: 200,
+    zIndex: 100,
     '& ul': {
       padding: theme.spacing(1),
       '& li': {
@@ -218,12 +220,12 @@ const headerStyles = makeStyles(theme => ({
   link: {
     padding: 0,
     '&:hover': {
-      background: 'none'
+      backgroundColor: 'transparent !important'
     }
   },
   current: {
-    background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light, 
-    color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark, 
+    background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+    color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
   },
   /* Search */
   short: {},

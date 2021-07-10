@@ -49,10 +49,7 @@ const contactStyles = makeStyles(theme => ({
   form: {
     position: 'relative',
     marginTop: theme.spacing(8),
-    padding: theme.spacing(0, 8, 8),
-    [theme.breakpoints.down('md')]: {
-      padding: theme.spacing(0, 4, 8)
-    },
+    padding: theme.spacing(0, 4, 8),
     [theme.breakpoints.down('xs')]: {
       padding: theme.spacing(0, 2, 6)
     }
@@ -71,9 +68,10 @@ const contactStyles = makeStyles(theme => ({
   link: {},
   flex: {},
   btnArea: {
+    position: 'relative',
     justifyContent: 'space-between',
     [theme.breakpoints.up('md')]: {
-      marginTop: theme.spacing(3),
+      marginTop: theme.spacing(6),
       display: 'flex'
     },
     [theme.breakpoints.down('sm')]: {
@@ -101,7 +99,6 @@ const contactStyles = makeStyles(theme => ({
     }
   },
   buttonLarge: {
-    marginTop: theme.spacing(2),
     minHeight: 48,
     minWidth: 180
   },
@@ -115,6 +112,7 @@ const contactStyles = makeStyles(theme => ({
   },
   authFrame: {
     display: 'block',
+    width: '100%',
     position: 'relative',
   },
   greeting: {
@@ -126,7 +124,6 @@ const contactStyles = makeStyles(theme => ({
     height: '100%',
     textAlign: 'center',
     '& h6': {
-      color: theme.palette.primary.main,
       fontWeight: theme.typography.fontWeightRegular
     }
   },
@@ -140,9 +137,6 @@ const contactStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       marginTop: theme.spacing(2),
       justifyContent: 'center',
-      '& a': {
-        display: 'none'
-      }
     }
   },
   formWrap: {
@@ -165,7 +159,6 @@ const contactStyles = makeStyles(theme => ({
     '& > *': {
       color: theme.palette.common.white,
       width: 150,
-      padding: theme.spacing(1),
       [theme.breakpoints.down('md')]: {
         margin: theme.spacing(0, 0.5),
         width: 120
@@ -247,7 +240,7 @@ const contactStyles = makeStyles(theme => ({
       borderRadius: '0 12px 12px 0 !important',
     },
     '&$full': {
-      height: 876,
+      height: 915,
     }
   },
   buble: {
@@ -267,6 +260,9 @@ const contactStyles = makeStyles(theme => ({
     top: 4,
     position: 'relative',
     fontSize: 16,
+  },
+  notif: {
+    top: 90
   }
 }));
 
