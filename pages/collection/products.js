@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
 import ProductCards from '~/components/Cards/ProductCard';
@@ -11,6 +13,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import brand from '~/public/text/brand';
 import products from '~/public/api/products';
 import { useSpacing } from '~/theme/common';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 const checkAll = [
   'check-a',
@@ -21,8 +25,10 @@ const checkAll = [
   'check-f'
 ];
 
-function Collection() {
-  const spacing = useSpacing();
+function Products(props) {
+  const { onToggleDark, onToggleDir } = props;
+
+  const classes = useSpacing();
   const mdUp = useMediaQuery(theme => theme.breakpoints.up('md'));
 
   const [toggleView, setView] = useState('grid');
@@ -111,17 +117,23 @@ function Collection() {
         </title>
       </Head>
       <CssBaseline />
-      <div className={spacing.mainWrap}>
-        <div className={spacing.containerWrap}>
-          <Search value={keyword} updateValue={setKeyword} />
+      <div className={classes.mainWrap}>
+        <Header
+          onToggleDark={onToggleDark}
+          onToggleDir={onToggleDir}
+        />
+        <Search value={keyword} updateValue={setKeyword} />
+        <div className={classes.containerWrap}>
           <section>
-            <Sorter
-              view={toggleView}
-              resultLength={filteredItems().length}
-              sortBySelected={sortBySelected}
-              sortBy={handleSortBy}
-              switchView={setView}
-            />
+            <Container>
+              <Sorter
+                view={toggleView}
+                resultLength={filteredItems().length}
+                sortBySelected={sortBySelected}
+                sortBy={handleSortBy}
+                switchView={setView}
+              />
+            </Container>
             <Box m={2}>
               <Grid container spacing={mdUp ? 3 : 0}>
                 <Grid item md={3} lg={2}>
@@ -181,9 +193,19 @@ function Collection() {
             </Box>
           </section>
         </div>
+        <Footer toggleDir={onToggleDir} />
       </div>
     </Fragment>
   );
 }
 
-export default Collection;
+Products.propTypes = {
+  onToggleDark: PropTypes.func.isRequired,
+  onToggleDir: PropTypes.func.isRequired,
+};
+
+Products.getInitialProps = async () => ({
+  namespacesRequired: ['common'],
+});
+
+export default Products;

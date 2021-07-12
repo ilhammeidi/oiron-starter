@@ -32,7 +32,7 @@ function Search(props) {
               {t('common:list_subtitle')}
             </h3>
             <div className={classes.search}>
-              <FormControl component="form" className={classes.root}>
+              <FormControl component="form">
                 <OutlinedInput
                   value={value}
                   onChange={(e) => handleUpdateValue(e)}

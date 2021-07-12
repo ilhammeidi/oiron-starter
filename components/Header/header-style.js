@@ -218,7 +218,7 @@ const headerStyles = makeStyles(theme => ({
     fontSize: 14
   },
   link: {
-    padding: 0,
+    padding: '0 !important',
     '&:hover': {
       backgroundColor: 'transparent !important'
     }

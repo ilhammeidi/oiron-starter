@@ -7,6 +7,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(3),
     boxShadow: theme.shade.light,
     color: theme.palette.text.primary,
+    overflow: 'hidden',
     '&$noMargin': {
       margin: 0
     },

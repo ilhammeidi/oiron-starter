@@ -170,6 +170,15 @@ export const useText = makeStyles(theme => ({
   },
   lowercase: {
     textTransform: 'lowercase'
+  },
+  bold: {
+    fontWeight: theme.typography.fontWeightBold,
+  },
+  medium: {
+    fontWeight: theme.typography.fontWeightMedium,
+  },
+  regular: {
+    fontWeight: theme.typography.fontWeightRegular,
   }
 }));
 

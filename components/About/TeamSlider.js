@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
 import Carousel from 'react-slick';
 import { useText } from '~/theme/common';
 import { withTranslation } from '~/i18n';
-import ProfileCard from '../../components/Cards/ProfileCard';
+import ProfileCard from '../Cards/ProfileCard';
 import useStyles from './about-style';
 
 function PhotoSlider(props) {

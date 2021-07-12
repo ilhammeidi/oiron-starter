@@ -60,10 +60,6 @@ const useStyles = makeStyles(theme => ({
     borderColor: theme.palette.common.white,
     color: theme.palette.common.white,
   },
-  divider: {
-    margin: `${theme.spacing(1.5)}px 0`,
-    background: 'none',
-  },
   albumRoot: {
     display: 'flex',
     flexWrap: 'wrap',

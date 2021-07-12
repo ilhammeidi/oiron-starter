@@ -1,16 +1,17 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import clsx from 'clsx';
 import Head from 'next/head';
 import { useSpacing } from '../../theme/common';
 import Header from '../../components/Header';
-import Contact from '../../components/Forms/Contact';
+import Detail from '~/components/List/Detail';
+import Description from '~/components/List/Description';
+import RelatedItems from '~/components/List/RelatedItems';
+import CommentGroup from '~/components/Comment/Group';
 import Footer from '../../components/Footer';
 import brand from '../../public/text/brand';
 
-function ContactPage(props) {
+function DetailProduct(props) {
   const classes = useSpacing();
   const { onToggleDark, onToggleDir } = props;
 
@@ -19,7 +20,7 @@ function ContactPage(props) {
       <Head>
         <title>
           { brand.starter.name }
-          &nbsp; - Contact
+          &nbsp; - Detail Product
         </title>
       </Head>
       <CssBaseline />
@@ -28,24 +29,25 @@ function ContactPage(props) {
           onToggleDark={onToggleDark}
           onToggleDir={onToggleDir}
         />
-        <Container>
-          <div className={clsx(classes.containerGeneral, classes.containerFront)}>
-            <Contact />
-          </div>
-        </Container>
+        <div className={classes.containerGeneral}>
+          <Detail />
+          <Description />
+          <RelatedItems />
+          <CommentGroup />
+        </div>
         <Footer toggleDir={onToggleDir} />
       </div>
     </Fragment>
   );
 }
 
-ContactPage.getInitialProps = async () => ({
+DetailProduct.getInitialProps = async () => ({
   namespacesRequired: ['common'],
 });
 
-ContactPage.propTypes = {
+DetailProduct.propTypes = {
   onToggleDark: PropTypes.func.isRequired,
   onToggleDir: PropTypes.func.isRequired,
 };
 
-export default ContactPage;
+export default DetailProduct;

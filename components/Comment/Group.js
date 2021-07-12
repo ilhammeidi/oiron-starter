@@ -9,7 +9,7 @@ import Form from './Form';
 import Help from './Help';
 import useStyles from './comment-style';
 import { withTranslation } from '~/i18n';
-import { useText } from '~/common/theme';
+import { useText } from '~/theme/common';
 
 function Group(props) {
   const classes = useStyles();

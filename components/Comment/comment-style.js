@@ -63,6 +63,13 @@ const styles = makeStyles(theme => ({
     textTransform: 'uppercase',
     fontSize: 13
   },
+  icon: {
+    minWidth: 40,
+    '& svg': {
+      width: 28,
+      height: 28
+    }
+  },
   sendButton: {
     position: 'absolute',
     top: 20,
