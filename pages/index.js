@@ -76,7 +76,7 @@ function Landing(props) {
 }
 
 Landing.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
+  namespacesRequired: ['common', 'starter-landing'],
 });
 
 Landing.propTypes = {

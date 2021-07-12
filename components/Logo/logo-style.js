@@ -2,14 +2,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   logo: {
-    fontSize: 18,
     fontWeight: theme.typography.fontWeightBold,
     color: theme.palette.text.primary,
     display: 'flex',
-    '& img': {
-      maxWidth: 54,
-      height: 54
-    }
   },
   landscape: {
     alignItems: 'center',
@@ -25,6 +20,27 @@ const useStyles = makeStyles(theme => ({
     '& img': {
       margin: `0 auto ${theme.spacing(1)}`,
       display: 'block'
+    }
+  },
+  small: {
+    fontSize: 16,
+    '& img': {
+      maxWidth: 34,
+      height: 34
+    }
+  },
+  medium: {
+    fontSize: 18,
+    '& img': {
+      maxWidth: 54,
+      height: 54
+    }
+  },
+  large: {
+    fontSize: 28,
+    '& img': {
+      maxWidth: 64,
+      height: 64
     }
   }
 }));

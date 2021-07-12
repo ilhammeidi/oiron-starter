@@ -16,15 +16,18 @@ function Error(props) {
         <Grid container>
           <Grid item md={5} xs={12}>
             <div className={classes.flex}>
-              <div className={classes.deco}>
-                <Typography variant="h3">
-                  {errCode}
-                </Typography>
+              <div className={classes.illustration}>
+                <img src="/images/starter/Illustration.png" alt="illustration" />
               </div>
             </div>
           </Grid>
           <Grid item md={7} xs={12}>
             <div className={classes.text}>
+              <Typography variant="h1">
+                <strong>
+                  {errCode}
+                </strong>
+              </Typography>
               <Typography variant="h4">{text}</Typography>
               <Typography>
                 {t('common:404_subtitle')}

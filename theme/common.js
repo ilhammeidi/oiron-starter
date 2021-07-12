@@ -62,15 +62,21 @@ export const useSpacing = makeStyles(theme => ({
     display: 'flex'
   },
   maintenanceIcon: {
-    margin: '10px 20px',
-    background: 'rgba(255,255,255,0.6)',
+    margin: theme.spacing(3),
+    background: theme.palette.divider,
     color: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.main,
     width: 100,
     height: 100,
-    boxShadow: theme.shadows[4],
     '& svg': {
       fontSize: 64,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 16
+      }
     },
+  },
+  btnNotify: {
+    width: 120,
+    margin: 4
   }
 }));
 
