@@ -48,7 +48,7 @@ const HeadComponent = () => (
     <meta property="twitter:domain" content="oiron.indisains.com" />
     <meta property="twitter:creator" content="oiron" />
     <meta property="twitter:card" content="summary" />
-    <meta property="twitter:image:src" content="/images/logo.png" />
+    <meta property="twitter:image:src" content="/images/logo-starter.png" />
     <meta property="og:url" content={brand.starter.url} />
     <meta property="og:title" content={brand.starter.title} />
     <meta

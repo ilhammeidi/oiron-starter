@@ -1,6 +1,6 @@
 module.exports = {
   starter: {
-    name: 'Oiron Starter',
+    name: 'Starter',
     desc: 'Oiron Starter - React Starter Template',
     prefix: 'oiron',
     footerText: 'Oiron Theme All Rights Reserved 2020',

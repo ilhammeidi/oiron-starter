@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
 import Grid from '@material-ui/core/Grid';
@@ -22,6 +22,7 @@ import useStyles from './filter-style';
 
 function Filter(props) {
   const classes = useStyles();
+
   const [range, setRange] = useState({ from: '', to: '' });
   const {
     t,
@@ -77,7 +78,7 @@ function Filter(props) {
     <div className={classes.filter}>
       {/* ======== Filter Categories ======== */}
       <div className={classes.filterBlock}>
-        <List subheader={<ListSubheader disableSticky>Filter Categories</ListSubheader>}>
+        <List subheader={<ListSubheader className={classes.titleLabel} disableSticky>Filter Categories</ListSubheader>}>
           <ListItem
             button
             selected={filterCategory === 'all'}
@@ -131,7 +132,7 @@ function Filter(props) {
       </div>
       {/* ======== Filter Rating ======== */}
       <div className={classes.filterBlock}>
-        <List subheader={<ListSubheader disableSticky>Filter Rating</ListSubheader>}>
+        <List subheader={<ListSubheader className={classes.titleLabel} disableSticky>Filter Rating</ListSubheader>}>
           <ListItem
             button
             selected={filterRating === 0}
@@ -202,202 +203,214 @@ function Filter(props) {
         </List>
       </div>
       {/* ======== Filter Tag ======== */}
-      <div className={classes.filterBlock}>
-        <FormLabel component="legend">Filter Tag</FormLabel>
-        <form>
-          <span className={classes.btnTag}>
-            <input
-              id="tag_one"
-              type="checkbox"
-              name="tag_one"
-              onChange={(event) => handleChangeTag(event)}
-              checked={filterTag.indexOf('tag-one') > -1}
-              value="tag-one"
-            />
-            <label htmlFor="tag_one">
-              Tag One
-            </label>
-          </span>
-          <span className={classes.btnTag}>
-            <input
-              id="tag_two"
-              type="checkbox"
-              name="tag_two"
-              onChange={(event) => handleChangeTag(event)}
-              checked={filterTag.indexOf('tag-two') > -1}
-              value="tag-two"
-            />
-            <label htmlFor="tag_two">
-              Tag Two
-            </label>
-          </span>
-          <span className={classes.btnTag}>
-            <input
-              id="tag_three"
-              type="checkbox"
-              name="tag_three"
-              onChange={(event) => handleChangeTag(event)}
-              checked={filterTag.indexOf('tag-three') > -1}
-              value="tag-three"
-            />
-            <label htmlFor="tag_three">
-              Tag Three
-            </label>
-          </span>
-          <span className={classes.btnTag}>
-            <input
-              id="tag_four"
-              type="checkbox"
-              name="tag_four"
-              onChange={(event) => handleChangeTag(event)}
-              checked={filterTag.indexOf('tag-four') > -1}
-              value="tag-four"
-            />
-            <label htmlFor="tag_four">
-              Tag Four
-            </label>
-          </span>
-        </form>
-      </div>
+      <Box mb={6} px={2}>
+        <div className={classes.filterBlock}>
+          <FormLabel className={classes.titleLabel} component="legend">Filter Tag</FormLabel>
+          <form>
+            <span className={classes.btnTag}>
+              <input
+                id="tag_one"
+                type="checkbox"
+                name="tag_one"
+                onChange={(event) => handleChangeTag(event)}
+                checked={filterTag.indexOf('tag-one') > -1}
+                value="tag-one"
+              />
+              {/* eslint-disable-next-line */}
+              <label htmlFor="tag_one">
+                Tag One
+              </label>
+            </span>
+            <span className={classes.btnTag}>
+              <input
+                id="tag_two"
+                type="checkbox"
+                name="tag_two"
+                onChange={(event) => handleChangeTag(event)}
+                checked={filterTag.indexOf('tag-two') > -1}
+                value="tag-two"
+              />
+              {/* eslint-disable-next-line */}
+              <label htmlFor="tag_two">
+                Tag Two
+              </label>
+            </span>
+            <span className={classes.btnTag}>
+              <input
+                id="tag_three"
+                type="checkbox"
+                name="tag_three"
+                onChange={(event) => handleChangeTag(event)}
+                checked={filterTag.indexOf('tag-three') > -1}
+                value="tag-three"
+              />
+              {/* eslint-disable-next-line */}
+              <label htmlFor="tag_three">
+                Tag Three
+              </label>
+            </span>
+            <span className={classes.btnTag}>
+              <input
+                id="tag_four"
+                type="checkbox"
+                name="tag_four"
+                onChange={(event) => handleChangeTag(event)}
+                checked={filterTag.indexOf('tag-four') > -1}
+                value="tag-four"
+              />
+              {/* eslint-disable-next-line */}
+              <label htmlFor="tag_four">
+                Tag Four
+              </label>
+            </span>
+          </form>
+        </div>
+      </Box>
       {/* ======== Filter Range ======== */}
-      <div className={classes.filterBlock}>
-        <FormLabel component="legend">Filter Range</FormLabel>
-        <Grid container>
-          <Grid item xs={5}>
-            <FormControl component="div" className={classes.formControl}>
-              <Input placeholder="From" name="from" type="number" value={range.from} onChange={(e) => handleChangeRange(e)} />
-            </FormControl>
+      <Box mb={6} px={2}>
+        <div className={classes.filterBlock}>
+          <FormLabel className={classes.titleLabel} component="legend">Filter Range</FormLabel>
+          <Grid container>
+            <Grid item xs={5}>
+              <FormControl component="div" className={classes.formControl}>
+                <Input placeholder="From" name="from" type="number" value={range.from} onChange={(e) => handleChangeRange(e)} />
+              </FormControl>
+            </Grid>
+            <Grid item xs={2}>
+              <Box display="flex" alignItems="center" justifyContent="center" height="100%">
+                &nbsp; - &nbsp;
+              </Box>
+            </Grid>
+            <Grid item xs={5}>
+              <FormControl component="div" className={classes.formControl}>
+                <Input placeholder="To" name="to" type="number" value={range.to} onChange={(e) => handleChangeRange(e)} />
+              </FormControl>
+            </Grid>
           </Grid>
-          <Grid item xs={2}>
-            <Box display="flex" alignItems="center" justifyContent="center" height="100%">
-              &nbsp; - &nbsp;
-            </Box>
-          </Grid>
-          <Grid item xs={5}>
-            <FormControl component="div" className={classes.formControl}>
-              <Input placeholder="To" name="to" type="number" value={range.to} onChange={(e) => handleChangeRange(e)} />
-            </FormControl>
-          </Grid>
-        </Grid>
-        <Box mt={2}>
-          <Button
-            color="primary"
-            fullWidth
-            size="small"
-            variant="contained"
-            endIcon={<Icon>navigate_next</Icon>}
-            onClick={() => changeRange(range)}
-          >
-            Apply
-          </Button>
-        </Box>
-      </div>
+          <Box mt={2}>
+            <Button
+              color="primary"
+              fullWidth
+              size="small"
+              variant="contained"
+              endIcon={<Icon>navigate_next</Icon>}
+              onClick={() => changeRange(range)}
+            >
+              Apply
+            </Button>
+          </Box>
+        </div>
+      </Box>
       {/* ======== Filter Check ======== */}
-      <div className={classes.filterBlock}>
-        <List>
-          <FormControl component="div" className={classes.formControl}>
-            <FormLabel component="legend">Filter Check</FormLabel>
-            <FormGroup>
-              <ListItem className={classes.checklist} button onClick={() => handleCheckAll()}>
-                <ListItemText primary="Select All" />
-              </ListItem>
-              <ListItem className={classes.checklist} button>
-                <FormControlLabel
-                  label="Check A"
-                  control={(
-                    <Checkbox
-                      checked={filterCheck.indexOf('check-a') > -1}
-                      value="check-a"
-                      onChange={(event) => handleChangeCheck(event)}
-                      name="a"
-                    />
-                  )}
-                />
-              </ListItem>
-              <ListItem className={classes.checklist} button>
-                <FormControlLabel
-                  label="Check B"
-                  control={(
-                    <Checkbox
-                      checked={filterCheck.indexOf('check-b') > -1}
-                      value="check-b"
-                      onChange={(event) => handleChangeCheck(event)}
-                      name="b"
-                    />
-                  )}
-                />
-              </ListItem>
-              <ListItem className={classes.checklist} button>
-                <FormControlLabel
-                  label="Check C"
-                  control={(
-                    <Checkbox
-                      checked={filterCheck.indexOf('check-c') > -1}
-                      value="check-c"
-                      onChange={(event) => handleChangeCheck(event)}
-                      name="c"
-                    />
-                  )}
-                />
-              </ListItem>
-              <ListItem className={classes.checklist} button>
-                <FormControlLabel
-                  label="Check D"
-                  control={(
-                    <Checkbox
-                      checked={filterCheck.indexOf('check-d') > -1}
-                      value="check-d"
-                      onChange={(event) => handleChangeCheck(event)}
-                      name="d"
-                    />
-                  )}
-                />
-              </ListItem>
-              <ListItem className={classes.checklist} button>
-                <FormControlLabel
-                  label="Check E"
-                  control={(
-                    <Checkbox
-                      checked={filterCheck.indexOf('check-e') > -1}
-                      value="check-e"
-                      onChange={(event) => handleChangeCheck(event)}
-                      name="e"
-                    />
-                  )}
-                />
-              </ListItem>
-              <ListItem className={classes.checklist} button>
-                <FormControlLabel
-                  label="Check F"
-                  control={(
-                    <Checkbox
-                      checked={filterCheck.indexOf('check-f') > -1}
-                      value="check-f"
-                      onChange={(event) => handleChangeCheck(event)}
-                      name="f"
-                    />
-                  )}
-                />
-              </ListItem>
-            </FormGroup>
-          </FormControl>
-        </List>
-      </div>
+      <Box mb={6} px={2}>
+        <div className={classes.filterBlock}>
+          <List>
+            <FormControl component="div" className={classes.formControl}>
+              <FormLabel className={classes.titleLabel} component="legend">Filter Check</FormLabel>
+              <FormGroup>
+                <ListItem className={classes.checklist} button onClick={() => handleCheckAll()}>
+                  <ListItemText primary="Select All" />
+                </ListItem>
+                <ListItem className={classes.checklist} button>
+                  <FormControlLabel
+                    label="Check A"
+                    control={(
+                      <Checkbox
+                        checked={filterCheck.indexOf('check-a') > -1}
+                        value="check-a"
+                        onChange={(event) => handleChangeCheck(event)}
+                        name="a"
+                      />
+                    )}
+                  />
+                </ListItem>
+                <ListItem className={classes.checklist} button>
+                  <FormControlLabel
+                    label="Check B"
+                    control={(
+                      <Checkbox
+                        checked={filterCheck.indexOf('check-b') > -1}
+                        value="check-b"
+                        onChange={(event) => handleChangeCheck(event)}
+                        name="b"
+                      />
+                    )}
+                  />
+                </ListItem>
+                <ListItem className={classes.checklist} button>
+                  <FormControlLabel
+                    label="Check C"
+                    control={(
+                      <Checkbox
+                        checked={filterCheck.indexOf('check-c') > -1}
+                        value="check-c"
+                        onChange={(event) => handleChangeCheck(event)}
+                        name="c"
+                      />
+                    )}
+                  />
+                </ListItem>
+                <ListItem className={classes.checklist} button>
+                  <FormControlLabel
+                    label="Check D"
+                    control={(
+                      <Checkbox
+                        checked={filterCheck.indexOf('check-d') > -1}
+                        value="check-d"
+                        onChange={(event) => handleChangeCheck(event)}
+                        name="d"
+                      />
+                    )}
+                  />
+                </ListItem>
+                <ListItem className={classes.checklist} button>
+                  <FormControlLabel
+                    label="Check E"
+                    control={(
+                      <Checkbox
+                        checked={filterCheck.indexOf('check-e') > -1}
+                        value="check-e"
+                        onChange={(event) => handleChangeCheck(event)}
+                        name="e"
+                      />
+                    )}
+                  />
+                </ListItem>
+                <ListItem className={classes.checklist} button>
+                  <FormControlLabel
+                    label="Check F"
+                    control={(
+                      <Checkbox
+                        checked={filterCheck.indexOf('check-f') > -1}
+                        value="check-f"
+                        onChange={(event) => handleChangeCheck(event)}
+                        name="f"
+                      />
+                    )}
+                  />
+                </ListItem>
+              </FormGroup>
+            </FormControl>
+          </List>
+        </div>
+      </Box>
       {/* ======== Filter Radio ======== */}
-      <div className={classes.filterBlock}>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">Filter Radio</FormLabel>
-          <RadioGroup aria-label="radio" name="radio" value={filterRadio} onChange={(event) => handleChangeRadio(event)}>
-            <FormControlLabel value="all" control={<Radio />} label={t('common:list_filter')} />
-            <FormControlLabel value="radio-a" control={<Radio />} label="Radio A" />
-            <FormControlLabel value="radio-b" control={<Radio />} label="Radio B" />
-            <FormControlLabel value="radio-c" control={<Radio />} label="Radio C" />
-            <FormControlLabel value="radio-d" control={<Radio />} label="Radio D" />
-            <FormControlLabel value="radio-e" control={<Radio />} label="Radio E" />
-            <FormControlLabel value="radio-f" control={<Radio />} label="Radio F" />
-          </RadioGroup>
-        </FormControl>
-      </div>
+      <Box mb={6} px={2}>
+        <div className={classes.filterBlock}>
+          <FormControl component="fieldset">
+            <FormLabel className={classes.titleLabel} component="legend">Filter Radio</FormLabel>
+            <RadioGroup aria-label="radio" name="radio" value={filterRadio} onChange={(event) => handleChangeRadio(event)}>
+              <FormControlLabel value="all" control={<Radio />} label={t('common:list_filter')} />
+              <FormControlLabel value="radio-a" control={<Radio />} label="Radio A" />
+              <FormControlLabel value="radio-b" control={<Radio />} label="Radio B" />
+              <FormControlLabel value="radio-c" control={<Radio />} label="Radio C" />
+              <FormControlLabel value="radio-d" control={<Radio />} label="Radio D" />
+              <FormControlLabel value="radio-e" control={<Radio />} label="Radio E" />
+              <FormControlLabel value="radio-f" control={<Radio />} label="Radio F" />
+            </RadioGroup>
+          </FormControl>
+        </div>
+      </Box>
     </div>
   );
 }

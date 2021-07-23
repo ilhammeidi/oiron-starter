@@ -7,7 +7,7 @@ import Fab from '@material-ui/core/Fab';
 import ArrowIcon from '@material-ui/icons/ArrowUpward';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withTranslation } from '~/i18n';
-import navMenu from '../Header/menu';
+import navMenu from '../Header/data/single';
 import useStyles from './pagenav-style';
 
 function createData(id, name, url) {

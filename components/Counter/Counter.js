@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import CountUp from 'react-countup';
 import ReactWOW from 'react-wow';
 import Typography from '@material-ui/core/Typography';
@@ -9,8 +11,9 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import useStyles from './counter-style';
 
-function Counter() {
+function Counter(props) {
   const classes = useStyles();
+  const { dark } = props;
   const [play, setPlay] = useState(false);
   const countup = (val, isPlay) => (
     <span>
@@ -21,8 +24,8 @@ function Counter() {
     setTimeout(() => { setPlay(true); }, 500);
   };
   return (
-    <div className={classes.counterWrap}>
-      <Container fixed>
+    <div className={clsx(classes.counterWrap, dark ? classes.dark : '')}>
+      <Container maxWidth="md">
         <Grid container justify="center" alignItems="center" className={classes.root} spacing={6}>
           <Grid md={4} item>
             <ReactWOW animation="fadeIn" offset={300} callback={handlePlay}>
@@ -33,7 +36,7 @@ function Counter() {
                     {countup(123, play)}
                   </Typography>
                   <Typography variant="h6">
-                    Lorem
+                    Lorem Ipsum dolor
                   </Typography>
                 </div>
               </div>
@@ -47,7 +50,7 @@ function Counter() {
                   {countup(456, play)}
                 </Typography>
                 <Typography variant="h6">
-                  Lorem
+                  Pellentesque ac bibendum
                 </Typography>
               </div>
             </div>
@@ -60,7 +63,7 @@ function Counter() {
                   {countup(789, play)}
                 </Typography>
                 <Typography variant="h6">
-                  Lorem
+                  Consectetur adipiscing
                 </Typography>
               </div>
             </div>
@@ -70,5 +73,13 @@ function Counter() {
     </div>
   );
 }
+
+Counter.propTypes = {
+  dark: PropTypes.bool,
+};
+
+Counter.defaultProps = {
+  dark: false,
+};
 
 export default Counter;

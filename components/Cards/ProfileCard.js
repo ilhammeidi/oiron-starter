@@ -80,21 +80,24 @@ function ProfileCard(props) {
           showLabels
           className={classes.bottomLink}
         >
-          <BottomNavigationAction label={connection + ' Connection'} icon={<SupervisorAccount />} />
+          {orientation === 'portrait' && (
+            <BottomNavigationAction label={connection + ' Connection'} icon={<SupervisorAccount />} />
+          )}
           <BottomNavigationAction label={favorites + ' Favorites'} icon={<Favorite />} />
           <BottomNavigationAction label={albums + ' Albums'} icon={<PhotoLibrary />} />
         </BottomNavigation>
+        {orientation === 'landscape' && (
+          <Button
+            fullWidth
+            className={classes.buttonProfile}
+            variant="outlined"
+            color="primary"
+            href={href}
+          >
+            See Profile
+          </Button>
+        )}
       </CardActions>
-      {orientation === 'landscape' && (
-        <Button
-          className={classes.buttonProfile}
-          variant="outlined"
-          color="primary"
-          href={href}
-        >
-          See Profile
-        </Button>
-      )}
     </Card>
   );
 }

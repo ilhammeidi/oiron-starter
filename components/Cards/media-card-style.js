@@ -4,7 +4,7 @@ const featureStyles = makeStyles(theme => ({
   mediaCard: {
     overflow: 'hidden',
     position: 'relative',
-    margin: theme.spacing(6, 0, 2),
+    margin: theme.spacing(2, 0),
     height: 340,
     '& figure': {
       margin: 0,

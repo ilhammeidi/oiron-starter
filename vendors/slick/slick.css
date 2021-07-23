@@ -113,3 +113,24 @@
 .slick-arrow.slick-hidden {
     display: none;
 }
+
+.slick-dots {
+	 padding-left: 0;
+}
+ .slick-dots li {
+	 margin: 1px;
+}
+ .slick-dots li button:before {
+	 border-radius: 50%;
+	 color: transparent !important;
+	 width: 10px;
+	 height: 10px;
+	 border: 2px solid;
+	 opacity: 0.5;
+	 transition: all 0.3s ease;
+}
+ .slick-dots li.slick-active button:before {
+	 width: 20px;
+	 height: 20px;
+}
+ 

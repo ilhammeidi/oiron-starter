@@ -6,6 +6,19 @@ export const useSpacing = makeStyles(theme => ({
     position: 'relative',
     width: '100%',
     overflow: 'hidden',
+    background: theme.palette.type === 'dark' ? theme.palette.background.default : theme.palette.background.paper,
+    '& ul[class="slick-dots"]': {
+      '& li': {
+        '& button:before': {
+          borderColor: theme.palette.primary.main,
+        },
+        '&[class="slick-active"]': {
+          '& button:before': {
+            background: theme.palette.primary.main
+          }
+        }
+      }
+    }
   },
   spaceBottom: {
     marginBottom: sectionMargin(theme.spacing(1)),
@@ -26,6 +39,7 @@ export const useSpacing = makeStyles(theme => ({
     marginTop: sectionMargin(theme.spacing(1) / 2)
   },
   containerWrap: {
+    marginTop: theme.spacing(5),
     '& > section': {
       position: 'relative'
     }
@@ -33,27 +47,36 @@ export const useSpacing = makeStyles(theme => ({
   containerGeneral: {
     position: 'relative',
     paddingTop: 32,
-    marginTop: theme.spacing(7),
+    marginTop: theme.spacing(8),
     marginBottom: theme.spacing(5),
     [theme.breakpoints.up('sm')]: {
       paddingLeft: 32,
       paddingRight: 32
     }
   },
+  containerFront: {
+    position: 'relative',
+  },
   fullScreenContainer: {
     height: '100vh',
     display: 'flex'
   },
   maintenanceIcon: {
-    margin: '10px 20px',
-    background: 'rgba(255,255,255,0.6)',
+    margin: theme.spacing(3),
+    background: theme.palette.divider,
     color: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.main,
     width: 100,
     height: 100,
-    boxShadow: theme.shadows[4],
     '& svg': {
       fontSize: 64,
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 16
+      }
     },
+  },
+  btnNotify: {
+    width: 120,
+    margin: 4
   }
 }));
 
@@ -144,6 +167,24 @@ export const useText = makeStyles(theme => ({
       fontSize: 14,
       lineHeight: '22px',
     },
+  },
+  capitalize: {
+    textTransform: 'capitalize'
+  },
+  uppercase: {
+    textTransform: 'uppercase'
+  },
+  lowercase: {
+    textTransform: 'lowercase'
+  },
+  bold: {
+    fontWeight: theme.typography.fontWeightBold,
+  },
+  medium: {
+    fontWeight: theme.typography.fontWeightMedium,
+  },
+  regular: {
+    fontWeight: theme.typography.fontWeightRegular,
   }
 }));
 

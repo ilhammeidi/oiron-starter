@@ -18,7 +18,8 @@ export default function PostCard(props) {
     desc,
     img,
     orientation,
-    type
+    type,
+    href
   } = props;
   return (
     <Card className={clsx(classes.newsCard, classes[orientation], classes[type])}>
@@ -42,7 +43,7 @@ export default function PostCard(props) {
           </div>
         </CardContent>
         <CardActions className={classes.action}>
-          <Button variant="outlined" fullWidth={orientation === 'portrait'} className={classes.btn}>Read more</Button>
+          <Button variant="outlined" href={href} className={classes.btn}>Read more</Button>
         </CardActions>
       </div>
     </Card>
@@ -56,9 +57,11 @@ PostCard.propTypes = {
   img: PropTypes.string.isRequired,
   orientation: PropTypes.string,
   type: PropTypes.string,
+  href: PropTypes.string,
 };
 
 PostCard.defaultProps = {
   orientation: 'portrait',
+  href: '#!',
   type: 'full', // available props: full, rounded, over, oval
 };

@@ -34,7 +34,7 @@ function MainFeature() {
             </ReactWOW>
             <ReactWOW animation="fadeInRight" delay="0.5s" duration="0.6s">
               <figure className={classes.img}>
-                <img src={imgAPI.photo[5]} alt="img" />
+                <img src="https://source.unsplash.com/random" alt="img" />
               </figure>
             </ReactWOW>
           </div>
@@ -48,7 +48,7 @@ function MainFeature() {
             </ReactWOW>
             <ReactWOW animation="fadeInLeft" delay="0.5s" duration="0.6s">
               <figure className={classes.img}>
-                <img src={imgAPI.photo[5]} alt="img" />
+                <img src="https://source.unsplash.com/random" alt="img" />
               </figure>
             </ReactWOW>
           </div>
@@ -87,7 +87,7 @@ function MainFeature() {
               </ReactWOW>
               <ReactWOW animation="fadeInUp" delay="0.5s" duration="0.6s">
                 <figure className={classes.imgFull}>
-                  <img src={imgAPI.photo[5]} alt="img" />
+                  <img src="https://source.unsplash.com/random" alt="img" />
                 </figure>
               </ReactWOW>
             </div>

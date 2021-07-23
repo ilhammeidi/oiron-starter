@@ -24,6 +24,12 @@ const imgAPI = {
     'http://via.placeholder.com/1280x640/1DE9B6/767676/',
     'http://via.placeholder.com/1280x640/00E5FF/767676/',
     'http://via.placeholder.com/1280x640/C6FF00/767676/',
+  ],
+  ui: [
+    'http://via.placeholder.com/200x78/2f688b/FFFFFF/',
+    'http://via.placeholder.com/200x78/fcbdff/767676/',
+    'http://via.placeholder.com/200x78/ceff00/767676/',
+    'http://via.placeholder.com/200x78/ffce00/767676/'
   ]
 };
 

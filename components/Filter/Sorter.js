@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import ListIcon from '@material-ui/icons/List';
@@ -9,12 +10,13 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
-import { useText } from '~/theme/common';
+import { useText, useTextAlign } from '~/theme/common';
 import useStyles from './filter-style';
 
 function Sorter(props) {
   const classes = useStyles();
   const text = useText();
+  const align = useTextAlign();
 
   const {
     view, sortBySelected, resultLength,
@@ -52,20 +54,21 @@ function Sorter(props) {
     <Grid container align="center" className={classes.sorter}>
       <Grid item lg={9} md={8} sm={6}>
         <Box my={1}>
-          <h2 className={text.subtitle}>
+          <h2 className={clsx(text.subtitle, align.textLeft)}>
             { resultLength }
             &nbsp;Items Found
           </h2>
         </Box>
       </Grid>
       <Grid item lg={3} md={4} sm={6}>
-        <Box display="flex" my={1}>
+        <Box display="flex" justifyContent="flex-end" my={1}>
           <ToggleButtonGroup
             size="small"
             value={view}
             exclusive
             onChange={handleView}
             aria-label="text alignment"
+            className={classes.switchView}
           >
             <ToggleButton value="grid">
               <GridIcon />
@@ -74,10 +77,11 @@ function Sorter(props) {
               <ListIcon />
             </ToggleButton>
           </ToggleButtonGroup>
-          <FormControl className={classes.formControl}>
+          <FormControl className={classes.select}>
             <Select
               value={sortBySelected}
               displayEmpty
+              fullWidth
               inputProps={{ 'aria-label': 'Sort By:' }}
               onChange={(e) => handleSortBy(e)}
             >

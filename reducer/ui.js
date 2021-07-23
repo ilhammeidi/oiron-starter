@@ -1,20 +1,7 @@
-export const initialState = {
-  header: 'header',
-  footer: 'sitemap',
-  corner: 'chat'
+const uiState = {
+  header: 'mixed', /* available: mixed, droplist, mega, navscroll, hamburger, basic, search */
+  footer: 'sitemap', /* available: basic, blog, contact, sitemap */
+  corner: 'chat' /* available: chat, nav */,
 };
 
-function reducer(state, action) {
-  switch (action.type) {
-    case 'set_header':
-      return {header: action.payload};
-    case 'set_footer':
-      return {footer: action.payload};
-    case 'set_corner':
-      return {corner: action.payload};
-    default:
-      throw new Error();
-  }
-}
-
-export default reducer;
+export default uiState;

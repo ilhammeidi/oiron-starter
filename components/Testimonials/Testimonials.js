@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Carousel from 'react-slick';
-import Paper from '@material-ui/core/Paper';
 import useStyle from './testi-style';
 import { useTextAlign } from '~/theme/common';
 import imgAPI from '~/public/images/imgAPI';
+import { withTranslation } from '~/i18n';
+import { useText } from '~/theme/common';
+import Paper from '@material-ui/core/Paper';
+import TestiCard from '../Cards/TestiCard';
 
 const testiContent = [
   {
@@ -26,7 +31,7 @@ const testiContent = [
   {
     text: 'Sed imperdiet enim ligula, vitae viverra justo porta vel.',
     avatar: imgAPI.avatar[3],
-    name: 'Jovelin - Senior Graphic Designer'
+    name: 'Jovelin Doe - Senior Graphic Designer'
   },
   {
     text: 'Cras convallis lacus orci, tristique tincidunt magna consequat in. In vel pulvinar est, at euismod libero.',
@@ -36,18 +41,23 @@ const testiContent = [
   {
     text: 'Cras convallis lacus orci, tristique tincidunt magna consequat in. In vel pulvinar est, at euismod libero.',
     avatar: imgAPI.avatar[6],
-    name: 'Jovelin - Senior Graphic Designer'
+    name: 'Jovelin Doe - Senior Graphic Designer'
   },
   {
     text: 'Cras convallis lacus orci, tristique tincidunt magna consequat in. In vel pulvinar est, at euismod libero.',
     avatar: imgAPI.avatar[7],
-    name: 'Jovelin - Senior Graphic Designer'
+    name: 'Jovelin Doe - Senior Graphic Designer'
   }
 ];
 
-function Testimonials() {
+function Testimonials(props) {
   const classes = useStyle();
+  const { t } = props;
+
   const align = useTextAlign();
+  const text = useText();
+  const [loaded, setLoaded] = useState(false);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -76,35 +86,40 @@ function Testimonials() {
       }
     }]
   };
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
   return (
     <div className={classes.testimonialWrap}>
-      <Typography gutterBottom variant="h3" className={align.textCenter} display="block">
-        Testimonials
+      <Typography gutterBottom variant="h3" className={clsx(text.capitalize, align.textCenter)} display="block">
+        {t('common:starter-landing.header_testimonials')}
       </Typography>
       <Typography gutterBottom variant="body1" className={align.textCenter} display="block">
         Curabitur egestas consequat lorem, vel fermentum augue porta id.
       </Typography>
       <div className={classes.carousel}>
-        <Carousel {...settings}>
-          {testiContent.map((item, index) => (
-            <div key={index.toString()} className={classes.item}>
-              <Paper className={classes.card}>
-                <Typography variant="body1" display="block">
-                  {item.text}
-                </Typography>
-                <div className={classes.name}>
-                  <Avatar alt={item.name} src={item.avatar} className={classes.avatar} />
-                  <Typography variant="caption">
-                    {item.name}
-                  </Typography>
-                </div>
-              </Paper>
-            </div>
-          ))}
-        </Carousel>
+        { loaded && (
+          <Carousel {...settings}>
+            {testiContent.map((item, index) => (
+              <div key={index.toString()} className={classes.item}>
+                <TestiCard
+                  text={item.text}
+                  avatar={item.avatar}
+                  name={item.name}
+                />
+              </div>
+            ))}
+          </Carousel>
+        )}
       </div>
     </div>
   );
 }
 
-export default Testimonials;
+Testimonials.propTypes = {
+  t: PropTypes.func.isRequired
+};
+
+export default withTranslation(['common', 'starter-landing'])(Testimonials);
