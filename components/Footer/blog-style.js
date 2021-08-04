@@ -79,6 +79,9 @@ const blogStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'space-around',
     marginBottom: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center'
+    },
     '& button': {
       margin: theme.spacing(),
       color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
@@ -92,11 +95,11 @@ const blogStyles = makeStyles(theme => ({
   },
   icon: {},
   selectLang: {
-    width: 250,
+    maxWidth: 250,
     overflow: 'hidden',
     position: 'relative',
     display: 'block',
-    margin: theme.spacing(2, 0, 4),
+    margin: `${theme.spacing(2)}px auto ${theme.spacing(4)}px`,
     '& $icon': {
       top: 29,
       color: theme.palette.primary.dark,

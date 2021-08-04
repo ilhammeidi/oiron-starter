@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import clsx from 'clsx';
 import Container from '@material-ui/core/Container';
+import Hidden from '@material-ui/core/Hidden';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import Logo from '../Logo';
@@ -16,7 +17,7 @@ function Search(props) {
   const classes = useStyles();
   const theme = useTheme();
   const { onToggleDark, onToggleDir } = props;
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('sm'));
   let flagFixed = false;
 
   const handleScroll = () => {
@@ -43,7 +44,7 @@ function Search(props) {
           fixed && classes.fixed,
         )}
       >
-        <Container fixed={isDesktop}>
+        <Container>
           <div className={classes.headerContent}>
             <nav className={clsx(classes.navMenu, classes.flex)}>
               <div className={classes.logo}>
@@ -57,6 +58,9 @@ function Search(props) {
             </nav>
             <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
           </div>
+          <Hidden smUp>
+            <SearchField />
+          </Hidden>
         </Container>
       </AppBar>
     </Fragment>

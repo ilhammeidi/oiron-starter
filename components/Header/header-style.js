@@ -41,11 +41,6 @@ const headerStyles = makeStyles(theme => ({
     boxShadow: 'none',
     transition: 'all 0.3s ease',
     zIndex: 1000,
-    '& > *': {
-      [theme.breakpoints.down('md')]: {
-        paddingLeft: 0
-      }
-    },
     '&$fixed': {
       background: theme.palette.background.paper,
       boxShadow: theme.shadows[2],
@@ -53,7 +48,7 @@ const headerStyles = makeStyles(theme => ({
       left: 0,
       '& $logo': {
         '& img': {
-          height: 32,
+          height: 40,
         }
       },
       '& nav': {
@@ -81,7 +76,7 @@ const headerStyles = makeStyles(theme => ({
       alignItems: 'center',
       padding: theme.spacing(2, 1),
       [theme.breakpoints.down('md')]: {
-        padding: theme.spacing(2, 0),
+        padding: theme.spacing(1, 0),
       },
       display: 'flex'
     }
@@ -139,7 +134,9 @@ const headerStyles = makeStyles(theme => ({
     }
   },
   userMenu: {
-    '& > a': {
+    display: 'flex',
+    alignItems: 'center',
+    '& > div > a': {
       margin: theme.spacing(0, 1),
     }
   },
@@ -149,7 +146,8 @@ const headerStyles = makeStyles(theme => ({
     }
   },
   mobileMenu: {
-    margin: theme.spacing(0, 1),
+    marginRight: theme.spacing(1),
+    padding: 0,
     '& $bar': {
       backgroundColor: theme.palette.text.secondary,
       '&:after, &:before': {
@@ -158,7 +156,7 @@ const headerStyles = makeStyles(theme => ({
     }
   },
   vDivider: {
-    margin: theme.spacing(0, 1),
+    margin: theme.spacing(0, 1, 0, 2),
     borderLeft: `1px solid ${theme.palette.divider}`,
     height: '100%',
     minHeight: theme.spacing(6)
@@ -237,12 +235,12 @@ const headerStyles = makeStyles(theme => ({
     position: 'relative',
     display: 'flex',
     maxWidth: 600,
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
     [theme.breakpoints.down('xs')]: {
       marginBottom: theme.spacing(2)
     },
     [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(2),
+      marginRight: theme.spacing(2),
       flex: 1
     },
     '& form': {

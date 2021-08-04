@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
 import Grid from '@material-ui/core/Grid';
-import StarIcon from '@material-ui/icons/StarBorder';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { withTranslation } from '~/i18n';
 import { useText, useTextAlign } from '~/theme/common';
@@ -81,13 +74,13 @@ function Pricing(props) {
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map(tier => (
             // Enterprise card is full width at sm breakpoint
-            <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={3}>
+            <Grid item key={tier.title} xs={12} sm={6} md={3}>
               <PricingCard
                 title={tier.title}
                 subheader={tier.subheader}
                 price={tier.price}
                 description={tier.description}
-                buttonText={t('common:'+tier.buttonText)}
+                buttonText={t('common:' + tier.buttonText)}
                 buttonVariant={tier.buttonVariant}
               />
             </Grid>

@@ -19,7 +19,7 @@ import useStyles from './blog-style';
 
 function Copyright() {
   return (
-    <Typography variant="body2" display="block" color="textSecondary">
+    <Typography variant="body2" display="block" align="center" color="textSecondary">
       &copy;&nbsp;
       {brand.starter.footerText}
     </Typography>

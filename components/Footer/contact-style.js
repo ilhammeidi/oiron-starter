@@ -4,7 +4,7 @@ const contactStyles = makeStyles(theme => ({
   root: {
     textAlign: 'center',
     paddingBottom: theme.spacing(5),
-    marginTop: theme.spacing(10)
+    marginTop: theme.spacing(15)
   },
   decoration: {},
   logo: {

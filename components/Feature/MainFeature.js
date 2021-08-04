@@ -11,7 +11,7 @@ function MainFeature() {
   return (
     <div className={classes.pageSection}>
       <Grid container className={classes.root} spacing={6}>
-        <Grid md={4} item>
+        <Grid sm={4} item>
           <div className={classes.featureList}>
             <BackupIcon className={classes.icon} />
             <Typography variant="h5">
@@ -22,7 +22,7 @@ function MainFeature() {
             </Typography>
           </div>
         </Grid>
-        <Grid md={4} item>
+        <Grid sm={4} item>
           <div className={classes.featureList}>
             <ExploreIcon className={classes.icon} />
             <Typography variant="h5">
@@ -33,7 +33,7 @@ function MainFeature() {
             </Typography>
           </div>
         </Grid>
-        <Grid md={4} item>
+        <Grid sm={4} item>
           <div className={classes.featureList}>
             <MusicIcon className={classes.icon} />
             <Typography variant="h5">

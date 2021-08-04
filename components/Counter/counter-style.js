@@ -11,14 +11,15 @@ const counterStyles = makeStyles(theme => ({
     },
     alignItems: 'center',
     justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center'
+    },
     '& svg': {
-      marginRight: theme.spacing(2),
-      width: 40,
-      height: 40,
+      width: 80,
+      height: 80,
       [theme.breakpoints.up('md')]: {
-        width: 80,
-        height: 80,
-      },
+        marginRight: theme.spacing(2),
+      }
     },
     '& $text': {
       '& h4': {

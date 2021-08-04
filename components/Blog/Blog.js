@@ -40,7 +40,7 @@ function Blog() {
       <div className={classes.blogWrap}>
         <Grid container spacing={4}>
           {blogData.map((item, index) => (
-            <Grid item key={index.toString()} xs={12} sm={6} md={4}>
+            <Grid item key={index.toString()} xs={12} md={4}>
               <PostCard
                 title={item.title}
                 desc={item.desc}

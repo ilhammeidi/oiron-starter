@@ -35,7 +35,6 @@ function Hamburger(props) {
   // Theme breakpoints
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const [fixed, setFixed] = useState(false);
   let flagFixed = false;
@@ -84,7 +83,7 @@ function Hamburger(props) {
         id="header"
         className={clsx(
           classes.header,
-          fixed || isMobile ? classes.fixed : '',
+          fixed ? classes.fixed : '',
           openDrawer && classes.openDrawer
         )}
       >

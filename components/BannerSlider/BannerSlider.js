@@ -9,10 +9,12 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Divider from '@material-ui/core/Divider';
 import Carousel from 'react-slick';
 import { withTranslation } from '~/i18n';
+import { useText } from '~/theme/common';
 import useStyles from './slider-style';
 
 function BannerSlider(props) {
   const classes = useStyles();
+  const text = useText();
   const { t } = props;
   const slider = useRef(null);
 
@@ -64,10 +66,12 @@ function BannerSlider(props) {
                     <Grid>
                       <Grid item sm={7} lg={6} xs={12}>
                         <div className={classes.text}>
-                          <Typography variant="h3">
+                          <h3 className={text.title}>
                             {t('common:starter-landing.banner_title')}
+                          </h3>
+                          <Typography variant="h5">
+                            {t('common:starter-landing.banner_subtitle')}
                           </Typography>
-                          <Typography variant="h5">{t('common:starter-landing.banner_subtitle')}</Typography>
                         </div>
                       </Grid>
                     </Grid>

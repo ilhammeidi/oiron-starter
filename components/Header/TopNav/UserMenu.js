@@ -12,14 +12,18 @@ function UserMenu(props) {
   const classes = useStyles();
   const theme = useTheme();
   const { onToggleDark, onToggleDir, t } = props;
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('sm'));
   return (
-    <nav className={classes.userMenu}>
-      { isDesktop && <Button href={link.starter.login}>{t('common:login')}</Button> }
-      <Button variant="contained" color="primary" href={link.starter.register}>{t('common:register')}</Button>
-      { isDesktop && <span className={classes.vDivider} /> }
+    <div className={classes.userMenu}>
+      { isDesktop && (
+        <div>
+          <Button href={link.starter.login}>{t('common:login')}</Button>
+          <Button variant="contained" color="primary" href={link.starter.register}>{t('common:register')}</Button>
+          <span className={classes.vDivider} />
+        </div>
+      )}
       <Settings toggleDark={onToggleDark} toggleDir={onToggleDir} />
-    </nav>
+    </div>
   );
 }
 

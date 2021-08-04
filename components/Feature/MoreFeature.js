@@ -1,6 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
 import ReactWOW from 'react-wow';
 import useStyles from './feature-style';
@@ -10,11 +12,16 @@ import imgAPI from '~/public/images/imgAPI';
 function MainFeature() {
   const classes = useStyles();
   const align = useTextAlign();
+
+  // Theme breakpoints
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <div className={clsx(classes.featureMore)}>
-      <Grid container spacing={6}>
-        <Grid md={6} item>
-          <div className={classes.featureItem}>
+      <Grid container className={classes.featureItem} spacing={6}>
+        <Grid md={6} xs={12} item>
+          <div>
             <ReactWOW animation="fadeInLeft" duration="0.6s">
               <Typography variant="h3" className={classes.title}>
                 Lorem ipsum dolor
@@ -27,8 +34,8 @@ function MainFeature() {
             </ReactWOW>
           </div>
         </Grid>
-        <Grid md={6} item>
-          <div className={classes.featureItem}>
+        <Grid md={6} xs={12} item>
+          <div>
             <ReactWOW animation="zoomIn" delay="0.3s" duration="0.6s">
               <div className={classes.deco1} />
             </ReactWOW>
@@ -40,9 +47,9 @@ function MainFeature() {
           </div>
         </Grid>
       </Grid>
-      <Grid container spacing={6}>
-        <Grid md={6} item>
-          <div className={classes.featureItem}>
+      <Grid container direction={isTablet && 'column-reverse'} className={classes.featureItem} spacing={6}>
+        <Grid md={6} xs={12} item>
+          <div>
             <ReactWOW animation="zoomIn" delay="0.3s" duration="0.6s">
               <div className={classes.deco1} />
             </ReactWOW>
@@ -53,8 +60,8 @@ function MainFeature() {
             </ReactWOW>
           </div>
         </Grid>
-        <Grid md={6} item>
-          <div className={classes.featureItem}>
+        <Grid md={6} xs={12} item>
+          <div>
             <ReactWOW animation="fadeInRight" duration="0.6s">
               <Typography variant="h3" className={classes.title}>
                 Lorem ipsum dolor

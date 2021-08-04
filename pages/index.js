@@ -43,12 +43,10 @@ function Landing(props) {
             <BannerSlider />
           </section>
           <section className={clsx(classes.spaceTop, classes.spaceBottomShort)} id="feature">
-            <Container fixed>
-              <Feature />
-            </Container>
+            <Feature />
           </section>
           <section>
-            <Counter />
+            <Counter dark />
           </section>
           <section className={classes.spaceTop} id="testimonials">
             <Testimonials />

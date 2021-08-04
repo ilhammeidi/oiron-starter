@@ -8,7 +8,7 @@ function Feature() {
   const classes = useStyles();
   return (
     <div className={classes.featureWrap}>
-      <Container fixed>
+      <Container>
         <MainFeature />
         <MoreFeature />
       </Container>
