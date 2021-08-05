@@ -29,7 +29,7 @@ export default function PostCard(props) {
       <div className={classes.properties}>
         <CardContent>
           <div className={classes.text}>
-            <Typography display="block" variant="h6" className={classes.title}>
+            <Typography display="block" noWrap variant="h6" className={classes.title}>
               <Box component="span" display="block" textOverflow="ellipsis" overflow="hidden">
                 {title}
               </Box>

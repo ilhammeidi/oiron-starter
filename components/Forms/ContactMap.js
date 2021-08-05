@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
@@ -166,7 +165,7 @@ function ContactMap(props) {
       />
       <Container maxWidth="lg" className={classes.innerWrap}>
         <Grid container alignItems="center">
-          <Grid item lg={6} xs={12} className={classes.wrapDeco}>
+          <Grid item md={6} xs={12} className={classes.wrapDeco}>
             <Paper className={clsx(classes.formBox, full ? classes.mapForm : '')}>
               <div className={classes.fullFromWrap}>
                 <div className={classes.form}>
@@ -264,12 +263,10 @@ function ContactMap(props) {
               </div>
             </Paper>
           </Grid>
-          <Grid item lg={6} xs={12}>
-            <Hidden mdDown>
-              <Paper className={clsx(classes.map, full ? classes.full : '')} elevation={0}>
-                <MapWithAMarker />
-              </Paper>
-            </Hidden>
+          <Grid item md={6} xs={12}>
+            <Paper className={clsx(classes.map, full ? classes.full : '')} elevation={0}>
+              <MapWithAMarker />
+            </Paper>
           </Grid>
         </Grid>
       </Container>

@@ -21,7 +21,7 @@ function CallAction(props) {
   const classes = useStyles();
   return (
     <Fragment>
-      <Container fixed={isDesktop}>
+      <Container>
         <div className={classes.root}>
           <Paper className={classes.paper}>
             <Grid container alignItems="center">

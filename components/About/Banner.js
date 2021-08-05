@@ -15,16 +15,16 @@ function Banner() {
       <div className={classes.inner}>
         <Container>
           <Grid container alignItems="center" justify="center">
-            <Grid item md={6}>
-              <Box px={5}>
+            <Grid item sm={6}>
+              <Box px={{ sm: 5 }}>
                 <div className={classes.text}>
                   <h4 className={text.title2}>Pellentesque habitant morbi tristique senectus</h4>
                   <h5 className={text.subtitle2}>Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents</h5>
                 </div>
               </Box>
             </Grid>
-            <Grid item md={6}>
-              <Box px={5}>
+            <Grid item sm={6}>
+              <Box px={{ sm: 5 }}>
                 <div className={classes.img}>
                   <img src="/images/starter/Illustration.png" alt="illustration" />
                 </div>

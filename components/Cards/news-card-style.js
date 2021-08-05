@@ -49,7 +49,8 @@ const cardsStyles = makeStyles(theme => ({
       flexDirection: 'column',
     },
     '& $figure': {
-      width: 200,
+      minWidth: 150,
+      maxWidth: 200
     },
     '& $desc': {
       [theme.breakpoints.up('sm')]: {
@@ -62,6 +63,9 @@ const cardsStyles = makeStyles(theme => ({
         marginTop: -200,
         padding: theme.spacing(3, 1),
       }
+    },
+    '& $properties': {
+      overflow: 'hidden'
     }
   },
   portrait: {

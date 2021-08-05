@@ -45,16 +45,12 @@ function Landing(props) {
         <Counter />
         <div className={classes.spaceTopShort}>
           <Container>
-            <Grid container>
-              <Grid item md={6}>
-                <Box px={{ md: 6 }}>
-                  <AboutVideo />
-                </Box>
+            <Grid container spacing={6}>
+              <Grid item md={6} xs={12}>
+                <AboutVideo />
               </Grid>
-              <Grid item md={6}>
-                <Box px={{ md: 6 }}>
-                  <AboutProgress />
-                </Box>
+              <Grid item md={6} xs={12}>
+                <AboutProgress />
               </Grid>
             </Grid>
           </Container>

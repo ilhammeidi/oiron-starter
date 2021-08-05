@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
-import uiState from '~/theme/reducer';
+import uiState from '~/theme/config';
 import Mixed from './Mixed';
 import Mega from './Mega';
 import DropList from './DropList';

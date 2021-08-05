@@ -109,15 +109,15 @@ const useStyles = makeStyles(theme => ({
       borderBottomColor: theme.palette.common.white,
     }
   },
+  subtitle: {},
   blogHeadline: {
     cursor: 'pointer',
     '& > *': {
       [theme.breakpoints.down('xs')]: {
-        marginTop: theme.spacing(3),
-        height: 'auto !important'
+        height: 'auto'
       }
     },
-    subtitle: {
+    '& $subtitle': {
       [theme.breakpoints.down('xs')]: {
         display: 'none'
       }
@@ -129,7 +129,6 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     position: 'relative',
     zIndex: 1,
-    padding: theme.spacing(2),
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(10)
     }
@@ -162,7 +161,9 @@ const useStyles = makeStyles(theme => ({
     margin: `${theme.spacing(3)}px 0`
   },
   content: {
-    padding: theme.spacing(0, 2)
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(0, 2)
+    }
   },
   postList: {
     [theme.breakpoints.down('md')]: {
@@ -226,9 +227,18 @@ const useStyles = makeStyles(theme => ({
     '& button': {
       borderWidth: 2,
       marginRight: theme.spacing(2),
+      [theme.breakpoints.down('xs')]: {
+        borderRadius: '50%',
+        width: 35,
+        height: 35,
+        padding: 0,
+        minWidth: 0
+      },
       '& i': {
-        marginRight: theme.spacing(1),
-        fontSize: 18
+        fontSize: 18,
+        [theme.breakpoints.up('sm')]: {
+          marginRight: theme.spacing(1),
+        }
       }
     }
   },

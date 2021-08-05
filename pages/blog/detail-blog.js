@@ -34,10 +34,10 @@ function BlogDetail(props) {
           <Box pt={5}>
             <Container>
               <Grid container spacing={4}>
-                <Grid item md={8}>
+                <Grid item md={8} xs={12}>
                   <Article />
                 </Grid>
-                <Grid item md={4}>
+                <Grid item md={4} xs={12}>
                   <Sidebar />
                 </Grid>
               </Grid>

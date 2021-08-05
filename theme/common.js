@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const sectionMargin = margin => (margin * 15);
+const sectionMargin = margin => (margin * 20);
 export const useSpacing = makeStyles(theme => ({
   mainWrap: {
     position: 'relative',
@@ -21,22 +21,22 @@ export const useSpacing = makeStyles(theme => ({
     }
   },
   spaceBottom: {
-    marginBottom: sectionMargin(theme.spacing(1)),
+    marginBottom: sectionMargin(6),
     [theme.breakpoints.down('md')]: {
-      marginBottom: sectionMargin(6)
+      marginBottom: sectionMargin(4)
     }
   },
   spaceTop: {
-    marginTop: sectionMargin(theme.spacing(1)),
+    marginTop: sectionMargin(6),
     [theme.breakpoints.down('md')]: {
-      marginTop: sectionMargin(6)
+      marginTop: sectionMargin(4)
     }
   },
   spaceBottomShort: {
-    marginBottom: sectionMargin(theme.spacing(1) / 2)
+    marginBottom: sectionMargin(4)
   },
   spaceTopShort: {
-    marginTop: sectionMargin(theme.spacing(1) / 2)
+    marginTop: sectionMargin(4)
   },
   containerWrap: {
     marginTop: theme.spacing(5),

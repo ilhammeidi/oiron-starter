@@ -28,7 +28,7 @@ export default function NewsCard(props) {
         <CardContent className={classes.desc}>
           <div className={classes.text}>
             <Typography variant="caption" className={classes.title}>{headline}</Typography>
-            <Typography display="block" variant="h6">{title}</Typography>
+            <Typography display="block" noWrap variant="h6">{title}</Typography>
           </div>
         </CardContent>
         <CardActions>

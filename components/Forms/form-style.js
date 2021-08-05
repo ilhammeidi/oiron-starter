@@ -235,6 +235,7 @@ const contactStyles = makeStyles(theme => ({
     height: 745,
     [theme.breakpoints.down('sm')]: {
       height: '300px !important',
+      marginTop: theme.spacing(5)
     },
     [theme.breakpoints.up('md')]: {
       borderRadius: '0 12px 12px 0 !important',

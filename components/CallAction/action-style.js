@@ -4,6 +4,9 @@ import { lighten, darken } from '@material-ui/core/styles/colorManipulator';
 const useStyles = makeStyles(theme => ({
   root: {
     position: 'relative',
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center'
+    }
   },
   background: {
     fill: theme.palette.type === 'dark' ? darken(theme.palette.primary.light, 0.8) : lighten(theme.palette.primary.light, 0.8),
@@ -15,13 +18,14 @@ const useStyles = makeStyles(theme => ({
     transform: 'scale(3)'
   },
   button: {
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('sm')]: {
       width: 240,
       height: 64,
       fontSize: 18,
     },
     [theme.breakpoints.down('sm')]: {
-      margin: '0 auto'
+      margin: '0 auto',
+      width: '100%'
     }
   },
   paper: {

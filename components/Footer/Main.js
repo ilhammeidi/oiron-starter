@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import uiState from '~/theme/reducer';
+import uiState from '~/theme/config';
 import SiteMap from './SiteMap';
 import Blog from './Blog';
 import Contact from './Contact';

@@ -12,7 +12,7 @@ function TeamGrid() {
     <Box py={5}>
       <Grid container spacing={5} className={classes.teamRoot}>
         {[...Array(9)].map((e, index) => (
-          <Grid item key={index.toString()} md={4}>
+          <Grid item key={index.toString()} md={4} sm={6} xs={12}>
             <ReactWOW
               animation="fadeInUp"
               duration="0.5s"

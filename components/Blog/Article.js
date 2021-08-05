@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
@@ -14,6 +16,10 @@ import useStyles from './blog-style';
 function Article(props) {
   const classes = useStyles();
   const { t } = props;
+
+  // Theme breakpoints
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up('sm'));
 
   const comments = [{
     name: 'John Doe',
@@ -90,15 +96,15 @@ function Article(props) {
             <Box mt={3}>
               <Button variant="outlined" className={classes.indigoBtn} type="button">
                 <i className="ion-social-facebook" />
-                Facebook
+                {isDesktop && 'Facebook'}
               </Button>
               <Button variant="outlined" className={classes.cyanBtn} type="button">
                 <i className="ion-social-twitter" />
-                Twitter
+                {isDesktop && 'Twitter'}
               </Button>
               <Button variant="outlined" className={classes.blueBtn} type="button">
                 <i className="ion-social-linkedin" />
-                Linkedin
+                {isDesktop && 'Linkedin'}
               </Button>
             </Box>
           </div>

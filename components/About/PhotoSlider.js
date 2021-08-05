@@ -120,7 +120,7 @@ function PhotoSlider(props) {
                   className={classes.item}
                   onClick={() => showPopup(index)}
                 >
-                  <Box px={2}>
+                  <Box px={{ sm: 1 }}>
                     <MediaCard
                       title="Sed lacinia velit, ut malesuada eros interdum a"
                       orientation="portrait"

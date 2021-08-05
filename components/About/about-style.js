@@ -132,6 +132,9 @@ const aboutStyle = makeStyles(theme => ({
     }
   },
   item: {},
+  carousel: {
+    position: 'relative',
+  },
   teamRoot: {
     '& ul[class*="slick-dots"]': {
       bottom: -55
@@ -140,15 +143,20 @@ const aboutStyle = makeStyles(theme => ({
       [theme.breakpoints.down('xs')]: {
         width: 280
       }
+    },
+    '& $carousel': {
+      '& > *': {
+        height: 160,
+      }
     }
-  },
-  carousel: {
-    position: 'relative'
   },
   nav: {
     position: 'absolute',
     top: '50%',
     fontSize: 38,
+    [theme.breakpoints.down('xs')]: {
+      display: 'none'
+    }
   },
   prev: {
     left: -30
