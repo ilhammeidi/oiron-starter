@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -22,6 +24,9 @@ function Login(props) {
     email: '',
     password: '',
   });
+  // Media query
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
@@ -50,7 +55,7 @@ function Login(props) {
     <AuthFrame title={t('common:login_subtitle')} type="login" subtitle={t('common:auth_desc')}>
       <div>
         <div className={classes.head}>
-          <h3 className={text.subtitle}>
+          <h3 className={isDesktop ? text.subtitle : text.title}>
             {t('common:login_title')}
           </h3>
         </div>

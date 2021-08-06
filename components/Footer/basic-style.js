@@ -4,9 +4,6 @@ const basicStyles = makeStyles(theme => ({
   root: {
     marginTop: theme.spacing(15),
     textAlign: 'center',
-    [theme.breakpoints.down('sm')]: {
-      paddingTop: theme.spacing(5),
-    },
     '& nav': {
       margin: theme.spacing(6, 0),
       '& ul': {

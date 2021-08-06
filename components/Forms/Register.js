@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
@@ -24,6 +26,9 @@ function Register(props) {
     password: '',
     confirmPassword: '',
   });
+  // Media query
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
@@ -53,7 +58,7 @@ function Register(props) {
     <AuthFrame title={t('common:login_subtitle')} type="register" subtitle={t('common:auth_desc')}>
       <div>
         <div className={classes.head}>
-          <h3 className={text.subtitle}>
+          <h3 className={isDesktop ? text.subtitle : text.title}>
             {t('common:login_create')}
           </h3>
         </div>

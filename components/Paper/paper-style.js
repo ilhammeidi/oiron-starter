@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   descBlock: {
     display: 'flex',
     alignItems: 'center',
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(3),
     [theme.breakpoints.down('sm')]: {
       marginBottom: theme.spacing(3),
     }

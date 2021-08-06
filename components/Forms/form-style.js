@@ -30,7 +30,12 @@ const contactStyles = makeStyles(theme => ({
   formBox: {
     overflow: 'hidden',
     background: 'transparent',
-    border: `1px solid ${theme.palette.primary.main}`,
+    [theme.breakpoints.up('md')]: {
+      border: `1px solid ${theme.palette.primary.main}`,
+    },
+    [theme.breakpoints.down('sm')]: {
+      boxShadow: 'none'
+    }
   },
   mapForm: {
     [theme.breakpoints.up('md')]: {
@@ -43,7 +48,7 @@ const contactStyles = makeStyles(theme => ({
     textAlign: 'center',
     padding: theme.spacing(0, 10),
     [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing(0, 2)
+      padding: 0
     }
   },
   form: {
@@ -75,14 +80,11 @@ const contactStyles = makeStyles(theme => ({
       display: 'flex'
     },
     [theme.breakpoints.down('sm')]: {
+      marginTop: theme.spacing(4),
       '& button': {
-        marginTop: theme.spacing(4),
+        marginBottom: theme.spacing(4),
         width: '100%'
       }
-    },
-    [theme.breakpoints.down('xs')]: {
-      marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(3)
     },
     '& span': {
       '& $link': {
@@ -140,10 +142,10 @@ const contactStyles = makeStyles(theme => ({
     }
   },
   formWrap: {
-    background: theme.palette.background.paper,
     position: 'relative',
     padding: theme.spacing(0, 1),
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
+      background: theme.palette.background.paper,
       padding: theme.spacing(5)
     }
   },

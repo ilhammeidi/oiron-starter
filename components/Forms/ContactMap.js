@@ -163,12 +163,12 @@ function ContactMap(props) {
         }}
         message={<span id="message-id">Message Sent</span>}
       />
-      <Container maxWidth="lg" className={classes.innerWrap}>
+      <div className={classes.innerWrap}>
         <Grid container alignItems="center">
           <Grid item md={6} xs={12} className={classes.wrapDeco}>
             <Paper className={clsx(classes.formBox, full ? classes.mapForm : '')}>
               <div className={classes.fullFromWrap}>
-                <div className={classes.form}>
+                <div className={!isMobile ? classes.form : ''}>
                   <h4 className={clsx(align.textCenter, text.title2)}>
                     {t('common:contact_title2')}
                   </h4>
@@ -269,7 +269,7 @@ function ContactMap(props) {
             </Paper>
           </Grid>
         </Grid>
-      </Container>
+      </div>
     </div>
   );
 }

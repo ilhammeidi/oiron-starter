@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import Hidden from '@material-ui/core/Hidden';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -15,6 +16,9 @@ import useStyles from './form-style';
 function AuthFrame(props) {
   const classes = useStyles();
   const text = useText();
+  // Media query
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
   const {
     children, title,
@@ -23,16 +27,6 @@ function AuthFrame(props) {
 
   return (
     <div className={classes.pageWrap}>
-      <Hidden mdUp>
-        <div className={clsx(classes.logo, classes.logoHeader)}>
-          <a href={routerLink.starter.home}>
-            <img src={logo} alt="logo" />
-            <Typography component="span">
-              {brand.starter.projectName}
-            </Typography>
-          </a>
-        </div>
-      </Hidden>
       <div className={classes.authFrame}>
         <Grid container spacing={4}>
           <Grid item md={6} xs={12}>
@@ -42,8 +36,8 @@ function AuthFrame(props) {
               </div>
             </Paper>
           </Grid>
-          <Grid item md={6} xs={12}>
-            <Hidden smDown>
+          {isDesktop && (
+            <Grid item md={6} xs={12}>
               <div className={classes.greeting}>
                 <h4 className={text.title2}>
                   { title }
@@ -59,8 +53,8 @@ function AuthFrame(props) {
                   )}
                 </div>
               </div>
-            </Hidden>
-          </Grid>
+            </Grid>
+          )}
         </Grid>
       </div>
     </div>
