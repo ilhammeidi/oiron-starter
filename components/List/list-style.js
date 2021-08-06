@@ -108,7 +108,27 @@ const useStyles = makeStyles(theme => ({
       }
     },
     '& > *': {
-      marginRight: theme.spacing(2)
+      marginRight: theme.spacing(2),
+      width: '100%'
+    }
+  },
+  linkArea: {
+    zIndex: 10,
+    position: 'relative',
+    display: 'flex',
+    width: '100%',
+    alignItems: 'center',
+    '& $textBtn': {
+      paddingLeft: 8,
+      paddingRight: 8,
+      color: theme.palette.type === 'dark' ? theme.palette.secondary.light : theme.palette.secondary.main,
+      '& i': {
+        fontSize: '1.3rem',
+        marginRight: 4
+      }
+    },
+    '& > *': {
+      marginRight: theme.spacing(1)
     }
   },
   zoomIcon: {
@@ -184,7 +204,7 @@ const useStyles = makeStyles(theme => ({
   },
   carousel: {
     [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(3)
+      padding: theme.spacing(3, 0)
     }
   },
   item: {
@@ -227,6 +247,7 @@ const useStyles = makeStyles(theme => ({
   scrollTablet: {
     [theme.breakpoints.down('sm')]: {
       overflow: 'auto',
+      paddingBottom: theme.spacing(2),
       flexWrap: 'nowrap'
     }
   }

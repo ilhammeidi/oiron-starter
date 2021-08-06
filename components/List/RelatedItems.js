@@ -14,8 +14,8 @@ function RelatedItems(props) {
 
   return (
     <Grid container justify="center">
-      <Grid item lg={10} md={12}>
-        <Box pt={5} pb={10}>
+      <Grid item lg={10} md={12} xs={12}>
+        <Box pt={5} px={2} pb={10}>
           <Box mb={3}>
             <h4 className={text.subtitle}>
               {t('common:list_related')}
@@ -30,7 +30,7 @@ function RelatedItems(props) {
                 sm={4}
                 xs={10}
               >
-                <Box px={2}>
+                <Box px={1}>
                   <ProductCard
                     rating={3}
                     price={20}

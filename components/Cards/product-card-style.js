@@ -60,6 +60,9 @@ const useStyles = makeStyles(theme => ({
       display: 'block',
       height: 170
     },
+    '& $property': {
+      marginTop: theme.spacing(2)
+    },
     '& $desc': {
       padding: theme.spacing(2),
       '& p': {
@@ -88,6 +91,7 @@ const useStyles = makeStyles(theme => ({
       },
       [theme.breakpoints.down('xs')]: {
         width: '65%',
+        padding: theme.spacing(2, 1),
         '& p': {
           overflow: 'hidden',
           textOverflow: 'ellipsis',

@@ -14,14 +14,14 @@ function Headline() {
   const text = useText();
   return (
     <Card className={classes.blogHeadline}>
+      <CardMedia className={classes.media} image="https://source.unsplash.com/random" />
       <CardActionArea href={link.starter.blogDetail}>
-        <CardMedia className={classes.media} image="https://source.unsplash.com/random" />
         <CardContent>
           <span className={classes.anchorContent}>
-            <span className={clsx(classes.headlineTitle, text.title)}>
+            <span className={clsx(classes.headlineTitle, text.title2)}>
               Pellentesque habitant morbi tristique senectus Proin pretium arcu eget.
             </span>
-            <span className={clsx(classes.subtitle, text.subtitle)}>
+            <span className={clsx(classes.subtitle, text.subtitle2)}>
               {"Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this posts contents."}
             </span>
           </span>

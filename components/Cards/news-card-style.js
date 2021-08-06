@@ -37,6 +37,7 @@ const cardsStyles = makeStyles(theme => ({
     textTransform: 'uppercase',
     color: theme.palette.text.secondary,
   },
+  properties: {},
   btn: {
     marginTop: theme.spacing(1),
     color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
@@ -44,10 +45,6 @@ const cardsStyles = makeStyles(theme => ({
   /* Orientation */
   landscape: {
     marginBottom: theme.spacing(5),
-    flexDirection: 'row',
-    [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column',
-    },
     '& $figure': {
       minWidth: 150,
       maxWidth: 200
@@ -63,6 +60,9 @@ const cardsStyles = makeStyles(theme => ({
         marginTop: -200,
         padding: theme.spacing(3, 1),
       }
+    },
+    '& $properties': {
+      overflow: 'hidden'
     },
     '& $properties': {
       overflow: 'hidden'

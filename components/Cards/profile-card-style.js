@@ -132,11 +132,6 @@ const useStyles = makeStyles(theme => ({
             }
           }
         },
-        '& > *:nth-child(1)': {
-          [theme.breakpoints.down('sm')]: {
-            display: 'none'
-          }
-        }
       }
     },
     '& $buttonProfile': {

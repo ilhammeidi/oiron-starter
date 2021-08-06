@@ -80,6 +80,16 @@ export const useSpacing = makeStyles(theme => ({
   }
 }));
 
+export const usePopup = makeStyles(theme => ({
+  appBar: {
+    position: 'relative',
+  },
+  title: {
+    marginLeft: theme.spacing(2),
+    flex: 1,
+  },
+}));
+
 export const useTextAlign = makeStyles({
   textCenter: {
     textAlign: 'center'

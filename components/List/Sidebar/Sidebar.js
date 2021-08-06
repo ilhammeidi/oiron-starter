@@ -9,7 +9,7 @@ import HelperWidget from './HelperWidget';
 
 function Sidebar() {
   return (
-    <Box mt={15}>
+    <Box>
       <ProductWidget />
       <Box py={3} />
       <PeopleWidget />

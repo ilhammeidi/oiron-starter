@@ -18,7 +18,7 @@ function Description(props) {
       <Grid item lg={10} md={12}>
         <div className={classes.about}>
           <Grid container spacing={6}>
-            <Grid item md={7} xs={12}>
+            <Grid item sm={7} xs={12}>
               <Box mb={3}>
                 <Typography variant="h4" className={text.subtitle}>
                   {t('common:list_desc')}
@@ -30,7 +30,7 @@ function Description(props) {
               <Typography>
                 Pellentesque ullamcorper aliquet ultrices. Aenean facilisis vitae purus facilisis semper. Nam vitae scelerisque lorem, quis tempus libero. Proin varius, tortor faucibus tempor pharetra, nunc mi consectetur enim, nec posuere ante magna vitae quam.
               </Typography>
-              <div className={classes.btnArea}>
+              <div className={classes.linkArea}>
                 <Button className={classes.textBtn} color="secondary">
                   <i className="ion-android-share-alt" />
                   Share
@@ -45,7 +45,7 @@ function Description(props) {
                 </Button>
               </div>
             </Grid>
-            <Grid item md={5} xs={12}>
+            <Grid item sm={5} xs={12}>
               <div className={classes.person}>
                 <Typography variant="h6">
                   Property 1

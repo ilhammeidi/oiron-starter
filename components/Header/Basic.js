@@ -15,7 +15,10 @@ import useStyles from './header-style';
 function Basic(props) {
   const [fixed, setFixed] = useState(false);
   const classes = useStyles();
+  // Media QUery
   const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+
   const {
     onToggleDark,
     onToggleDir,
@@ -23,7 +26,6 @@ function Basic(props) {
     text,
     href
   } = props;
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   let flagFixed = false;
 
   const handleScroll = () => {

@@ -10,7 +10,7 @@ const sidenavStyles = makeStyles(theme => ({
   },
   mobileNav: {
     background: theme.palette.background.paper,
-    padding: theme.spacing(10, 0, 3),
+    padding: '100px 0 24px',
   },
   sideMultilv: {
     padding: theme.spacing(3, 2, 0),

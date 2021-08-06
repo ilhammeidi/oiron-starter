@@ -48,9 +48,9 @@ function Group(props) {
   return (
     <Grid container spacing={6} justify="center">
       <Grid item lg={10} md={12}>
-        <Box pa={6}>
+        <Box pa={6} px={2}>
           <Grid container spacing={4}>
-            <Grid item md={8} cols={12}>
+            <Grid item sm={8} cols={12}>
               <Box mb={3}>
                 <h4 className={clsx(text.subtitle, text.capitalize)}>
                   {t('common:list_comments')}
@@ -70,7 +70,7 @@ function Group(props) {
                 ))}
               </List>
             </Grid>
-            <Grid item md={4}>
+            <Grid item sm={4}>
               <Help />
             </Grid>
           </Grid>

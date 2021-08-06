@@ -22,7 +22,9 @@ const cardsStyles = makeStyles(theme => ({
     height: '100%'
   },
   action: {
-    padding: theme.spacing(0, 3, 2)
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(0, 3, 2)
+    }
   },
   desc: {
     whiteSpace: 'initial',
@@ -106,6 +108,9 @@ const cardsStyles = makeStyles(theme => ({
     flexDirection: 'column',
     '& $figure': {
       height: 200,
+    },
+    '& $btn': {
+      width: '100%'
     }
   },
   /* Type */

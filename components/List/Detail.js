@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -18,6 +20,9 @@ function Detail(props) {
   const classes = useStyles();
   const text = useText();
   const [loaded, setLoaded] = useState(false);
+  // Media QUery
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
   const { t } = props;
 
@@ -70,8 +75,8 @@ function Detail(props) {
           onMoveNextRequest={onMoveNextRequest}
         />
       )}
-      <Grid container spacing={6} justify="center">
-        <Grid item lg={4} md={6} sm={5} xs={12}>
+      <Grid container spacing={isDesktop ? 6 : 2} justify="center">
+        <Grid item lg={4} md={5} sm={5} xs={12}>
           <div className={classes.carouselWrap}>
             {loaded && (
               <div className={classes.carousel}>
@@ -94,8 +99,8 @@ function Detail(props) {
             )}
           </div>
         </Grid>
-        <Grid item lg={6} md={10} sm={7} xs={12}>
-          <Box px={1} py={6}>
+        <Grid item lg={6} md={7} sm={7} xs={12}>
+          <Box px={2} py={6}>
             <div className={classes.text}>
               <Typography variant="h4">
                 <span className={text.subtitle2}>

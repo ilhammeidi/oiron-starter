@@ -26,7 +26,7 @@ function HelperWidget(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button fullWidth variant="outlined">
+        <Button fullWidth color="primary" size="large" variant="outlined">
           {t('common:faq_luck_btn')}
         </Button>
       </CardActions>

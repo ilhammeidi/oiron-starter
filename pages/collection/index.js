@@ -43,7 +43,7 @@ function Collection(props) {
             <Container>
               <Grid container spacing={3} alignItems="flex-start" justify="center" spacing={3}>
                 <Grid item md={8} xs={12}>
-                  <div id="profile_p" className={classes.spaceTopShort}>
+                  <div id="profile_p">
                     <Box mb={3}>
                       <h4 className={text.subtitle}>
                         Profile Cards Portrait
@@ -74,7 +74,7 @@ function Collection(props) {
                     </Box>
                     <Grid container>
                       {[...Array(3)].map((e, index) => (
-                        <Grid key={index.toString()} item md={12}>
+                        <Grid key={index.toString()} item md={12} xs={12}>
                           <ProfileCards
                             connection={100}
                             favorites={10}
@@ -121,7 +121,7 @@ function Collection(props) {
                     </Box>
                     <Grid container>
                       {[...Array(3)].map((e, index) => (
-                        <Grid key={index.toString()} item md={12}>
+                        <Grid key={index.toString()} item md={12} xs={12}>
                           <Box mb={3}>
                             <ProductCards
                               rating={3}
@@ -208,7 +208,7 @@ function Collection(props) {
                     </Box>
                     <Grid container>
                       {[...Array(3)].map((e, index) => (
-                        <Grid key={index.toString()} item md={12}>
+                        <Grid key={index.toString()} item md={12} xs={12}>
                           <NewsCard
                             title="Ut sed eros finibus, placerat orci id, dapibus mauris. Vestibulum consequat hendrerit lacus."
                             headline="news"
@@ -251,7 +251,7 @@ function Collection(props) {
                     </Box>
                     <Grid container>
                       {[...Array(3)].map((e, index) => (
-                        <Grid key={index.toString()} item md={12}>
+                        <Grid key={index.toString()} item md={12} xs={12}>
                           <PostCard
                             title="Maecenas rutrum dolor sed nisi"
                             date="12 Nov 2021"
@@ -266,7 +266,7 @@ function Collection(props) {
                     </Grid>
                   </div>
                 </Grid>
-                <Grid item md={3} xs={12}>
+                <Grid item lg={3} md={4} xs={12}>
                   <Sidebar />
                 </Grid>
               </Grid>

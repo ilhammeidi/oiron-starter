@@ -15,6 +15,9 @@ const filterStyles = makeStyles(theme => ({
     alignItems: 'center',
     backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
   },
+  btnFilter: {
+    marginRight: theme.spacing(1)
+  },
   searchIcon: {},
   search: {
     position: 'relative',
@@ -64,10 +67,13 @@ const filterStyles = makeStyles(theme => ({
     textAlign: 'left',
   },
   select: {
-    width: 200,
     display: 'block',
     textAlign: 'left',
-    marginLeft: theme.spacing(2)
+    marginLeft: theme.spacing(2),
+    width: 200,
+    [theme.breakpoints.down('xs')]: {
+      width: 160
+    }
   },
   switchView: {
     '& button': {

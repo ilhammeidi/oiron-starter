@@ -112,16 +112,12 @@ const useStyles = makeStyles(theme => ({
   subtitle: {},
   blogHeadline: {
     cursor: 'pointer',
-    '& > *': {
-      [theme.breakpoints.down('xs')]: {
-        height: 'auto'
-      }
+    position: 'relative',
+    [theme.breakpoints.down('sm')]: {
+      height: 460,
+      alignItems: 'flex-end',
+      display: 'flex'
     },
-    '& $subtitle': {
-      [theme.breakpoints.down('xs')]: {
-        display: 'none'
-      }
-    }
   },
   anchorContent: {
     display: 'block',
@@ -129,6 +125,9 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     position: 'relative',
     zIndex: 1,
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(5)
+    },
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(10)
     }
