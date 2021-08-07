@@ -71,7 +71,7 @@ function Pricing(props) {
         {t('common:pricing_desc')}
       </p>
       <div className={classes.pricingWrap}>
-        <Grid container spacing={5} alignItems="flex-end">
+        <Grid container spacing={3} alignItems="flex-end">
           {tiers.map(tier => (
             // Enterprise card is full width at sm breakpoint
             <Grid item key={tier.title} xs={12} sm={6} md={3}>

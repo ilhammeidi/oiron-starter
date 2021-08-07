@@ -12,7 +12,6 @@ import Settings from '@material-ui/icons/SettingsApplications';
 import Warning from '@material-ui/icons/Warning';
 import { withTranslation } from '~/i18n';
 import { useSpacing, useTextAlign, useText } from '../../theme/common';
-import Header from '../../components/Header';
 import brand from '../../public/text/brand';
 
 function Maintenance(props) {
@@ -20,8 +19,6 @@ function Maintenance(props) {
   const align = useTextAlign();
   const text = useText();
   const { t } = props;
-  
-  const { onToggleDark, onToggleDir } = props;
 
   return (
     <Fragment>
@@ -34,7 +31,7 @@ function Maintenance(props) {
       <CssBaseline />
       <Container maxWidth="md">
         <div className={classes.fullScreenContainer}>
-          <Grid container alignItems="center">
+          <Grid container alignItems="center" justify="center">
             <Grid item md={12} className={align.textCenter}>
               <Box display="flex" justifyContent="center">
                 <Avatar className={classes.maintenanceIcon}><Build /></Avatar>
@@ -66,9 +63,7 @@ Maintenance.getInitialProps = async () => ({
 });
 
 Maintenance.propTypes = {
-  t: PropTypes.func.isRequired,
-  onToggleDark: PropTypes.func.isRequired,
-  onToggleDir: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired
 };
 
-export default withTranslation(['common'])(Maintenance);;
+export default withTranslation(['common'])(Maintenance);

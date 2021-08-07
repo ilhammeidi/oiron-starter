@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     zIndex: 1,
     padding: theme.spacing(20, 0, 5),
     [theme.breakpoints.down('sm')]: {
-      margin: theme.spacing(20, 0)
+      padding: theme.spacing(15, 0)
     }
   },
   flex: {

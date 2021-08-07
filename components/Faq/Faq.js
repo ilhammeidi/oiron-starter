@@ -56,7 +56,7 @@ function Faq(props) {
         <Grid container spacing={6}>
           <Grid item md={6}>
             <Box mb={3}>
-              <h4 className={clsx(text.title2, isMobile ? text.textCenter : '')}>
+              <h4 className={clsx(text.title2, isMobile ? align.textCenter : '')}>
                 {t('common:faq_title')}
               </h4>
             </Box>

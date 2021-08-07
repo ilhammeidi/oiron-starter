@@ -47,7 +47,7 @@ function MainFeature() {
           </div>
         </Grid>
       </Grid>
-      <Grid container direction={isTablet && 'column-reverse'} className={classes.featureItem} spacing={6}>
+      <Grid container direction={isTablet ? 'column-reverse' : 'row'} className={classes.featureItem} spacing={6}>
         <Grid md={6} xs={12} item>
           <div>
             <ReactWOW animation="zoomIn" delay="0.3s" duration="0.6s">

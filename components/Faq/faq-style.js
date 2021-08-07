@@ -10,9 +10,6 @@ const faqStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       paddingTop: theme.spacing(3),
     },
-    [theme.breakpoints.down('sm')]: {
-      paddingBottom: theme.spacing(10),
-    }
   },
   content: {
     '& $icon': {
@@ -30,12 +27,17 @@ const faqStyles = makeStyles(theme => ({
       margin: '0 auto'
     }
   },
-  accordion: {
-    position: 'relative',
-    zIndex: 1
-  },
   item: {
     marginBottom: theme.spacing(3),
+  },
+  accordion: {
+    position: 'relative',
+    zIndex: 1,
+    '& $item': {
+      '&:last-child': {
+        marginBottom: 0
+      }
+    }
   },
   paper: {
     borderRadius: `${theme.rounded.medium} !important`,

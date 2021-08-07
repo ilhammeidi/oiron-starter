@@ -45,7 +45,7 @@ function ComingSoon(props) {
       <Container maxWidth="md">
         <div className={classes.fullScreenContainer}>
           <Grid container alignItems="center" align="center">
-            <Grid item md={12} className={align.textCenter}>
+            <Grid item md={12} xs={12} className={align.textCenter}>
               <Box
                 className={classes.logo}
                 display="flex"
@@ -75,7 +75,7 @@ function ComingSoon(props) {
                             id="standard-adornment-password"
                             value={email}
                             onChange={handleChange}
-                            endAdornment={
+                            endAdornment={(
                               <Button
                                 variant="outlined"
                                 color="secondary"
@@ -85,7 +85,7 @@ function ComingSoon(props) {
                               >
                                 {t('common:util_notif')}
                               </Button>
-                            }
+                            )}
                           />
                         </FormControl>
                       </Grid>

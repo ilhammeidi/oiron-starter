@@ -69,9 +69,6 @@ export const useSpacing = makeStyles(theme => ({
     height: 100,
     '& svg': {
       fontSize: 64,
-      [theme.breakpoints.down('xs')]: {
-        fontSize: 16
-      }
     },
   },
   btnNotify: {

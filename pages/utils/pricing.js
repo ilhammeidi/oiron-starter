@@ -30,16 +30,14 @@ function ContactPage(props) {
           onToggleDark={onToggleDark}
           onToggleDir={onToggleDir}
         />
-        <Container>
-          <div className={classes.containerGeneral}>
-            <Box mt={{ sm: 3 }}>
-              <Pricing />
-            </Box>
-            <div className={classes.spaceTopShort}>
-              <Faq />
-            </div>
+        <div className={classes.containerGeneral}>
+          <Box mt={{ sm: 3 }}>
+            <Pricing />
+          </Box>
+          <div className={classes.spaceTopShort}>
+            <Faq />
           </div>
-        </Container>
+        </div>
         <Footer toggleDir={onToggleDir} />
       </div>
     </Fragment>
