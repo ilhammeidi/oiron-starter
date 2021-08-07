@@ -43,7 +43,7 @@ class CheckboxValidatorElement extends ValidatorComponent {
     } = this.props;
 
     return (
-      <div>
+      <span>
         <Checkbox
           value={value}
           checked={checked}
@@ -51,7 +51,7 @@ class CheckboxValidatorElement extends ValidatorComponent {
           ref={(r) => { this.input = r; }}
         />
         {this.errorText()}
-      </div>
+      </span>
     );
   }
 }

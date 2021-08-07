@@ -116,7 +116,7 @@ function Article(props) {
           <Box mt={3}>
             <CommentForm />
           </Box>
-          <List>
+          <List component="div">
             {comments.map((item, index) => (
               <Item
                 key={index.toString()}

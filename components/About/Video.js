@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import YouTube from 'react-youtube';
-import ButtonBase from '@material-ui/core/ButtonBase';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
@@ -88,14 +87,13 @@ function Video() {
       <p className={text.subtitle2}>
         Proin scelerisque sapien at enim faucibus, ut scelerisque urna consequat. In porttitor congue libero
       </p>
-      <ButtonBase onClick={() => handleClickOpen()}>
-        <MediaCard
-          title="Sed lacinia velit, ut malesuada eros interdum a"
-          orientation="landscape"
-          type="video"
-          thumb="https://source.unsplash.com/random"
-        />
-      </ButtonBase>
+      <MediaCard
+        title="Sed lacinia velit, ut malesuada eros interdum a"
+        orientation="landscape"
+        type="video"
+        thumb="https://source.unsplash.com/random"
+        action={() => handleClickOpen()}
+      />
     </div>
   );
 }

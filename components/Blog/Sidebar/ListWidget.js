@@ -26,7 +26,7 @@ function ListWidget(props) {
   return (
     <Paper title={t('common:blog_archived')} icon="ion-folder" whiteBg desc="">
       <div className={classes.albumRoot}>
-        <List>
+        <List component="nav">
           {periode.map((item, index) => (
             <ListItem key={index.toString()} button>
               <ListItemText primary={item} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import ListItem from '@material-ui/core/ListItem';
@@ -19,8 +19,8 @@ function Item(props) {
   const classes = useStyles();
 
   return (
-    <div>
-      <ListItem className={classes.commentList}>
+    <Fragment>
+      <ListItem component="div" className={classes.commentList}>
         <Avatar alt="avatar" src={avatar !== '' ? avatar : avatarDefault} className={classes.avatarComment} />
         <div className={classes.comment}>
           <section>
@@ -31,7 +31,7 @@ function Item(props) {
         </div>
       </ListItem>
       {!last && <Divider className={classes.divider} />}
-    </div>
+    </Fragment>
   );
 }
 

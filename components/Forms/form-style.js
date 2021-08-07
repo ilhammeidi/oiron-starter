@@ -22,6 +22,9 @@ const contactStyles = makeStyles(theme => ({
       }
     }
   },
+  innerWrap: {
+    margin: theme.spacing(0, 2)
+  },
   fullFormWrap: {
     paddingTop: theme.spacing(8),
     [theme.breakpoints.down('xs')]: {
@@ -51,6 +54,9 @@ const contactStyles = makeStyles(theme => ({
     [theme.breakpoints.down('xs')]: {
       padding: 0
     }
+  },
+  checkArea: {
+    position: 'relative'
   },
   form: {
     position: 'relative',

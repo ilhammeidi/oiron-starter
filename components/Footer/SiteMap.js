@@ -17,10 +17,6 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
 import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
-import FacebookIcon from 'react-ionicons/lib/LogoFacebook';
-import TwitterIcon from 'react-ionicons/lib/LogoTwitter';
-import InstagramIcon from 'react-ionicons/lib/LogoInstagram';
-import LinkedinIcon from 'react-ionicons/lib/LogoLinkedin';
 import { i18n, withTranslation } from '~/i18n';
 import logo from '~/public/images/logo-starter.svg';
 import brand from '~/public/text/brand';
@@ -162,17 +158,17 @@ function Footer(props) {
         </Grid>
         <Grid item xs={12} md={3}>
           <div className={classes.socmed}>
-            <IconButton aria-label="Delete" className={classes.margin} size="small">
-              <FacebookIcon fontSize="64" />
+            <IconButton aria-label="FB" className={classes.margin} size="small">
+              <i className="ion-social-twitter" />
             </IconButton>
-            <IconButton aria-label="Delete" className={classes.margin} size="small">
-              <TwitterIcon fontSize="64px" />
+            <IconButton aria-label="TW" className={classes.margin} size="small">
+              <i className="ion-social-facebook" />
             </IconButton>
-            <IconButton aria-label="Delete" className={classes.margin} size="small">
-              <InstagramIcon fontSize="64px" />
+            <IconButton aria-label="IG" className={classes.margin} size="small">
+              <i className="ion-social-instagram" />
             </IconButton>
-            <IconButton aria-label="Delete" className={classes.margin} size="small">
-              <LinkedinIcon fontSize="64px" />
+            <IconButton aria-label="LI" className={classes.margin} size="small">
+              <i className="ion-social-linkedin" />
             </IconButton>
           </div>
           <Select

@@ -57,7 +57,7 @@ function Group(props) {
                 </h4>
               </Box>
               <Form avatar="/images/avatars/pp_boy2.svg" />
-              <List className={classes.comments}>
+              <List component="div" className={classes.comments}>
                 {comments.map((item, index) => (
                   <Item
                     key={index.toString()}

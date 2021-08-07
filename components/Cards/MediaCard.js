@@ -14,10 +14,11 @@ function MediaCard(props) {
   const {
     thumb,
     title,
-    href,
     orientation,
     duration,
     type,
+    action,
+    href
   } = props;
 
   return (
@@ -30,7 +31,7 @@ function MediaCard(props) {
         </figure>
         <div className={classes.property}>
           { type === 'video' && (
-            <IconButton className={classes.playBtn} href={href}>
+            <IconButton className={classes.playBtn} onClick={action}>
               <span className="ion-ios-play" />
             </IconButton>
           )}
@@ -49,7 +50,8 @@ MediaCard.propTypes = {
   type: PropTypes.string,
   orientation: PropTypes.string,
   duration: PropTypes.string,
-  href: PropTypes.string
+  href: PropTypes.string,
+  action: PropTypes.func,
 };
 
 MediaCard.defaultProps = {
@@ -57,6 +59,7 @@ MediaCard.defaultProps = {
   type: 'video',
   orientation: 'portrait',
   href: '#',
+  action: () => {}
 };
 
 export default MediaCard;

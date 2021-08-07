@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -162,111 +163,113 @@ function ContactMap(props) {
         message={<span id="message-id">Message Sent</span>}
       />
       <div className={classes.innerWrap}>
-        <Grid container alignItems="center">
-          <Grid item md={6} xs={12} className={classes.wrapDeco}>
-            <Paper className={clsx(classes.formBox, full ? classes.mapForm : '')}>
-              <div className={classes.fullFromWrap}>
-                <div className={!isMobile ? classes.form : ''}>
-                  <h4 className={clsx(align.textCenter, text.title2)}>
-                    {t('common:contact_title2')}
-                  </h4>
-                  <p className={clsx(align.textCenter, text.subtitle2)}>
-                    {t('common:contact_subtitle')}
-                  </p>
-                  <ValidatorForm
-                    onSubmit={handleSubmit}
-                    onError={errors => console.log(errors)}
-                  >
-                    <Box py={3}>
-                      <Grid container spacing={6}>
-                        <Grid item xs={12}>
-                          <TextValidator
-                            className={classes.input}
-                            fullWidth
-                            label={t('common:form_name')}
-                            onChange={handleChange('name')}
-                            name="Name"
-                            value={values.name}
-                            validators={['required']}
-                            errorMessages={['This field is required']}
-                          />
+        <Container>
+          <Grid container alignItems="center">
+            <Grid item md={6} xs={12} className={classes.wrapDeco}>
+              <Paper className={clsx(classes.formBox, full ? classes.mapForm : '')}>
+                <div className={classes.fullFromWrap}>
+                  <div className={!isMobile ? classes.form : ''}>
+                    <h4 className={clsx(align.textCenter, text.title2)}>
+                      {t('common:contact_title2')}
+                    </h4>
+                    <p className={clsx(align.textCenter, text.subtitle2)}>
+                      {t('common:contact_subtitle')}
+                    </p>
+                    <ValidatorForm
+                      onSubmit={handleSubmit}
+                      onError={errors => console.log(errors)}
+                    >
+                      <Box py={3}>
+                        <Grid container spacing={6}>
+                          <Grid item xs={12}>
+                            <TextValidator
+                              className={classes.input}
+                              fullWidth
+                              label={t('common:form_name')}
+                              onChange={handleChange('name')}
+                              name="Name"
+                              value={values.name}
+                              validators={['required']}
+                              errorMessages={['This field is required']}
+                            />
+                          </Grid>
+                          <Grid item xs={12}>
+                            <TextValidator
+                              className={classes.input}
+                              fullWidth
+                              label={t('common:form_email')}
+                              onChange={handleChange('email')}
+                              name="Email"
+                              value={values.email}
+                              validators={['required', 'isEmail']}
+                              errorMessages={['This field is required', 'email is not valid']}
+                            />
+                          </Grid>
+                          <Grid item xs={12}>
+                            <TextValidator
+                              className={classes.input}
+                              fullWidth
+                              label={t('common:form_phone')}
+                              onChange={handleChange('phone')}
+                              name="Phone"
+                              value={values.phone}
+                            />
+                          </Grid>
+                          <Grid item xs={12}>
+                            <TextValidator
+                              multiline
+                              rows="6"
+                              fullWidth
+                              className={classes.input}
+                              label={t('common:form_message')}
+                              onChange={handleChange('message')}
+                              name="Message"
+                              value={values.message}
+                            />
+                          </Grid>
                         </Grid>
-                        <Grid item xs={12}>
-                          <TextValidator
-                            className={classes.input}
-                            fullWidth
-                            label={t('common:form_email')}
-                            onChange={handleChange('email')}
-                            name="Email"
-                            value={values.email}
-                            validators={['required', 'isEmail']}
-                            errorMessages={['This field is required', 'email is not valid']}
+                      </Box>
+                      <FormControlLabel
+                        className={classes.checkArea}
+                        control={(
+                          <Checkbox
+                            validators={['isTruthy']}
+                            errorMessages="This field is required"
+                            checked={check}
+                            value={check}
+                            onChange={(e) => handleCheck(e)}
+                            color="primary"
                           />
-                        </Grid>
-                        <Grid item xs={12}>
-                          <TextValidator
-                            className={classes.input}
-                            fullWidth
-                            label={t('common:form_phone')}
-                            onChange={handleChange('phone')}
-                            name="Phone"
-                            value={values.phone}
-                          />
-                        </Grid>
-                        <Grid item xs={12}>
-                          <TextValidator
-                            multiline
-                            rows="6"
-                            fullWidth
-                            className={classes.input}
-                            label={t('common:form_message')}
-                            onChange={handleChange('message')}
-                            name="Message"
-                            value={values.message}
-                          />
-                        </Grid>
-                      </Grid>
-                    </Box>
-                    <FormControlLabel
-                      className={classes.checkArea}
-                      control={(
-                        <Checkbox
-                          validators={['isTruthy']}
-                          errorMessages="This field is required"
-                          checked={check}
-                          value={check}
-                          onChange={(e) => handleCheck(e)}
-                          color="primary"
-                        />
-                      )}
-                      label={(
-                        <span className={text.paragraph}>
-                          {t('common:form_terms')}
-                          <br />
-                          <a href="#">
-                            {t('common:form_privacy')}
-                          </a>
-                        </span>
-                      )}
-                    />
-                    <div className={classes.btnArea}>
-                      <Button variant="contained" fullWidth type="submit" color="primary" size="large">
-                        {t('common:form_send')}
-                        &nbsp;
-                        <SendIcon className={classes.rightIcon} />
-                      </Button>
-                    </div>
-                  </ValidatorForm>
+                        )}
+                        label={(
+                          <span className={text.paragraph}>
+                            {t('common:form_terms')}
+                            <br />
+                            <a href="#">
+                              {t('common:form_privacy')}
+                            </a>
+                          </span>
+                        )}
+                      />
+                      <div className={classes.btnArea}>
+                        <Button variant="contained" fullWidth type="submit" color="primary" size="large">
+                          {t('common:form_send')}
+                          &nbsp;
+                          <SendIcon className={classes.rightIcon} />
+                        </Button>
+                      </div>
+                    </ValidatorForm>
+                  </div>
                 </div>
-              </div>
-            </Paper>
+              </Paper>
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <Paper className={clsx(classes.map, full ? classes.full : '')} elevation={0}>
+                <MapWithAMarker />
+              </Paper>
+            </Grid>
           </Grid>
-          <Grid item md={6} xs={12}>
-            <Paper className={clsx(classes.map, full ? classes.full : '')} elevation={0}>
-              <MapWithAMarker />
-            </Paper>
-          </Grid>
-        </Grid>
+        </Container>
       </div>
     </div>
   );

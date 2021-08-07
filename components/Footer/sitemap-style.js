@@ -72,8 +72,9 @@ const footerStyles = makeStyles(theme => ({
       background: theme.palette.divider,
       width: 36,
       height: 36,
-      '& svg': {
-        fill: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+      lineHeight: '36px',
+      '& i': {
+        color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
       }
     },
     '& svg': {

@@ -4,9 +4,9 @@ import clsx from 'clsx';
 import CountUp from 'react-countup';
 import ReactWOW from 'react-wow';
 import Typography from '@material-ui/core/Typography';
-import IosLeafOutline from 'react-ionicons/lib/IosLeafOutline';
-import IosBulbOutline from 'react-ionicons/lib/IosBulbOutline';
-import IosIonitronOutline from 'react-ionicons/lib/IosIonitronOutline';
+import AcUnitIcon from '@material-ui/icons/AcUnit';
+import ColorLensIcon from '@material-ui/icons/ColorLens';
+import EcoIcon from '@material-ui/icons/Eco';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import useStyles from './counter-style';
@@ -30,7 +30,7 @@ function Counter(props) {
           <Grid md={4} item>
             <ReactWOW animation="fadeIn" offset={300} callback={handlePlay}>
               <div className={classes.counterItem}>
-                <IosLeafOutline />
+                <AcUnitIcon />
                 <div className={classes.text}>
                   <Typography variant="h4">
                     {countup(123, play)}
@@ -44,7 +44,7 @@ function Counter(props) {
           </Grid>
           <Grid md={4} item>
             <div className={classes.counterItem}>
-              <IosBulbOutline />
+              <ColorLensIcon />
               <div className={classes.text}>
                 <Typography variant="h4">
                   {countup(456, play)}
@@ -57,7 +57,7 @@ function Counter(props) {
           </Grid>
           <Grid md={4} item>
             <div className={classes.counterItem}>
-              <IosIonitronOutline />
+              <EcoIcon />
               <div className={classes.text}>
                 <Typography variant="h4">
                   {countup(789, play)}
