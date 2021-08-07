@@ -67,7 +67,7 @@ function MixedNav(props) {
               {t('starter-landing:header_' + item.name)}
             </Button>
           ) : (
-            <Button href={ '/' + item.url}>
+            <Button href={'/' + item.url}>
               {t('starter-landing:header_' + item.name)}
             </Button>
           )}
@@ -98,7 +98,7 @@ function MixedNav(props) {
                 <Paper className={classes.megaMenu}>
                   <ClickAwayListener onClickAway={close}>
                     <Container maxWidth="md">
-                      <Grid container>
+                      <Grid container spacing={1}>
                         {menuSecondary.map((subitem, index) => (
                           <Grid item sm={3} key={index.toString()}>
                             <ListSubheader disableSticky component="div" className={classes.titleMega}>
@@ -150,7 +150,7 @@ MixedNav.propTypes = {
 
 MixedNav.defaultProps = {
   singleNav: false
-}
+};
 
 MixedNav.getInitialProps = async () => ({
   namespacesRequired: ['common', 'starter-landing'],

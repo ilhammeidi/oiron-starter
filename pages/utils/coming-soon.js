@@ -9,7 +9,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import clsx from 'clsx';
 import Head from 'next/head';
 import { withTranslation } from '~/i18n';
 import FacebookIcon from '@material-ui/icons/Facebook';
@@ -27,7 +26,6 @@ function ComingSoon(props) {
   const { t } = props;
 
   const [email, setEmail] = useState('');
-  const { onToggleDark, onToggleDir } = props;
 
   const handleChange = event => {
     setEmail(event.target.value);
@@ -42,7 +40,7 @@ function ComingSoon(props) {
         </title>
       </Head>
       <CssBaseline />
-      <Container maxWidth="md">
+      <Container maxWidth="sm">
         <div className={classes.fullScreenContainer}>
           <Grid container alignItems="center" align="center">
             <Grid item md={12} xs={12} className={align.textCenter}>
@@ -113,8 +111,6 @@ ComingSoon.getInitialProps = async () => ({
 
 ComingSoon.propTypes = {
   t: PropTypes.func.isRequired,
-  onToggleDark: PropTypes.func.isRequired,
-  onToggleDir: PropTypes.func.isRequired,
 };
 
-export default withTranslation(['common'])(ComingSoon);;
+export default withTranslation(['common'])(ComingSoon);

@@ -10,7 +10,7 @@ function Corner() {
       { state.corner === 'chat' && <Chat /> }
       { state.corner === 'nav' && <PageNav /> }
     </div>
-  )
+  );
 }
 
 export default Corner;

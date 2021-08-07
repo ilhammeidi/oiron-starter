@@ -1,8 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import deepOrange from '@material-ui/core/colors/deepOrange';
-import deepPurple from '@material-ui/core/colors/deepPurple';
-import pink from '@material-ui/core/colors/pink';
-import green from '@material-ui/core/colors/green';
 
 const styles = makeStyles(theme => ({
   divider: {

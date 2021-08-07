@@ -17,7 +17,8 @@ const subscribeStyles = makeStyles(theme => ({
     marginTop: theme.spacing(3)
   },
   rightIcon: {
-    marginLeft: theme.spacing()
+    marginLeft: theme.spacing(),
+    transform: theme.direction === 'rtl' ? 'scale(-1)' : 'inherit'
   }
 }));
 

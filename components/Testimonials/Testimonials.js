@@ -2,14 +2,11 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
 import Carousel from 'react-slick';
 import useStyle from './testi-style';
-import { useTextAlign } from '~/theme/common';
 import imgAPI from '~/public/images/imgAPI';
 import { withTranslation } from '~/i18n';
-import { useText } from '~/theme/common';
-import Paper from '@material-ui/core/Paper';
+import { useText, useTextAlign } from '~/theme/common';
 import TestiCard from '../Cards/TestiCard';
 
 const testiContent = [

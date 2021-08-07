@@ -5,9 +5,7 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
@@ -65,11 +63,11 @@ function Contact(props) {
         classes={{
           anchorOriginTopRight: classes.notif
         }}
-        action={
+        action={(
           <IconButton onClick={handleClose} color="inherit" size="small">
             <CloseIcon />
           </IconButton>
-        }
+        )}
         ContentProps={{
           'aria-describedby': 'message-id',
         }}
@@ -146,7 +144,7 @@ function Contact(props) {
           </Grid>
           <div className={classes.btnArea}>
             <FormControlLabel
-              control={
+              control={(
                 <Checkbox
                   validators={['isTruthy']}
                   errorMessages="This field is required"
@@ -155,7 +153,7 @@ function Contact(props) {
                   onChange={(e) => handleCheck(e)}
                   color="primary"
                 />
-              }
+              )}
               label={(
                 <span>
                   {t('common:form_terms')}

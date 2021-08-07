@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import clsx from 'clsx';
-import { useTextAlign } from '~/theme/common'
+import { useTextAlign } from '~/theme/common';
 import { withTranslation } from '~/i18n';
 import useStyles from '../list-style';
 

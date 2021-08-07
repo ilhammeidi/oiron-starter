@@ -63,7 +63,7 @@ function Pricing(props) {
   const { t } = props;
 
   return (
-    <Container component="main">
+    <Container>
       <h3 className={clsx(text.capitalize, text.title, align.textCenter)}>
         {t('common:pricing_title')}
       </h3>

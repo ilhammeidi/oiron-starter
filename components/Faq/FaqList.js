@@ -41,7 +41,7 @@ function FaqList() {
   return (
     <div>
       {[...Array(6)].map((group, indexGroup) => (
-        <div id={'topic' + indexGroup} className={classes.accordion}>
+        <div key={indexGroup.toString()} id={'topic' + indexGroup} className={classes.accordion}>
           <Box mb={{ xs: 5, sm: 10 }}>
             <Box mb={3}>
               <h4 className={text.subtitle}>

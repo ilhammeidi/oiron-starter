@@ -22,7 +22,8 @@ const cardsStyles = makeStyles(theme => ({
     height: '100%'
   },
   action: {
-    [theme.breakpoints.up('md')]: {
+    padding: theme.spacing(0, 2, 2),
+    [theme.breakpoints.up('sm')]: {
       padding: theme.spacing(0, 3, 2)
     }
   },
@@ -110,7 +111,9 @@ const cardsStyles = makeStyles(theme => ({
       height: 200,
     },
     '& $btn': {
-      width: '100%'
+      [theme.breakpoints.down('xs')]: {
+        width: '100%'
+      }
     }
   },
   /* Type */

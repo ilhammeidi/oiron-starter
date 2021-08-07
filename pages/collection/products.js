@@ -33,7 +33,7 @@ const checkAll = [
   'check-f'
 ];
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+const Transition = React.forwardRef(function Transition(props, ref) { // eslint-disable-line
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
@@ -45,7 +45,7 @@ function Products(props) {
   const isDesktop = useMediaQuery(theme => theme.breakpoints.up('md'));
 
   const [openFilter, setOpenFilter] = useState(false);
-  
+
   const [toggleView, setView] = useState('grid');
   const [keyword, setKeyword] = useState('');
   const [category, setCategory] = useState('all');

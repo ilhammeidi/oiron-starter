@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import clsx from 'clsx';
@@ -38,12 +37,12 @@ function Faq(props) {
         <div className={classes.containerWrap}>
           <div className={clsx(classes.containerGeneral, classes.spaceTopShort)}>
             <Grid spacing={3} justify="center" container>
-              <Grid md={6} xs={12}>
+              <Grid item md={6} xs={12}>
                 <Box px={3}>
                   <FaqList />
                 </Box>
               </Grid>
-              <Grid md={4} xs={12}>
+              <Grid item md={4} xs={12}>
                 <Box px={3}>
                   <div className={classes.spaceBottomShort}>
                     <TopicList />

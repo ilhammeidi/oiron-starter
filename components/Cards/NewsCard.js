@@ -7,17 +7,19 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
+import { withTranslation } from '~/i18n';
 import Box from '@material-ui/core/Box';
 import useStyles from './news-card-style';
 
-export default function NewsCard(props) {
+function NewsCard(props) {
   const classes = useStyles();
   const {
     headline,
     title,
     img,
     orientation,
-    type
+    type,
+    t
   } = props;
   return (
     <Card className={clsx(classes.newsCard, classes[orientation], classes[type])}>
@@ -33,7 +35,9 @@ export default function NewsCard(props) {
         </CardContent>
         <CardActions>
           {type === 'portrait' && <Box p={1} flexGrow={1} />}
-          <Button className={classes.btn}>Read more</Button>
+          <Button className={classes.btn}>
+            {t('common:btn_read_more')}
+          </Button>
         </CardActions>
       </div>
     </Card>
@@ -46,9 +50,12 @@ NewsCard.propTypes = {
   img: PropTypes.string.isRequired,
   orientation: PropTypes.string,
   type: PropTypes.string,
+  t: PropTypes.func.isRequired
 };
 
 NewsCard.defaultProps = {
   orientation: 'portrait',
   type: 'full', // available props: full, rounded, over, oval
 };
+
+export default withTranslation(['common'])(NewsCard);

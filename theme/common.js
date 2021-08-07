@@ -64,7 +64,7 @@ export const useSpacing = makeStyles(theme => ({
   maintenanceIcon: {
     margin: theme.spacing(3),
     background: theme.palette.divider,
-    color: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.main,
+    color: theme.palette.primary.main,
     width: 100,
     height: 100,
     '& svg': {
@@ -72,7 +72,7 @@ export const useSpacing = makeStyles(theme => ({
     },
   },
   btnNotify: {
-    width: 120,
+    minWidth: 120,
     margin: 4
   }
 }));

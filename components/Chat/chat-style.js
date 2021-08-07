@@ -32,7 +32,6 @@ const chatStyles = makeStyles(theme => ({
     position: 'fixed',
     bottom: 40,
     right: 40,
-    textAlign: 'right',
     visibility: 'hidden',
     zIndex: -1,
     opacity: 0,
@@ -108,7 +107,7 @@ const chatStyles = makeStyles(theme => ({
   },
   from: {
     border: 'none',
-    backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light, 
+    backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     '&:before': {
       position: 'absolute',
       top: 5,
@@ -117,7 +116,7 @@ const chatStyles = makeStyles(theme => ({
       borderTop: '5px solid transparent',
       borderBottom: '10px solid transparent',
       borderRight: '5px solid',
-      borderRightColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light, 
+      borderRightColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     }
   },
   form: {

@@ -41,7 +41,7 @@ function Collection(props) {
         <section className={classes.containerWrap}>
           <div className={classes.searchContent}>
             <Container>
-              <Grid container spacing={3} alignItems="flex-start" justify="center" spacing={3}>
+              <Grid container alignItems="flex-start" justify="center" spacing={3}>
                 <Grid item md={8} xs={12}>
                   <div id="profile_p">
                     <Box mb={3}>

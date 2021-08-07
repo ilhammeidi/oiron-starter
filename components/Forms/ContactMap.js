@@ -6,10 +6,8 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Paper from '@material-ui/core/Paper';
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import SendIcon from '@material-ui/icons/Send';
 import EmailIcon from '@material-ui/icons/Email';
@@ -65,7 +63,7 @@ function MapContainer(props) {
   const [activeMarker, setActive] = useState({});
   const [showingInfoWindow, setShow] = useState(false);
   const { google } = props;
-
+  // eslint-disable-next-line
   const onMarkerClick = (props, marker) => {
     setActive(marker);
     setShow(true);

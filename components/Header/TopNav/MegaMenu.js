@@ -71,7 +71,7 @@ function MegaMenu(props) {
                 >
                   <Paper className={classes.megaMenu}>
                     <Container maxWidth="md">
-                      <Grid container>
+                      <Grid container spacing={1}>
                         {item.child.map((subitem, childIndex) => (
                           <Grid item sm={3} key={childIndex.toString()}>
                             <ListSubheader

@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import YouTube from 'react-youtube';
-import Paper from '@material-ui/core/Paper';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Grid from '@material-ui/core/Grid';
 import Zoom from '@material-ui/core/Zoom';
 import yt from '~/youtube';
 import { useText } from '~/theme/common';
-import MediaCard from '../../components/Cards/MediaCard';
+import MediaCard from '../Cards/MediaCard';
 import useStyles from './about-style';
 
 const Transition = React.forwardRef(function Transition(props, ref) { // eslint-disable-line
@@ -97,8 +94,7 @@ function Video() {
           orientation="landscape"
           type="video"
           thumb="https://source.unsplash.com/random"
-        >
-        </MediaCard>
+        />
       </ButtonBase>
     </div>
   );

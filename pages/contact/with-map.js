@@ -4,13 +4,11 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import clsx from 'clsx';
 import Head from 'next/head';
-import { withTranslation } from '~/i18n';
 import { useSpacing } from '../../theme/common';
 import Header from '../../components/Header';
 import ContactMap from '../../components/Forms/ContactMap';
 import Footer from '../../components/Footer';
 import brand from '../../public/text/brand';
-import link from '../../public/text/link';
 
 function WithMap(props) {
   const classes = useSpacing();

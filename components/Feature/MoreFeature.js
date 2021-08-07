@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import ReactWOW from 'react-wow';
 import useStyles from './feature-style';
 import { useTextAlign } from '~/theme/common';
-import imgAPI from '~/public/images/imgAPI';
 
 function MainFeature() {
   const classes = useStyles();

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import clsx from 'clsx';

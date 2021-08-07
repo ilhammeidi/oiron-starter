@@ -1,12 +1,4 @@
-import { makeStyles, fade } from '@material-ui/core/styles';
-import deepOrange from '@material-ui/core/colors/deepOrange';
-import deepPurple from '@material-ui/core/colors/deepPurple';
-import blue from '@material-ui/core/colors/blue';
-import red from '@material-ui/core/colors/red';
-import pink from '@material-ui/core/colors/pink';
-import indigo from '@material-ui/core/colors/indigo';
-import cyan from '@material-ui/core/colors/cyan';
-import green from '@material-ui/core/colors/green';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   profileList: {
@@ -109,7 +101,9 @@ const useStyles = makeStyles(theme => ({
     },
     '& > *': {
       marginRight: theme.spacing(2),
-      width: '100%'
+      [theme.breakpoints.down('xs')]: {
+        width: '100%'
+      }
     }
   },
   linkArea: {
@@ -196,7 +190,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   helpPaper: {
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     padding: theme.spacing(2, 1),
   },
   headline: {

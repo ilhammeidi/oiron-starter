@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import { withTranslation } from '~/i18n';
 import Paper from '../../Paper';
@@ -31,7 +30,7 @@ function ListWidget(props) {
           {periode.map((item, index) => (
             <ListItem key={index.toString()} button>
               <ListItemText primary={item} />
-              <KeyboardArrowRight />
+              <KeyboardArrowRight className={classes.flipRtl} />
             </ListItem>
           ))}
         </List>

@@ -245,6 +245,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     marginTop: theme.spacing(3)
+  },
+  flipRtl: {
+    transform: theme.direction === 'rtl' ? 'scale(-1)' : 'inherit'
   }
 }));
 

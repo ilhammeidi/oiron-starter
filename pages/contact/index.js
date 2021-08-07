@@ -28,7 +28,7 @@ function ContactPage(props) {
           onToggleDark={onToggleDark}
           onToggleDir={onToggleDir}
         />
-        <Container>
+        <Container maxWidth="md">
           <div className={clsx(classes.containerGeneral, classes.containerFront)}>
             <Contact />
           </div>

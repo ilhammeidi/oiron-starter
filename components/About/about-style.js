@@ -131,7 +131,9 @@ const aboutStyle = makeStyles(theme => ({
       bottom: -55
     }
   },
-  item: {},
+  item: {
+    direction: theme.direction === 'rtl' ? 'ltr' : 'inherit'
+  },
   carousel: {
     position: 'relative',
   },
@@ -139,7 +141,7 @@ const aboutStyle = makeStyles(theme => ({
     '& ul[class*="slick-dots"]': {
       bottom: -55
     },
-    '& $item > *':{
+    '& $item > *': {
       [theme.breakpoints.down('xs')]: {
         width: 280
       }
@@ -154,9 +156,10 @@ const aboutStyle = makeStyles(theme => ({
     position: 'absolute',
     top: '50%',
     fontSize: 38,
+    transform: theme.direction === 'rtl' ? 'scale(-1)' : 'inherit',
     [theme.breakpoints.down('xs')]: {
       display: 'none'
-    }
+    },
   },
   prev: {
     left: -30

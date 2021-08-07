@@ -8,9 +8,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Box from '@material-ui/core/Box';
+import { withTranslation } from '~/i18n';
 import useStyles from './post-card-style';
 
-export default function PostCard(props) {
+function PostCard(props) {
   const classes = useStyles();
   const {
     date,
@@ -19,7 +20,8 @@ export default function PostCard(props) {
     img,
     orientation,
     type,
-    href
+    href,
+    t
   } = props;
   return (
     <Card className={clsx(classes.newsCard, classes[orientation], classes[type])}>
@@ -43,7 +45,9 @@ export default function PostCard(props) {
           </div>
         </CardContent>
         <CardActions className={classes.action}>
-          <Button variant="outlined" href={href} className={classes.btn}>Read more</Button>
+          <Button variant="outlined" href={href} className={classes.btn}>
+            {t('common:btn_read_more')}
+          </Button>
         </CardActions>
       </div>
     </Card>
@@ -56,6 +60,7 @@ PostCard.propTypes = {
   desc: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   orientation: PropTypes.string,
+  t: PropTypes.func.isRequired,
   type: PropTypes.string,
   href: PropTypes.string,
 };
@@ -65,3 +70,5 @@ PostCard.defaultProps = {
   href: '#!',
   type: 'full', // available props: full, rounded, over, oval
 };
+
+export default withTranslation(['common'])(PostCard);

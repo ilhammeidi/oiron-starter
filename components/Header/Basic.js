@@ -8,7 +8,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import Logo from '../Logo';
 import link from '~/public/text/link';
-import { withTranslation } from '~/i18n';
 import Settings from './TopNav/Settings';
 import useStyles from './header-style';
 
@@ -22,7 +21,6 @@ function Basic(props) {
   const {
     onToggleDark,
     onToggleDir,
-    t,
     text,
     href
   } = props;
@@ -62,7 +60,7 @@ function Basic(props) {
               </div>
             </nav>
             <nav className={classes.userMenu}>
-              <Button href={href}>{t('common:header_' + text)}</Button>
+              <Button href={href}>{text}</Button>
               { isDesktop && <span className={classes.vDivider} /> }
               <Settings toggleDark={onToggleDark} toggleDir={onToggleDir} />
             </nav>
@@ -74,7 +72,6 @@ function Basic(props) {
 }
 
 Basic.propTypes = {
-  t: PropTypes.func.isRequired,
   onToggleDark: PropTypes.func.isRequired,
   onToggleDir: PropTypes.func.isRequired,
   href: PropTypes.string,
@@ -86,4 +83,4 @@ Basic.defaultProps = {
   text: 'login'
 };
 
-export default withTranslation(['common'])(Basic);
+export default Basic;

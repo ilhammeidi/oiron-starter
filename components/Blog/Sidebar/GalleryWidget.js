@@ -40,7 +40,7 @@ function GalleryWidget(props) {
               }
               return (
                 <GridListTile key={index.toString()}>
-                  <img src={tile.src} className={classes.img} alt="image" />
+                  <img src={tile.src} className={classes.img} alt="thumb" />
                   <GridListTileBar
                     title={tile.title}
                     subtitle={(

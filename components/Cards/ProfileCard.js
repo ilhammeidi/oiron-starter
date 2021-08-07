@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -19,6 +21,8 @@ import useStyles from './profile-card-style';
 
 function ProfileCard(props) {
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
   const {
     cover,
     name,
@@ -61,7 +65,7 @@ function ProfileCard(props) {
                 &nbsp;connection
               </Typography>
             </div>
-            {orientation === 'portrait' && (
+            {orientation === 'portrait' || isMobile ? (
               <Button
                 className={classes.buttonProfile}
                 variant="outlined"
@@ -70,7 +74,7 @@ function ProfileCard(props) {
               >
                 See Profile
               </Button>
-            )}
+            ) : ''}
           </div>
         </div>
       </CardContent>
@@ -80,9 +84,7 @@ function ProfileCard(props) {
           showLabels
           className={classes.bottomLink}
         >
-          {orientation === 'portrait' && (
-            <BottomNavigationAction label={connection + ' Connection'} icon={<SupervisorAccount />} />
-          )}
+          <BottomNavigationAction label={connection + ' Connection'} icon={<SupervisorAccount />} />
           <BottomNavigationAction label={favorites + ' Favorites'} icon={<Favorite />} />
           <BottomNavigationAction label={albums + ' Albums'} icon={<PhotoLibrary />} />
         </BottomNavigation>

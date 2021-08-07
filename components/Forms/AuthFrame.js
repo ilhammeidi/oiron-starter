@@ -1,15 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import brand from '~/public/text/brand';
-import routerLink from '~/public/text/link';
-import logo from '~/public/images/logo-starter.svg';
 import { useText } from '~/theme/common';
 import useStyles from './form-style';
 

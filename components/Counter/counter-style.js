@@ -17,6 +17,7 @@ const counterStyles = makeStyles(theme => ({
     '& svg': {
       width: 80,
       height: 80,
+      fill: theme.palette.text.primary,
       [theme.breakpoints.up('md')]: {
         marginRight: theme.spacing(2),
       }

@@ -27,7 +27,7 @@ const defaultChild = id => [
     name: '4Praesent Tristique',
     link: '#'
   }
-]
+];
 
 const multiple = [
   {

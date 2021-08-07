@@ -174,7 +174,8 @@ const headerStyles = makeStyles(theme => ({
   menu: {},
   megaMenuRoot: {
     width: '100%',
-    zIndex: 100
+    zIndex: 100,
+    left: '-5px !important'
   },
   multiMenuRoot: {
     minWidth: 200,
@@ -186,7 +187,8 @@ const headerStyles = makeStyles(theme => ({
         minHeight: 48,
         padding: theme.spacing(1),
         '& svg': {
-          fill: theme.palette.text.hint
+          fill: theme.palette.text.hint,
+          transform: theme.direction === 'rtl' ? 'scale(-1)' : 'inherit',
         }
       }
     }
@@ -210,10 +212,6 @@ const headerStyles = makeStyles(theme => ({
   },
   menuItem: {
     borderRadius: theme.rounded.small
-  },
-  menuList: {
-    textTransform: 'capitalize',
-    fontSize: 14
   },
   link: {
     padding: '0 !important',

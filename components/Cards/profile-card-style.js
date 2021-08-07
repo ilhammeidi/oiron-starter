@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   },
   buttonProfile: {
     minWidth: 150,
-    margin: '0 !important'
+    margin: 0
   },
   properties: {
     padding: theme.spacing(2)
@@ -78,7 +78,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   landscape: {
-    maxWidth: 600,
+    maxWidth: 820,
     flexDirection: 'row',
     alignItems: 'center',
     height: 160,
@@ -126,7 +126,6 @@ const useStyles = makeStyles(theme => ({
         '& > button': {
           whiteSpace: 'nowrap',
           '& span': {
-            flexDirection: 'row',
             '& svg': {
               marginRight: theme.spacing(1)
             }
@@ -135,6 +134,7 @@ const useStyles = makeStyles(theme => ({
       }
     },
     '& $buttonProfile': {
+      margin: '0 !important',
       [theme.breakpoints.down('sm')]: {
         minWidth: 100,
         height: 28,

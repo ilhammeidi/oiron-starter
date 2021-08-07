@@ -7,6 +7,7 @@ const contactStyles = makeStyles(theme => ({
     position: 'relative',
     width: '100%',
     alignItems: 'center',
+    justifyContent: 'center',
     [theme.breakpoints.up('md')]: {
       display: 'flex'
     },
@@ -46,7 +47,7 @@ const contactStyles = makeStyles(theme => ({
   },
   desc: {
     textAlign: 'center',
-    padding: theme.spacing(0, 10),
+    padding: theme.spacing(0, 5),
     [theme.breakpoints.down('xs')]: {
       padding: 0
     }
@@ -105,7 +106,8 @@ const contactStyles = makeStyles(theme => ({
     minWidth: 180
   },
   rightIcon: {
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
+    transform: theme.direction === 'rtl' ? 'scale(-1)' : 'inherit'
   },
   check: {
     '& svg': {
@@ -145,7 +147,6 @@ const contactStyles = makeStyles(theme => ({
     position: 'relative',
     padding: theme.spacing(0, 1),
     [theme.breakpoints.up('md')]: {
-      background: theme.palette.background.paper,
       padding: theme.spacing(5)
     }
   },
@@ -252,6 +253,7 @@ const contactStyles = makeStyles(theme => ({
     width: 450,
     left: -250,
     top: -300,
+    color: theme.palette.common.black,
     '& p': {
       fontSize: 13,
     },

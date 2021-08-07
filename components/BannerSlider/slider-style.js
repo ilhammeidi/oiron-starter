@@ -25,7 +25,8 @@ const sliderStyle = makeStyles(theme => ({
       top: 100,
     },
     [theme.breakpoints.up('md')]: {
-      right: '10%',
+      right: theme.direction === 'ltr' ? '10%' : 'auto',
+      left: theme.direction === 'ltr' ? 'auto' : '10%',
       maxWidth: '50%',
     },
     [theme.breakpoints.down('xs')]: {

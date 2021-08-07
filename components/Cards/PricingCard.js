@@ -15,7 +15,7 @@ function PricingCard(props) {
     title, subheader, price,
     description, buttonText, buttonVariant
   } = props;
-  
+
   return (
     <Card>
       <CardHeader
@@ -55,6 +55,7 @@ function PricingCard(props) {
 
 PricingCard.propTypes = {
   subheader: PropTypes.string,
+  title: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   description: PropTypes.array.isRequired,
   buttonText: PropTypes.string.isRequired,
@@ -64,6 +65,6 @@ PricingCard.propTypes = {
 PricingCard.defaultProps = {
   subheader: '',
   buttonVariant: 'outlined'
-}
+};
 
 export default PricingCard;

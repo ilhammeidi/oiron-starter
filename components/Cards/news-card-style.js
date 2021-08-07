@@ -64,9 +64,6 @@ const cardsStyles = makeStyles(theme => ({
     '& $properties': {
       overflow: 'hidden'
     },
-    '& $properties': {
-      overflow: 'hidden'
-    }
   },
   portrait: {
     flexDirection: 'column',
