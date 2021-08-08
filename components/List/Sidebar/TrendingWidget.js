@@ -34,7 +34,7 @@ function TrendingWidget() {
   return (
     <Paper title="Trending now" icon="ion-arrow-graph-up-right" whiteBg desc="Donec commodo convallis ligula eget suscipit orci.">
       <div className={classes.albumRoot}>
-        <List>
+        <List component="nav">
           {trending.map((item, index) => (
             <ListItem key={index.toString()} button>
               <ListItemText

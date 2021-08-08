@@ -46,7 +46,7 @@ function ProfileWidget(props) {
               className={classes.productItem}
             >
               <ButtonBase href="!#">
-                <div className={classes.image} style={{ backgroundImage: `url(${item.image})` }} height="100" alt="thumb" />
+                <div className={classes.image} style={{ backgroundImage: `url(${item.image})` }} />
                 <Typography noWrap display="block" variant="body1">{item.text}</Typography>
                 <Typography variant="h6" className={classes.price}>
                   $

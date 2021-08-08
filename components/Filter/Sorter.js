@@ -59,7 +59,7 @@ function Sorter(props) {
   };
 
   return (
-    <Grid container align="center" className={classes.sorter}>
+    <Grid container alignItems="center" className={classes.sorter}>
       <Grid item lg={9} md={8} sm={6}>
         <Box my={1}>
           <h2 className={clsx(text.subtitle, align.textLeft)}>

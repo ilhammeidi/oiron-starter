@@ -51,7 +51,7 @@ function PeopleWidget(props) {
         <List dense>
           {people.map((item, index) => (
             <ListItem disableGutters key={index.toString()} button>
-              <Avatar className={classes.avatar} src={item.img} title="avatar" />
+              <Avatar className={classes.avatar} alt="avatar" src={item.img} title="avatar" />
               <ListItemText primary={item.name} secondary={item.title} />
               <ListItemSecondaryAction>
                 <Button variant="outlined" size="small">follow</Button>

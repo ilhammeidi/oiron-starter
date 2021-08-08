@@ -43,7 +43,7 @@ function NewsWidget(props) {
   return (
     <Paper title={t('common:blog_post')} icon="ion-ios-paper" whiteBg desc="Donec commodo convallis ligula eget suscipit orci.">
       <div className={classes.albumRoot}>
-        <List>
+        <List component="nav">
           {news.map((item, index) => (
             <ListItem key={index.toString()} button>
               <ListItemAvatar>

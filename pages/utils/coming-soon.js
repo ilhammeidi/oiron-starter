@@ -42,7 +42,7 @@ function ComingSoon(props) {
       <CssBaseline />
       <Container maxWidth="sm">
         <div className={classes.fullScreenContainer}>
-          <Grid container alignItems="center" align="center">
+          <Grid container alignItems="center">
             <Grid item md={12} xs={12} className={align.textCenter}>
               <Box
                 className={classes.logo}
@@ -65,7 +65,7 @@ function ComingSoon(props) {
                 <div className={classes.form}>
                   <Box mb={{ sm: 10 }}>
                     <Grid container justify="center">
-                      <Grid item sm={8} cols={12}>
+                      <Grid item sm={8} xs={12}>
                         <FormControl fullWidth>
                           <InputLabel htmlFor="standard-adornment-password">Email</InputLabel>
                           <Input
