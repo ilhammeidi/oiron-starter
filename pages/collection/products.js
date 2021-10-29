@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
 import ProductCards from '~/components/Cards/ProductCard';
@@ -9,8 +11,18 @@ import Sorter from '~/components/Filter/Sorter';
 import Search from '~/components/Filter/Search';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import brand from '~/public/text/brand';
+import AppBar from '@material-ui/core/AppBar';
+import Dialog from '@material-ui/core/Dialog';
+import Button from '@material-ui/core/Button';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import CloseIcon from '@material-ui/icons/Close';
+import Slide from '@material-ui/core/Slide';
 import products from '~/public/api/products';
-import { useSpacing } from '~/theme/common';
+import { useSpacing, usePopup } from '~/theme/common';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 const checkAll = [
   'check-a',
@@ -21,9 +33,18 @@ const checkAll = [
   'check-f'
 ];
 
-function Collection() {
-  const spacing = useSpacing();
-  const mdUp = useMediaQuery(theme => theme.breakpoints.up('md'));
+const Transition = React.forwardRef(function Transition(props, ref) { // eslint-disable-line
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+function Products(props) {
+  const { onToggleDark, onToggleDir } = props;
+
+  const classes = useSpacing();
+  const popup = usePopup();
+  const isDesktop = useMediaQuery(theme => theme.breakpoints.up('md'));
+
+  const [openFilter, setOpenFilter] = useState(false);
 
   const [toggleView, setView] = useState('grid');
   const [keyword, setKeyword] = useState('');
@@ -40,6 +61,14 @@ function Collection() {
   const [sortBy, setSortBy] = useState('');
   const [sortFrom, setFrom] = useState(-1);
   const [sortTo, setTo] = useState(1);
+
+  const handleFilterOpen = () => {
+    setOpenFilter(true);
+  };
+
+  const handleFilterClose = () => {
+    setOpenFilter(false);
+  };
 
   const handleGetRange = val => {
     setRange(val);
@@ -111,35 +140,77 @@ function Collection() {
         </title>
       </Head>
       <CssBaseline />
-      <div className={spacing.mainWrap}>
-        <div className={spacing.containerWrap}>
-          <Search value={keyword} updateValue={setKeyword} />
-          <section>
-            <Sorter
-              view={toggleView}
-              resultLength={filteredItems().length}
-              sortBySelected={sortBySelected}
-              sortBy={handleSortBy}
-              switchView={setView}
+      <Dialog fullScreen open={openFilter} onClose={handleFilterClose} TransitionComponent={Transition}>
+        <AppBar className={popup.appBar}>
+          <Toolbar>
+            <IconButton edge="start" color="inherit" onClick={handleFilterClose} aria-label="close">
+              <CloseIcon />
+            </IconButton>
+            <Typography variant="h6" className={popup.title}>
+              Filter
+            </Typography>
+            <Button autoFocus color="inherit" onClick={handleFilterClose}>
+              Done
+            </Button>
+          </Toolbar>
+        </AppBar>
+        <Container maxWidth="sm">
+          <Box pt={10}>
+            <Filter
+              filterCategory={category}
+              changeCategory={setCategory}
+              filterRating={rating}
+              changeRating={setRating}
+              filterRadio={radio}
+              changeRadio={setRadio}
+              filterCheck={check}
+              changeCheck={setCheck}
+              checkAll={() => setCheck(checkAll)}
+              changeRange={handleGetRange}
+              filterTag={tag}
+              changeTag={setTag}
             />
-            <Box m={2}>
-              <Grid container spacing={mdUp ? 3 : 0}>
-                <Grid item md={3} lg={2}>
-                  <Filter
-                    filterCategory={category}
-                    changeCategory={setCategory}
-                    filterRating={rating}
-                    changeRating={setRating}
-                    filterRadio={radio}
-                    changeRadio={setRadio}
-                    filterCheck={check}
-                    changeCheck={setCheck}
-                    checkAll={() => setCheck(checkAll)}
-                    changeRange={handleGetRange}
-                    filterTag={tag}
-                    changeTag={setTag}
-                  />
-                </Grid>
+          </Box>
+        </Container>
+      </Dialog>
+      <div className={classes.mainWrap}>
+        <Header
+          onToggleDark={onToggleDark}
+          onToggleDir={onToggleDir}
+        />
+        <Search value={keyword} updateValue={setKeyword} />
+        <div className={classes.containerWrap}>
+          <section>
+            <Container>
+              <Sorter
+                view={toggleView}
+                resultLength={filteredItems().length}
+                sortBySelected={sortBySelected}
+                sortBy={handleSortBy}
+                switchView={setView}
+                openFilter={handleFilterOpen}
+              />
+            </Container>
+            <Box my={2} mx={{ sm: 2 }}>
+              <Grid container spacing={isDesktop ? 3 : 0}>
+                {isDesktop && (
+                  <Grid item md={3} lg={2}>
+                    <Filter
+                      filterCategory={category}
+                      changeCategory={setCategory}
+                      filterRating={rating}
+                      changeRating={setRating}
+                      filterRadio={radio}
+                      changeRadio={setRadio}
+                      filterCheck={check}
+                      changeCheck={setCheck}
+                      checkAll={() => setCheck(checkAll)}
+                      changeRange={handleGetRange}
+                      filterTag={tag}
+                      changeTag={setTag}
+                    />
+                  </Grid>
+                )}
                 <Grid item lg={10} md={9}>
                   <Grid container>
                     {filteredItems().length < 1 && (
@@ -181,9 +252,19 @@ function Collection() {
             </Box>
           </section>
         </div>
+        <Footer toggleDir={onToggleDir} />
       </div>
     </Fragment>
   );
 }
 
-export default Collection;
+Products.propTypes = {
+  onToggleDark: PropTypes.func.isRequired,
+  onToggleDir: PropTypes.func.isRequired,
+};
+
+Products.getInitialProps = async () => ({
+  namespacesRequired: ['common'],
+});
+
+export default Products;

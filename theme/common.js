@@ -1,31 +1,45 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const sectionMargin = margin => (margin * 15);
+const sectionMargin = margin => (margin * 20);
 export const useSpacing = makeStyles(theme => ({
   mainWrap: {
     position: 'relative',
     width: '100%',
     overflow: 'hidden',
+    background: theme.palette.type === 'dark' ? theme.palette.background.default : theme.palette.background.paper,
+    '& ul[class="slick-dots"]': {
+      '& li': {
+        '& button:before': {
+          borderColor: theme.palette.primary.main,
+        },
+        '&[class="slick-active"]': {
+          '& button:before': {
+            background: theme.palette.primary.main
+          }
+        }
+      }
+    }
   },
   spaceBottom: {
-    marginBottom: sectionMargin(theme.spacing(1)),
+    marginBottom: sectionMargin(6),
     [theme.breakpoints.down('md')]: {
-      marginBottom: sectionMargin(6)
+      marginBottom: sectionMargin(4)
     }
   },
   spaceTop: {
-    marginTop: sectionMargin(theme.spacing(1)),
+    marginTop: sectionMargin(6),
     [theme.breakpoints.down('md')]: {
-      marginTop: sectionMargin(6)
+      marginTop: sectionMargin(4)
     }
   },
   spaceBottomShort: {
-    marginBottom: sectionMargin(theme.spacing(1) / 2)
+    marginBottom: sectionMargin(4)
   },
   spaceTopShort: {
-    marginTop: sectionMargin(theme.spacing(1) / 2)
+    marginTop: sectionMargin(4)
   },
   containerWrap: {
+    marginTop: theme.spacing(5),
     '& > section': {
       position: 'relative'
     }
@@ -33,28 +47,44 @@ export const useSpacing = makeStyles(theme => ({
   containerGeneral: {
     position: 'relative',
     paddingTop: 32,
-    marginTop: theme.spacing(7),
+    marginTop: theme.spacing(8),
     marginBottom: theme.spacing(5),
     [theme.breakpoints.up('sm')]: {
       paddingLeft: 32,
       paddingRight: 32
     }
   },
+  containerFront: {
+    position: 'relative',
+  },
   fullScreenContainer: {
     height: '100vh',
     display: 'flex'
   },
   maintenanceIcon: {
-    margin: '10px 20px',
-    background: 'rgba(255,255,255,0.6)',
-    color: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.main,
+    margin: theme.spacing(3),
+    background: theme.palette.divider,
+    color: theme.palette.primary.main,
     width: 100,
     height: 100,
-    boxShadow: theme.shadows[4],
     '& svg': {
       fontSize: 64,
     },
+  },
+  btnNotify: {
+    minWidth: 120,
+    margin: 4
   }
+}));
+
+export const usePopup = makeStyles(theme => ({
+  appBar: {
+    position: 'relative',
+  },
+  title: {
+    marginLeft: theme.spacing(2),
+    flex: 1,
+  },
 }));
 
 export const useTextAlign = makeStyles({
@@ -144,6 +174,24 @@ export const useText = makeStyles(theme => ({
       fontSize: 14,
       lineHeight: '22px',
     },
+  },
+  capitalize: {
+    textTransform: 'capitalize'
+  },
+  uppercase: {
+    textTransform: 'uppercase'
+  },
+  lowercase: {
+    textTransform: 'lowercase'
+  },
+  bold: {
+    fontWeight: theme.typography.fontWeightBold,
+  },
+  medium: {
+    fontWeight: theme.typography.fontWeightMedium,
+  },
+  regular: {
+    fontWeight: theme.typography.fontWeightRegular,
   }
 }));
 

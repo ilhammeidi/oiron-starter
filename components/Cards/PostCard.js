@@ -8,9 +8,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Box from '@material-ui/core/Box';
+import { withTranslation } from '~/i18n';
 import useStyles from './post-card-style';
 
-export default function PostCard(props) {
+function PostCard(props) {
   const classes = useStyles();
   const {
     date,
@@ -18,7 +19,9 @@ export default function PostCard(props) {
     desc,
     img,
     orientation,
-    type
+    type,
+    href,
+    t
   } = props;
   return (
     <Card className={clsx(classes.newsCard, classes[orientation], classes[type])}>
@@ -28,7 +31,7 @@ export default function PostCard(props) {
       <div className={classes.properties}>
         <CardContent>
           <div className={classes.text}>
-            <Typography display="block" variant="h6" className={classes.title}>
+            <Typography display="block" noWrap variant="h6" className={classes.title}>
               <Box component="span" display="block" textOverflow="ellipsis" overflow="hidden">
                 {title}
               </Box>
@@ -42,7 +45,9 @@ export default function PostCard(props) {
           </div>
         </CardContent>
         <CardActions className={classes.action}>
-          <Button variant="outlined" fullWidth={orientation === 'portrait'} className={classes.btn}>Read more</Button>
+          <Button variant="outlined" href={href} className={classes.btn}>
+            {t('common:btn_read_more')}
+          </Button>
         </CardActions>
       </div>
     </Card>
@@ -55,10 +60,15 @@ PostCard.propTypes = {
   desc: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   orientation: PropTypes.string,
+  t: PropTypes.func.isRequired,
   type: PropTypes.string,
+  href: PropTypes.string,
 };
 
 PostCard.defaultProps = {
   orientation: 'portrait',
+  href: '#!',
   type: 'full', // available props: full, rounded, over, oval
 };
+
+export default withTranslation(['common'])(PostCard);

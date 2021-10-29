@@ -4,10 +4,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import clsx from 'clsx';
 import Head from 'next/head';
 import Hidden from '@material-ui/core/Hidden';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import { useSpacing } from '../theme/common';
 import Header from '../components/Header';
-import AnimateSlider from '../components/AnimateSlider';
+import BannerSlider from '../components/BannerSlider';
 import Feature from '../components/Feature';
 import Counter from '../components/Counter';
 import Testimonials from '../components/Testimonials';
@@ -15,30 +14,12 @@ import Pricing from '../components/Pricing';
 import Blog from '../components/Blog';
 import Subscribe from '../components/Subscribe';
 import Footer from '../components/Footer';
-import PageNav from '../components/PageNav';
+import Corner from '../components/Corner';
 import Notification from '../components/Notification';
 import brand from '../public/text/brand';
 
-const sectionMargin = margin => (margin * 15);
-const useStyles = makeStyles(theme => ({
-  mainWrap: {
-    position: 'relative',
-    width: '100%',
-    overflow: 'hidden',
-  },
-  spaceBottom: {
-    marginBottom: sectionMargin(theme.spacing())
-  },
-  spaceTop: {
-    paddingTop: sectionMargin(theme.spacing())
-  },
-  containerWrap: {
-    marginTop: theme.spacing(15)
-  },
-}));
-
 function Landing(props) {
-  const classes = useStyles();
+  const classes = useSpacing();
   const { onToggleDark, onToggleDir } = props;
   return (
     <React.Fragment>
@@ -49,25 +30,21 @@ function Landing(props) {
         </title>
       </Head>
       <CssBaseline />
-      <section id="home" />
       <div className={classes.mainWrap}>
         <Header
           onToggleDark={onToggleDark}
           onToggleDir={onToggleDir}
+          home
         />
         <main className={classes.containerWrap}>
+          <section id="home">
+            <BannerSlider />
+          </section>
+          <section className={clsx(classes.spaceTop, classes.spaceBottomShort)} id="feature">
+            <Feature />
+          </section>
           <section>
-            <Container fixed>
-              <AnimateSlider />
-            </Container>
-          </section>
-          <section className={clsx(classes.spaceTop, classes.spaceBottom)} id="feature">
-            <Container fixed>
-              <Feature />
-            </Container>
-          </section>
-          <section className={classes.pageSection}>
-            <Counter />
+            <Counter dark />
           </section>
           <section className={classes.spaceTop} id="testimonials">
             <Testimonials />
@@ -82,8 +59,8 @@ function Landing(props) {
             <Subscribe />
           </section>
         </main>
-        <Hidden mdDown>
-          <PageNav />
+        <Hidden smDown>
+          <Corner />
         </Hidden>
         <Footer toggleDir={onToggleDir} />
         <Hidden mdDown>
@@ -95,7 +72,7 @@ function Landing(props) {
 }
 
 Landing.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
+  namespacesRequired: ['common', 'starter-landing'],
 });
 
 Landing.propTypes = {

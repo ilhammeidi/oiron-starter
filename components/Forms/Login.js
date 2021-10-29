@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { withTranslation } from '~/i18n';
-import routeLink from '~/public/text/link';
+import { useText } from '~/theme/common';
 import SocialAuth from './SocialAuth';
-import Title from '../Title/TitleSecondary';
 import AuthFrame from './AuthFrame';
 import useStyles from './form-style';
 
 function Login(props) {
   const classes = useStyles();
+  const text = useText();
   const { t } = props;
   const [values, setValues] = useState({
     email: '',
     password: '',
   });
+  // Media query
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
@@ -47,16 +50,12 @@ function Login(props) {
   };
 
   return (
-    <AuthFrame title={t('common:login_title')} subtitle={t('common:login_subtitle')}>
+    <AuthFrame title={t('common:login_subtitle')} type="login" subtitle={t('common:auth_desc')}>
       <div>
         <div className={classes.head}>
-          <Title align="left">
-            {t('common:login')}
-          </Title>
-          <Button size="small" className={classes.buttonLink} href={routeLink.starter.register}>
-            <Icon className={clsx(classes.icon, classes.signArrow)}>arrow_forward</Icon>
-            {t('common:login_create')}
-          </Button>
+          <h3 className={isDesktop ? text.subtitle : text.title}>
+            {t('common:login_title')}
+          </h3>
         </div>
         <SocialAuth />
         <div className={classes.separator}>
@@ -75,6 +74,7 @@ function Login(props) {
                 className={classes.input}
                 label={t('common:login_email')}
                 onChange={handleChange('email')}
+                fullWidth
                 name="email"
                 value={values.email}
                 validators={['required', 'isEmail']}
@@ -85,6 +85,7 @@ function Login(props) {
               <TextValidator
                 variant="filled"
                 type="password"
+                fullWidth
                 className={classes.input}
                 label={t('common:login_password')}
                 validators={['required']}

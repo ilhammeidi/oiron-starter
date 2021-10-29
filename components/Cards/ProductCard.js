@@ -9,6 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Rating from '@material-ui/lab/Rating';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import { withTranslation } from '~/i18n';
 import useStyles from './product-card-style';
 
 function ProductCard(props) {
@@ -21,7 +22,8 @@ function ProductCard(props) {
     type,
     rating,
     price,
-    href
+    href,
+    t
   } = props;
 
   return (
@@ -63,7 +65,7 @@ function ProductCard(props) {
             variant="outlined"
             color="primary"
           >
-            See Detail
+            {t('common:btn_detail')}
           </Button>
         </div>
       </div>
@@ -79,7 +81,8 @@ ProductCard.propTypes = {
   type: PropTypes.string,
   rating: PropTypes.number,
   price: PropTypes.number,
-  href: PropTypes.string
+  href: PropTypes.string,
+  t: PropTypes.func.isRequired
 };
 
 ProductCard.defaultProps = {
@@ -90,4 +93,4 @@ ProductCard.defaultProps = {
   href: '#',
 };
 
-export default ProductCard;
+export default withTranslation(['common'])(ProductCard);

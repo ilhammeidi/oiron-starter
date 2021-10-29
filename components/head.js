@@ -5,7 +5,6 @@ import brand from '../public/text/brand';
 
 const HeadComponent = () => (
   <Head>
-    <meta charSet="utf-8" />
     {/* Use minimum-scale=1 to enable GPU rasterization */}
     <meta
       name="description"
@@ -48,9 +47,9 @@ const HeadComponent = () => (
     <meta property="twitter:domain" content="oiron.indisains.com" />
     <meta property="twitter:creator" content="oiron" />
     <meta property="twitter:card" content="summary" />
-    <meta property="twitter:image:src" content="/images/logo.png" />
+    <meta property="twitter:image:src" content="/images/logo-starter.png" />
     <meta property="og:url" content={brand.starter.url} />
-    <meta property="og:title" content={brand.starter.title} />
+    <meta property="og:title" content={brand.starter.name} />
     <meta
       property="og:description"
       content={brand.starter.desc}

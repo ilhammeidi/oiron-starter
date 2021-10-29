@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { withTranslation } from '~/i18n';
 import { useText, useTextAlign } from '~/theme/common';
@@ -33,7 +32,7 @@ function Search(props) {
               {t('common:list_subtitle')}
             </h3>
             <div className={classes.search}>
-              <FormControl component="form" className={classes.root}>
+              <FormControl component="form">
                 <OutlinedInput
                   value={value}
                   onChange={(e) => handleUpdateValue(e)}

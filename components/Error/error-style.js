@@ -3,41 +3,34 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   errorWrap: {
     width: '100%',
-    minHeight: '90vh',
     display: 'flex',
     alignItems: 'center',
-    paddingTop: theme.spacing(25)
+    position: 'relative',
+    zIndex: 1,
+    padding: theme.spacing(20, 0, 5),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(15, 0)
+    }
   },
   flex: {
     display: 'flex',
     justifyContent: 'center'
   },
-  deco: {
+  illustration: {
     position: 'relative',
-    [theme.breakpoints.down('md')]: {
-      height: 320,
+    textAlign: 'center',
+    [theme.breakpoints.up('sm')]: {
+      margin: theme.spacing(2, 5)
     },
-    '& h3': {
-      fontFamily: 'Roboto Condensed',
-      color: theme.palette.common.white,
-      fontSize: 106,
-      textTransform: 'capitalize',
-      fontWeight: 700,
-      paddingTop: 40,
-      paddingLeft: 20,
+    '& img': {
       position: 'relative',
-      zIndex: 1,
-    },
-    '&:before': {
-      content: '""',
-      width: 210,
-      height: 220,
-      background: theme.palette.primary.main,
-      borderRadius: 24,
-      transform: 'rotate(45deg)',
-      position: 'absolute',
-      top: theme.spacing(-1),
-      left: 0,
+      maxWidth: 350,
+      [theme.breakpoints.up('md')]: {
+        right: theme.spacing(2)
+      },
+      [theme.breakpoints.down('xs')]: {
+        maxWidth: '80%'
+      }
     }
   },
   text: {

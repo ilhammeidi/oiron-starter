@@ -17,7 +17,8 @@ const appTheme = (color, mode) => ({
     ].join(','),
   },
   shade: {
-    light: '0 10px 15px -5px rgba(62, 57, 107, .07)',
+    light: '0 1.5px 12px 2px rgba(0, 0, 0, 0.06)',
+    dark: '0px 1px 3px 0px rgba(64, 64, 64, 1), 0px 1px 1px 0px rgba(42, 42, 42, 1), 0px 2px 1px -1px rgba(20, 20, 20, 1)'
   },
   rounded: {
     small: '8px',
@@ -80,6 +81,17 @@ const appTheme = (color, mode) => ({
       '0px 11px 15px -7px rgba(128,128,128, 0.2),0px 24px 38px 3px rgba(128,128,128, 0.14),0px 9px 46px 8px rgba(128,128,128, 0.12)',
     ],
   overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        'h1, h2, h3, h4, h5, h6': {
+          margin: 0
+        },
+        p: {
+          marginTop: 0,
+          marginBottom: 16
+        },
+      },
+    },
     MuiPaper: {
       rounded: {
         borderRadius: 12

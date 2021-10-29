@@ -4,9 +4,6 @@ const cardsStyles = makeStyles(theme => ({
   figure: {},
   newsCard: {
     display: 'flex',
-    [theme.breakpoints.down('xs')]: {
-      marginBottom: theme.spacing(8)
-    },
     '& $figure': {
       margin: 0,
       overflow: 'hidden',
@@ -25,7 +22,10 @@ const cardsStyles = makeStyles(theme => ({
     height: '100%'
   },
   action: {
-    padding: theme.spacing(2, 3)
+    padding: theme.spacing(0, 2, 2),
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(0, 3, 2)
+    }
   },
   desc: {
     whiteSpace: 'initial',
@@ -34,43 +34,86 @@ const cardsStyles = makeStyles(theme => ({
     display: '-webkit-box',
     height: 80,
     overflow: 'hidden',
-    marginBottom: 16,
     padding: 0,
     fontSize: 18
   },
   text: {
-    padding: theme.spacing(0, 1),
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(0, 1),
+    }
   },
   title: {
     whiteSpace: 'nowrap',
     width: '100%',
-    fontSize: 16,
+    fontSize: 24,
     fontWeight: theme.typography.fontWeightBold
   },
   caption: {
     display: 'block',
-    margin: theme.spacing(2, 0),
+    margin: theme.spacing(1, 0),
     color: theme.palette.text.secondary,
   },
   btn: {
-    minWidth: 200,
     color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
+    [theme.breakpoints.up('sm')]: {
+      minWidth: 200,
+    }
   },
   /* Orientation */
   landscape: {
     marginBottom: theme.spacing(5),
-    flexDirection: 'row',
     [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column',
+      marginBottom: theme.spacing(2)
     },
+    flexDirection: 'row',
     '& $figure': {
-      width: 200,
+      minWidth: 150,
+      maxWidth: 200,
+      marginRight: theme.spacing(1),
+      [theme.breakpoints.down('xs')]: {
+        minWidth: 100,
+        maxWidth: 150,
+      },
     },
+    '& $properties': {
+      overflow: 'hidden',
+      [theme.breakpoints.down('xs')]: {
+        padding: theme.spacing(1),
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        '& > div': {
+          padding: 0
+        }
+      },
+      '& $btn': {
+        [theme.breakpoints.up('sm')]: {
+          margin: theme.spacing(0, 2)
+        },
+        [theme.breakpoints.down('xs')]: {
+          fontSize: 10
+        }
+      }
+    },
+    '& $action': {
+      padding: theme.spacing(0, 1, 2)
+    },
+    '& $desc': {
+      [theme.breakpoints.down('xs')]: {
+        display: 'none'
+      }
+    }
   },
   portrait: {
     flexDirection: 'column',
     '& $figure': {
       height: 200,
+    },
+    '& $btn': {
+      [theme.breakpoints.down('xs')]: {
+        width: '100%'
+      }
     }
   },
   /* Type */

@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import clsx from 'clsx';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { withTranslation } from '~/i18n';
-import routeLink from '~/public/text/link';
+import { useText } from '~/theme/common';
+import Checkbox from './Checkbox';
 import SocialAuth from './SocialAuth';
-import Title from '../Title/TitleSecondary';
 import AuthFrame from './AuthFrame';
 import useStyles from './form-style';
 
 function Register(props) {
   const classes = useStyles();
+  const text = useText();
   const { t } = props;
   const [values, setValues] = useState({
     name: '',
@@ -24,6 +24,9 @@ function Register(props) {
     password: '',
     confirmPassword: '',
   });
+  // Media query
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
@@ -32,6 +35,7 @@ function Register(props) {
       }
       return true;
     });
+    ValidatorForm.addValidationRule('isTruthy', value => value);
   });
 
   const [check, setCheck] = useState(false);
@@ -49,14 +53,12 @@ function Register(props) {
   };
 
   return (
-    <AuthFrame title={t('common:register_title')} subtitle={t('common:register_subtitle')}>
+    <AuthFrame title={t('common:login_subtitle')} type="register" subtitle={t('common:auth_desc')}>
       <div>
         <div className={classes.head}>
-          <Title align="left">{t('common:register')}</Title>
-          <Button size="small" className={classes.buttonLink} href={routeLink.starter.login}>
-            <Icon className={clsx(classes.icon, classes.signArrow)}>arrow_forward</Icon>
-            {t('common:register_already')}
-          </Button>
+          <h3 className={isDesktop ? text.subtitle : text.title}>
+            {t('common:login_create')}
+          </h3>
         </div>
         <SocialAuth />
         <div className={classes.separator}>
@@ -74,6 +76,7 @@ function Register(props) {
                 label={t('common:register_name')}
                 onChange={handleChange('name')}
                 name="name"
+                fullWidth
                 value={values.name}
                 validators={['required']}
                 errorMessages={['This field is required']}
@@ -83,6 +86,7 @@ function Register(props) {
               <TextValidator
                 variant="filled"
                 className={classes.input}
+                fullWidth
                 label={t('common:register_email')}
                 onChange={handleChange('email')}
                 name="email"
@@ -98,6 +102,7 @@ function Register(props) {
                 className={classes.input}
                 label={t('common:register_password')}
                 validators={['required']}
+                fullWidth
                 onChange={handleChange('password')}
                 errorMessages={['This field is required']}
                 name="password"
@@ -109,6 +114,7 @@ function Register(props) {
                 variant="filled"
                 type="password"
                 className={classes.input}
+                fullWidth
                 label={t('common:register_confirm')}
                 validators={['isPasswordMatch', 'required']}
                 errorMessages={['Password mismatch', 'this field is required']}
@@ -122,11 +128,12 @@ function Register(props) {
             <FormControlLabel
               control={(
                 <Checkbox
+                  validators={['isTruthy']}
+                  errorMessages="This field is required"
                   checked={check}
-                  onChange={(e) => handleCheck(e)}
-                  color="secondary"
                   value={check}
-                  className={classes.check}
+                  onChange={(e) => handleCheck(e)}
+                  color="primary"
                 />
               )}
               label={(
@@ -139,7 +146,13 @@ function Register(props) {
                 </span>
               )}
             />
-            <Button variant="contained" fullWidth type="submit" color="secondary" size="large">
+            <Button
+              variant="contained"
+              className={classes.buttonLarge}
+              type="submit"
+              color="secondary"
+              size="large"
+            >
               {t('common:continue')}
             </Button>
           </div>

@@ -13,10 +13,12 @@ const decoration = theme => ({
 
 const featureStyles = makeStyles(theme => ({
   pageSection: {
-    marginBottom: theme.spacing(20)
+    marginBottom: theme.spacing(10)
   },
   featureWrap: {
-    position: 'relative'
+    position: 'relative',
+    minHeight: 1900,
+    overflow: 'hidden'
   },
   icon: {},
   featureList: {
@@ -67,9 +69,15 @@ const featureStyles = makeStyles(theme => ({
   },
   featureItem: {
     position: 'relative',
-    marginBottom: theme.spacing(20),
+    marginBottom: theme.spacing(10),
     '&$last': {
       marginBottom: 0,
+    },
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+      '& figure': {
+        margin: '0 auto'
+      }
     }
   },
   deco1: {
