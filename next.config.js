@@ -13,6 +13,7 @@ module.exports = withImages({
       '/register': { page: '/register' },
       '/contact': { page: '/contact' },
       '/contact/with-map': { page: '/contact/with-map' },
+      '/collection': { page: '/collection' },
       '/collection/products': { page: '/collection/products' },
       '/collection/detail-product': { page: '/collection/detail-product' },
       '/utils/pricing': { page: '/utils/pricing' },
