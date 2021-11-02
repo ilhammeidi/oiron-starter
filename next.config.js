@@ -5,10 +5,20 @@ module.exports = withImages({
   exportPathMap: function() {
     return {
       '/': { page: '/' },
-      '/contact': { page: '/contact' },
+      '/about': { page: '/about' },
+      '/about/team': { page: '/about/team' },
+      '/blog': { page: '/blog' },
+      '/blog/detail-blog': { page: '/blog/detail-blog' },
       '/login': { page: '/login' },
       '/register': { page: '/register' },
-      '/blank-page': { page: '/blank-page' },
+      '/contact': { page: '/contact' },
+      '/contact/with-map': { page: '/contact/with-map' },
+      '/collection/products': { page: '/collection/products' },
+      '/collection/detail-product': { page: '/collection/detail-product' },
+      '/utils/pricing': { page: '/utils/pricing' },
+      '/utils/faq': { page: '/utils/faq' },
+      '/utils/maintenance': { page: '/utils/maintenance' },
+      '/utils/coming-soon': { page: '/utils/coming-soon' },
     };
   },
   publicRuntimeConfig: {
