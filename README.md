@@ -1,4 +1,4 @@
-# Oiron Starter - Vue JS Landing Page Template
+# Oiron Starter - React JS Landing Page Template
 ----------
 
 ### Read documentation here
