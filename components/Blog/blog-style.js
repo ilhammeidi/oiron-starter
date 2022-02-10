@@ -1,4 +1,4 @@
-import { makeStyles, fade } from '@material-ui/core/styles';
+import { makeStyles, alpha } from '@material-ui/core/styles';
 import deepOrange from '@material-ui/core/colors/deepOrange';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 import blue from '@material-ui/core/colors/blue';
@@ -100,7 +100,7 @@ const useStyles = makeStyles(theme => ({
       color: `${theme.palette.common.white} !important`,
     },
     '& .MuiInput-underline:before': {
-      borderBottomColor: fade(theme.palette.common.white, 0.6),
+      borderBottomColor: alpha(theme.palette.common.white, 0.6),
     },
     '& .MuiInput-underline:after': {
       borderBottomColor: theme.palette.common.white

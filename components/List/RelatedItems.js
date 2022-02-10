@@ -13,7 +13,7 @@ function RelatedItems(props) {
   const { t } = props;
 
   return (
-    <Grid container justify="center">
+    <Grid container justifyContent="center">
       <Grid item lg={10} md={12} xs={12}>
         <Box pt={5} px={2} pb={10}>
           <Box mb={3}>

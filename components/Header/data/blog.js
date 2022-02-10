@@ -68,6 +68,6 @@ const multiple = [
     name: 'Sample Pages',
     child: sample
   }
-]
+];
 
-export default multiple
+export default multiple;

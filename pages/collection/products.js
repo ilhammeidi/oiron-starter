@@ -5,12 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
-import ProductCards from '~/components/Cards/ProductCard';
-import Filter from '~/components/Filter/Filter';
-import Sorter from '~/components/Filter/Sorter';
-import Search from '~/components/Filter/Search';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import brand from '~/public/text/brand';
 import AppBar from '@material-ui/core/AppBar';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
@@ -19,6 +14,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
+import ProductCards from '~/components/Cards/ProductCard';
+import Filter from '~/components/Filter/Filter';
+import Sorter from '~/components/Filter/Sorter';
+import Search from '~/components/Filter/Search';
+import brand from '~/public/text/brand';
 import products from '~/public/api/products';
 import { useSpacing, usePopup } from '~/theme/common';
 import Header from '../../components/Header';
@@ -212,7 +212,7 @@ function Products(props) {
                   </Grid>
                 )}
                 <Grid item lg={10} md={9}>
-                  <Grid container>
+                  <Grid container justifyContent="center">
                     {filteredItems().length < 1 && (
                       <Grid item sm={12}>
                         <h3>Not found</h3>

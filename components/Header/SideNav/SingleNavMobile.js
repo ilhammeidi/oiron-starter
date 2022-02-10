@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { i18n, withTranslation } from '~/i18n';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { i18n, withTranslation } from '~/i18n';
 import link from '~/public/text/link';
 import useStyles from '../sidenav-style';
 import navMenu from '../data/single';
@@ -78,7 +78,6 @@ function SingleNavMobile(props) {
     </SwipeableDrawer>
   );
 }
-
 
 SingleNavMobile.propTypes = {
   toggleDrawer: PropTypes.func.isRequired,

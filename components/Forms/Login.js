@@ -128,7 +128,6 @@ function Login(props) {
   );
 }
 
-
 Login.propTypes = {
   t: PropTypes.func.isRequired
 };

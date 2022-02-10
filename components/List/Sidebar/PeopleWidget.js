@@ -59,7 +59,7 @@ function PeopleWidget(props) {
             </ListItem>
           ))}
         </List>
-        <Grid container justify="center">
+        <Grid container justifyContent="center">
           <Button fullWidth color="secondary">
             {t('common:btn_seeall')}
           </Button>

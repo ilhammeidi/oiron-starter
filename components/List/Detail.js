@@ -7,10 +7,10 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Grid from '@material-ui/core/Grid';
-import { useText } from '~/theme/common';
 import Icon from '@material-ui/core/Icon';
 import Lightbox from 'react-image-lightbox';
 import Carousel from 'react-slick';
+import { useText } from '~/theme/common';
 import { withTranslation } from '~/i18n';
 import imgAPI from '~/public/images/imgAPI';
 import useStyles from './list-style';
@@ -74,7 +74,7 @@ function Detail(props) {
           onMoveNextRequest={onMoveNextRequest}
         />
       )}
-      <Grid container spacing={isDesktop ? 6 : 2} justify="center">
+      <Grid container spacing={isDesktop ? 6 : 2} justifyContent="center">
         <Grid item lg={4} md={5} sm={5} xs={12}>
           <div className={classes.carouselWrap}>
             {loaded && (

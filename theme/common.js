@@ -33,10 +33,16 @@ export const useSpacing = makeStyles(theme => ({
     }
   },
   spaceBottomShort: {
-    marginBottom: sectionMargin(4)
+    marginBottom: sectionMargin(4),
+    [theme.breakpoints.down('md')]: {
+      marginBottom: sectionMargin(2.4)
+    }
   },
   spaceTopShort: {
-    marginTop: sectionMargin(4)
+    marginTop: sectionMargin(4),
+    [theme.breakpoints.down('md')]: {
+      marginTop: sectionMargin(2.4)
+    }
   },
   containerWrap: {
     marginTop: theme.spacing(5),

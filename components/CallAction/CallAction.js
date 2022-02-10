@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -14,31 +14,29 @@ function CallAction(props) {
 
   const classes = useStyles();
   return (
-    <Fragment>
-      <Container>
-        <div className={classes.root}>
-          <Paper className={classes.paper}>
-            <Grid container alignItems="center">
-              <Grid item md={9} xs={12}>
-                <Typography variant="h4" gutterBottom display="block">
-                  {t('common:about_ready')}
-                </Typography>
-                <Typography display="block" component="p">
-                  Pellentesque ac bibendum tortor. Nulla eget lobortis lacus.
-                </Typography>
-              </Grid>
-              <Grid item md={3} xs={12}>
-                <Grid container alignItems="center">
-                  <Button size="large" variant="outlined" color="secondary" href="/contact" className={classes.button}>
-                    {t('common:btn_contact')}
-                  </Button>
-                </Grid>
+    <Container>
+      <div className={classes.root}>
+        <Paper className={classes.paper}>
+          <Grid container alignItems="center">
+            <Grid item md={9} xs={12}>
+              <Typography variant="h4" gutterBottom display="block">
+                {t('common:about_ready')}
+              </Typography>
+              <Typography display="block" component="p">
+                Pellentesque ac bibendum tortor. Nulla eget lobortis lacus.
+              </Typography>
+            </Grid>
+            <Grid item md={3} xs={12}>
+              <Grid container alignItems="center">
+                <Button size="large" variant="outlined" color="secondary" href="/contact" className={classes.button}>
+                  {t('common:btn_contact')}
+                </Button>
               </Grid>
             </Grid>
-          </Paper>
-        </div>
-      </Container>
-    </Fragment>
+          </Grid>
+        </Paper>
+      </div>
+    </Container>
   );
 }
 

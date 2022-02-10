@@ -1,16 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
-  root: theme.mixins.gutters({
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
+  root: {
+    padding: theme.spacing(3, 1),
     boxShadow: theme.shade.light,
     color: theme.palette.text.primary,
     overflow: 'hidden',
     '&$noMargin': {
       margin: 0
     },
-  }),
+  },
   descBlock: {
     display: 'flex',
     alignItems: 'center',

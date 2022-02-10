@@ -6,7 +6,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { i18n } from '~/i18n';
 import Button from '@material-ui/core/Button';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -19,6 +18,7 @@ import MenuList from '@material-ui/core/MenuList';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { i18n } from '~/i18n';
 import useStyles from '../header-style';
 
 const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disable-line

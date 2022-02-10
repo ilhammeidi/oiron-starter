@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
+import ImageList from '@material-ui/core/ImageList';
+import ImageListItem from '@material-ui/core/ImageListItem';
+import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import { withTranslation } from '~/i18n';
@@ -32,16 +32,16 @@ function ImageWidget(props) {
   return (
     <Paper title={t('common:blog_album')} icon="ion-images" whiteBg desc="">
       <div className={classes.albumRoot}>
-        <GridList cellHeight={180} className={classes.gridList}>
+        <ImageList rowHeight={180} className={classes.gridList}>
           {
             imgData.map((tile, index) => {
               if (index >= 4) {
                 return false;
               }
               return (
-                <GridListTile key={index.toString()}>
+                <ImageListItem key={index.toString()}>
                   <img src={tile.src} className={classes.img} alt="thumb" />
-                  <GridListTileBar
+                  <ImageListItemBar
                     title={tile.title}
                     subtitle={(
                       <span>
@@ -55,13 +55,13 @@ function ImageWidget(props) {
                       </IconButton>
                     )}
                   />
-                </GridListTile>
+                </ImageListItem>
               );
             })
           }
-        </GridList>
+        </ImageList>
         <Divider className={classes.divider} />
-        <Grid container justify="center">
+        <Grid container justifyContent="center">
           <Button fullWidth color="secondary">
             {t('common:btn_seeall')}
           </Button>

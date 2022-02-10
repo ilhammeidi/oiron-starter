@@ -14,7 +14,7 @@ function Description(props) {
   const { t } = props;
 
   return (
-    <Grid container justify="center">
+    <Grid container justifyContent="center">
       <Grid item lg={10} md={12}>
         <div className={classes.about}>
           <Grid container spacing={6}>

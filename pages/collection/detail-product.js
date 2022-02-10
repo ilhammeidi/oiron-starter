@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Box from '@material-ui/core/Box';
 import Head from 'next/head';
 import { useSpacing } from '../../theme/common';
 import Header from '../../components/Header';
@@ -30,10 +31,12 @@ function DetailProduct(props) {
           onToggleDir={onToggleDir}
         />
         <div className={classes.containerGeneral}>
-          <Detail />
-          <Description />
-          <RelatedItems />
-          <CommentGroup />
+          <Box pt={{ lg: 4 }}>
+            <Detail />
+            <Description />
+            <RelatedItems />
+            <CommentGroup />
+          </Box>
         </div>
         <Footer toggleDir={onToggleDir} />
       </div>

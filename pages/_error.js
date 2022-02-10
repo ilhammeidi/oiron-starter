@@ -56,7 +56,7 @@ ErrorPage.propTypes = {
 };
 
 ErrorPage.defaultProps = {
-  errorCode: '400',
+  errorCode: '404',
   stars: 0,
 };
 

@@ -38,8 +38,10 @@ const useStyles = makeStyles(theme => ({
     }
   },
   text: {
-    marginRight: theme.spacing(2),
-    padding: 0
+    padding: 0,
+    [theme.breakpoints.up('sm')]: {
+      marginRight: theme.spacing(2),
+    }
   },
   ratting: {
     margin: '10px 0',

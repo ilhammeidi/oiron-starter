@@ -1,7 +1,11 @@
 const withImages = require('next-images');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = withImages({
   TrailingSlash: true,
+  images: {
+    disableStaticImages: true
+  },
   exportPathMap: function() {
     return {
       '/': { page: '/' },
@@ -29,18 +33,12 @@ module.exports = withImages({
   },
   webpack: (config, options) => {
     cssModules: true,
-    config.module.rules.push({
-        enforce: 'pre',
-        test: /\.js?$/,
-        exclude: [/node_modules/],
-        loader: 'eslint-loader',
-        options: {
-          quiet: true,
-        }
-    });
-    config.node = {
-      fs: 'empty'
-    }
+    config.plugins.push(
+      //      new ESLintPlugin({
+      //        exclude: ['node_modules']
+      //      })
+    );
+    config.node = {}
     return config;
   }
 });

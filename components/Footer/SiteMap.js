@@ -101,7 +101,7 @@ function Footer(props) {
           {isDesktop && <Copyright />}
         </Grid>
         <Grid item xs={12} md={6}>
-          <Grid container spacing={4} justify="space-evenly">
+          <Grid container spacing={4} justifyContent="space-evenly">
             {footers.map(footer => (
               <Grid item xs={12} md={3} key={footer.title} className={classes.siteMapItem}>
                 {isDesktop && (

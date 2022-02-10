@@ -13,12 +13,12 @@ import Fade from '@material-ui/core/Fade';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import Scrollspy from 'react-scrollspy';
-import { withTranslation, i18n } from '~/i18n';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Icon from '@material-ui/core/Icon';
+import { withTranslation, i18n } from '~/i18n';
 import useStyles from '../header-style';
 import navMenu from '../data/single';
 
@@ -63,7 +63,7 @@ function MixedNav(props) {
       {menuPrimary.map(item => (
         <li key={item.id.toString()}>
           {singleNav ? (
-            <Button component={AnchorLink} href={item.url}>
+            <Button component={AnchorLink} offset={() => 100} href={item.url}>
               {t('starter-landing:header_' + item.name)}
             </Button>
           ) : (

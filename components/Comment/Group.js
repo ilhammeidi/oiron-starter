@@ -46,7 +46,7 @@ function Group(props) {
   }];
 
   return (
-    <Grid container spacing={6} justify="center">
+    <Grid container spacing={6} justifyContent="center">
       <Grid item lg={10} md={12}>
         <Box px={2}>
           <Grid container spacing={4}>

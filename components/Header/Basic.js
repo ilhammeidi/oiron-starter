@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import clsx from 'clsx';
@@ -41,33 +41,31 @@ function Basic(props) {
   }, []);
 
   return (
-    <Fragment>
-      <AppBar
-        position="relative"
-        id="header"
-        className={clsx(
-          classes.header,
-          fixed && classes.fixed,
-        )}
-      >
-        <Container fixed={isDesktop}>
-          <div className={classes.headerContent}>
-            <nav className={clsx(classes.navMenu, classes.flex)}>
-              <div className={classes.logo}>
-                <a href={link.starter.home}>
-                  <Logo type="landscape" />
-                </a>
-              </div>
-            </nav>
-            <nav className={classes.userMenu}>
-              <Button href={href}>{text}</Button>
-              { isDesktop && <span className={classes.vDivider} /> }
-              <Settings toggleDark={onToggleDark} toggleDir={onToggleDir} />
-            </nav>
-          </div>
-        </Container>
-      </AppBar>
-    </Fragment>
+    <AppBar
+      position="relative"
+      id="header"
+      className={clsx(
+        classes.header,
+        fixed && classes.fixed,
+      )}
+    >
+      <Container fixed={isDesktop}>
+        <div className={classes.headerContent}>
+          <nav className={clsx(classes.navMenu, classes.flex)}>
+            <div className={classes.logo}>
+              <a href={link.starter.home}>
+                <Logo type="landscape" />
+              </a>
+            </div>
+          </nav>
+          <nav className={classes.userMenu}>
+            <Button href={href}>{text}</Button>
+            { isDesktop && <span className={classes.vDivider} /> }
+            <Settings toggleDark={onToggleDark} toggleDir={onToggleDir} />
+          </nav>
+        </div>
+      </Container>
+    </AppBar>
   );
 }
 

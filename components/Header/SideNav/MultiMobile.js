@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { i18n, withTranslation } from '~/i18n';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -12,6 +11,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import ArrowDropUp from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import Collapse from '@material-ui/core/Collapse';
+import { i18n, withTranslation } from '~/i18n';
 import useStyles from '../sidenav-style';
 import navMenu from '../data/multiple';
 import link from '~/public/text/link';
@@ -144,7 +144,6 @@ function MobileMenu(props) {
     </SwipeableDrawer>
   );
 }
-
 
 MobileMenu.propTypes = {
   toggleDrawer: PropTypes.func.isRequired,

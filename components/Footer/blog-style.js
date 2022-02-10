@@ -1,5 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { fade } from '@material-ui/core/styles/colorManipulator';
+import { makeStyles, alpha } from '@material-ui/core/styles';
 
 const blogStyles = makeStyles(theme => ({
   link: {
@@ -111,11 +110,11 @@ const blogStyles = makeStyles(theme => ({
     '& fieldset': {
       borderRadius: 10,
       boxShadow: '0 1.5px 12px 2px rgba(0, 0, 0, 0.06)',
-      border: `1px solid ${fade(theme.palette.primary.dark, 0.5)} !important`,
+      border: `1px solid ${alpha(theme.palette.primary.dark, 0.5)} !important`,
       '& legend': {
-        top: 6,
+        top: 5,
         position: 'relative',
-        borderTop: `1px solid ${fade(theme.palette.primary.dark, 0.5)}`
+        borderTop: `1px solid ${alpha(theme.palette.primary.dark, 0.5)}`
       },
       '& + div + div': {
         background: 'none !important',

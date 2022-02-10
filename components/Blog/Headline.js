@@ -21,7 +21,7 @@ function Headline() {
               Pellentesque habitant morbi tristique senectus Proin pretium arcu eget.
             </span>
             <span className={clsx(classes.subtitle, text.subtitle2)}>
-              {"Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this posts contents."}
+              Multiple lines of text that form the lede, informing new readers quickly and efficiently about what&apos;s most interesting in this posts contents.
             </span>
           </span>
         </CardContent>

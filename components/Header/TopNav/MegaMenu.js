@@ -4,7 +4,6 @@ import React, {
   useEffect
 } from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '~/i18n';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -16,6 +15,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Icon from '@material-ui/core/Icon';
+import { i18n } from '~/i18n';
 import useStyles from '../header-style';
 
 function MegaMenu(props) {

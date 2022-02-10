@@ -8,7 +8,7 @@ const red300 = red['500'];
 
 const styles = theme => ({
   checkbox: {
-    left: 0,
+    left: 42,
     fontSize: 12,
     color: red300,
     position: 'absolute',
@@ -17,41 +17,39 @@ const styles = theme => ({
 });
 
 class CheckboxValidatorElement extends ValidatorComponent {
-  errorText() {
-    const { isValid } = this.state;
-    const { classes } = this.props;
-    if (isValid) {
-      return null;
-    }
-    return (
-      <div className={classes.checkbox}>
-        {this.getErrorMessage()}
-      </div>
-    );
-  }
-
-  render() {
+  renderValidatorComponent() {
     const {
+      classes,
       errorMessages,
-      validators,
+      validatorListener,
       requiredError,
       value,
-      checked,
-      validatorListener,
-      classes,
       ...rest
     } = this.props;
 
     return (
-      <span>
+      <div>
         <Checkbox
-          value={value}
-          checked={checked}
           {...rest}
           ref={(r) => { this.input = r; }}
         />
         {this.errorText()}
-      </span>
+      </div>
+    );
+  }
+
+  errorText() {
+    const { classes } = this.props;
+    const { isValid } = this.state;
+
+    if (isValid) {
+      return null;
+    }
+
+    return (
+      <div className={classes.checkbox}>
+        {this.getErrorMessage()}
+      </div>
     );
   }
 }

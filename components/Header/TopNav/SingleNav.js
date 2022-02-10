@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
@@ -18,26 +18,24 @@ function MixedNav(props) {
   } = props;
 
   return (
-    <Fragment>
-      <Scrollspy
-        items={navMenu}
-        currentClassName="active"
-      >
-        {menuPrimary.map(item => (
-          <li key={item.id.toString()}>
-            {singleNav ? (
-              <Button component={AnchorLink} href={item.url}>
-                {t('starter-landing:header_' + item.name)}
-              </Button>
-            ) : (
-              <Button href={'/' + item.url}>
-                {t('starter-landing:header_' + item.name)}
-              </Button>
-            )}
-          </li>
-        ))}
-      </Scrollspy>
-    </Fragment>
+    <Scrollspy
+      items={navMenu}
+      currentClassName="active"
+    >
+      {menuPrimary.map(item => (
+        <li key={item.id.toString()}>
+          {singleNav ? (
+            <Button component={AnchorLink} offset={() => 100} href={item.url}>
+              {t('starter-landing:header_' + item.name)}
+            </Button>
+          ) : (
+            <Button href={'/' + item.url}>
+              {t('starter-landing:header_' + item.name)}
+            </Button>
+          )}
+        </li>
+      ))}
+    </Scrollspy>
   );
 }
 

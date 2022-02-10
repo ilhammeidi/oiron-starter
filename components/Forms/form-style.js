@@ -60,8 +60,10 @@ const contactStyles = makeStyles(theme => ({
   },
   form: {
     position: 'relative',
-    marginTop: theme.spacing(8),
     padding: theme.spacing(0, 4, 8),
+    [theme.breakpoints.up('md')]: {
+      marginTop: theme.spacing(5),
+    },
     [theme.breakpoints.down('xs')]: {
       padding: theme.spacing(0, 2, 6)
     }

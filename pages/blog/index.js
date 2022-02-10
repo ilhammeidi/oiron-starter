@@ -39,7 +39,7 @@ function BlogHome(props) {
         <div className={classes.containerGeneral}>
           <Box pt={{ xs: 5, sm: 3, md: 4 }}>
             <Container>
-              <Grid container>
+              <Grid container spacing={3}>
                 <Grid item sm={12}>
                   <Headline />
                 </Grid>
@@ -90,7 +90,7 @@ function BlogHome(props) {
                       </Box>
                     ))}
                     <Box mt={5} className={classes.arrow}>
-                      <Grid container justify="space-between">
+                      <Grid container justifyContent="space-between">
                         <Button>
                           <ArrowBackIcon />
                           {t('common:btn_prev')}

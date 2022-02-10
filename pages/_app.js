@@ -4,7 +4,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import {
   ThemeProvider,
-  createMuiTheme,
+  createTheme,
   StylesProvider,
   jssPreset
 } from '@material-ui/core/styles';
@@ -17,7 +17,7 @@ import { i18n, appWithTranslation } from '../i18n';
 import appTheme from '../theme/appTheme';
 /* import css vendors */
 import 'react-image-lightbox/style.css';
-import 'animate.css/animate.css';
+import '~/vendors/animate.css';
 import '~/vendors/animate-slider.css';
 import '~/vendors/hamburger-menu.css';
 import '../vendors/animate-extends.css';
@@ -81,7 +81,7 @@ function MyApp(props) {
     });
   };
 
-  const muiTheme = createMuiTheme(theme);
+  const muiTheme = createTheme(theme);
   const { Component, pageProps, router } = props; // eslint-disable-line
   const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
   return (
@@ -119,7 +119,8 @@ function MyApp(props) {
 
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired
+  pageProps: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired
 };
 
 MyApp.getInitialProps = async (appContext) => ({ ...await App.getInitialProps(appContext) });

@@ -7,8 +7,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
-import { withTranslation } from '~/i18n';
 import Box from '@material-ui/core/Box';
+import { withTranslation } from '~/i18n';
 import useStyles from './news-card-style';
 
 function NewsCard(props) {

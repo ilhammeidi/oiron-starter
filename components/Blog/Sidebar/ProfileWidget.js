@@ -54,7 +54,6 @@ function ProfileWidget(props) {
   );
 }
 
-
 ProfileWidget.propTypes = {
   t: PropTypes.func.isRequired,
 };

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import CountUp from 'react-countup';
-import ReactWOW from 'react-wow';
+import ScrollAnimation from 'react-scroll-animation-wrapper';
 import Typography from '@material-ui/core/Typography';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
@@ -20,15 +20,17 @@ function Counter(props) {
       {isPlay ? <CountUp end={val} /> : 0}
     </span>
   );
-  const handlePlay = () => {
-    setTimeout(() => { setPlay(true); }, 500);
+  const handlePlay = visible => {
+    if (visible.inViewport) {
+      setTimeout(() => { setPlay(true); }, 500);
+    }
   };
   return (
     <div className={clsx(classes.counterWrap, dark ? classes.dark : '')}>
       <Container maxWidth="md">
-        <Grid container justify="center" alignItems="center" className={classes.root} spacing={6}>
-          <Grid md={4} item>
-            <ReactWOW animation="fadeIn" offset={300} callback={handlePlay}>
+        <ScrollAnimation animateOnce animateIn="fadeIn" offset={300} afterAnimatedIn={handlePlay}>
+          <Grid container justifyContent="center" alignItems="center" className={classes.root} spacing={6}>
+            <Grid md={4} item>
               <div className={classes.counterItem}>
                 <AcUnitIcon />
                 <div className={classes.text}>
@@ -40,35 +42,35 @@ function Counter(props) {
                   </Typography>
                 </div>
               </div>
-            </ReactWOW>
-          </Grid>
-          <Grid md={4} item>
-            <div className={classes.counterItem}>
-              <ColorLensIcon />
-              <div className={classes.text}>
-                <Typography variant="h4">
-                  {countup(456, play)}
-                </Typography>
-                <Typography variant="h6">
-                  Pellentesque ac bibendum
-                </Typography>
+            </Grid>
+            <Grid md={4} item>
+              <div className={classes.counterItem}>
+                <ColorLensIcon />
+                <div className={classes.text}>
+                  <Typography variant="h4">
+                    {countup(456, play)}
+                  </Typography>
+                  <Typography variant="h6">
+                    Pellentesque ac bibendum
+                  </Typography>
+                </div>
               </div>
-            </div>
-          </Grid>
-          <Grid md={4} item>
-            <div className={classes.counterItem}>
-              <EcoIcon />
-              <div className={classes.text}>
-                <Typography variant="h4">
-                  {countup(789, play)}
-                </Typography>
-                <Typography variant="h6">
-                  Consectetur adipiscing
-                </Typography>
+            </Grid>
+            <Grid md={4} item>
+              <div className={classes.counterItem}>
+                <EcoIcon />
+                <div className={classes.text}>
+                  <Typography variant="h4">
+                    {countup(789, play)}
+                  </Typography>
+                  <Typography variant="h6">
+                    Consectetur adipiscing
+                  </Typography>
+                </div>
               </div>
-            </div>
+            </Grid>
           </Grid>
-        </Grid>
+        </ScrollAnimation>
       </Container>
     </div>
   );

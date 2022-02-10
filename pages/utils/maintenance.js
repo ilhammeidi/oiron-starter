@@ -31,7 +31,7 @@ function Maintenance(props) {
       <CssBaseline />
       <Container maxWidth="md">
         <div className={classes.fullScreenContainer}>
-          <Grid container alignItems="center" justify="center">
+          <Grid container alignItems="center" justifyContent="center">
             <Grid item md={12} className={align.textCenter}>
               <Box display="flex" justifyContent="center">
                 <Avatar className={classes.maintenanceIcon}><Build /></Avatar>

@@ -13,7 +13,7 @@ function Banner() {
     <div className={classes.bannerWrap}>
       <div className={classes.inner}>
         <Container>
-          <Grid container alignItems="center" justify="center">
+          <Grid container alignItems="center" justifyContent="center">
             <Grid item sm={6}>
               <Box px={{ sm: 5 }}>
                 <div className={classes.text}>

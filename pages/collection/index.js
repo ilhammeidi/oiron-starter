@@ -41,9 +41,9 @@ function Collection(props) {
         <section className={classes.containerWrap}>
           <div className={classes.searchContent}>
             <Container>
-              <Grid container alignItems="flex-start" justify="center" spacing={3}>
+              <Grid container alignItems="flex-start" justifyContent="center" spacing={3}>
                 <Grid item md={8} xs={12}>
-                  <div id="profile_p">
+                  <div id="profile_p" className={classes.spaceTopShort}>
                     <Box mb={3}>
                       <h4 className={text.subtitle}>
                         Profile Cards Portrait

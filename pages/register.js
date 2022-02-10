@@ -13,8 +13,6 @@ import brand from '../public/text/brand';
 import link from '../public/text/link';
 
 function RegisterPage(props) {
-  // Theme breakpoints
-
    // Translation Function
   const { t } = props;
 
@@ -57,6 +55,5 @@ RegisterPage.propTypes = {
   onToggleDark: PropTypes.func.isRequired,
   onToggleDir: PropTypes.func.isRequired,
 };
-
 
 export default withTranslation(['common'])(RegisterPage);

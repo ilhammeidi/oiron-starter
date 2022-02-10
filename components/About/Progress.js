@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReactWOW from 'react-wow';
+import ScrollAnimation from 'react-scroll-animation-wrapper';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import { useText } from '~/theme/common';
@@ -11,12 +11,15 @@ function Progress() {
 
   const [play, setPlay] = useState(false);
 
-  const handlePlay = () => {
-    setTimeout(() => { setPlay(true); }, 200);
+  const handlePlay = visible => {
+    if (visible.inViewport) {
+      setTimeout(() => { setPlay(true); }, 200);
+    }
   };
+
   return (
     <div className={classes.progressWrap}>
-      <ReactWOW animation="fadeIn" delay="0.4s" duration="0.3s" callback={handlePlay}>
+      <ScrollAnimation animateOnce animateIn="fadeIn" delay={400} duration={0.3} afterAnimatedIn={handlePlay}>
         <ul>
           <li>
             <div className={classes.textIcon}>
@@ -89,7 +92,7 @@ function Progress() {
             />
           </li>
         </ul>
-      </ReactWOW>
+      </ScrollAnimation>
     </div>
   );
 }

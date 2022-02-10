@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import ReactWOW from 'react-wow';
+import ScrollAnimation from 'react-scroll-animation-wrapper';
 import ProfileCard from '../Cards/ProfileCard';
 import useStyles from './about-style';
 
@@ -13,10 +13,11 @@ function TeamGrid() {
       <Grid container spacing={5} className={classes.teamRoot}>
         {[...Array(9)].map((e, index) => (
           <Grid item key={index.toString()} md={4} sm={6} xs={12}>
-            <ReactWOW
-              animation="fadeInUp"
-              duration="0.5s"
-              delay={(0.2 + (0.1 * index)) + 's'}
+            <ScrollAnimation
+              animateOnce
+              animateIn="fadeInUp"
+              duration={0.5}
+              delay={(200 + (100 * index))}
             >
               <div>
                 <ProfileCard
@@ -30,7 +31,7 @@ function TeamGrid() {
                   orientation="portrait"
                 />
               </div>
-            </ReactWOW>
+            </ScrollAnimation>
           </Grid>
         ))}
       </Grid>

@@ -36,7 +36,7 @@ function Faq(props) {
         <Search value={keyword} updateValue={setKeyword} />
         <div className={classes.containerWrap}>
           <div className={clsx(classes.containerGeneral, classes.spaceTopShort)}>
-            <Grid spacing={3} justify="center" container>
+            <Grid spacing={3} justifyContent="center" container>
               <Grid item md={6} xs={12}>
                 <Box px={3}>
                   <FaqList />

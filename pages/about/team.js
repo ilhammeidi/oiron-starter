@@ -86,5 +86,4 @@ Team.propTypes = {
   onToggleDir: PropTypes.func.isRequired,
 };
 
-
 export default withTranslation(['common'])(Team);
