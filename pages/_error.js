@@ -32,7 +32,7 @@ function ErrorPage(props) {
         <div className={classes.dedicatedPage}>
           <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} invert />
           <Error errorCode={errorCode} text={t('common:404')} />
-          <Footer />
+          <Footer onToggleDir={onToggleDir} />
         </div>
       </Fragment>
     );
