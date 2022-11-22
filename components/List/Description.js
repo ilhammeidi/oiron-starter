@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
-import { withTranslation } from '~/i18n';
 import useStyles from './list-style';
 
-function Description(props) {
+function Description() {
   const classes = useStyles();
   const text = useText();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   return (
     <Grid container justifyContent="center">
@@ -21,7 +20,7 @@ function Description(props) {
             <Grid item sm={7} xs={12}>
               <Box mb={3}>
                 <Typography variant="h4" className={text.subtitle}>
-                  {t('common:list_desc')}
+                  {t('list_desc')}
                 </Typography>
               </Box>
               <Typography>
@@ -74,8 +73,4 @@ function Description(props) {
   );
 }
 
-Description.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default withTranslation('common')(Description);
+export default Description;

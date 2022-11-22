@@ -6,7 +6,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { i18n, withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import link from '~/public/text/link';
 import useStyles from '../sidenav-style';
 import navMenu from '../data/single';
@@ -14,7 +14,7 @@ import navMenu from '../data/single';
 function SingleNavMobile(props) {
   const classes = useStyles();
   const { toggleDrawer, open } = props;
-  const { t } = props;
+  const { t, i18n } = useTranslation('common');
 
   const [curURL, setCurURL] = useState('');
   const [curOrigin, setCurOrigin] = useState('');
@@ -23,7 +23,7 @@ function SingleNavMobile(props) {
   useEffect(() => {
     setCurURL(window.location.href);
     setCurOrigin(window.location.origin);
-    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
+    setLangPath('/' + i18n.language);
   }, []);
 
   const SideList = () => (
@@ -57,7 +57,7 @@ function SingleNavMobile(props) {
               href={link.starter[text]}
               button
             >
-              <ListItemText className={classes.menuList} primary={t('common:' + text)} />
+              <ListItemText className={classes.menuList} primary={t('' + text)} />
             </ListItem>
           ))}
         </List>
@@ -82,11 +82,6 @@ function SingleNavMobile(props) {
 SingleNavMobile.propTypes = {
   toggleDrawer: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  t: PropTypes.func.isRequired
 };
 
-SingleNavMobile.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(SingleNavMobile);
+export default SingleNavMobile;

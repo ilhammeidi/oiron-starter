@@ -1,16 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import useStyles from './action-style';
 
-function CallAction(props) {
+function CallAction() {
   // Translation Function
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   const classes = useStyles();
   return (
@@ -20,7 +19,7 @@ function CallAction(props) {
           <Grid container alignItems="center">
             <Grid item md={9} xs={12}>
               <Typography variant="h4" gutterBottom display="block">
-                {t('common:about_ready')}
+                {t('about_ready')}
               </Typography>
               <Typography display="block" component="p">
                 Pellentesque ac bibendum tortor. Nulla eget lobortis lacus.
@@ -29,7 +28,7 @@ function CallAction(props) {
             <Grid item md={3} xs={12}>
               <Grid container alignItems="center">
                 <Button size="large" variant="outlined" color="secondary" href="/contact" className={classes.button}>
-                  {t('common:btn_contact')}
+                  {t('btn_contact')}
                 </Button>
               </Grid>
             </Grid>
@@ -40,8 +39,4 @@ function CallAction(props) {
   );
 }
 
-CallAction.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default withTranslation(['common'])(CallAction);
+export default CallAction;

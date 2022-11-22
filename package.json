@@ -1,6 +1,6 @@
 {
   "name": "starter-project",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Oiron ReactJs Starter Project",
   "keywords": [
     "starter kit",
@@ -14,11 +14,13 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "node index.js",
-    "build": "next build",
-    "start": "NODE_ENV=production node index.js",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider next dev -p ${PORT:=3000}",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider next build",
     "export": "next export",
-    "now-build": "next build && next export -o dist"
+    "start": "next start -p ${PORT:=3000}",
+    "now-build": "next build && next export -o dist",
+    "lint": "eslint ./ --ext js",
+    "lint:fix": "npm run lint --fix"
   },
   "dependencies": {
     "@babel/core": "^7.16.5",
@@ -30,13 +32,15 @@
     "babel-plugin-root-import": "^6.4.1",
     "clsx": "^1.0.4",
     "core-js": "^3.6.5",
+    "cross-env": "^7.0.3",
     "express": "^4.17.1",
-    "google-maps-react": "^2.0.6",
+    "google-maps-react18": "^2.0.9",
     "jss": "^10.3.0",
     "jss-rtl": "^0.3.0",
     "next": "^12.0.10",
-    "next-i18next": "^4.5.0",
-    "next-images": "^1.1.2",
+    "next-i18next": "10.0.1",
+    "next-images": "^1.7.0",
+    "next-language-detector": "1.0.0",
     "next-page-transitions": "^1.0.0-beta.2",
     "pre-commit": "^1.2.2",
     "prop-types": "^15.7.2",
@@ -55,14 +59,18 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-remove-unused-vars": "^2.2.0",
     "eslint": "^8.5.0",
     "eslint-config-airbnb": "19.0.2",
     "eslint-config-prettier": "5.0.0",
     "eslint-import-resolver-webpack": "0.13.2",
+    "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-import": "2.25.3",
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.27.1",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "eslint-webpack-plugin": "^3.1.1",
     "postcss": "8.3.0",
     "webpack": "^5.65.0"

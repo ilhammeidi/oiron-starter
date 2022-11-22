@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -8,16 +7,16 @@ import Avatar from '@material-ui/core/Avatar';
 import LocalPhone from '@material-ui/icons/LocalPhone';
 import DateRange from '@material-ui/icons/DateRange';
 import LocationOn from '@material-ui/icons/LocationOn';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../blog-style';
 
-function ProfileWidget(props) {
+function ProfileWidget() {
   const classes = useStyles();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   return (
-    <Paper title={t('common:blog_about')} icon="ion-ios-contact-outline" whiteBg noMargin desc="commodo augue. In dictum leo nec odio euismod pretium.">
+    <Paper title={t('blog_about')} icon="ion-ios-contact-outline" whiteBg noMargin desc="commodo augue. In dictum leo nec odio euismod pretium.">
       <List dense className={classes.profileList}>
         <ListItem>
           <ListItemAvatar>
@@ -54,12 +53,4 @@ function ProfileWidget(props) {
   );
 }
 
-ProfileWidget.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-ProfileWidget.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(ProfileWidget);
+export default ProfileWidget;

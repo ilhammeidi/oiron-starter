@@ -18,7 +18,7 @@ import MenuList from '@material-ui/core/MenuList';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { i18n } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import useStyles from '../header-style';
 
 const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disable-line
@@ -29,6 +29,7 @@ function MultiLevelHover(props) {
   const classes = useStyles();
   const { dataMenu } = props;
 
+  const { i18n } = useTranslation('common');
   const [curURL, setCurURL] = useState('');
   const [curOrigin, setCurOrigin] = useState('');
   const [langPath, setLangPath] = useState('');
@@ -117,7 +118,7 @@ function MultiLevelHover(props) {
     prevOpen.current = open;
     setCurURL(window.location.href);
     setCurOrigin(window.location.origin);
-    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
+    setLangPath('/' + i18n.language);
   }, [open]);
 
   const childMenu = (menu, item, anchor) => (

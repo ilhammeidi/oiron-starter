@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import { useText, useTextAlign } from '~/theme/common';
 import PricingCard from '../Cards/PricingCard';
 import useStyles from './pricing-style';
@@ -56,19 +55,19 @@ const tiers = [
   }
 ];
 
-function Pricing(props) {
+function Pricing() {
   const classes = useStyles();
   const align = useTextAlign();
   const text = useText();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   return (
     <Container>
       <h3 className={clsx(text.capitalize, text.title, align.textCenter)}>
-        {t('common:pricing_title')}
+        {t('pricing_title')}
       </h3>
       <p className={clsx(text.subtitle2, align.textCenter)}>
-        {t('common:pricing_desc')}
+        {t('pricing_desc')}
       </p>
       <div className={classes.pricingWrap}>
         <Grid container spacing={3} alignItems="flex-end">
@@ -80,7 +79,7 @@ function Pricing(props) {
                 subheader={tier.subheader}
                 price={tier.price}
                 description={tier.description}
-                buttonText={t('common:' + tier.buttonText)}
+                buttonText={t('' + tier.buttonText)}
                 buttonVariant={tier.buttonVariant}
               />
             </Grid>
@@ -91,8 +90,4 @@ function Pricing(props) {
   );
 }
 
-Pricing.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default withTranslation(['common'])(Pricing);
+export default Pricing;

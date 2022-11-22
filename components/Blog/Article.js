@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
@@ -7,14 +6,14 @@ import List from '@material-ui/core/List';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import CommentForm from '../Comment/Form';
 import Item from '../Comment/Item';
 import useStyles from './blog-style';
 
-function Article(props) {
+function Article() {
   const classes = useStyles();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   // Theme breakpoints
   const theme = useTheme();
@@ -89,7 +88,7 @@ function Article(props) {
       <section className={classes.socmedShare}>
         <div className={classes.btnArea}>
           <Typography variant="h6">
-            {t('common:blog_share')}
+            {t('blog_share')}
           </Typography>
           <Box mt={3}>
             <Button variant="outlined" className={classes.indigoBtn} type="button">
@@ -110,7 +109,7 @@ function Article(props) {
       <Divider className={classes.dividerBordered} />
       <section className={classes.comment}>
         <Typography variant="h6">
-          {t('common:blog_write')}
+          {t('blog_write')}
         </Typography>
         <Box mt={3}>
           <CommentForm />
@@ -132,12 +131,4 @@ function Article(props) {
   );
 }
 
-Article.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-Article.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(Article);
+export default Article;

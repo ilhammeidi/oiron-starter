@@ -18,7 +18,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Icon from '@material-ui/core/Icon';
-import { withTranslation, i18n } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import useStyles from '../header-style';
 import navMenu from '../data/single';
 
@@ -27,6 +27,7 @@ const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disabl
 });
 
 function MixedNav(props) {
+  const { t, i18n } = useTranslation('common');
   const {
     menuPrimary,
     menuSecondary,
@@ -34,7 +35,6 @@ function MixedNav(props) {
     toggle,
     close,
     singleNav,
-    t
   } = props;
   const classes = useStyles();
 
@@ -52,7 +52,7 @@ function MixedNav(props) {
   useEffect(() => {
     setCurURL(window.location.href);
     setCurOrigin(window.location.origin);
-    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
+    setLangPath('/' + i18n.language);
   }, []);
 
   return (
@@ -64,11 +64,11 @@ function MixedNav(props) {
         <li key={item.id.toString()}>
           {singleNav ? (
             <Button component={AnchorLink} offset={() => 100} href={item.url}>
-              {t('starter-landing:header_' + item.name)}
+              {t('starter-landing.header_' + item.name)}
             </Button>
           ) : (
             <Button href={'/' + item.url}>
-              {t('starter-landing:header_' + item.name)}
+              {t('starter-landing.header_' + item.name)}
             </Button>
           )}
         </li>
@@ -80,7 +80,7 @@ function MixedNav(props) {
             ref={anchorRef}
             endIcon={<Icon>expand_more</Icon>}
           >
-            {t('common:header_sample_page')}
+            {t('header_sample_page')}
           </Button>
           <Popper
             open={open}
@@ -115,7 +115,7 @@ function MixedNav(props) {
                                   selected={curURL === (curOrigin + langPath + item.link)}
                                 >
                                   <ListItemText
-                                    primary={t('common:header_' + item.name)}
+                                    primary={t('header_' + item.name)}
                                     classes={{
                                       primary: classes.menuList
                                     }}
@@ -145,15 +145,10 @@ MixedNav.propTypes = {
   toggle: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   singleNav: PropTypes.bool,
-  t: PropTypes.func.isRequired
 };
 
 MixedNav.defaultProps = {
   singleNav: false
 };
 
-MixedNav.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'starter-landing'],
-});
-
-export default withTranslation(['common', 'starter-landing'])(MixedNav);
+export default MixedNav;

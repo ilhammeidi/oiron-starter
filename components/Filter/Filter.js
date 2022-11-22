@@ -17,15 +17,14 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import useStyles from './filter-style';
 
 function Filter(props) {
   const classes = useStyles();
-
+  const { t } = useTranslation('common');
   const [range, setRange] = useState({ from: '', to: '' });
   const {
-    t,
     filterCategory, changeCategory,
     filterRating, changeRating,
     filterTag, changeTag,
@@ -84,7 +83,7 @@ function Filter(props) {
             selected={filterCategory === 'all'}
             onClick={(event) => handleChangeCategory(event, 'all')}
           >
-            <ListItemText primary={t('common:list_filter')} />
+            <ListItemText primary={t('list_filter')} />
           </ListItem>
           <ListItem
             button
@@ -400,7 +399,7 @@ function Filter(props) {
           <FormControl component="fieldset">
             <FormLabel className={classes.titleLabel} component="legend">Filter Radio</FormLabel>
             <RadioGroup aria-label="radio" name="radio" value={filterRadio} onChange={(event) => handleChangeRadio(event)}>
-              <FormControlLabel value="all" control={<Radio />} label={t('common:list_filter')} />
+              <FormControlLabel value="all" control={<Radio />} label={t('list_filter')} />
               <FormControlLabel value="radio-a" control={<Radio />} label="Radio A" />
               <FormControlLabel value="radio-b" control={<Radio />} label="Radio B" />
               <FormControlLabel value="radio-c" control={<Radio />} label="Radio C" />
@@ -416,7 +415,6 @@ function Filter(props) {
 }
 
 Filter.propTypes = {
-  t: PropTypes.func.isRequired,
   filterCategory: PropTypes.string.isRequired,
   changeCategory: PropTypes.func.isRequired,
   filterRating: PropTypes.number.isRequired,
@@ -431,8 +429,4 @@ Filter.propTypes = {
   changeRadio: PropTypes.func.isRequired
 };
 
-Filter.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(Filter);
+export default Filter;

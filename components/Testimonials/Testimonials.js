@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import Carousel from 'react-slick';
+import { useTranslation } from 'next-i18next';
 import useStyle from './testi-style';
 import imgAPI from '~/public/images/imgAPI';
-import { withTranslation } from '~/i18n';
 import { useText, useTextAlign } from '~/theme/common';
 import TestiCard from '../Cards/TestiCard';
 
@@ -47,9 +46,9 @@ const testiContent = [
   }
 ];
 
-function Testimonials(props) {
+function Testimonials() {
   const classes = useStyle();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   const align = useTextAlign();
   const text = useText();
@@ -91,7 +90,7 @@ function Testimonials(props) {
   return (
     <div className={classes.testimonialWrap}>
       <Typography gutterBottom variant="h3" className={clsx(text.capitalize, align.textCenter)} display="block">
-        {t('common:starter-landing.header_testimonials')}
+        {t('starter-landing.header_testimonials')}
       </Typography>
       <Typography gutterBottom variant="body1" className={align.textCenter} display="block">
         Curabitur egestas consequat lorem, vel fermentum augue porta id.
@@ -115,8 +114,4 @@ function Testimonials(props) {
   );
 }
 
-Testimonials.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default withTranslation(['common', 'starter-landing'])(Testimonials);
+export default Testimonials;

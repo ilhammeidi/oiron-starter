@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
@@ -7,17 +6,17 @@ import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
 import Checkbox from './Checkbox';
 import SocialAuth from './SocialAuth';
 import AuthFrame from './AuthFrame';
 import useStyles from './form-style';
 
-function Register(props) {
+function Register() {
   const classes = useStyles();
   const text = useText();
-  const { t } = props;
+  const { t } = useTranslation('common');
   const [values, setValues] = useState({
     name: '',
     email: '',
@@ -53,16 +52,16 @@ function Register(props) {
   };
 
   return (
-    <AuthFrame title={t('common:login_subtitle')} type="register" subtitle={t('common:auth_desc')}>
+    <AuthFrame title={t('login_subtitle')} type="register" subtitle={t('auth_desc')}>
       <div>
         <div className={classes.head}>
           <h3 className={isDesktop ? text.subtitle : text.title}>
-            {t('common:login_create')}
+            {t('login_create')}
           </h3>
         </div>
         <SocialAuth />
         <div className={classes.separator}>
-          <Typography>{t('common:register_or')}</Typography>
+          <Typography>{t('register_or')}</Typography>
         </div>
         <ValidatorForm
           onError={errors => console.log(errors)}
@@ -73,7 +72,7 @@ function Register(props) {
               <TextValidator
                 variant="filled"
                 className={classes.input}
-                label={t('common:register_name')}
+                label={t('register_name')}
                 onChange={handleChange('name')}
                 name="name"
                 fullWidth
@@ -87,7 +86,7 @@ function Register(props) {
                 variant="filled"
                 className={classes.input}
                 fullWidth
-                label={t('common:register_email')}
+                label={t('register_email')}
                 onChange={handleChange('email')}
                 name="email"
                 value={values.email}
@@ -100,7 +99,7 @@ function Register(props) {
                 variant="filled"
                 type="password"
                 className={classes.input}
-                label={t('common:register_password')}
+                label={t('register_password')}
                 validators={['required']}
                 fullWidth
                 onChange={handleChange('password')}
@@ -115,7 +114,7 @@ function Register(props) {
                 type="password"
                 className={classes.input}
                 fullWidth
-                label={t('common:register_confirm')}
+                label={t('register_confirm')}
                 validators={['isPasswordMatch', 'required']}
                 errorMessages={['Password mismatch', 'this field is required']}
                 onChange={handleChange('confirmPassword')}
@@ -138,10 +137,10 @@ function Register(props) {
               )}
               label={(
                 <span>
-                  {t('common:form_terms')}
+                  {t('form_terms')}
                   &nbsp;
                   <a href="#">
-                    {t('common:form_privacy')}
+                    {t('form_privacy')}
                   </a>
                 </span>
               )}
@@ -153,7 +152,7 @@ function Register(props) {
               color="secondary"
               size="large"
             >
-              {t('common:continue')}
+              {t('continue')}
             </Button>
           </div>
         </ValidatorForm>
@@ -162,8 +161,4 @@ function Register(props) {
   );
 }
 
-Register.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default withTranslation(['common'])(Register);
+export default Register;

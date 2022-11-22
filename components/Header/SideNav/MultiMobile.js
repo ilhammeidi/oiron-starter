@@ -11,7 +11,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import ArrowDropUp from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import Collapse from '@material-ui/core/Collapse';
-import { i18n, withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import useStyles from '../sidenav-style';
 import navMenu from '../data/multiple';
 import link from '~/public/text/link';
@@ -20,7 +20,7 @@ function MobileMenu(props) {
   const classes = useStyles();
   const { toggleDrawer, open } = props;
   const [expand, setExpand] = useState({});
-  const { t } = props;
+  const { t, i18n } = useTranslation('common');
 
   const [curURL, setCurURL] = useState('');
   const [curOrigin, setCurOrigin] = useState('');
@@ -36,7 +36,7 @@ function MobileMenu(props) {
   useEffect(() => {
     setCurURL(window.location.href);
     setCurOrigin(window.location.origin);
-    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
+    setLangPath('/' + i18n.language);
   }, []);
 
   const childMenu = (menu, item) => (
@@ -135,7 +135,7 @@ function MobileMenu(props) {
                 href={link.starter[text]}
                 button
               >
-                <ListItemText className={classes.menuList} primary={t('common:' + text)} />
+                <ListItemText className={classes.menuList} primary={t('' + text)} />
               </ListItem>
             ))}
           </List>
@@ -148,11 +148,6 @@ function MobileMenu(props) {
 MobileMenu.propTypes = {
   toggleDrawer: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  t: PropTypes.func.isRequired
 };
 
-MobileMenu.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(MobileMenu);
+export default MobileMenu;

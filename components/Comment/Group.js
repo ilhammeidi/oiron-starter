@@ -1,20 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import List from '@material-ui/core/List';
 import clsx from 'clsx';
+import { useTranslation } from 'next-i18next';
 import Item from './Item';
 import Form from './Form';
 import Help from './Help';
 import useStyles from './comment-style';
-import { withTranslation } from '~/i18n';
 import { useText } from '~/theme/common';
 
-function Group(props) {
+function Group() {
   const classes = useStyles();
   const text = useText();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   const comments = [{
     name: 'John Doe',
@@ -53,7 +52,7 @@ function Group(props) {
             <Grid item sm={8} xs={12}>
               <Box mb={3}>
                 <h4 className={clsx(text.subtitle, text.capitalize)}>
-                  {t('common:list_comments')}
+                  {t('list_comments')}
                 </h4>
               </Box>
               <Form avatar="/images/avatars/pp_boy2.svg" />
@@ -80,12 +79,4 @@ function Group(props) {
   );
 }
 
-Group.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-Group.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(Group);
+export default Group;

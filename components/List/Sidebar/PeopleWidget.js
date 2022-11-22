@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
@@ -7,13 +6,13 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import Avatar from '@material-ui/core/Avatar';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../list-style';
 
-function PeopleWidget(props) {
+function PeopleWidget() {
   const classes = useStyles();
-  const { t } = props;
+  const { t } = useTranslation('common');
   const people = [{
     img: '/images/avatars/pp_boy5.svg',
     name: 'John Doe',
@@ -61,7 +60,7 @@ function PeopleWidget(props) {
         </List>
         <Grid container justifyContent="center">
           <Button fullWidth color="secondary">
-            {t('common:btn_seeall')}
+            {t('btn_seeall')}
           </Button>
         </Grid>
       </div>
@@ -69,12 +68,4 @@ function PeopleWidget(props) {
   );
 }
 
-PeopleWidget.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-PeopleWidget.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(PeopleWidget);
+export default PeopleWidget;

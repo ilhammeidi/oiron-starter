@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Fade from '@material-ui/core/Fade';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import routeLink from '~/public/text/link';
 import Logo from '../Logo';
 import useStyles from './header-style';
@@ -32,6 +32,8 @@ const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disabl
 });
 
 function Hamburger(props) {
+  const { t } = useTranslation('common');
+
   // Theme breakpoints
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
@@ -57,7 +59,6 @@ function Hamburger(props) {
     onToggleDark,
     onToggleDir,
     home,
-    t
   } = props;
   const [menuList] = useState([
     createData(navMenu[0], '#' + navMenu[0]),
@@ -126,12 +127,12 @@ function Hamburger(props) {
                     {home ? (
                       // eslint-disable-next-line
                       <Button component={AnchorLink} onClick={handleCloseDrawer} offset={item.offset || 0} href={item.url}>
-                        {t('common:starter-landing.header_' + item.name)}
+                        {t('starter-landing.header_' + item.name)}
                       </Button>
                     ) : (
                       // eslint-disable-next-line
                       <Button href={'/' + item.url}>
-                        {t('common:starter-landing.header_' + item.name)}
+                        {t('starter-landing.header_' + item.name)}
                       </Button>
                     )}
                   </li>
@@ -149,11 +150,11 @@ Hamburger.propTypes = {
   onToggleDark: PropTypes.func.isRequired,
   onToggleDir: PropTypes.func.isRequired,
   home: PropTypes.bool,
-  t: PropTypes.func.isRequired
+
 };
 
 Hamburger.defaultProps = {
   home: false
 };
 
-export default withTranslation(['common', 'starter-landing'])(Hamburger);
+export default Hamburger;

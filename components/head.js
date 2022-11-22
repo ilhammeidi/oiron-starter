@@ -1,7 +1,7 @@
 import React from 'react';
 import { Head } from 'next/document';
-import theme from '../theme/palette';
-import brand from '../public/text/brand';
+import theme from '~/theme/palette';
+import brand from '~/public/text/brand';
 
 const HeadComponent = () => (
   <Head>

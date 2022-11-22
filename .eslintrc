@@ -1,6 +1,7 @@
 {
   "extends": [
     "eslint-config-airbnb",
+    "plugin:flowtype/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -17,6 +18,14 @@
   },
   "parser": "@babel/eslint-parser",
   "rules": {
+    "no-multiple-empty-lines": "error",
+    "no-multi-spaces": "error",
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+    ],
     "template-curly-spacing" : "off",
     indent : "off",
     "no-nested-ternary": 0,
@@ -60,7 +69,9 @@
   },
   "plugins": [
     "react",
-    "import"
+    "import",
+    "unused-imports",
+    "flowtype"
   ],
   "settings": {
     "import/parser": "babel-eslint",

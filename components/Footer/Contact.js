@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Container from '@material-ui/core/Container';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -13,17 +12,17 @@ import IconButton from '@material-ui/core/IconButton';
 import Divider from '@material-ui/core/Divider';
 import Snackbar from '@material-ui/core/Snackbar';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import logo from '~/public/images/logo-starter.svg';
 import brand from '~/public/text/brand';
 import { useText, useTextAlign } from '~/theme/common';
 import useStyles from './contact-style';
 
-function Contact(props) {
+function Contact() {
   const classes = useStyles();
   const text = useText();
   const align = useTextAlign();
-  const { t } = props;
+  const { t } = useTranslation('common');
   const [values, setValues] = useState({
     name: '',
     email: '',
@@ -60,7 +59,7 @@ function Contact(props) {
                 {brand.starter.name}
               </div>
               <Typography>
-                {t('common:starter-landing.banner_subtitle')}
+                {t('starter-landing.banner_subtitle')}
               </Typography>
               <div className={classes.socmed}>
                 <IconButton aria-label="Delete" className={classes.margin} size="small">
@@ -78,7 +77,7 @@ function Contact(props) {
               </div>
               <div className={classes.contact}>
                 <Typography className={text.paragraph}>
-                  {t('common:blog_phone')}
+                  {t('blog_phone')}
                   <br />
                   +12 345 678 90
                 </Typography>
@@ -114,7 +113,7 @@ function Contact(props) {
                 <Grid container spacing={6}>
                   <Grid item lg={5} xs={12}>
                     <h3 className={clsx(classes.title, text.title)}>
-                      {t('common:contact_title2')}
+                      {t('contact_title2')}
                     </h3>
                   </Grid>
                   <Grid item lg={7} xs={12}>
@@ -125,7 +124,7 @@ function Contact(props) {
                       >
                         <TextValidator
                           className={classes.input}
-                          label={t('common:form_name')}
+                          label={t('form_name')}
                           onChange={handleChange('name')}
                           name="Name"
                           value={values.name}
@@ -134,7 +133,7 @@ function Contact(props) {
                         />
                         <TextValidator
                           className={classes.input}
-                          label={t('common:form_email')}
+                          label={t('form_email')}
                           onChange={handleChange('email')}
                           name="Email"
                           value={values.email}
@@ -145,14 +144,14 @@ function Contact(props) {
                           multiline
                           rows="6"
                           className={classes.input}
-                          label={t('common:form_message')}
+                          label={t('form_message')}
                           onChange={handleChange('message')}
                           name="Message"
                           value={values.message}
                         />
                         <div className={classes.btnArea}>
                           <Button variant="contained" type="submit" color="primary" size="large">
-                            {t('common:form_send')}
+                            {t('form_send')}
                           </Button>
                         </div>
                       </ValidatorForm>
@@ -168,8 +167,4 @@ function Contact(props) {
   );
 }
 
-Contact.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default withTranslation(['starter-landing'])(Contact);
+export default Contact;

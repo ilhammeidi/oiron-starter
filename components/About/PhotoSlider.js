@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import clsx from 'clsx';
 import Container from '@material-ui/core/Container';
@@ -9,15 +8,15 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Carousel from 'react-slick';
+import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
-import { withTranslation } from '~/i18n';
 import MediaCard from '../Cards/MediaCard';
 import useStyles from './about-style';
 
-function PhotoSlider(props) {
+function PhotoSlider() {
   const classes = useStyles();
   const text = useText();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   // Image Lightbox
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -98,7 +97,7 @@ function PhotoSlider(props) {
       <Container>
         <Box mb={3}>
           <h4 className={text.title2}>
-            {t('common:about_gallery')}
+            {t('about_gallery')}
           </h4>
         </Box>
         <p className={text.subtitle2}>
@@ -144,12 +143,4 @@ function PhotoSlider(props) {
   );
 }
 
-PhotoSlider.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-PhotoSlider.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'starter-landing'],
-});
-
-export default withTranslation(['common', 'starter-landing'])(PhotoSlider);
+export default PhotoSlider;

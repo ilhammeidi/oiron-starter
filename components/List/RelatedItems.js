@@ -1,16 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
-import { withTranslation } from '~/i18n';
 import useStyles from './list-style';
 import ProductCard from '../Cards/ProductCard';
 
-function RelatedItems(props) {
+function RelatedItems() {
   const classes = useStyles();
   const text = useText();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   return (
     <Grid container justifyContent="center">
@@ -18,7 +17,7 @@ function RelatedItems(props) {
         <Box pt={5} px={2} pb={10}>
           <Box mb={3}>
             <h4 className={text.subtitle}>
-              {t('common:list_related')}
+              {t('list_related')}
             </h4>
           </Box>
           <Grid container className={classes.scrollTablet}>
@@ -50,8 +49,4 @@ function RelatedItems(props) {
   );
 }
 
-RelatedItems.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default withTranslation('common')(RelatedItems);
+export default RelatedItems;

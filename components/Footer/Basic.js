@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
+import { useTranslation } from 'next-i18next';
 import brand from '~/public/text/brand';
-import { withTranslation } from '~/i18n';
 import menu from '../Header/data/single';
 import useStyles from './basic-style';
 
@@ -18,9 +17,9 @@ function Copyright() {
   );
 }
 
-function Basic(props) {
+function Basic() {
   const classes = useStyles();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   return (
     <footer className={classes.root}>
@@ -30,7 +29,7 @@ function Basic(props) {
             {menu.map((item, index) => (
               <li key={index.toString()}>
                 <Link href={'#' + item} variant="subtitle1">
-                  {t('common:starter-landing.header_' + item)}
+                  {t('starter-landing.header_' + item)}
                 </Link>
               </li>
             ))}
@@ -55,8 +54,4 @@ function Basic(props) {
   );
 }
 
-Basic.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-export default withTranslation(['starter-landing'])(Basic);
+export default Basic;

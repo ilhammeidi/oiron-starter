@@ -6,7 +6,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Send from '@material-ui/icons/Send';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import avatarDefault from '~/public/images/avatars/pp_boy4.svg';
 import useStyles from './comment-style';
 
@@ -20,7 +20,8 @@ function Form(props) {
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
   // Translation Function
-  const { t, avatar } = props;
+  const { avatar } = props;
+  const { t } = useTranslation('common');
 
   const handleChange = event => {
     setComment(event.target.value);
@@ -42,7 +43,7 @@ function Form(props) {
           }}
         />
         <Button variant="contained" size="small" color="primary" aria-label="send" className={classes.sendButton}>
-          {isMobile ? (<Send />) : t('common:form_send')}
+          {isMobile ? (<Send />) : t('form_send')}
         </Button>
       </div>
     </section>
@@ -50,7 +51,6 @@ function Form(props) {
 }
 
 Form.propTypes = {
-  t: PropTypes.func.isRequired,
   avatar: PropTypes.string
 };
 
@@ -58,4 +58,4 @@ Form.defaultProps = {
   avatar: ''
 };
 
-export default withTranslation(['common'])(Form);
+export default Form;

@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import LangIcon from '@material-ui/icons/Language';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import Select from '@material-ui/core/Select';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import MenuItem from '@material-ui/core/MenuItem';
 import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
+import { useTranslation } from 'next-i18next';
 import logo from '~/public/images/logo-starter.svg';
 import brand from '~/public/text/brand';
 import img from '~/public/images/imgAPI';
-import { i18n, withTranslation } from '~/i18n';
+import SelectLang from '../LangSwitch/Select';
 import useStyles from './blog-style';
 
 function Copyright() {
@@ -51,31 +47,9 @@ const news = [
 ];
 
 function Blog(props) {
-  const [ctn, setCtn] = useState(null);
   const classes = useStyles();
-  const { t } = props;
-  const [values, setValues] = useState({
-    lang: 'eng',
-  });
-
-  useEffect(() => {
-    setValues({ lang: i18n.language });
-    setCtn(document.getElementById('main-wrap'));
-  }, []);
-
-  function handleChange(event) {
-    setValues(oldValues => ({
-      ...oldValues,
-      [event.target.name]: event.target.value,
-    }));
-    if (event.target.value === 'ara') {
-      i18n.changeLanguage('ara');
-      props.toggleDir('rtl');
-    } else {
-      i18n.changeLanguage(event.target.value);
-      props.toggleDir('ltr');
-    }
-  }
+  const { toggleDir } = props;
+  const { t } = useTranslation('common');
 
   return (
     <div className={classes.footer}>
@@ -89,11 +63,11 @@ function Blog(props) {
               </Typography>
             </div>
             <Typography color="textPrimary" className={classes.footerDesc} gutterBottom>
-              {t('common:starter-landing.banner_subtitle')}
+              {t('starter-landing.banner_subtitle')}
             </Typography>
             <div className={classes.quickLinks}>
               <Typography variant="h6" className={classes.title} color="textPrimary" gutterBottom>
-                {t('common:footer_link')}
+                {t('footer_link')}
               </Typography>
               <ul>
                 {footer.description.map((item, index) => (
@@ -114,7 +88,7 @@ function Blog(props) {
                 </figure>
                 <div className={classes.listText}>
                   <Typography variant="button" className={classes.category}>
-                    {t('common:footer_news')}
+                    {t('footer_news')}
                   </Typography>
                   <Typography display="block" component="p">Sed imperdiet enim ligula vitae viverra. </Typography>
                 </div>
@@ -136,30 +110,7 @@ function Blog(props) {
                 <i className="ion-social-linkedin" />
               </IconButton>
             </div>
-            <Select
-              value={values.lang}
-              onChange={handleChange}
-              MenuProps={{
-                container: ctn
-              }}
-              startAdornment={(
-                <InputAdornment className={classes.icon} position="start">
-                  <LangIcon />
-                </InputAdornment>
-              )}
-              className={classes.selectLang}
-              classes={{
-                selectMenu: classes.selectMenu
-              }}
-              input={<OutlinedInput labelWidth={200} name="lang" id="outlined-lang-simple" />}
-            >
-              <MenuItem value="eng">English</MenuItem>
-              <MenuItem value="deu">Deutsch</MenuItem>
-              <MenuItem value="ara">العربيّة</MenuItem>
-              <MenuItem value="ind">Bahasa Indonesia</MenuItem>
-              <MenuItem value="prt">Português</MenuItem>
-              <MenuItem value="zho">简体中文</MenuItem>
-            </Select>
+            <SelectLang toggleDir={toggleDir} />
             <Copyright />
           </Grid>
         </Grid>
@@ -169,7 +120,6 @@ function Blog(props) {
 }
 
 Blog.propTypes = {
-  t: PropTypes.func.isRequired,
   toggleDir: PropTypes.func,
 };
 
@@ -177,4 +127,4 @@ Blog.defaultProps = {
   toggleDir: () => {},
 };
 
-export default withTranslation(['starter-landing'])(Blog);
+export default Blog;

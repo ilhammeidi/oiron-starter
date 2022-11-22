@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -7,20 +7,16 @@ import { useTheme } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
-import LangIcon from '@material-ui/icons/Language';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Typography from '@material-ui/core/Typography';
-import Select from '@material-ui/core/Select';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import MenuItem from '@material-ui/core/MenuItem';
 import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
-import { i18n, withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import logo from '~/public/images/logo-starter.svg';
 import brand from '~/public/text/brand';
 import { useTextAlign } from '~/theme/common';
+import SelectLang from '../LangSwitch/Select';
 import useStyles from './sitemap-style';
 
 function Copyright() {
@@ -51,39 +47,17 @@ const footers = [
 ];
 
 function Footer(props) {
-  const [ctn, setCtn] = useState(null);
   // Theme breakpoints
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   // Translation Function
-  const { t } = props;
+  const { toggleDir } = props;
+  const { t } = useTranslation('common');
 
   const classes = useStyles();
   const align = useTextAlign();
-  const [values, setValues] = useState({
-    lang: ''
-  });
-
-  useEffect(() => {
-    setValues({ lang: i18n.language });
-    setCtn(document.getElementById('main-wrap'));
-  }, []);
-
-  function handleChange(event) {
-    setValues(oldValues => ({
-      ...oldValues,
-      [event.target.name]: event.target.value,
-    }));
-    if (event.target.value === 'ara') {
-      i18n.changeLanguage('ara');
-      props.toggleDir('rtl');
-    } else {
-      i18n.changeLanguage(event.target.value);
-      props.toggleDir('ltr');
-    }
-  }
 
   return (
     <Container maxWidth="lg" component="footer" className={classes.footer}>
@@ -96,7 +70,7 @@ function Footer(props) {
             </Typography>
           </div>
           <Typography color="textPrimary" className={classes.footerDesc} gutterBottom>
-            {t('common:starter-landing.banner_subtitle')}
+            {t('starter-landing.banner_subtitle')}
           </Typography>
           {isDesktop && <Copyright />}
         </Grid>
@@ -171,27 +145,7 @@ function Footer(props) {
               <i className="ion-social-linkedin" />
             </IconButton>
           </div>
-          <Select
-            value={values.lang}
-            onChange={handleChange}
-            MenuProps={{
-              container: ctn
-            }}
-            startAdornment={(
-              <InputAdornment className={classes.icon} position="start">
-                <LangIcon />
-              </InputAdornment>
-            )}
-            className={classes.selectLang}
-            input={<OutlinedInput labelWidth={200} name="lang" id="outlined-lang-simple" />}
-          >
-            <MenuItem value="eng">English</MenuItem>
-            <MenuItem value="deu">Deutsch</MenuItem>
-            <MenuItem value="ara">العربيّة</MenuItem>
-            <MenuItem value="ind">Bahasa Indonesia</MenuItem>
-            <MenuItem value="prt">Português</MenuItem>
-            <MenuItem value="zho">简体中文</MenuItem>
-          </Select>
+          <SelectLang toggleDir={toggleDir} />
         </Grid>
       </Grid>
       {isMobile && (
@@ -206,7 +160,6 @@ function Footer(props) {
 }
 
 Footer.propTypes = {
-  t: PropTypes.func.isRequired,
   toggleDir: PropTypes.func,
 };
 
@@ -214,4 +167,4 @@ Footer.defaultProps = {
   toggleDir: () => {},
 };
 
-export default withTranslation(['starter-landing'])(Footer);
+export default Footer;

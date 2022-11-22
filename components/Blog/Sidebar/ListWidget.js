@@ -1,16 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../blog-style';
 
-function ListWidget(props) {
+function ListWidget() {
   const classes = useStyles();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   const periode = [
     'October 2018',
@@ -24,7 +23,7 @@ function ListWidget(props) {
   ];
 
   return (
-    <Paper title={t('common:blog_archived')} icon="ion-folder" whiteBg desc="">
+    <Paper title={t('blog_archived')} icon="ion-folder" whiteBg desc="">
       <div className={classes.albumRoot}>
         <List component="nav">
           {periode.map((item, index) => (
@@ -39,12 +38,4 @@ function ListWidget(props) {
   );
 }
 
-ListWidget.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-ListWidget.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(ListWidget);
+export default ListWidget;

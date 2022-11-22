@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -9,13 +8,13 @@ import Grid from '@material-ui/core/Grid';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { useTranslation } from 'next-i18next';
 import { useText, useTextAlign } from '~/theme/common';
-import { withTranslation } from '~/i18n';
 import Checkbox from './Checkbox';
 import useStyles from './form-style';
 
-function Contact(props) {
-  const { t } = props;
+function Contact() {
+  const { t } = useTranslation('common');
   const classes = useStyles();
   const text = useText();
   const align = useTextAlign();
@@ -74,10 +73,10 @@ function Contact(props) {
         message={<span id="message-id">Message Sent</span>}
       />
       <h3 className={clsx(text.title, align.textCenter)}>
-        {t('common:contact_title2')}
+        {t('contact_title2')}
       </h3>
       <p className={clsx(classes.desc, text.subtitle2, align.textCenter)}>
-        {t('common:contact_subtitle')}
+        {t('contact_subtitle')}
       </p>
       <Box mt={8} px={{ sm: 6 }}>
         <ValidatorForm
@@ -89,7 +88,7 @@ function Contact(props) {
               <TextValidator
                 fullWidth
                 className={classes.input}
-                label={t('common:form_name')}
+                label={t('form_name')}
                 onChange={handleChange('name')}
                 name="Name"
                 value={values.name}
@@ -101,7 +100,7 @@ function Contact(props) {
               <TextValidator
                 fullWidth
                 className={classes.input}
-                label={t('common:form_email')}
+                label={t('form_email')}
                 onChange={handleChange('email')}
                 name="Email"
                 value={values.email}
@@ -113,7 +112,7 @@ function Contact(props) {
               <TextValidator
                 fullWidth
                 className={classes.input}
-                label={t('common:form_phone')}
+                label={t('form_phone')}
                 onChange={handleChange('phone')}
                 name="Phone"
                 value={values.phone}
@@ -123,7 +122,7 @@ function Contact(props) {
               <TextValidator
                 fullWidth
                 className={classes.input}
-                label={t('common:form_company')}
+                label={t('form_company')}
                 onChange={handleChange('company')}
                 name="Company"
                 value={values.company}
@@ -135,7 +134,7 @@ function Contact(props) {
                 fullWidth
                 rows="6"
                 className={classes.input}
-                label={t('common:form_message')}
+                label={t('form_message')}
                 onChange={handleChange('message')}
                 name="Message"
                 value={values.message}
@@ -156,16 +155,16 @@ function Contact(props) {
               )}
               label={(
                 <span>
-                  {t('common:form_terms')}
+                  {t('form_terms')}
                   <br />
                   <a href="#" className={classes.link}>
-                    {t('common:form_privacy')}
+                    {t('form_privacy')}
                   </a>
                 </span>
               )}
             />
             <Button variant="contained" type="submit" color="primary" size="large">
-              {t('common:form_send')}
+              {t('form_send')}
             </Button>
           </div>
         </ValidatorForm>
@@ -174,8 +173,4 @@ function Contact(props) {
   );
 }
 
-Contact.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default withTranslation(['common'])(Contact);
+export default Contact;

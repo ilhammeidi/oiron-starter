@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
@@ -7,13 +6,13 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../list-style';
 
-function NewsWidget(props) {
+function NewsWidget() {
   const classes = useStyles();
-  const { t } = props;
+  const { t } = useTranslation('common');
   const news = [{
     img: 'https://source.unsplash.com/random',
     title: 'Vestibulum bibendum nisi eget magna',
@@ -41,7 +40,7 @@ function NewsWidget(props) {
   }];
 
   return (
-    <Paper title={t('common:blog_post')} icon="ion-ios-paper" whiteBg desc="Donec commodo convallis ligula eget suscipit orci.">
+    <Paper title={t('blog_post')} icon="ion-ios-paper" whiteBg desc="Donec commodo convallis ligula eget suscipit orci.">
       <div className={classes.albumRoot}>
         <List component="nav">
           {news.map((item, index) => (
@@ -55,7 +54,7 @@ function NewsWidget(props) {
         </List>
         <Grid container justifyContent="center">
           <Button fullWidth color="secondary">
-            {t('common:btn_seeall')}
+            {t('btn_seeall')}
           </Button>
         </Grid>
       </div>
@@ -63,12 +62,4 @@ function NewsWidget(props) {
   );
 }
 
-NewsWidget.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-NewsWidget.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(NewsWidget);
+export default NewsWidget;

@@ -4,12 +4,13 @@ import clsx from 'clsx';
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import SearchIcon from '@material-ui/icons/Search';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import useStyles from '../header-style';
 
 function SearchField(props) {
   const [value, setVal] = useState('');
-  const { t, short } = props;
+  const { short } = props;
+  const { t } = useTranslation('common');
   const classes = useStyles();
 
   const handleUpdateValue = event => {
@@ -23,7 +24,7 @@ function SearchField(props) {
           value={value}
           onChange={(e) => handleUpdateValue(e)}
           className={classes.input}
-          placeholder={t('common:list_search')}
+          placeholder={t('list_search')}
           startAdornment={<SearchIcon className={classes.searchIcon} />}
           labelWidth={0}
         />
@@ -33,7 +34,6 @@ function SearchField(props) {
 }
 
 SearchField.propTypes = {
-  t: PropTypes.func.isRequired,
   short: PropTypes.bool,
 };
 
@@ -41,8 +41,4 @@ SearchField.defaultProps = {
   short: false
 };
 
-SearchField.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(SearchField);
+export default SearchField;

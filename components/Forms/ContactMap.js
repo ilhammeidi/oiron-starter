@@ -21,9 +21,9 @@ import {
   Marker,
   GoogleApiWrapper,
   InfoWindow
-} from 'google-maps-react';
+} from 'google-maps-react18';
+import { useTranslation } from 'next-i18next';
 import { useText, useTextAlign } from '~/theme/common';
-import { withTranslation } from '~/i18n';
 import useStyles from './form-style';
 import Checkbox from './Checkbox';
 
@@ -114,7 +114,8 @@ function ContactMap(props) {
   const classes = useStyles();
   const text = useText();
   const align = useTextAlign();
-  const { t, full } = props;
+  const { full } = props;
+  const { t } = useTranslation('common');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [values, setValues] = useState({
@@ -170,10 +171,10 @@ function ContactMap(props) {
                 <div className={classes.fullFromWrap}>
                   <div className={!isMobile ? classes.form : ''}>
                     <h4 className={clsx(align.textCenter, text.title2)}>
-                      {t('common:contact_title2')}
+                      {t('contact_title2')}
                     </h4>
                     <p className={clsx(align.textCenter, text.subtitle2)}>
-                      {t('common:contact_subtitle')}
+                      {t('contact_subtitle')}
                     </p>
                     <ValidatorForm
                       onSubmit={handleSubmit}
@@ -185,7 +186,7 @@ function ContactMap(props) {
                             <TextValidator
                               className={classes.input}
                               fullWidth
-                              label={t('common:form_name')}
+                              label={t('form_name')}
                               onChange={handleChange('name')}
                               name="Name"
                               value={values.name}
@@ -197,7 +198,7 @@ function ContactMap(props) {
                             <TextValidator
                               className={classes.input}
                               fullWidth
-                              label={t('common:form_email')}
+                              label={t('form_email')}
                               onChange={handleChange('email')}
                               name="Email"
                               value={values.email}
@@ -209,7 +210,7 @@ function ContactMap(props) {
                             <TextValidator
                               className={classes.input}
                               fullWidth
-                              label={t('common:form_phone')}
+                              label={t('form_phone')}
                               onChange={handleChange('phone')}
                               name="Phone"
                               value={values.phone}
@@ -221,7 +222,7 @@ function ContactMap(props) {
                               rows="6"
                               fullWidth
                               className={classes.input}
-                              label={t('common:form_message')}
+                              label={t('form_message')}
                               onChange={handleChange('message')}
                               name="Message"
                               value={values.message}
@@ -243,17 +244,17 @@ function ContactMap(props) {
                         )}
                         label={(
                           <span className={text.paragraph}>
-                            {t('common:form_terms')}
+                            {t('form_terms')}
                             <br />
                             <a href="#">
-                              {t('common:form_privacy')}
+                              {t('form_privacy')}
                             </a>
                           </span>
                         )}
                       />
                       <div className={classes.btnArea}>
                         <Button variant="contained" fullWidth type="submit" color="primary" size="large">
-                          {t('common:form_send')}
+                          {t('form_send')}
                           &nbsp;
                           <SendIcon className={classes.rightIcon} />
                         </Button>
@@ -276,7 +277,6 @@ function ContactMap(props) {
 }
 
 ContactMap.propTypes = {
-  t: PropTypes.func.isRequired,
   full: PropTypes.bool
 };
 
@@ -284,4 +284,4 @@ ContactMap.defaultProps = {
   full: false
 };
 
-export default withTranslation(['common'])(ContactMap);
+export default ContactMap;

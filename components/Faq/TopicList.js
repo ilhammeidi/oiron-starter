@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
 import useStyles from './faq-style';
 
@@ -30,16 +29,16 @@ const topics = [{
   href: '#topic6'
 }];
 
-function TopicList(props) {
+function TopicList() {
   const classes = useStyles();
   const text = useText();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   return (
     <div>
       <Box mb={3}>
         <h4 className={text.subtitle}>
-          {t('common:faq_topic')}
+          {t('faq_topic')}
         </h4>
       </Box>
       <ul className={classes.topicList}>
@@ -53,8 +52,4 @@ function TopicList(props) {
   );
 }
 
-TopicList.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default withTranslation(['common'])(TopicList);
+export default TopicList;

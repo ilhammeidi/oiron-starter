@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import Settings from './Settings';
 import useStyles from '../header-style';
 import link from '~/public/text/link';
@@ -11,14 +11,16 @@ import link from '~/public/text/link';
 function UserMenu(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const { onToggleDark, onToggleDir, t } = props;
+  const { onToggleDark, onToggleDir } = props;
+  const { t } = useTranslation('common');
   const isDesktop = useMediaQuery(theme.breakpoints.up('sm'));
+
   return (
     <div className={classes.userMenu}>
       { isDesktop && (
         <div>
-          <Button href={link.starter.login}>{t('common:login')}</Button>
-          <Button variant="contained" color="primary" href={link.starter.register}>{t('common:register')}</Button>
+          <Button href={link.starter.login}>{t('login')}</Button>
+          <Button variant="contained" color="primary" href={link.starter.register}>{t('register')}</Button>
           <span className={classes.vDivider} />
         </div>
       )}
@@ -28,13 +30,8 @@ function UserMenu(props) {
 }
 
 UserMenu.propTypes = {
-  t: PropTypes.func.isRequired,
   onToggleDark: PropTypes.func.isRequired,
   onToggleDir: PropTypes.func.isRequired
 };
 
-UserMenu.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(UserMenu);
+export default UserMenu;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Typography from '@material-ui/core/Typography';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Hidden from '@material-ui/core/Hidden';
 import Container from '@material-ui/core/Container';
@@ -8,14 +7,14 @@ import Grid from '@material-ui/core/Grid';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Divider from '@material-ui/core/Divider';
 import Carousel from 'react-slick';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
 import useStyles from './slider-style';
 
-function BannerSlider(props) {
+function BannerSlider() {
   const classes = useStyles();
   const text = useText();
-  const { t } = props;
+  const { t } = useTranslation('common');
   const slider = useRef(null);
 
   const [loaded, setLoaded] = useState(false);
@@ -67,17 +66,17 @@ function BannerSlider(props) {
                       <Grid item sm={7} lg={6} xs={12}>
                         <div className={classes.text}>
                           <h3 className={text.title}>
-                            {t('common:starter-landing.banner_title')}
+                            {t('starter-landing.banner_title')}
                           </h3>
                           <Typography variant="h5">
-                            {t('common:starter-landing.banner_subtitle')}
+                            {t('starter-landing.banner_subtitle')}
                           </Typography>
                         </div>
                       </Grid>
                     </Grid>
                   </Container>
                   <div className={classes.img}>
-                    <img src="images/starter/Illustration.png" alt="illustration" />
+                    <img src="/images/starter/Illustration.png" alt="illustration" />
                   </div>
                 </div>
               </div>
@@ -118,12 +117,4 @@ function BannerSlider(props) {
   );
 }
 
-BannerSlider.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-BannerSlider.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'starter-landing'],
-});
-
-export default withTranslation(['common', 'starter-landing'])(BannerSlider);
+export default BannerSlider;

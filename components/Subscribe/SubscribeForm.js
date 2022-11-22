@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { useTheme } from '@material-ui/core/styles';
@@ -8,11 +7,11 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Icon from '@material-ui/core/Icon';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import useStyles from './subscribe-style';
 
-function SubscribeForm(props) {
-  const { t } = props;
+function SubscribeForm() {
+  const { t } = useTranslation('common');
   const classes = useStyles();
   const [values, setValues] = useState({
     email: '',
@@ -29,14 +28,14 @@ function SubscribeForm(props) {
     <div className={classes.subscribeWrap}>
       <Paper className={classes.paper}>
         <Typography align="center" variant="h5">
-          {t('common:blog_subscribe_desc')}
+          {t('blog_subscribe_desc')}
         </Typography>
         <form className={classes.container} noValidate autoComplete="off">
           <Grid container spacing={3} alignItems="flex-end">
             <Grid item sm={8} xs={12}>
               <TextField
                 id="standard-email"
-                label={t('common:form_email')}
+                label={t('form_email')}
                 className={classes.textField}
                 fullWidth
                 value={values.email}
@@ -46,7 +45,7 @@ function SubscribeForm(props) {
             </Grid>
             <Grid item sm={4} xs={12}>
               <Button variant="contained" fullWidth={isMobile} color="primary" className={classes.button}>
-                {t('common:blog_subscribe')}
+                {t('blog_subscribe')}
                 {/* This Button uses a Font Icon, see the installation instructions in the docs. */}
                 <Icon className={classes.rightIcon}>send</Icon>
               </Button>
@@ -58,8 +57,4 @@ function SubscribeForm(props) {
   );
 }
 
-SubscribeForm.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default withTranslation(['common'])(SubscribeForm);
+export default SubscribeForm;

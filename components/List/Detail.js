@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -10,12 +9,12 @@ import Grid from '@material-ui/core/Grid';
 import Icon from '@material-ui/core/Icon';
 import Lightbox from 'react-image-lightbox';
 import Carousel from 'react-slick';
+import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
-import { withTranslation } from '~/i18n';
 import imgAPI from '~/public/images/imgAPI';
 import useStyles from './list-style';
 
-function Detail(props) {
+function Detail() {
   const classes = useStyles();
   const text = useText();
   const [loaded, setLoaded] = useState(false);
@@ -23,7 +22,7 @@ function Detail(props) {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   const settings = {
     dots: true,
@@ -124,10 +123,10 @@ function Detail(props) {
               </article>
               <section className={classes.btnArea}>
                 <Button className={classes.btnText} color="secondary">
-                  {t('common:list_whislist')}
+                  {t('list_whislist')}
                 </Button>
                 <Button variant="contained" size="large" color="primary">
-                  {t('common:list_cart')}
+                  {t('list_cart')}
                 </Button>
               </section>
             </div>
@@ -138,8 +137,4 @@ function Detail(props) {
   );
 }
 
-Detail.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default withTranslation('common')(Detail);
+export default Detail;

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
@@ -12,7 +11,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import { useText, useTextAlign } from '~/theme/common';
 import useStyles from './faq-style';
 
@@ -39,13 +38,13 @@ const faqData = [
   },
 ];
 
-function Faq(props) {
+function Faq() {
   const classes = useStyles();
   const text = useText();
   const align = useTextAlign();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
-  const { t } = props;
+  const { t } = useTranslation('common');
   const [expanded, setExpanded] = React.useState(0);
   const handleChange = panel => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -57,11 +56,11 @@ function Faq(props) {
           <Grid item md={6}>
             <Box mb={3}>
               <h4 className={clsx(text.title2, isMobile ? align.textCenter : '')}>
-                {t('common:faq_title')}
+                {t('faq_title')}
               </h4>
             </Box>
             <p className={clsx(text.subtitle2, isMobile ? align.textCenter : align.textLeft)}>
-              {t('common:faq_desc')}
+              {t('faq_desc')}
             </p>
             <Hidden smDown>
               <div className={classes.illustration}>
@@ -109,8 +108,4 @@ function Faq(props) {
   );
 }
 
-Faq.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default withTranslation(['common'])(Faq);
+export default Faq;

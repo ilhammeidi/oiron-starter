@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Box from '@material-ui/core/Box';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import useStyles from './post-card-style';
 
 function PostCard(props) {
@@ -21,8 +21,9 @@ function PostCard(props) {
     orientation,
     type,
     href,
-    t
   } = props;
+  const { t } = useTranslation('common');
+
   return (
     <Card className={clsx(classes.newsCard, classes[orientation], classes[type])}>
       <div className={classes.figure}>
@@ -46,7 +47,7 @@ function PostCard(props) {
         </CardContent>
         <CardActions className={classes.action}>
           <Button variant="outlined" href={href} className={classes.btn}>
-            {t('common:btn_read_more')}
+            {t('btn_read_more')}
           </Button>
         </CardActions>
       </div>
@@ -60,7 +61,7 @@ PostCard.propTypes = {
   desc: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   orientation: PropTypes.string,
-  t: PropTypes.func.isRequired,
+
   type: PropTypes.string,
   href: PropTypes.string,
 };
@@ -71,4 +72,4 @@ PostCard.defaultProps = {
   type: 'full', // available props: full, rounded, over, oval
 };
 
-export default withTranslation(['common'])(PostCard);
+export default PostCard;

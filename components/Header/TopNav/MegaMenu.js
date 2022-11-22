@@ -15,7 +15,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Icon from '@material-ui/core/Icon';
-import { i18n } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import useStyles from '../header-style';
 
 function MegaMenu(props) {
@@ -29,6 +29,7 @@ function MegaMenu(props) {
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = useState(null);
 
+  const { i18n } = useTranslation('common');
   const [curURL, setCurURL] = useState('');
   const [curOrigin, setCurOrigin] = useState('');
   const [langPath, setLangPath] = useState('');
@@ -41,7 +42,7 @@ function MegaMenu(props) {
   useEffect(() => {
     setCurURL(window.location.href);
     setCurOrigin(window.location.origin);
-    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
+    setLangPath('/' + i18n.language);
   }, []);
 
   return (

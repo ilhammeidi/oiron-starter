@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
@@ -8,13 +7,13 @@ import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../list-style';
 
-function ImageWidget(props) {
+function ImageWidget() {
   const classes = useStyles();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   const imgData = [{
     src: 'https://source.unsplash.com/random'
@@ -30,7 +29,7 @@ function ImageWidget(props) {
   }];
 
   return (
-    <Paper title={t('common:blog_album')} icon="ion-images" whiteBg desc="">
+    <Paper title={t('blog_album')} icon="ion-images" whiteBg desc="">
       <div className={classes.albumRoot}>
         <ImageList rowHeight={180} className={classes.gridList}>
           {
@@ -63,7 +62,7 @@ function ImageWidget(props) {
         <Divider className={classes.divider} />
         <Grid container justifyContent="center">
           <Button fullWidth color="secondary">
-            {t('common:btn_seeall')}
+            {t('btn_seeall')}
           </Button>
         </Grid>
       </div>
@@ -71,12 +70,4 @@ function ImageWidget(props) {
   );
 }
 
-ImageWidget.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-ImageWidget.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(ImageWidget);
+export default ImageWidget;

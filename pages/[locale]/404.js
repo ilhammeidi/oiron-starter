@@ -2,11 +2,15 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { makeStyles } from '@material-ui/core/styles';
-import Error from '../components/Error';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import brand from '../public/text/brand';
-import { withTranslation } from '../i18n';
+import { useTranslation } from 'next-i18next';
+// Use this below for Server Side Render/Translation (SSR)
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// Use this below for Static Site Generation (SSG)
+import { getStaticPaths, makeStaticProps } from '~/lib/getStatic';
+import Error from '~/components/Error';
+import Footer from '~/components/Footer';
+import Header from '~/components/Header';
+import brand from '~/public/text/brand';
 
 const useStyles = makeStyles(theme => ({
   dedicatedPage: {
@@ -17,7 +21,8 @@ const useStyles = makeStyles(theme => ({
 function ErrorPage(props) {
   const classes = useStyles();
   const { onToggleDark, onToggleDir } = props;
-  const { errorCode, stars, t } = props;
+  const { errorCode, stars } = props;
+  const { t } = useTranslation('common');
 
   if (errorCode) {
     return (
@@ -31,8 +36,8 @@ function ErrorPage(props) {
         </Head>
         <div className={classes.dedicatedPage}>
           <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} invert />
-          <Error errorCode={errorCode} text={t('common:404')} />
-          <Footer onToggleDir={onToggleDir} />
+          <Error errorCode={errorCode} text={t('404')} />
+          <Footer toggleDir={onToggleDir} />
         </div>
       </Fragment>
     );
@@ -52,7 +57,7 @@ ErrorPage.propTypes = {
   stars: PropTypes.number,
   onToggleDark: PropTypes.func.isRequired,
   onToggleDir: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
+
 };
 
 ErrorPage.defaultProps = {
@@ -60,8 +65,11 @@ ErrorPage.defaultProps = {
   stars: 0,
 };
 
-ErrorPage.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
+export default ErrorPage;
 
-export default withTranslation(['common'])(ErrorPage);
+// Use this below for Server Side Render/Translation (SSR)
+// export const getStaticProps = async ({ locale }) => ({ props: { ...await serverSideTranslations(locale, ['common']) } });
+
+// Use this below for Static Site Generation (SSG)
+const getStaticProps = makeStaticProps(['common']);
+export { getStaticPaths, getStaticProps };

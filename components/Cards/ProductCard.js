@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Rating from '@material-ui/lab/Rating';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import useStyles from './product-card-style';
 
 function ProductCard(props) {
@@ -23,8 +23,8 @@ function ProductCard(props) {
     rating,
     price,
     href,
-    t
   } = props;
+  const { t } = useTranslation('common');
 
   return (
     <Card className={clsx(classes.cardProduct, classes[orientation], classes[type])}>
@@ -65,7 +65,7 @@ function ProductCard(props) {
             variant="outlined"
             color="primary"
           >
-            {t('common:btn_detail')}
+            {t('btn_detail')}
           </Button>
         </div>
       </div>
@@ -82,7 +82,7 @@ ProductCard.propTypes = {
   rating: PropTypes.number,
   price: PropTypes.number,
   href: PropTypes.string,
-  t: PropTypes.func.isRequired
+
 };
 
 ProductCard.defaultProps = {
@@ -93,4 +93,4 @@ ProductCard.defaultProps = {
   href: '#',
 };
 
-export default withTranslation(['common'])(ProductCard);
+export default ProductCard;

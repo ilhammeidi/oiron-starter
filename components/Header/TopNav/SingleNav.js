@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Scrollspy from 'react-scrollspy';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import navMenu from '../data/single';
 
 const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disable-line
@@ -11,11 +11,8 @@ const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disabl
 });
 
 function MixedNav(props) {
-  const {
-    menuPrimary,
-    singleNav,
-    t
-  } = props;
+  const { t } = useTranslation('common');
+  const { menuPrimary, singleNav } = props;
 
   return (
     <Scrollspy
@@ -26,11 +23,11 @@ function MixedNav(props) {
         <li key={item.id.toString()}>
           {singleNav ? (
             <Button component={AnchorLink} offset={() => 100} href={item.url}>
-              {t('starter-landing:header_' + item.name)}
+              {t('starter-landing.header_' + item.name)}
             </Button>
           ) : (
             <Button href={'/' + item.url}>
-              {t('starter-landing:header_' + item.name)}
+              {t('starter-landing.header_' + item.name)}
             </Button>
           )}
         </li>
@@ -42,15 +39,10 @@ function MixedNav(props) {
 MixedNav.propTypes = {
   menuPrimary: PropTypes.array.isRequired,
   singleNav: PropTypes.bool,
-  t: PropTypes.func.isRequired
 };
 
 MixedNav.defaultProps = {
   singleNav: false
 };
 
-MixedNav.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'starter-landing'],
-});
-
-export default withTranslation(['common', 'starter-landing'])(MixedNav);
+export default MixedNav;

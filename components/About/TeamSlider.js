@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Carousel from 'react-slick';
+import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
-import { withTranslation } from '~/i18n';
 import ProfileCard from '../Cards/ProfileCard';
 import useStyles from './about-style';
 
-function PhotoSlider(props) {
+function PhotoSlider() {
   const classes = useStyles();
   const text = useText();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   const [loaded, setLoaded] = useState(false);
 
@@ -49,7 +48,7 @@ function PhotoSlider(props) {
       <Container>
         <Box mb={3}>
           <h4 className={text.title2}>
-            {t('common:about_team')}
+            {t('about_team')}
           </h4>
         </Box>
         <p className={text.subtitle2}>
@@ -88,12 +87,4 @@ function PhotoSlider(props) {
   );
 }
 
-PhotoSlider.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-PhotoSlider.getInitialProps = async () => ({
-  namespacesRequired: ['common', 'starter-landing'],
-});
-
-export default withTranslation(['common', 'starter-landing'])(PhotoSlider);
+export default PhotoSlider;

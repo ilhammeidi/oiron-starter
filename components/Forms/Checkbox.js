@@ -18,14 +18,7 @@ const styles = theme => ({
 
 class CheckboxValidatorElement extends ValidatorComponent {
   renderValidatorComponent() {
-    const {
-      classes,
-      errorMessages,
-      validatorListener,
-      requiredError,
-      value,
-      ...rest
-    } = this.props;
+    const { classes, errorMessages, validatorListener, requiredError, value, ...rest } = this.props; // eslint-disable-line
 
     return (
       <div>

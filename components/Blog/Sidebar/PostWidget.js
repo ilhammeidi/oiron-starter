@@ -1,15 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../blog-style';
 
-function PostWidget(props) {
+function PostWidget() {
   const classes = useStyles();
-  const { t } = props;
+  const { t } = useTranslation('common');
   const news = [{
     title: 'Vestibulum bibendum nisi eget magna',
     date: 'Jan 9, 2014'
@@ -32,7 +31,7 @@ function PostWidget(props) {
   }];
 
   return (
-    <Paper title={t('common:blog_post')} icon="ion-android-bookmark" whiteBg desc="">
+    <Paper title={t('blog_post')} icon="ion-android-bookmark" whiteBg desc="">
       <div className={classes.albumRoot}>
         <List component="nav">
           {news.map((item, index) => (
@@ -46,12 +45,4 @@ function PostWidget(props) {
   );
 }
 
-PostWidget.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-PostWidget.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(PostWidget);
+export default PostWidget;

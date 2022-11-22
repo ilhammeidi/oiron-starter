@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
@@ -8,13 +7,13 @@ import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
-import { withTranslation } from '~/i18n';
+import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../blog-style';
 
-function GalleryWidget(props) {
+function GalleryWidget() {
   const classes = useStyles();
-  const { t } = props;
+  const { t } = useTranslation('common');
 
   const imgData = [{
     src: 'https://source.unsplash.com/random'
@@ -30,7 +29,7 @@ function GalleryWidget(props) {
   }];
 
   return (
-    <Paper title={t('common:blog_album')} icon="ion-images" whiteBg desc="">
+    <Paper title={t('blog_album')} icon="ion-images" whiteBg desc="">
       <div className={classes.albumRoot}>
         <ImageList rowHeight={180} className={classes.gridList}>
           {
@@ -71,12 +70,4 @@ function GalleryWidget(props) {
   );
 }
 
-GalleryWidget.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-GalleryWidget.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export default withTranslation(['common'])(GalleryWidget);
+export default GalleryWidget;
