@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const filterStyles = makeStyles(theme => ({
+const filterStyles = makeStyles({ uniqId: 'filter' })((theme, _params, classes) => ({
   root: {
     width: '100%',
     maxWidth: 360,
@@ -13,7 +13,7 @@ const filterStyles = makeStyles(theme => ({
     height: 520,
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+    backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
   },
   btnFilter: {
     marginRight: theme.spacing(1)
@@ -22,7 +22,7 @@ const filterStyles = makeStyles(theme => ({
   search: {
     position: 'relative',
     display: 'flex',
-    margin: `${theme.spacing(4)}px auto`,
+    margin: `${theme.spacing(4)} auto`,
     alignItems: 'center',
     [theme.breakpoints.up('sm')]: {
       width: 600
@@ -47,7 +47,7 @@ const filterStyles = makeStyles(theme => ({
         display: 'none'
       }
     },
-    '& $searchIcon': {
+    [`& .${classes.searchIcon}`]: {
       position: 'absolute',
       top: 7,
       left: theme.spacing(1)
@@ -71,7 +71,7 @@ const filterStyles = makeStyles(theme => ({
     textAlign: 'left',
     marginLeft: theme.spacing(2),
     width: 200,
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       width: 160
     }
   },
@@ -121,4 +121,5 @@ const filterStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default filterStyles;

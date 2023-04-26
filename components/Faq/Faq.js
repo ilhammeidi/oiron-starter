@@ -1,16 +1,15 @@
 import React from 'react';
-import clsx from 'clsx';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Typography from '@material-ui/core/Typography';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import Hidden from '@mui/material/Hidden';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Typography from '@mui/material/Typography';
 import { useTranslation } from 'next-i18next';
 import { useText, useTextAlign } from '~/theme/common';
 import useStyles from './faq-style';
@@ -39,11 +38,11 @@ const faqData = [
 ];
 
 function Faq() {
-  const classes = useStyles();
-  const text = useText();
-  const align = useTextAlign();
+  const { classes, cx } = useStyles();
+  const { classes: text } = useText();
+  const { classes: align } = useTextAlign();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
   const { t } = useTranslation('common');
   const [expanded, setExpanded] = React.useState(0);
   const handleChange = panel => (event, newExpanded) => {
@@ -55,11 +54,11 @@ function Faq() {
         <Grid container spacing={6}>
           <Grid item md={6}>
             <Box mb={3}>
-              <h4 className={clsx(text.title2, isMobile ? align.textCenter : '')}>
+              <h4 className={cx(text.title2, isMobile ? align.textCenter : '')}>
                 {t('faq_title')}
               </h4>
             </Box>
-            <p className={clsx(text.subtitle2, isMobile ? align.textCenter : align.textLeft)}>
+            <p className={cx(text.subtitle2, isMobile ? align.textCenter : align.textLeft)}>
               {t('faq_desc')}
             </p>
             <Hidden smDown>

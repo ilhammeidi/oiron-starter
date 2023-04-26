@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import Paper from '@mui/material/Paper';
 import useStyle from './testi-card-style';
 
 function TestiCard(props) {
-  const classes = useStyle();
+  const { classes } = useStyle();
   const { text, name, avatar } = props;
   return (
     <Paper className={classes.card}>

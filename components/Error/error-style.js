@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({ uniqId: 'error' })(theme => ({
   errorWrap: {
     width: '100%',
     display: 'flex',
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.up('md')]: {
         right: theme.spacing(2)
       },
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         maxWidth: '80%'
       }
     }
@@ -55,4 +55,5 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

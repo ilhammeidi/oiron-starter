@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { lighten, darken } from '@material-ui/core/styles/colorManipulator';
+import { makeStyles } from 'tss-react/mui';
+import { lighten, darken } from '@mui/material/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({ uniqId: 'action' })(theme => ({
   root: {
     position: 'relative',
     [theme.breakpoints.down('sm')]: {
@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   background: {
-    fill: theme.palette.type === 'dark' ? darken(theme.palette.primary.light, 0.8) : lighten(theme.palette.primary.light, 0.8),
+    fill: theme.palette.mode === 'dark' ? darken(theme.palette.primary.light, 0.8) : lighten(theme.palette.primary.light, 0.8),
     width: 560,
     height: 560,
     top: theme.spacing(-50),
@@ -41,15 +41,15 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       marginBottom: theme.spacing(5)
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(4, 1),
       textAlign: 'center'
     },
     '& h4': {
       fontWeight: 700,
-      color: theme.palette.type === 'dark' ? theme.palette.secondary.light : theme.palette.secondary.dark,
+      color: theme.palette.mode === 'dark' ? theme.palette.secondary.light : theme.palette.secondary.dark,
       fontFamily: 'Roboto Condensed',
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         fontSize: 28,
         marginBottom: theme.spacing(2)
       },
@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.down('sm')]: {
         marginBottom: theme.spacing(5)
       },
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         fontSize: 18,
         marginBottom: theme.spacing(3)
       },
@@ -71,4 +71,5 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

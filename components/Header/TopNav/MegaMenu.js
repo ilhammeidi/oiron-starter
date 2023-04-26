@@ -4,17 +4,17 @@ import React, {
   useEffect
 } from 'react';
 import PropTypes from 'prop-types';
-import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Fade from '@material-ui/core/Fade';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Icon from '@material-ui/core/Icon';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Fade from '@mui/material/Fade';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListSubheader from '@mui/material/ListSubheader';
+import Icon from '@mui/material/Icon';
 import { useTranslation } from 'next-i18next';
 import useStyles from '../header-style';
 
@@ -24,7 +24,7 @@ function MegaMenu(props) {
     open,
     toggle
   } = props;
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const anchorRef = useRef(null);
   const [anchorEl, setAnchorEl] = useState(null);

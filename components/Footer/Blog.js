@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import Link from '@material-ui/core/Link';
-import IconButton from '@material-ui/core/IconButton';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import ButtonBase from '@mui/material/ButtonBase';
+import Link from '@mui/material/Link';
+import IconButton from '@mui/material/IconButton';
 import { useTranslation } from 'next-i18next';
 import logo from '~/public/images/logo-starter.svg';
 import brand from '~/public/text/brand';
@@ -47,7 +47,7 @@ const news = [
 ];
 
 function Blog(props) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { toggleDir } = props;
   const { t } = useTranslation('common');
 
@@ -72,7 +72,12 @@ function Blog(props) {
               <ul>
                 {footer.description.map((item, index) => (
                   <li key={item}>
-                    <Link href={footer.link[index]} variant="subtitle1" color="textSecondary">
+                    <Link
+                      href={footer.link[index]}
+                      variant="subtitle1"
+                      color="textSecondary"
+                      underline="hover"
+                    >
                       {item}
                     </Link>
                   </li>

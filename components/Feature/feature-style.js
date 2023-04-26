@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
 const decoration = theme => ({
-  background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+  background: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
   borderRadius: '50%',
   width: 250,
   height: 250,
@@ -11,7 +11,7 @@ const decoration = theme => ({
   opacity: 0.5
 });
 
-const featureStyles = makeStyles(theme => ({
+const featureStyles = makeStyles({ uniqId: 'feature' })((theme, _params, classes) => ({
   pageSection: {
     marginBottom: theme.spacing(10)
   },
@@ -24,9 +24,9 @@ const featureStyles = makeStyles(theme => ({
   featureList: {
     textAlign: 'center',
     '& h5': {
-      margin: `${theme.spacing(3)}px 0`
+      margin: `${theme.spacing(3)} 0`
     },
-    '& $icon': {
+    [`& .${classes.icon}`]: {
       fill: theme.palette.primary.main,
       width: 100,
       height: 100
@@ -39,13 +39,13 @@ const featureStyles = makeStyles(theme => ({
   last: {},
   featureMore: {
     position: 'relative',
-    '& $title': {
+    [`& .${classes.title}`]: {
       marginBottom: theme.spacing(3)
     },
-    '& $text': {
+    [`& .${classes.text}`]: {
       fontSize: 22
     },
-    '& $img': {
+    [`& .${classes.img}`]: {
       position: 'relative',
       width: 400,
       maxWidth: '98%',
@@ -53,7 +53,7 @@ const featureStyles = makeStyles(theme => ({
         width: '100%'
       }
     },
-    '& $imgFull': {
+    [`& .${classes.imgFull}`]: {
       position: 'relative',
       textAlign: 'center',
       maxWidth: 800,
@@ -70,7 +70,7 @@ const featureStyles = makeStyles(theme => ({
   featureItem: {
     position: 'relative',
     marginBottom: theme.spacing(10),
-    '&$last': {
+    [`&.${classes.last}`]: {
       marginBottom: 0,
     },
     [theme.breakpoints.down('sm')]: {
@@ -98,7 +98,7 @@ const featureStyles = makeStyles(theme => ({
     top: 0,
     left: 0,
     zIndex: 0,
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       display: 'none'
     },
     '& figure > div': {
@@ -169,4 +169,5 @@ const featureStyles = makeStyles(theme => ({
   },
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default featureStyles;

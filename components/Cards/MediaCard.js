@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Chip from '@material-ui/core/Chip';
-import IconButton from '@material-ui/core/IconButton';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Chip from '@mui/material/Chip';
+import IconButton from '@mui/material/IconButton';
+import ButtonBase from '@mui/material/ButtonBase';
 import useStyles from './media-card-style';
 
 function MediaCard(props) {
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const {
     thumb,
     title,
@@ -22,7 +21,7 @@ function MediaCard(props) {
   } = props;
 
   return (
-    <Card className={clsx(classes.mediaCard, classes[orientation], classes[type])}>
+    <Card className={cx(classes.mediaCard, classes[orientation], classes[type])}>
       <CardContent>
         { type === 'video' && <Chip className={classes.duration} size="small" label={duration} /> }
         { type === 'photo' && <ButtonBase focusRipple href={href} className={classes.coverLink}>&nbsp;</ButtonBase> }
@@ -31,7 +30,7 @@ function MediaCard(props) {
         </figure>
         <div className={classes.property}>
           { type === 'video' && (
-            <IconButton className={classes.playBtn} onClick={action}>
+            <IconButton className={classes.playBtn} onClick={action} size="large">
               <span className="ion-ios-play" />
             </IconButton>
           )}

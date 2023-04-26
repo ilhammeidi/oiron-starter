@@ -1,29 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'next-i18next';
-import clsx from 'clsx';
-import Popover from '@material-ui/core/Popover';
-import IconButton from '@material-ui/core/IconButton';
-import SettingsIcon from '@material-ui/icons/Settings';
-import List from '@material-ui/core/List';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import ListItem from '@material-ui/core/ListItem';
-import Switch from '@material-ui/core/Switch';
-import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import i18nextConfig from '~/next-i18next.config';
+import Popover from '@mui/material/Popover';
+import IconButton from '@mui/material/IconButton';
+import SettingsIcon from '@mui/icons-material/Settings';
+import List from '@mui/material/List';
+import ListSubheader from '@mui/material/ListSubheader';
+import ListItem from '@mui/material/ListItem';
+import Switch from '@mui/material/Switch';
+import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import LanguageSwitch from '../../LangSwitch/Menu';
 import useStyles from '../header-style';
+import i18nextConfig from '~/next-i18next.config';
 
 let themeType = 'light';
 if (typeof Storage !== 'undefined') {
-  themeType = localStorage.getItem('luxiTheme') || 'light';
+  themeType = localStorage.getItem('oironTheme') || 'light';
 }
 
 function Settings(props) {
   const [ctn, setCtn] = useState(null);
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [isDark, setDark] = useState(themeType === 'dark');
   const { t, i18n } = useTranslation('common');
@@ -58,12 +57,13 @@ function Settings(props) {
         aria-label="Settings"
         onClick={handleClick}
         className={
-          clsx(
+          cx(
             classes.icon,
             open && classes.active,
             invert && classes.invert
           )
         }
+        size="large"
       >
         <SettingsIcon fontSize="inherit" />
       </IconButton>
@@ -127,6 +127,7 @@ function Settings(props) {
               key={locale}
               checked={locale === currentLocale}
               toggleDir={props.toggleDir}
+              closePopup={handleClose}
             />
           ))}
         </List>

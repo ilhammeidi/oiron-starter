@@ -1,10 +1,10 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const cardsStyles = makeStyles(theme => ({
+const cardsStyles = makeStyles({ uniqId: 'post_card' })((theme, _params, classes) => ({
   figure: {},
   newsCard: {
     display: 'flex',
-    '& $figure': {
+    [`& .${classes.figure}`]: {
       margin: 0,
       overflow: 'hidden',
       borderRadius: 15,
@@ -29,8 +29,8 @@ const cardsStyles = makeStyles(theme => ({
   },
   desc: {
     whiteSpace: 'initial',
-    '-webkit-line-clamp': 3,
-    '-webkit-box-orient': 'vertical',
+    WebkitLineClamp: 3,
+    WebkitBoxOrient: 'vertical',
     display: '-webkit-box',
     height: 80,
     overflow: 'hidden',
@@ -54,7 +54,7 @@ const cardsStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
   },
   btn: {
-    color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
     [theme.breakpoints.up('sm')]: {
       minWidth: 200,
     }
@@ -62,22 +62,22 @@ const cardsStyles = makeStyles(theme => ({
   /* Orientation */
   landscape: {
     marginBottom: theme.spacing(5),
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       marginBottom: theme.spacing(2)
     },
     flexDirection: 'row',
-    '& $figure': {
+    [`& .${classes.figure}`]: {
       minWidth: 150,
       maxWidth: 200,
       marginRight: theme.spacing(1),
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         minWidth: 100,
         maxWidth: 150,
       },
     },
-    '& $properties': {
+    [`& .${classes.properties}`]: {
       overflow: 'hidden',
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         padding: theme.spacing(1),
         overflow: 'hidden',
         display: 'flex',
@@ -87,31 +87,31 @@ const cardsStyles = makeStyles(theme => ({
           padding: 0
         }
       },
-      '& $btn': {
+      [`& .${classes.btn}`]: {
         [theme.breakpoints.up('sm')]: {
           margin: theme.spacing(0, 2)
         },
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('sm')]: {
           fontSize: 10
         }
       }
     },
-    '& $action': {
+    [`& .${classes.action}`]: {
       padding: theme.spacing(0, 1, 2)
     },
-    '& $desc': {
-      [theme.breakpoints.down('xs')]: {
+    [`& .${classes.desc}`]: {
+      [theme.breakpoints.down('sm')]: {
         display: 'none'
       }
     }
   },
   portrait: {
     flexDirection: 'column',
-    '& $figure': {
+    [`& .${classes.figure}`]: {
       height: 200,
     },
-    '& $btn': {
-      [theme.breakpoints.down('xs')]: {
+    [`& .${classes.btn}`]: {
+      [theme.breakpoints.down('sm')]: {
         width: '100%'
       }
     }
@@ -120,19 +120,19 @@ const cardsStyles = makeStyles(theme => ({
   full: {
     overflow: 'hidden',
     position: 'relative',
-    '& $figure': {
+    [`& .${classes.figure}`]: {
       borderRadius: 0
     }
   },
   round: {
-    '& $figure': {
+    [`& .${classes.figure}`]: {
       margin: theme.spacing(1),
       overflow: 'hidden',
       borderRadius: theme.rounded.medium
     },
-    '&$landscape': {
+    [`&.${classes.landscape}`]: {
       '& figure': {
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('sm')]: {
           margin: theme.spacing(1)
         }
       }
@@ -140,19 +140,19 @@ const cardsStyles = makeStyles(theme => ({
   },
   oval: {
     overflow: 'hidden',
-    '&$portrait': {
-      '& $figure': {
+    [`&.${classes.portrait}`]: {
+      [`& .${classes.figure}`]: {
         width: '120%',
         marginLeft: '-10%',
         overflow: 'hidden',
         borderRadius: '0 0 50% 50%',
       }
     },
-    '&$landscape': {
-      '& $figure': {
+    [`&.${classes.landscape}`]: {
+      [`& .${classes.figure}`]: {
         overflow: 'hidden',
       },
-      '& $media': {
+      [`& .${classes.media}`]: {
         borderRadius: '0 50% 50% 0 !important',
         height: '120% !important',
         marginTop: '-10%',
@@ -161,13 +161,13 @@ const cardsStyles = makeStyles(theme => ({
   },
   over: {
     overflow: 'visible',
-    '& $figure': {
+    [`& .${classes.figure}`]: {
       boxShadow: theme.shadows[8],
     },
-    '&$portrait': {
-      '& $figure': {
+    [`&.${classes.portrait}`]: {
+      [`& .${classes.figure}`]: {
         margin: theme.spacing(-2, 2, 0),
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('sm')]: {
           height: 180
         },
         '& img': {
@@ -175,13 +175,13 @@ const cardsStyles = makeStyles(theme => ({
         }
       }
     },
-    '&$landscape': {
-      '& $figure': {
+    [`&.${classes.landscape}`]: {
+      [`& .${classes.figure}`]: {
         width: 150,
         height: 150,
         margin: 0,
         marginLeft: theme.spacing(-2),
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('sm')]: {
           width: '93%',
           margin: '0 auto',
           height: 180
@@ -189,7 +189,7 @@ const cardsStyles = makeStyles(theme => ({
         '& img': {
           height: '100%',
           minWidth: '100%',
-          [theme.breakpoints.down('xs')]: {
+          [theme.breakpoints.down('sm')]: {
             height: 'auto',
             width: '100%'
           }
@@ -199,4 +199,5 @@ const cardsStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default cardsStyles;

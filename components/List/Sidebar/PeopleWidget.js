@@ -1,17 +1,17 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import Avatar from '@material-ui/core/Avatar';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
+import Avatar from '@mui/material/Avatar';
 import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../list-style';
 
 function PeopleWidget() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { t } = useTranslation('common');
   const people = [{
     img: '/images/avatars/pp_boy5.svg',

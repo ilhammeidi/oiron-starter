@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import clsx from 'clsx';
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
-import IconButton from '@material-ui/core/IconButton';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Grid from '@material-ui/core/Grid';
-import Snackbar from '@material-ui/core/Snackbar';
-import CloseIcon from '@material-ui/icons/Close';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Grid from '@mui/material/Grid';
+import Snackbar from '@mui/material/Snackbar';
+import CloseIcon from '@mui/icons-material/Close';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { useTranslation } from 'next-i18next';
 import { useText, useTextAlign } from '~/theme/common';
@@ -15,9 +14,9 @@ import useStyles from './form-style';
 
 function Contact() {
   const { t } = useTranslation('common');
-  const classes = useStyles();
-  const text = useText();
-  const align = useTextAlign();
+  const { classes, cx } = useStyles();
+  const { classes: text } = useText();
+  const { classes: align } = useTextAlign();
 
   const [values, setValues] = useState({
     name: '',
@@ -72,10 +71,10 @@ function Contact() {
         }}
         message={<span id="message-id">Message Sent</span>}
       />
-      <h3 className={clsx(text.title, align.textCenter)}>
+      <h3 className={cx(text.title, align.textCenter)}>
         {t('contact_title2')}
       </h3>
-      <p className={clsx(classes.desc, text.subtitle2, align.textCenter)}>
+      <p className={cx(classes.desc, text.subtitle2, align.textCenter)}>
         {t('contact_subtitle')}
       </p>
       <Box mt={8} px={{ sm: 6 }}>

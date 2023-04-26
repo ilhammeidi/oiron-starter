@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Grid from '@material-ui/core/Grid';
+import Button from '@mui/material/Button';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Grid from '@mui/material/Grid';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
@@ -14,8 +14,8 @@ import AuthFrame from './AuthFrame';
 import useStyles from './form-style';
 
 function Register() {
-  const classes = useStyles();
-  const text = useText();
+  const { classes } = useStyles();
+  const { classes: text } = useText();
   const { t } = useTranslation('common');
   const [values, setValues] = useState({
     name: '',

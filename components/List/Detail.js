@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import Grid from '@material-ui/core/Grid';
-import Icon from '@material-ui/core/Icon';
-import Lightbox from 'react-image-lightbox';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import ButtonBase from '@mui/material/ButtonBase';
+import Grid from '@mui/material/Grid';
+import Icon from '@mui/material/Icon';
+import Lightbox from 'react-18-image-lightbox';
 import Carousel from 'react-slick';
 import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
@@ -15,8 +15,8 @@ import imgAPI from '~/public/images/imgAPI';
 import useStyles from './list-style';
 
 function Detail() {
-  const classes = useStyles();
-  const text = useText();
+  const { classes } = useStyles();
+  const { classes: text } = useText();
   const [loaded, setLoaded] = useState(false);
   // Media QUery
   const theme = useTheme();

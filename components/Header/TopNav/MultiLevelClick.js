@@ -5,28 +5,27 @@ import React, {
   Fragment
 } from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
-import Icon from '@material-ui/core/Icon';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Icon from '@mui/material/Icon';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useTranslation } from 'next-i18next';
 import useStyles from '../header-style';
 
 const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disable-line
-  return <AnchorLink to={props.to} {...props} innerRef={ref} />; // eslint-disable-line
+  return <AnchorLink to={props.to} {...props} />; // eslint-disable-line
 });
 
 function MultiLevelHover(props) {
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const { dataMenu } = props;
 
   const { i18n } = useTranslation('common');
@@ -128,7 +127,7 @@ function MultiLevelHover(props) {
                     key={index.toString()}
                     disableGutters
                     onClick={(e) => handleClose(e)}
-                    className={clsx(classes.menuList, curURL === curOrigin + langPath + subitem.link ? classes.current : '')}
+                    className={cx(classes.menuList, curURL === curOrigin + langPath + subitem.link ? classes.current : '')}
                   >
                     <ListItem disableGutters disableRipple className={classes.link} button component="a" href={subitem.link}>
                       <ListItemText primary={subitem.name} />
@@ -191,7 +190,7 @@ function MultiLevelHover(props) {
                                 <MenuItem
                                   key={indexChild.toString()}
                                   onClick={(e) => handleClose(e)}
-                                  className={clsx(classes.menuList, curURL === curOrigin + langPath + subitem.link ? classes.current : '')}
+                                  className={cx(classes.menuList, curURL === curOrigin + langPath + subitem.link ? classes.current : '')}
                                 >
                                   <ListItem disableGutters disableRipple className={classes.link} button component="a" href={subitem.link}>
                                     <ListItemText primary={subitem.name} />

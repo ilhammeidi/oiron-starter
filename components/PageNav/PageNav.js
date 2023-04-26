@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import clsx from 'clsx';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Scrollspy from 'react-scrollspy';
-import Fab from '@material-ui/core/Fab';
-import ArrowIcon from '@material-ui/icons/ArrowUpward';
-import Tooltip from '@material-ui/core/Tooltip';
+import Fab from '@mui/material/Fab';
+import ArrowIcon from '@mui/icons-material/ArrowUpward';
+import Tooltip from '@mui/material/Tooltip';
 import { useTranslation } from 'next-i18next';
 import navMenu from '../Header/data/single';
 import useStyles from './pagenav-style';
@@ -38,7 +37,7 @@ function PageNav() {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
   }, []);
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const [menuList] = useState([
     createData(1, navMenu[0], '#' + navMenu[0].replace(/ /g, '_')),
     createData(2, navMenu[1], '#' + navMenu[1].replace(/ /g, '_')),
@@ -46,7 +45,7 @@ function PageNav() {
     createData(4, navMenu[3], '#' + navMenu[3].replace(/ /g, '_')),
   ]);
   return (
-    <div className={clsx(classes.pageNav, show && classes.show)}>
+    <div className={cx(classes.pageNav, show && classes.show)}>
       <Tooltip
         title="To Top"
         placement="left"
@@ -82,7 +81,7 @@ function PageNav() {
                   tooltip: classes.tooltip
                 }}
               >
-                <AnchorLink href={item.url} />
+                <LinkBtn href={item.url} />
               </Tooltip>
             </li>
           )) }

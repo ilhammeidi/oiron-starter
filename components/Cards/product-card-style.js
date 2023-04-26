@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({ uniqId: 'product_card' })((theme, _params, classes) => ({
   /* General */
   cardProduct: {
     position: 'relative',
@@ -62,15 +62,15 @@ const useStyles = makeStyles(theme => ({
       display: 'block',
       height: 170
     },
-    '& $property': {
+    [`& .${classes.property}`]: {
       marginTop: theme.spacing(2)
     },
-    '& $desc': {
+    [`& .${classes.desc}`]: {
       padding: theme.spacing(2),
       '& p': {
         height: 90,
-        '-webkit-line-clamp': 4,
-        '-webkit-box-orient': 'vertical',
+        WebkitLineClamp: 4,
+        WebkitBoxOrient: 'vertical',
         display: '-webkit-box'
       }
     }
@@ -84,14 +84,14 @@ const useStyles = makeStyles(theme => ({
       width: 200,
       height: 150
     },
-    '& $desc': {
+    [`& .${classes.desc}`]: {
       [theme.breakpoints.up('sm')]: {
         display: 'flex',
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-between'
       },
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         width: '65%',
         padding: theme.spacing(2, 1),
         '& p': {
@@ -101,14 +101,14 @@ const useStyles = makeStyles(theme => ({
         }
       }
     },
-    '& $button': {
+    [`& .${classes.button}`]: {
       width: 200,
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         display: 'none'
       }
     },
-    '& $hiddenLink': {
-      [theme.breakpoints.down('xs')]: {
+    [`& .${classes.hiddenLink}`]: {
+      [theme.breakpoints.down('sm')]: {
         display: 'block',
       }
     }
@@ -126,13 +126,13 @@ const useStyles = makeStyles(theme => ({
       borderRadius: theme.rounded.medium,
       height: 134
     },
-    '&$portrait': {
+    [`&.${classes.portrait}`]: {
       '& figure': {
         position: 'relative',
         margin: theme.spacing(1)
       }
     },
-    '&$landscape': {
+    [`&.${classes.landscape}`]: {
       '& figure': {
         marginTop: theme.spacing(1),
         marginBottom: theme.spacing(1),
@@ -142,7 +142,7 @@ const useStyles = makeStyles(theme => ({
   },
   oval: {
     overflow: 'hidden',
-    '&$portrait': {
+    [`&.${classes.portrait}`]: {
       '& figure': {
         height: 150,
         width: '120%',
@@ -151,8 +151,8 @@ const useStyles = makeStyles(theme => ({
         borderRadius: '0 0 50% 50%',
       }
     },
-    '&$landscape': {
-      [theme.breakpoints.down('xs')]: {
+    [`&.${classes.landscape}`]: {
+      [theme.breakpoints.down('sm')]: {
         height: 150
       },
       '& figure': {
@@ -171,7 +171,7 @@ const useStyles = makeStyles(theme => ({
       position: 'relative',
       borderRadius: theme.rounded.medium,
     },
-    '&$portrait': {
+    [`&.${classes.portrait}`]: {
       marginTop: theme.spacing(2),
       '& figure': {
         margin: theme.spacing(0, 2),
@@ -179,7 +179,7 @@ const useStyles = makeStyles(theme => ({
         marginBottom: theme.spacing(-2),
       }
     },
-    '&$landscape': {
+    [`&.${classes.landscape}`]: {
       marginLeft: theme.spacing(2),
       '& figure': {
         margin: theme.spacing(2, 0),
@@ -192,4 +192,5 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

@@ -1,14 +1,14 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const aboutStyle = makeStyles(theme => ({
+const aboutStyle = makeStyles({ uniqId: 'about' })((theme, _params, classes) => ({
   bannerWrap: {
     position: 'relative',
     display: 'block',
-    background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+    background: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     [theme.breakpoints.up('sm')]: {
       height: 600
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(12, 0, 5)
     }
   },
@@ -17,7 +17,7 @@ const aboutStyle = makeStyles(theme => ({
   },
   img: {
     textAlign: 'center',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       marginTop: theme.spacing(3)
     },
     img: {
@@ -120,11 +120,11 @@ const aboutStyle = makeStyles(theme => ({
     }
   },
   bgWrapper: {
-    backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+    backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     padding: theme.spacing(4, 0, 10)
   },
   galleryRoot: {
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       textAlign: 'center'
     },
     '& ul[class*="slick-dots"]': {
@@ -141,12 +141,12 @@ const aboutStyle = makeStyles(theme => ({
     '& ul[class*="slick-dots"]': {
       bottom: -55
     },
-    '& $item > *': {
-      [theme.breakpoints.down('xs')]: {
+    [`& .${classes.item} > *`]: {
+      [theme.breakpoints.down('sm')]: {
         width: 280
       }
     },
-    '& $carousel': {
+    [`& .${classes.carousel}`]: {
       '& > *': {
         height: 160,
       }
@@ -157,7 +157,7 @@ const aboutStyle = makeStyles(theme => ({
     top: '50%',
     fontSize: 38,
     transform: theme.direction === 'rtl' ? 'scale(-1)' : 'inherit',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       display: 'none'
     },
   },
@@ -169,4 +169,5 @@ const aboutStyle = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default aboutStyle;

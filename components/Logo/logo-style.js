@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({ uniqId: 'logo' })(theme => ({
   logo: {
     fontWeight: theme.typography.fontWeightBold,
     color: theme.palette.text.primary,
@@ -45,4 +45,5 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

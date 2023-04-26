@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Scrollspy from 'react-scrollspy';
 import { useTranslation } from 'next-i18next';
 import navMenu from '../data/single';
 
 const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disable-line
-  return <AnchorLink to={props.to} {...props} innerRef={ref} />; // eslint-disable-line
+  return <AnchorLink to={props.to} {...props} />; // eslint-disable-line
 });
 
 function MixedNav(props) {
@@ -22,7 +22,7 @@ function MixedNav(props) {
       {menuPrimary.map(item => (
         <li key={item.id.toString()}>
           {singleNav ? (
-            <Button component={AnchorLink} offset={() => 100} href={item.url}>
+            <Button component={LinkBtn} offset={() => 100} href={item.url}>
               {t('starter-landing.header_' + item.name)}
             </Button>
           ) : (

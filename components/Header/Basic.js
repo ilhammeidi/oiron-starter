@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import clsx from 'clsx';
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import AppBar from '@mui/material/AppBar';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import Logo from '../Logo';
 import link from '~/public/text/link';
 import Settings from './TopNav/Settings';
@@ -13,7 +12,7 @@ import useStyles from './header-style';
 
 function Basic(props) {
   const [fixed, setFixed] = useState(false);
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   // Media QUery
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
@@ -44,14 +43,14 @@ function Basic(props) {
     <AppBar
       position="relative"
       id="header"
-      className={clsx(
+      className={cx(
         classes.header,
         fixed && classes.fixed,
       )}
     >
       <Container fixed={isDesktop}>
         <div className={classes.headerContent}>
-          <nav className={clsx(classes.navMenu, classes.flex)}>
+          <nav className={cx(classes.navMenu, classes.flex)}>
             <div className={classes.logo}>
               <a href={link.starter.home}>
                 <Logo type="landscape" />

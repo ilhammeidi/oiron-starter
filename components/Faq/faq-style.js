@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const faqStyles = makeStyles(theme => ({
+const faqStyles = makeStyles({ uniqId: 'faq' })((theme, _params, classes) => ({
   root: {
     position: 'relative',
     backgroundSize: '100%',
@@ -12,7 +12,7 @@ const faqStyles = makeStyles(theme => ({
     },
   },
   content: {
-    '& $icon': {
+    [`& .${classes.icon}`]: {
       position: 'absolute',
       top: theme.spacing(2.5),
       right: theme.spacing(1)
@@ -33,7 +33,7 @@ const faqStyles = makeStyles(theme => ({
   accordion: {
     position: 'relative',
     zIndex: 1,
-    '& $item': {
+    [`& .${classes.item}`]: {
       '&:last-child': {
         marginBottom: 0
       }
@@ -47,18 +47,18 @@ const faqStyles = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightMedium,
     padding: theme.spacing(1, 2, 1, 0),
     fontSize: 18,
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: 16,
     }
   },
   expanded: {
     background: theme.palette.primary.main,
-    '& $heading': {
+    [`& .${classes.heading}`]: {
       color: theme.palette.common.white,
       paddingTop: 0,
       paddingBottom: 0
     },
-    '& $icon': {
+    [`& .${classes.icon}`]: {
       color: theme.palette.common.white,
       transform: 'rotate(180deg)'
     }
@@ -73,7 +73,7 @@ const faqStyles = makeStyles(theme => ({
     }
   },
   icon: {
-    color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.main
   },
   topicList: {
     padding: 0,
@@ -92,4 +92,5 @@ const faqStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default faqStyles;

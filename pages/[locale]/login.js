@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import clsx from 'clsx';
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
 import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
 // Use this below for Server Side Render/Translation (SSR)
@@ -20,15 +19,14 @@ function LoginPage(props) {
    // Translation Function
   const { t } = useTranslation('common');
 
-  const classes = useSpacing();
+  const { classes, cx } = useSpacing();
 
   const { onToggleDark, onToggleDir } = props;
   return (
     <Fragment>
       <Head>
         <title>
-          { brand.starter.name }
-          &nbsp; - Login
+          { brand.starter.name + ' - Login' }
         </title>
       </Head>
       <CssBaseline />
@@ -40,7 +38,7 @@ function LoginPage(props) {
           onToggleDir={onToggleDir}
         />
         <Container>
-          <div className={clsx(classes.containerGeneral, classes.containerFront)}>
+          <div className={cx(classes.containerGeneral, classes.containerFront)}>
             <Login />
           </div>
         </Container>

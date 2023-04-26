@@ -1,33 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Box from '@material-ui/core/Box';
-import clsx from 'clsx';
-import Container from '@material-ui/core/Container';
-import Lightbox from 'react-image-lightbox';
-import IconButton from '@material-ui/core/IconButton';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Lightbox from 'react-18-image-lightbox';
+import IconButton from '@mui/material/IconButton';
+import ButtonBase from '@mui/material/ButtonBase';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Carousel from 'react-slick';
 import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
+import imgAPI from '~/public/images/imgAPI';
 import MediaCard from '../Cards/MediaCard';
 import useStyles from './about-style';
 
 function PhotoSlider() {
-  const classes = useStyles();
-  const text = useText();
+  const { classes, cx } = useStyles();
+  const { classes: text } = useText();
   const { t } = useTranslation('common');
 
   // Image Lightbox
   const [photoIndex, setPhotoIndex] = useState(0);
   const [open, setOpen] = useState(false);
   const imgData = [
-    'https://source.unsplash.com/random',
-    'https://source.unsplash.com/random',
-    'https://source.unsplash.com/random',
-    'https://source.unsplash.com/random',
-    'https://source.unsplash.com/random',
-    'https://source.unsplash.com/random'
+    imgAPI.photo[1],
+    imgAPI.photo[2],
+    imgAPI.photo[3],
+    imgAPI.photo[4],
+    imgAPI.photo[5],
+    imgAPI.photo[6]
   ];
 
   // Slider Carousel
@@ -107,7 +107,8 @@ function PhotoSlider() {
           <div className={classes.carousel}>
             <IconButton
               onClick={() => handlePrev()}
-              className={clsx(classes.nav, classes.prev)}
+              className={cx(classes.nav, classes.prev)}
+              size="large"
             >
               <ArrowBackIcon />
             </IconButton>
@@ -132,7 +133,8 @@ function PhotoSlider() {
             </Carousel>
             <IconButton
               onClick={() => handleNext()}
-              className={clsx(classes.nav, classes.next)}
+              className={cx(classes.nav, classes.next)}
+              size="large"
             >
               <ArrowForwardIcon />
             </IconButton>

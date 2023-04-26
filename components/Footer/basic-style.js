@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const basicStyles = makeStyles(theme => ({
+const basicStyles = makeStyles({ uniqId: 'basic' })(theme => ({
   root: {
     marginTop: theme.spacing(15),
     textAlign: 'center',
@@ -13,12 +13,12 @@ const basicStyles = makeStyles(theme => ({
           display: 'inline-block',
           margin: theme.spacing(0, 1),
           '& a': {
-            color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
+            color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
             textTransform: 'capitalize',
             textDecoration: 'none !important',
             padding: theme.spacing(0, 1),
             fontSize: 18,
-            [theme.breakpoints.down('xs')]: {
+            [theme.breakpoints.down('sm')]: {
               fontSize: 16
             }
           }
@@ -50,7 +50,7 @@ const basicStyles = makeStyles(theme => ({
     width: '100%',
     '& input': {
       paddingRight: theme.spacing(20),
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         paddingRight: 90
       }
     }
@@ -70,8 +70,8 @@ const basicStyles = makeStyles(theme => ({
   icon: {
     borderRadius: 0,
     padding: theme.spacing(),
-    background: theme.palette.type === 'dark' ? theme.palette.primary.main : theme.palette.primary.light,
-    color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+    background: theme.palette.mode === 'dark' ? theme.palette.primary.main : theme.palette.primary.light,
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
     '&:hover': {
       background: theme.palette.primary.dark,
       color: theme.palette.primary.light
@@ -84,11 +84,12 @@ const basicStyles = makeStyles(theme => ({
   },
   copyright: {
     display: 'block',
-    color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
-    background: theme.palette.type === 'dark' ? theme.palette.primary.main : theme.palette.primary.light,
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+    background: theme.palette.mode === 'dark' ? theme.palette.primary.main : theme.palette.primary.light,
     padding: theme.spacing(1.5),
     marginTop: theme.spacing(3),
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default basicStyles;

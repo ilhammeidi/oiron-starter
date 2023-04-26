@@ -1,11 +1,10 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import clsx from 'clsx';
-import IconButton from '@material-ui/core/IconButton';
-import Container from '@material-ui/core/Container';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import AppBar from '@mui/material/AppBar';
+import IconButton from '@mui/material/IconButton';
+import Container from '@mui/material/Container';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import Logo from '../Logo';
 import link from '~/public/text/link';
 import MobileMenu from './SideNav/SingleNavMobile';
@@ -29,11 +28,11 @@ function NavScroll(props) {
   const [fixed, setFixed] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const theme = useTheme();
   const { onToggleDark, onToggleDir, home } = props;
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
   const [menuList] = useState([
     createData(navMenu[0], '#' + navMenu[0]),
     createData(navMenu[1], '#' + navMenu[1]),
@@ -75,7 +74,7 @@ function NavScroll(props) {
       <AppBar
         position="relative"
         id="header"
-        className={clsx(
+        className={cx(
           classes.header,
           openMenu && classes.noShadow,
           fixed && classes.fixed,
@@ -88,10 +87,11 @@ function NavScroll(props) {
               { isMobile && (
                 <IconButton
                   onClick={handleOpenDrawer}
-                  className={clsx('hamburger hamburger--spin', classes.mobileMenu, openDrawer && 'is-active')}
+                  className={cx('hamburger hamburger--spin', classes.mobileMenu, openDrawer && 'is-active')}
+                  size="large"
                 >
                   <span className="hamburger-box">
-                    <span className={clsx(classes.bar, 'hamburger-inner')} />
+                    <span className={cx(classes.bar, 'hamburger-inner')} />
                   </span>
                 </IconButton>
               )}

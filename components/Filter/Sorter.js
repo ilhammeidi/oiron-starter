@@ -1,30 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Grid from '@material-ui/core/Grid';
-import FilterListIcon from '@material-ui/icons/FilterList';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import ListIcon from '@material-ui/icons/List';
-import GridIcon from '@material-ui/icons/BorderAll';
-import ToggleButton from '@material-ui/lab/ToggleButton';
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
+import Grid from '@mui/material/Grid';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import ListIcon from '@mui/icons-material/List';
+import GridIcon from '@mui/icons-material/BorderAll';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 import { useText, useTextAlign } from '~/theme/common';
 import useStyles from './filter-style';
 
 function Sorter(props) {
-  const classes = useStyles();
-  const text = useText();
-  const align = useTextAlign();
+  const { classes, cx } = useStyles();
+  const { classes: text } = useText();
+  const { classes: align } = useTextAlign();
   // Media Query
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down('sm'));
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
   const {
     view, sortBySelected, resultLength,
@@ -62,7 +61,7 @@ function Sorter(props) {
     <Grid container alignItems="center" className={classes.sorter}>
       <Grid item lg={9} md={8} sm={6}>
         <Box my={1}>
-          <h2 className={clsx(text.subtitle, align.textLeft)}>
+          <h2 className={cx(text.subtitle, align.textLeft)}>
             { resultLength }
             &nbsp;Items Found
           </h2>
@@ -98,8 +97,9 @@ function Sorter(props) {
               </ToggleButton>
             </ToggleButtonGroup>
           )}
-          <FormControl className={classes.select}>
+          <FormControl variant="standard" className={classes.select}>
             <Select
+              variant="standard"
               value={sortBySelected}
               displayEmpty
               fullWidth

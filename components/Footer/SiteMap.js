@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import { useTheme } from '@material-ui/core/styles';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
-import IconButton from '@material-ui/core/IconButton';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import IconButton from '@mui/material/IconButton';
 import { useTranslation } from 'next-i18next';
 import logo from '~/public/images/logo-starter.svg';
 import brand from '~/public/text/brand';
@@ -56,8 +56,8 @@ function Footer(props) {
   const { toggleDir } = props;
   const { t } = useTranslation('common');
 
-  const classes = useStyles();
-  const align = useTextAlign();
+  const { classes } = useStyles();
+  const { classes: align } = useTextAlign();
 
   return (
     <Container maxWidth="lg" component="footer" className={classes.footer}>
@@ -86,7 +86,12 @@ function Footer(props) {
                     <ul>
                       {footer.description.map((item, index) => (
                         <li key={item}>
-                          <Link href={footer.link[index]} variant="subtitle1" color="textSecondary">
+                          <Link
+                            href={footer.link[index]}
+                            variant="subtitle1"
+                            color="textSecondary"
+                            underline="hover"
+                          >
                             {item}
                           </Link>
                         </li>
@@ -117,7 +122,12 @@ function Footer(props) {
                       <ul>
                         {footer.description.map((item, index) => (
                           <li key={item}>
-                            <Link href={footer.link[index]} variant="subtitle1" color="textSecondary">
+                            <Link
+                              href={footer.link[index]}
+                              variant="subtitle1"
+                              color="textSecondary"
+                              underline="hover"
+                            >
                               {item}
                             </Link>
                           </li>

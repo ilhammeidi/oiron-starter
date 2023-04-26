@@ -1,14 +1,14 @@
 import React from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import { useText } from '~/theme/common';
 import Paper from '../../Paper';
 import useStyles from '../list-style';
 
 function TrendingWidget() {
-  const classes = useStyles();
-  const text = useText();
+  const { classes } = useStyles();
+  const { classes: text } = useText();
 
   const trending = [{
     title: 'Vestibulum faucibus',

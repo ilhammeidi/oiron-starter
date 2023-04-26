@@ -1,8 +1,8 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
-import IconButton from '@material-ui/core/IconButton';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import IconButton from '@mui/material/IconButton';
 import { useTranslation } from 'next-i18next';
 import brand from '~/public/text/brand';
 import menu from '../Header/data/single';
@@ -18,7 +18,7 @@ function Copyright() {
 }
 
 function Basic() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { t } = useTranslation('common');
 
   return (
@@ -28,7 +28,7 @@ function Basic() {
           <ul>
             {menu.map((item, index) => (
               <li key={index.toString()}>
-                <Link href={'#' + item} variant="subtitle1">
+                <Link href={'#' + item} variant="subtitle1" underline="hover">
                   {t('starter-landing.header_' + item)}
                 </Link>
               </li>

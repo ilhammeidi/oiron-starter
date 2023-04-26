@@ -1,8 +1,7 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import List from '@material-ui/core/List';
-import clsx from 'clsx';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
 import { useTranslation } from 'next-i18next';
 import Item from './Item';
 import Form from './Form';
@@ -11,8 +10,8 @@ import useStyles from './comment-style';
 import { useText } from '~/theme/common';
 
 function Group() {
-  const classes = useStyles();
-  const text = useText();
+  const { classes, cx } = useStyles();
+  const { classes: text } = useText();
   const { t } = useTranslation('common');
 
   const comments = [{
@@ -51,7 +50,7 @@ function Group() {
           <Grid container spacing={4}>
             <Grid item sm={8} xs={12}>
               <Box mb={3}>
-                <h4 className={clsx(text.subtitle, text.capitalize)}>
+                <h4 className={cx(text.subtitle, text.capitalize)}>
                   {t('list_comments')}
                 </h4>
               </Box>

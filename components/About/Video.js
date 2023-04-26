@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Box from '@material-ui/core/Box';
+import Box from '@mui/material/Box';
 import YouTube from 'react-youtube';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Zoom from '@material-ui/core/Zoom';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Zoom from '@mui/material/Zoom';
 import yt from '~/youtube';
 import { useText } from '~/theme/common';
 import MediaCard from '../Cards/MediaCard';
@@ -17,8 +17,8 @@ const Transition = React.forwardRef(function Transition(props, ref) { // eslint-
 });
 
 function Video() {
-  const classes = useStyles();
-  const text = useText();
+  const { classes } = useStyles();
+  const { classes: text } = useText();
   const [player, setPlayer] = useState([]);
   const [openPopup, setOpenPopup] = useState(false);
 
@@ -65,7 +65,7 @@ function Video() {
       >
         <DialogTitle id="alert-dialog-slide-title">
           Vestibulum consequat hendrerit lacus
-          <IconButton onClick={handleClose} className={classes.closeBtn}>
+          <IconButton onClick={handleClose} className={classes.closeBtn} size="large">
             <CloseIcon className={classes.icon} />
           </IconButton>
         </DialogTitle>

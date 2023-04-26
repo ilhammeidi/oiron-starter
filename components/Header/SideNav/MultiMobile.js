@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import ArrowDropUp from '@material-ui/icons/ArrowDropUp';
-import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
-import Collapse from '@material-ui/core/Collapse';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import ArrowDropUp from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDown from '@mui/icons-material/ArrowDropDown';
+import Collapse from '@mui/material/Collapse';
 import { useTranslation } from 'next-i18next';
 import useStyles from '../sidenav-style';
 import navMenu from '../data/multiple';
 import link from '~/public/text/link';
 
 function MobileMenu(props) {
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const { toggleDrawer, open } = props;
   const [expand, setExpand] = useState({});
   const { t, i18n } = useTranslation('common');
@@ -48,7 +47,7 @@ function MobileMenu(props) {
               <div key={index.toString()}>
                 <ListItem
                   button
-                  className={clsx(menu[subitem.id] ? classes.current : '', classes.hasGrandChild)}
+                  className={cx(menu[subitem.id] ? classes.current : '', classes.hasGrandChild)}
                   onClick={() => handleToggle(subitem.id)}
                 >
                   {menu[subitem.id] ? <ArrowDropUp /> : <ArrowDropDown />}
@@ -61,7 +60,7 @@ function MobileMenu(props) {
           return (
             <ListItem
               key={index.toString()}
-              className={clsx(
+              className={cx(
                 classes.noChild,
                 classes.sideGroupLink,
                 curURL === curOrigin + langPath + subitem.link ? classes.current : ''
@@ -116,7 +115,7 @@ function MobileMenu(props) {
               return (
                 <ListItem
                   key={index.toString()}
-                  className={clsx(classes.noChild, curURL === curOrigin + langPath + item.link ? classes.current : '')}
+                  className={cx(classes.noChild, curURL === curOrigin + langPath + item.link ? classes.current : '')}
                   button
                   href={item.link}
                 >
@@ -130,7 +129,7 @@ function MobileMenu(props) {
             {['login', 'register'].map((text, index) => (
               <ListItem
                 key={index.toString()}
-                className={clsx(classes.noChild, curURL === curOrigin + langPath + '/' + text ? classes.current : '')}
+                className={cx(classes.noChild, curURL === curOrigin + langPath + '/' + text ? classes.current : '')}
                 component="a"
                 href={link.starter[text]}
                 button

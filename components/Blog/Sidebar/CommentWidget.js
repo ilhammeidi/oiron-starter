@@ -1,15 +1,14 @@
 import React from 'react';
-import clsx from 'clsx';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Avatar from '@mui/material/Avatar';
 import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../blog-style';
 
 function CommentWidget() {
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const { t } = useTranslation('common');
   const comments = [
     {
@@ -51,7 +50,7 @@ function CommentWidget() {
       <List component="nav" dense className={classes.profileList}>
         {comments.map((item, index) => (
           <ListItem disableGutters key={index.toString()} button>
-            <Avatar className={clsx(classes.avatar, classes[item.color])}>
+            <Avatar className={cx(classes.avatar, classes[item.color])}>
               {firstChar(item.name)}
             </Avatar>
             <ListItemText primary={item.name} secondary={item.comment} />

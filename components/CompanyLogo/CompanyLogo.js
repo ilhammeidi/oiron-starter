@@ -1,5 +1,5 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
+import Container from '@mui/material/Container';
 import useStyles from './logo-style';
 
 const logos = [
@@ -12,7 +12,7 @@ const logos = [
 ];
 
 function CompanyLogo() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   return (
     <Container fixed>
       <div className={classes.root}>

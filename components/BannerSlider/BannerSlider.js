@@ -1,19 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Typography from '@material-ui/core/Typography';
-import clsx from 'clsx';
-import Hidden from '@material-ui/core/Hidden';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import Divider from '@material-ui/core/Divider';
+import Typography from '@mui/material/Typography';
+import Hidden from '@mui/material/Hidden';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import ButtonBase from '@mui/material/ButtonBase';
+import Divider from '@mui/material/Divider';
 import Carousel from 'react-slick';
 import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
 import useStyles from './slider-style';
 
 function BannerSlider() {
-  const classes = useStyles();
-  const text = useText();
+  const { classes, cx } = useStyles();
+  const { classes: text } = useText();
   const { t } = useTranslation('common');
   const slider = useRef(null);
 
@@ -62,7 +61,7 @@ function BannerSlider() {
               <div key={index.toString()} className={classes.slide}>
                 <div className={classes.inner}>
                   <Container>
-                    <Grid>
+                    <Grid container>
                       <Grid item sm={7} lg={6} xs={12}>
                         <div className={classes.text}>
                           <h3 className={text.title}>
@@ -84,11 +83,11 @@ function BannerSlider() {
           </Carousel>
         </div>
       )}
-      <Hidden mdDown>
+      <Hidden lgDown>
         <Container maxWidth="md">
           <nav className={classes.slideNav}>
             <ButtonBase
-              className={clsx(classes.btnNav, curSlide === 0 ? classes.active : '')}
+              className={cx(classes.btnNav, curSlide === 0 ? classes.active : '')}
               onClick={() => gotoSlide(0)}
             >
               <strong>First Slide</strong>
@@ -96,7 +95,7 @@ function BannerSlider() {
             </ButtonBase>
             <Divider className={classes.divider} orientation="vertical" flexItem />
             <ButtonBase
-              className={clsx(classes.btnNav, curSlide === 1 ? classes.active : '')}
+              className={cx(classes.btnNav, curSlide === 1 ? classes.active : '')}
               onClick={() => gotoSlide(1)}
             >
               <strong>Second Slide</strong>
@@ -104,7 +103,7 @@ function BannerSlider() {
             </ButtonBase>
             <Divider className={classes.divider} orientation="vertical" flexItem />
             <ButtonBase
-              className={clsx(classes.btnNav, curSlide === 2 ? classes.active : '')}
+              className={cx(classes.btnNav, curSlide === 2 ? classes.active : '')}
               onClick={() => gotoSlide(2)}
             >
               <strong>Third Slide</strong>

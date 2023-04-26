@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import clsx from 'clsx';
+import CssBaseline from '@mui/material/CssBaseline';
 import Head from 'next/head';
-import Hidden from '@material-ui/core/Hidden';
+import Hidden from '@mui/material/Hidden';
 // Use this below for Server Side Render/Translation (SSR)
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 // Use this below for Static Site Generation (SSG)
@@ -23,14 +22,13 @@ import Notification from '~/components/Notification';
 import brand from '~/public/text/brand';
 
 function Landing(props) {
-  const classes = useSpacing();
+  const { classes, cx } = useSpacing();
   const { onToggleDark, onToggleDir } = props;
   return (
     <React.Fragment>
       <Head>
         <title>
-          { brand.starter.name }
-          &nbsp; - Home Page
+          { brand.starter.name + ' - Home Page' }
         </title>
       </Head>
       <CssBaseline />
@@ -44,7 +42,7 @@ function Landing(props) {
           <section id="home">
             <BannerSlider />
           </section>
-          <section className={clsx(classes.spaceTop, classes.spaceBottomShort)} id="feature">
+          <section className={cx(classes.spaceTop, classes.spaceBottomShort)} id="feature">
             <Feature />
           </section>
           <section>
@@ -56,18 +54,18 @@ function Landing(props) {
           <section className={classes.spaceTop} id="pricing">
             <Pricing />
           </section>
-          <section className={clsx(classes.spaceTop, classes.spaceBottom)} id="blog">
+          <section className={cx(classes.spaceTop, classes.spaceBottom)} id="blog">
             <Blog />
           </section>
           <section id="subscribe">
             <Subscribe />
           </section>
         </main>
-        <Hidden smDown>
+        <Hidden mdDown>
           <Corner />
         </Hidden>
         <Footer toggleDir={onToggleDir} />
-        <Hidden mdDown>
+        <Hidden lgDown>
           <Notification />
         </Hidden>
       </div>

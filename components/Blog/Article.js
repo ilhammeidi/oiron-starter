@@ -1,18 +1,18 @@
 import React from 'react';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import Divider from '@material-ui/core/Divider';
-import List from '@material-ui/core/List';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import Divider from '@mui/material/Divider';
+import List from '@mui/material/List';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { useTranslation } from 'next-i18next';
 import CommentForm from '../Comment/Form';
 import Item from '../Comment/Item';
 import useStyles from './blog-style';
 
 function Article() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { t } = useTranslation('common');
 
   // Theme breakpoints

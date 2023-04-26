@@ -1,14 +1,12 @@
-import { makeStyles, alpha } from '@material-ui/core/styles';
-import deepOrange from '@material-ui/core/colors/deepOrange';
-import deepPurple from '@material-ui/core/colors/deepPurple';
-import blue from '@material-ui/core/colors/blue';
-import red from '@material-ui/core/colors/red';
-import pink from '@material-ui/core/colors/pink';
-import indigo from '@material-ui/core/colors/indigo';
-import cyan from '@material-ui/core/colors/cyan';
-import green from '@material-ui/core/colors/green';
+import { makeStyles } from 'tss-react/mui';
+import { alpha } from '@mui/material/styles';
+import {
+  deepOrange, deepPurple, blue,
+  red, pink, indigo,
+  cyan, green,
+} from '@mui/material/colors';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({ uniqId: 'blog' })(theme => ({
   blogWrap: {
     marginTop: theme.spacing(5)
   },
@@ -113,7 +111,7 @@ const useStyles = makeStyles(theme => ({
   blogHeadline: {
     cursor: 'pointer',
     position: 'relative',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       height: 460,
       alignItems: 'flex-end',
       display: 'flex'
@@ -150,14 +148,14 @@ const useStyles = makeStyles(theme => ({
     listStyle: 'disc'
   },
   divider: {
-    margin: `${theme.spacing(2)}px 0`,
+    margin: `${theme.spacing(2)} 0`,
     [theme.breakpoints.up('sm')]: {
-      margin: `${theme.spacing(1.5)}px 0`,
+      margin: `${theme.spacing(1.5)} 0`,
     },
     background: 'none'
   },
   dividerBordered: {
-    margin: `${theme.spacing(3)}px 0`
+    margin: `${theme.spacing(3)} 0`
   },
   content: {
     [theme.breakpoints.up('sm')]: {
@@ -165,7 +163,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   postList: {
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       marginTop: theme.spacing(3)
     }
   },
@@ -226,7 +224,7 @@ const useStyles = makeStyles(theme => ({
     '& button': {
       borderWidth: 2,
       marginRight: theme.spacing(2),
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         borderRadius: '50%',
         width: 35,
         height: 35,
@@ -251,4 +249,5 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

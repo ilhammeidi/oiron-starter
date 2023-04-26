@@ -1,13 +1,13 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import { useText } from '~/theme/common';
 import useStyles from './about-style';
 
 function Banner() {
-  const classes = useStyles();
-  const text = useText();
+  const { classes } = useStyles();
+  const { classes: text } = useText();
 
   return (
     <div className={classes.bannerWrap}>

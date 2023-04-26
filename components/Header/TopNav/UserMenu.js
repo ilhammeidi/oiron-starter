@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import Button from '@mui/material/Button';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import { useTranslation } from 'next-i18next';
 import Settings from './Settings';
 import useStyles from '../header-style';
 import link from '~/public/text/link';
 
 function UserMenu(props) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const theme = useTheme();
   const { onToggleDark, onToggleDir } = props;
   const { t } = useTranslation('common');

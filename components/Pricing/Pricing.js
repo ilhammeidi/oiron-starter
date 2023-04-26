@@ -1,7 +1,6 @@
 import React from 'react';
-import clsx from 'clsx';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
 import { useTranslation } from 'next-i18next';
 import { useText, useTextAlign } from '~/theme/common';
 import PricingCard from '../Cards/PricingCard';
@@ -56,17 +55,17 @@ const tiers = [
 ];
 
 function Pricing() {
-  const classes = useStyles();
-  const align = useTextAlign();
-  const text = useText();
+  const { classes, cx } = useStyles();
+  const { classes: align } = useTextAlign();
+  const { classes: text } = useText();
   const { t } = useTranslation('common');
 
   return (
     <Container>
-      <h3 className={clsx(text.capitalize, text.title, align.textCenter)}>
+      <h3 className={cx(text.capitalize, text.title, align.textCenter)}>
         {t('pricing_title')}
       </h3>
-      <p className={clsx(text.subtitle2, align.textCenter)}>
+      <p className={cx(text.subtitle2, align.textCenter)}>
         {t('pricing_desc')}
       </p>
       <div className={classes.pricingWrap}>

@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const testiStyles = makeStyles(theme => ({
+const testiStyles = makeStyles({ uniqId: 'testi' })(theme => ({
   testimonialWrap: {
     width: '100%',
     position: 'relative',
@@ -14,4 +14,5 @@ const testiStyles = makeStyles(theme => ({
   },
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default testiStyles;

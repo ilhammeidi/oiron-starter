@@ -1,14 +1,14 @@
 import React from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../blog-style';
 
 function ListWidget() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { t } = useTranslation('common');
 
   const periode = [

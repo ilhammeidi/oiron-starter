@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles, alpha } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 import PropTypes from 'prop-types';
-import LangIcon from '@material-ui/icons/Language';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import SelectMUI from '@material-ui/core/Select';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import MenuItem from '@material-ui/core/MenuItem';
+import LangIcon from '@mui/icons-material/Language';
+import InputAdornment from '@mui/material/InputAdornment';
+import SelectMUI from '@mui/material/Select';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import MenuItem from '@mui/material/MenuItem';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
-import languageDetector from '../../lib/languageDetector';
-import i18nextConfig from '../../next-i18next.config';
+import languageDetector from '~/lib/languageDetector';
+import i18nextConfig from '~/next-i18next.config';
 
-const useStyles = makeStyles(theme => ({
-  icon: {},
+const useStyles = makeStyles({ uniqId: 'select_lang' })((theme, _params, classes) => ({
   selectLang: {
     maxWidth: 250,
     overflow: 'hidden',
     position: 'relative',
     display: 'block',
     margin: `${theme.spacing(2)}px auto ${theme.spacing(4)}px`,
-    '& $icon': {
+    [`& .${classes.icon}`]: {
       top: 29,
       color: theme.palette.primary.dark,
       position: 'relative',
@@ -27,27 +26,16 @@ const useStyles = makeStyles(theme => ({
     '& svg': {
       color: theme.palette.primary.dark,
     },
-    '& fieldset': {
-      borderRadius: 10,
-      boxShadow: '0 1.5px 12px 2px rgba(0, 0, 0, 0.06)',
-      border: `1px solid ${alpha(theme.palette.primary.dark, 0.5)} !important`,
-      '& legend': {
-        top: 5,
-        position: 'relative',
-        borderTop: `1px solid ${alpha(theme.palette.primary.dark, 0.5)}`
-      },
-      '& + div + div': {
-        background: 'none !important',
-        padding: theme.spacing(1.5, 1.5, 1.5, 4),
-        width: 'calc(100% - 32px)',
-      }
+    '& > div + div': {
+      paddingLeft: theme.spacing(4),
+      width: 'calc(100% - 32px)',
     }
   },
 }));
 
 function SelectLang(props) {
   const [ctn, setCtn] = useState(null);
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   // Translation Function
   const router = useRouter();
@@ -97,6 +85,7 @@ function SelectLang(props) {
 
   return (
     <SelectMUI
+      variant="standard"
       value={values.lang}
       onChange={handleChange}
       MenuProps={{
@@ -108,7 +97,7 @@ function SelectLang(props) {
         </InputAdornment>
       )}
       className={classes.selectLang}
-      input={<OutlinedInput labelWidth={200} name="lang" id="outlined-lang-simple" />}
+      input={<OutlinedInput name="lang" id="outlined-lang-simple" />}
     >
       {i18nextConfig.i18n.locales.map((locale) => (
         <MenuItem key={locale} value={locale}>{t(locale)}</MenuItem>

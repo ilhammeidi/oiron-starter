@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { darken } from '@material-ui/core/styles/colorManipulator';
+import { makeStyles } from 'tss-react/mui';
+import { darken } from '@mui/material/styles';
 
-const contactStyles = makeStyles(theme => ({
+const contactStyles = makeStyles({ uniqId: 'contact' })((theme, _params, classes) => ({
   pageWrap: {
     minHeight: '100%',
     position: 'relative',
@@ -12,12 +12,12 @@ const contactStyles = makeStyles(theme => ({
       display: 'flex'
     },
     '& a': {
-      color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
+      color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
       textTransform: 'none',
       fontSize: 16,
       textDecoration: 'none',
       fontWeight: theme.typography.fontWeightRegular,
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         fontSize: 14
       }
     }
@@ -27,7 +27,7 @@ const contactStyles = makeStyles(theme => ({
   },
   fullFormWrap: {
     paddingTop: theme.spacing(8),
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       paddingTop: theme.spacing(4)
     }
   },
@@ -51,7 +51,7 @@ const contactStyles = makeStyles(theme => ({
   desc: {
     textAlign: 'center',
     padding: theme.spacing(0, 5),
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       padding: 0
     }
   },
@@ -64,7 +64,7 @@ const contactStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       marginTop: theme.spacing(5),
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(0, 2, 6)
     }
   },
@@ -73,7 +73,7 @@ const contactStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     fontSize: 14,
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center'
@@ -96,12 +96,12 @@ const contactStyles = makeStyles(theme => ({
       }
     },
     '& span': {
-      '& $link': {
+      [`& .${classes.link}`]: {
         textDecoration: 'none !important',
         color: theme.palette.secondary.main
       }
     },
-    '&$flex': {
+    [`&.${classes.flex}`]: {
       display: 'flex',
       justifyContent: 'space-between',
       [theme.breakpoints.down('sm')]: {
@@ -161,20 +161,20 @@ const contactStyles = makeStyles(theme => ({
   socmedSideLogin: {
     display: 'flex',
     justifyContent: 'space-around',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       justifyContent: 'center'
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       display: 'block'
     },
     '& > *': {
       color: theme.palette.common.white,
       width: 150,
-      [theme.breakpoints.down('md')]: {
-        margin: theme.spacing(0, 0.5),
+      margin: theme.spacing(0, 0.5),
+      [theme.breakpoints.down('lg')]: {
         width: 120
       },
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         margin: theme.spacing(0, 0, 2),
         width: '100%'
       }
@@ -210,7 +210,7 @@ const contactStyles = makeStyles(theme => ({
     position: 'relative',
     color: theme.palette.text.secondary,
     '& p': {
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         fontSize: 12
       }
     },
@@ -251,7 +251,7 @@ const contactStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       borderRadius: '0 12px 12px 0 !important',
     },
-    '&$full': {
+    [`&.${classes.full}`]: {
       height: 915,
     }
   },
@@ -279,4 +279,5 @@ const contactStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default contactStyles;

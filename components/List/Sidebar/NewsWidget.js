@@ -1,17 +1,17 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
 import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../list-style';
 
 function NewsWidget() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { t } = useTranslation('common');
   const news = [{
     img: 'https://source.unsplash.com/random',

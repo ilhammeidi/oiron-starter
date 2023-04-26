@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import StarIcon from '@material-ui/icons/StarBorder';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import StarIcon from '@mui/icons-material/StarBorder';
 import useStyles from './pricing-card-style';
 
 function PricingCard(props) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const {
     title, subheader, price,
     description, buttonText, buttonVariant

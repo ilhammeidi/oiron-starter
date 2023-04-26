@@ -1,6 +1,7 @@
-import { makeStyles, alpha } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
+import { alpha } from '@mui/material/styles';
 
-const blogStyles = makeStyles(theme => ({
+const blogStyles = makeStyles({ uniqId: 'blog' })((theme, _params, classes) => ({
   link: {
     margin: theme.spacing(1, 1.5),
   },
@@ -9,7 +10,7 @@ const blogStyles = makeStyles(theme => ({
     position: 'relative',
     paddingBottom: theme.spacing(5),
     '& p': {
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         textAlign: 'center'
       }
     },
@@ -26,7 +27,7 @@ const blogStyles = makeStyles(theme => ({
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         width: '47%'
       },
       '& a': {
@@ -53,7 +54,7 @@ const blogStyles = makeStyles(theme => ({
     display: 'flex',
     marginBottom: theme.spacing(3),
     alignItems: 'center',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       justifyContent: 'center',
       '& + p': {
         textAlign: 'center'
@@ -83,8 +84,8 @@ const blogStyles = makeStyles(theme => ({
     },
     '& button': {
       margin: theme.spacing(),
-      color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
-      background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+      color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+      background: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
       width: 36,
       height: 36,
     },
@@ -98,8 +99,8 @@ const blogStyles = makeStyles(theme => ({
     overflow: 'hidden',
     position: 'relative',
     display: 'block',
-    margin: `${theme.spacing(2)}px auto ${theme.spacing(4)}px`,
-    '& $icon': {
+    margin: `${theme.spacing(2)} auto ${theme.spacing(4)}`,
+    [`& .${classes.icon}`]: {
       top: 29,
       color: theme.palette.primary.dark,
       position: 'relative',
@@ -140,7 +141,7 @@ const blogStyles = makeStyles(theme => ({
       top: -80,
       width: '120%',
       height: 350,
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         height: 120,
       }
     },
@@ -154,12 +155,12 @@ const blogStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     textAlign: 'left',
     justifyContent: 'flex-start',
-    '& $category': {
+    [`& .${classes.category}`]: {
       marginBottom: theme.spacing(),
       display: 'block',
       color: theme.palette.secondary.dark
     },
-    '& $listText': {
+    [`& .${classes.listText}`]: {
       flex: 1,
     },
     '& figure': {
@@ -181,4 +182,5 @@ const blogStyles = makeStyles(theme => ({
   },
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default blogStyles;

@@ -1,17 +1,17 @@
 import React from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InfoIcon from '@material-ui/icons/Info';
-import HelpIcon from '@material-ui/icons/Help';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import AdjustIcon from '@material-ui/icons/Album';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InfoIcon from '@mui/icons-material/Info';
+import HelpIcon from '@mui/icons-material/Help';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import AdjustIcon from '@mui/icons-material/Album';
 import { useTranslation } from 'next-i18next';
 import useStyles from './comment-style';
 
 function Help() {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   // Translation Function
   const { t } = useTranslation('common');

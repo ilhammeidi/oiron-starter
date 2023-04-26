@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import SendIcon from '@material-ui/icons/Send';
-import EmailIcon from '@material-ui/icons/Email';
-import PhoneIcon from '@material-ui/icons/LocalPhone';
-import LocationIcon from '@material-ui/icons/LocationOn';
-import Snackbar from '@material-ui/core/Snackbar';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import SendIcon from '@mui/icons-material/Send';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/LocalPhone';
+import LocationIcon from '@mui/icons-material/LocationOn';
+import Snackbar from '@mui/material/Snackbar';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import {
   Map,
@@ -28,7 +27,7 @@ import useStyles from './form-style';
 import Checkbox from './Checkbox';
 
 function BubleMark() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   return (
     <div className={classes.bubelWrap}>
       <div className={classes.buble}>
@@ -111,9 +110,9 @@ MapContainer.propTypes = {
 const MapWithAMarker = GoogleApiWrapper({ apiKey: null })(MapContainer);
 
 function ContactMap(props) {
-  const classes = useStyles();
-  const text = useText();
-  const align = useTextAlign();
+  const { classes, cx } = useStyles();
+  const { classes: text } = useText();
+  const { classes: align } = useTextAlign();
   const { full } = props;
   const { t } = useTranslation('common');
   const theme = useTheme();
@@ -167,13 +166,13 @@ function ContactMap(props) {
         <Container>
           <Grid container alignItems="center">
             <Grid item md={6} xs={12} className={classes.wrapDeco}>
-              <Paper className={clsx(classes.formBox, full ? classes.mapForm : '')}>
+              <Paper className={cx(classes.formBox, full ? classes.mapForm : '')}>
                 <div className={classes.fullFromWrap}>
                   <div className={!isMobile ? classes.form : ''}>
-                    <h4 className={clsx(align.textCenter, text.title2)}>
+                    <h4 className={cx(align.textCenter, text.title2)}>
                       {t('contact_title2')}
                     </h4>
-                    <p className={clsx(align.textCenter, text.subtitle2)}>
+                    <p className={cx(align.textCenter, text.subtitle2)}>
                       {t('contact_subtitle')}
                     </p>
                     <ValidatorForm
@@ -265,7 +264,7 @@ function ContactMap(props) {
               </Paper>
             </Grid>
             <Grid item md={6} xs={12}>
-              <Paper className={clsx(classes.map, full ? classes.full : '')} elevation={0}>
+              <Paper className={cx(classes.map, full ? classes.full : '')} elevation={0}>
                 <MapWithAMarker />
               </Paper>
             </Grid>

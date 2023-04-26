@@ -1,5 +1,5 @@
 import React from 'react';
-import Box from '@material-ui/core/Box';
+import Box from '@mui/material/Box';
 import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
 import useStyles from './faq-style';
@@ -30,8 +30,8 @@ const topics = [{
 }];
 
 function TopicList() {
-  const classes = useStyles();
-  const text = useText();
+  const { classes } = useStyles();
+  const { classes: text } = useText();
   const { t } = useTranslation('common');
 
   return (

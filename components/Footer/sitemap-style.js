@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const footerStyles = makeStyles(theme => ({
+const footerStyles = makeStyles({ uniqId: 'sitemap' })((theme, _params, classes) => ({
   link: {
     margin: theme.spacing(1, 1.5),
   },
@@ -33,7 +33,7 @@ const footerStyles = makeStyles(theme => ({
     }
   },
   title: {
-    color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
     fontSize: 14,
     textTransform: 'uppercase',
     marginBottom: theme.spacing(3),
@@ -68,13 +68,13 @@ const footerStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(4),
     '& button': {
       margin: theme.spacing(),
-      color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+      color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
       background: theme.palette.divider,
       width: 36,
       height: 36,
       lineHeight: '36px',
       '& i': {
-        color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+        color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
       }
     },
     '& svg': {
@@ -94,23 +94,23 @@ const footerStyles = makeStyles(theme => ({
     width: 200,
     display: 'inherit',
     marginTop: theme.spacing(2),
-    color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
-    '& $icon': {
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+    [`& .${classes.icon}`]: {
       top: 21,
       position: 'relative',
     },
     '& fieldset': {
       boxShadow: '0 1.5px 12px 2px rgba(0, 0, 0, 0.06)',
-      border: `1px solid ${theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main} !important`,
+      border: `1px solid ${theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.main} !important`,
       '& legend': {
         top: 5,
         position: 'relative',
-        borderTop: `1px solid ${theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.main}`
+        borderTop: `1px solid ${theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.main}`
       }
     }
   },
   siteMapItem: {
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       paddingBottom: '0 !important',
       paddingTop: '0 !important',
     }
@@ -130,4 +130,5 @@ const footerStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default footerStyles;

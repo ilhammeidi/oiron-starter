@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import CssBaseline from '@mui/material/CssBaseline';
 import Head from 'next/head';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 // Use this below for Server Side Render/Translation (SSR)
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 // Use this below for Static Site Generation (SSG)
@@ -17,14 +17,13 @@ import Footer from '~/components/Footer';
 import brand from '~/public/text/brand';
 
 function BlogDetail(props) {
-  const classes = useSpacing();
+  const { classes } = useSpacing();
   const { onToggleDark, onToggleDir } = props;
   return (
     <Fragment>
       <Head>
         <title>
-          { brand.starter.name }
-          &nbsp; - Blog Detail
+          { brand.starter.name + ' - Blog Detail' }
         </title>
       </Head>
       <CssBaseline />

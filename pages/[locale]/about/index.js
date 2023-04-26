@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import clsx from 'clsx';
+import CssBaseline from '@mui/material/CssBaseline';
 import Head from 'next/head';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 // Use this below for Server Side Render/Translation (SSR)
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 // Use this below for Static Site Generation (SSG)
@@ -24,14 +23,13 @@ import Footer from '~/components/Footer';
 import brand from '~/public/text/brand';
 
 function About(props) {
-  const classes = useSpacing();
+  const { classes, cx } = useSpacing();
   const { onToggleDark, onToggleDir } = props;
   return (
     <Fragment>
       <Head>
         <title>
-          { brand.starter.name }
-          &nbsp; - About
+          { brand.starter.name + ' - About' }
         </title>
       </Head>
       <CssBaseline />
@@ -61,7 +59,7 @@ function About(props) {
         <div className={classes.spaceTopShort}>
           <TeamSlider />
         </div>
-        <div className={clsx(classes.spaceTopShort, classes.spaceBottom)}>
+        <div className={cx(classes.spaceTopShort, classes.spaceBottom)}>
           <PhotoSlider />
         </div>
         <CallAction />

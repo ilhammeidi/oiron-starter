@@ -1,18 +1,18 @@
 import React, { useState, Fragment } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Input from '@mui/material/Input';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import Head from 'next/head';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TwitterIcon from '@mui/icons-material/Twitter';
 import { useTranslation } from 'next-i18next';
 // Use this below for Server Side Render/Translation (SSR)
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -23,9 +23,9 @@ import { useSpacing, useTextAlign, useText } from '~/theme/common';
 import brand from '~/public/text/brand';
 
 function ComingSoon() {
-  const classes = useSpacing();
-  const align = useTextAlign();
-  const text = useText();
+  const { classes } = useSpacing();
+  const { classes: align } = useTextAlign();
+  const { classes: text } = useText();
   const { t } = useTranslation('common');
 
   const [email, setEmail] = useState('');
@@ -38,8 +38,7 @@ function ComingSoon() {
     <Fragment>
       <Head>
         <title>
-          { brand.starter.name }
-          &nbsp; - Coming Soon
+          { brand.starter.name + ' - Coming Soon' }
         </title>
       </Head>
       <CssBaseline />
@@ -69,7 +68,7 @@ function ComingSoon() {
                   <Box mb={{ sm: 10 }}>
                     <Grid container justifyContent="center">
                       <Grid item sm={8} xs={12}>
-                        <FormControl fullWidth>
+                        <FormControl variant="standard" fullWidth>
                           <InputLabel htmlFor="standard-adornment-password">Email</InputLabel>
                           <Input
                             fullWidth
@@ -94,10 +93,10 @@ function ComingSoon() {
                   </Box>
                 </div>
                 <Box mt={5}>
-                  <IconButton color="primary" href="#"><FacebookIcon /></IconButton>
-                  <IconButton color="primary" href="#"><InstagramIcon /></IconButton>
-                  <IconButton color="primary" href="#"><TwitterIcon /></IconButton>
-                  <IconButton color="primary" href="#"><LinkedInIcon /></IconButton>
+                  <IconButton color="primary" href="#" size="large"><FacebookIcon /></IconButton>
+                  <IconButton color="primary" href="#" size="large"><InstagramIcon /></IconButton>
+                  <IconButton color="primary" href="#" size="large"><TwitterIcon /></IconButton>
+                  <IconButton color="primary" href="#" size="large"><LinkedInIcon /></IconButton>
                 </Box>
               </div>
             </Grid>

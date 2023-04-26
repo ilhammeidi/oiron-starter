@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
 import CountUp from 'react-countup';
 import ScrollAnimation from 'react-scroll-animation-wrapper';
-import Typography from '@material-ui/core/Typography';
-import AcUnitIcon from '@material-ui/icons/AcUnit';
-import ColorLensIcon from '@material-ui/icons/ColorLens';
-import EcoIcon from '@material-ui/icons/Eco';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
+import Typography from '@mui/material/Typography';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
+import EcoIcon from '@mui/icons-material/EnergySavingsLeaf';
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
 import useStyles from './counter-style';
 
 function Counter(props) {
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const { dark } = props;
   const [play, setPlay] = useState(false);
   const countup = (val, isPlay) => (
@@ -26,7 +25,7 @@ function Counter(props) {
     }
   };
   return (
-    <div className={clsx(classes.counterWrap, dark ? classes.dark : '')}>
+    <div className={cx(classes.counterWrap, dark ? classes.dark : '')}>
       <Container maxWidth="md">
         <ScrollAnimation animateOnce animateIn="fadeIn" offset={300} afterAnimatedIn={handlePlay}>
           <Grid container justifyContent="center" alignItems="center" className={classes.root} spacing={6}>

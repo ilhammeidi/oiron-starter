@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Icon from '@material-ui/core/Icon';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Icon from '@mui/material/Icon';
 import { useTranslation } from 'next-i18next';
 import useStyles from './subscribe-style';
 
 function SubscribeForm() {
   const { t } = useTranslation('common');
-  const classes = useStyles();
+  const { classes } = useStyles();
   const [values, setValues] = useState({
     email: '',
   });
@@ -34,6 +34,7 @@ function SubscribeForm() {
           <Grid container spacing={3} alignItems="flex-end">
             <Grid item sm={8} xs={12}>
               <TextField
+                variant="standard"
                 id="standard-email"
                 label={t('form_email')}
                 className={classes.textField}

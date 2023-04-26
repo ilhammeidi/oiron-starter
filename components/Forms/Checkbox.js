@@ -1,24 +1,21 @@
 import React from 'react';
-import red from '@material-ui/core/colors/red';
-import { withStyles } from '@material-ui/core/styles';
-import Checkbox from '@material-ui/core/Checkbox';
+import { red } from '@mui/material/colors';
+import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
 import { ValidatorComponent } from 'react-material-ui-form-validator';
 
 const red300 = red['500'];
 
-const styles = theme => ({
-  checkbox: {
-    left: 42,
-    fontSize: 12,
-    color: red300,
-    position: 'absolute',
-    marginTop: theme.spacing()
-  }
-});
-
 class CheckboxValidatorElement extends ValidatorComponent {
   renderValidatorComponent() {
-    const { classes, errorMessages, validatorListener, requiredError, value, ...rest } = this.props; // eslint-disable-line
+    const {
+      classes,
+      errorMessages,
+      validatorListener,
+      requiredError,
+      value,
+      ...rest
+    } = this.props;
 
     return (
       <div>
@@ -32,7 +29,6 @@ class CheckboxValidatorElement extends ValidatorComponent {
   }
 
   errorText() {
-    const { classes } = this.props;
     const { isValid } = this.state;
 
     if (isValid) {
@@ -40,11 +36,19 @@ class CheckboxValidatorElement extends ValidatorComponent {
     }
 
     return (
-      <div className={classes.checkbox}>
+      <Box
+        sx={{
+          left: 42,
+          fontSize: 12,
+          color: red300,
+          position: 'absolute',
+          mt: 1,
+        }}
+      >
         {this.getErrorMessage()}
-      </div>
+      </Box>
     );
   }
 }
 
-export default withStyles(styles)(CheckboxValidatorElement);
+export default CheckboxValidatorElement;

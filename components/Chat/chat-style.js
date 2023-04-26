@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const chatStyles = makeStyles(theme => ({
+const chatStyles = makeStyles({ uniqId: 'chat' })((theme, _params, classes) => ({
   indicator: {
     marginRight: 4,
     borderRadius: '50%',
@@ -14,14 +14,14 @@ const chatStyles = makeStyles(theme => ({
     right: 40,
     textAlign: 'right',
     fontSize: 32,
-    boxShadow: theme.palette.type === 'dark' ? theme.shade.dark : theme.shade.light,
-    backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+    boxShadow: theme.palette.mode === 'dark' ? theme.shade.dark : theme.shade.light,
+    backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     '& i': {
       position: 'relative',
       top: 3,
-      color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+      color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
     },
-    '& $indicator': {
+    [`& .${classes.indicator}`]: {
       position: 'absolute',
       top: 4,
       left: 2
@@ -45,13 +45,13 @@ const chatStyles = makeStyles(theme => ({
     '& header': {
       display: 'flex',
       padding: theme.spacing(2, 2, 0.5),
-      backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+      backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
       '& h3': {
         flex: 1,
         margin: 0
       }
     },
-    '&$show': {
+    [`&.${classes.show}`]: {
       transform: 'scale(1)',
       visibility: 'visible',
       zIndex: 100,
@@ -107,7 +107,7 @@ const chatStyles = makeStyles(theme => ({
   },
   from: {
     border: 'none',
-    backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+    backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     '&:before': {
       position: 'absolute',
       top: 5,
@@ -116,7 +116,7 @@ const chatStyles = makeStyles(theme => ({
       borderTop: '5px solid transparent',
       borderBottom: '10px solid transparent',
       borderRight: '5px solid',
-      borderRightColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+      borderRightColor: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     }
   },
   form: {
@@ -132,11 +132,12 @@ const chatStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(2),
     transform: theme.direction === 'rtl' ? 'scale(-1)' : 'none',
     fontSize: 22,
-    backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+    backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     '& i': {
-      color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+      color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
     },
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default chatStyles;

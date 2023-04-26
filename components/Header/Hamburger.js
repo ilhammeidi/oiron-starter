@@ -1,15 +1,14 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
 import Link from 'next/link';
-import clsx from 'clsx';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import Container from '@material-ui/core/Container';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import Container from '@mui/material/Container';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import Fade from '@material-ui/core/Fade';
+import Fade from '@mui/material/Fade';
 import { useTranslation } from 'next-i18next';
 import routeLink from '~/public/text/link';
 import Logo from '../Logo';
@@ -28,7 +27,7 @@ function createData(name, url) {
 }
 
 const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disable-line
-  return <AnchorLink to={props.to} {...props} innerRef={ref} />; // eslint-disable-line
+  return <AnchorLink to={props.to} {...props} />; // eslint-disable-line
 });
 
 function Hamburger(props) {
@@ -54,7 +53,7 @@ function Hamburger(props) {
     window.addEventListener('scroll', handleScroll);
   }, []);
 
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const {
     onToggleDark,
     onToggleDir,
@@ -82,7 +81,7 @@ function Hamburger(props) {
         component="div"
         position="relative"
         id="header"
-        className={clsx(
+        className={cx(
           classes.header,
           fixed ? classes.fixed : '',
           openDrawer && classes.openDrawer
@@ -90,20 +89,21 @@ function Hamburger(props) {
       >
         <Container fixed={isDesktop}>
           <div className={classes.headerContent}>
-            <nav className={clsx(classes.navLogo, home && classes.invert)}>
+            <nav className={cx(classes.navLogo, home && classes.invert)}>
               <IconButton
                 onClick={handleOpenDrawer}
-                className={clsx('hamburger hamburger--squeeze', classes.mobileMenu, openDrawer && 'is-active')}
+                className={cx('hamburger hamburger--squeeze', classes.mobileMenu, openDrawer && 'is-active')}
+                size="large"
               >
                 <span className="hamburger-box">
-                  <span className={clsx(classes.bar, 'hamburger-inner')} />
+                  <span className={cx(classes.bar, 'hamburger-inner')} />
                 </span>
               </IconButton>
-              <div className={clsx(classes.logo, classes.flex)}>
+              <div className={cx(classes.logo, classes.flex)}>
                 {home ? (
-                  <AnchorLink href="#home">
+                  <LinkBtn href="#home">
                     <Logo type="only" />
-                  </AnchorLink>
+                  </LinkBtn>
                 ) : (
                   <Link href={routeLink.starter.home}>
                     <a>
@@ -118,7 +118,7 @@ function Hamburger(props) {
         </Container>
       </AppBar>
       <Fade in={openDrawer}>
-        <div className={clsx(classes.paperNav, openDrawer && classes.show)}>
+        <div className={cx(classes.paperNav, openDrawer && classes.show)}>
           <div className={classes.mobileNav}>
             {openDrawer && (
               <ul className={classes.menu}>
@@ -126,7 +126,7 @@ function Hamburger(props) {
                   <li key={item.id.toString()} style={{ animationDuration: index * 0.15 + 's' }}>
                     {home ? (
                       // eslint-disable-next-line
-                      <Button component={AnchorLink} onClick={handleCloseDrawer} offset={item.offset || 0} href={item.url}>
+                      <Button component={LinkBtn} onClick={handleCloseDrawer} offset={item.offset || 0} href={item.url}>
                         {t('starter-landing.header_' + item.name)}
                       </Button>
                     ) : (

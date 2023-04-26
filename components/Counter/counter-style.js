@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const counterStyles = makeStyles(theme => ({
+const counterStyles = makeStyles({ uniqId: 'counter' })((theme, _params, classes) => ({
   counterWrap: {
     padding: theme.spacing(8, 0)
   },
@@ -22,7 +22,7 @@ const counterStyles = makeStyles(theme => ({
         marginRight: theme.spacing(2),
       }
     },
-    '& $text': {
+    [`& .${classes.text}`]: {
       '& h4': {
         fontWeight: 'bold',
       }
@@ -30,7 +30,7 @@ const counterStyles = makeStyles(theme => ({
   },
   dark: {
     background: theme.palette.primary.main,
-    '& $counterItem': {
+    [`& .${classes.counterItem}`]: {
       color: theme.palette.common.white,
       '& svg': {
         fill: theme.palette.common.white,
@@ -39,4 +39,5 @@ const counterStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default counterStyles;

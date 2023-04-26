@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({ uniqId: 'profile_card' })((theme, _params, classes) => ({
   /* General */
   profileCard: {
     display: 'flex',
@@ -65,15 +65,15 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 400,
     flexDirection: 'column',
     textAlign: 'center',
-    '& $properties': {
+    [`& .${classes.properties}`]: {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2)
     },
-    '& $contentProfile': {
+    [`& .${classes.contentProfile}`]: {
       marginTop: -70,
       flex: '1 0 auto',
     },
-    '& $buttonProfile': {
+    [`& .${classes.buttonProfile}`]: {
       margin: 20
     }
   },
@@ -86,43 +86,43 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       height: 120
     },
-    '& $figure': {
+    [`& .${classes.figure}`]: {
       width: 100,
       height: '100%',
       marginRight: -50
     },
-    '& $subtitle': {
+    [`& .${classes.subtitle}`]: {
       fontSize: 14
     },
-    '& $properties': {
+    [`& .${classes.properties}`]: {
       textAlign: 'left',
       flex: 1,
       display: 'flex',
       alignItems: 'center',
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         flexDirection: 'column',
         alignItems: 'flex-start'
       }
     },
-    '& $desc': {
+    [`& .${classes.desc}`]: {
       padding: 0,
       [theme.breakpoints.down('sm')]: {
         marginTop: theme.spacing(1),
         marginBottom: theme.spacing(1)
       }
     },
-    '& $contentProfile': {
+    [`& .${classes.contentProfile}`]: {
       display: 'flex',
       alignItems: 'center'
     },
-    '& $action': {
+    [`& .${classes.action}`]: {
       display: 'block',
       flex: 1,
       margin: theme.spacing(0, 1),
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         display: 'none'
       },
-      '& $bottomLink': {
+      [`& .${classes.bottomLink}`]: {
         '& > button': {
           whiteSpace: 'nowrap',
           '& span': {
@@ -133,7 +133,7 @@ const useStyles = makeStyles(theme => ({
         },
       }
     },
-    '& $buttonProfile': {
+    [`& .${classes.buttonProfile}`]: {
       margin: '0 !important',
       [theme.breakpoints.down('sm')]: {
         minWidth: 100,
@@ -148,7 +148,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
   },
   round: {
-    '& $figure': {
+    [`& .${classes.figure}`]: {
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(1),
       marginLeft: theme.spacing(1),
@@ -156,14 +156,14 @@ const useStyles = makeStyles(theme => ({
       height: 105,
       borderRadius: theme.rounded.medium
     },
-    '&$portrait': {
-      '& $figure': {
+    [`&.${classes.portrait}`]: {
+      [`& .${classes.figure}`]: {
         marginRight: theme.spacing(1)
       }
     },
-    '&$landscape': {
+    [`&.${classes.landscape}`]: {
       [theme.breakpoints.down('sm')]: {
-        '& $figure': {
+        [`& .${classes.figure}`]: {
           height: 145
         }
       }
@@ -171,8 +171,8 @@ const useStyles = makeStyles(theme => ({
   },
   oval: {
     overflow: 'hidden',
-    '&$portrait': {
-      '& $figure': {
+    [`&.${classes.portrait}`]: {
+      [`& .${classes.figure}`]: {
         height: 150,
         width: '120%',
         marginLeft: '-10%',
@@ -184,31 +184,31 @@ const useStyles = makeStyles(theme => ({
         }
       }
     },
-    '&$landscape': {
-      '& $figure': {
+    [`&.${classes.landscape}`]: {
+      [`& .${classes.figure}`]: {
         overflow: 'hidden',
         borderRadius: '0 50% 50% 0 !important',
         height: '120% !important',
       },
-      '& $action': {
+      [`& .${classes.action}`]: {
         margin: theme.spacing(0, 3)
       }
     }
   },
   over: {
     overflow: 'visible',
-    '&$portrait': {
+    [`&.${classes.portrait}`]: {
       marginTop: theme.spacing(2),
-      '& $figure': {
+      [`& .${classes.figure}`]: {
         overflow: 'hidden',
         boxShadow: theme.shade.light,
         margin: theme.spacing(-2, 2, 0),
         borderRadius: theme.rounded.medium
       }
     },
-    '&$landscape': {
+    [`&.${classes.landscape}`]: {
       marginLeft: theme.spacing(2),
-      '& $figure': {
+      [`& .${classes.figure}`]: {
         overflow: 'hidden',
         boxShadow: theme.shade.light,
         height: 105,
@@ -219,4 +219,5 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

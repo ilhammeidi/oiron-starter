@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
-import IconButton from '@material-ui/core/IconButton';
-import Avatar from '@material-ui/core/Avatar';
-import Fab from '@material-ui/core/Fab';
-import TextField from '@material-ui/core/TextField';
+import IconButton from '@mui/material/IconButton';
+import Avatar from '@mui/material/Avatar';
+import Fab from '@mui/material/Fab';
+import TextField from '@mui/material/TextField';
 import visitorAvatar from '~/public/images/avatars/pp_boy4.svg';
 import { useFlexBox } from '~/theme/common';
 import useStyles from './chat-style';
@@ -56,21 +55,18 @@ function Chat() {
     setShow(false);
   };
 
-  const classes = useStyles();
-  const flex = useFlexBox();
+  const { classes, cx } = useStyles();
+  const { classes: flex } = useFlexBox();
 
   return (
     <div className={classes.chat}>
-      <div className={clsx(classes.panel, show ? classes.show : '')}>
+      <div className={cx(classes.panel, show ? classes.show : '')}>
         <header>
           <h3>
-            <span className={clsx(classes.indicator, classes.online)} />
+            <span className={cx(classes.indicator, classes.online)} />
             Live Chat
           </h3>
-          <IconButton
-            onClick={() => closeChat()}
-            className={classes.close}
-          >
+          <IconButton onClick={() => closeChat()} className={classes.close} size="large">
             <i className="ion-android-close" />
           </IconButton>
         </header>
@@ -79,7 +75,7 @@ function Chat() {
             {conversation.map((item, index) => (
               <li
                 key={index.toString()}
-                className={clsx(classes.item, item.visitor ? flex.justifyEnd : '')}
+                className={cx(classes.item, item.visitor ? flex.justifyEnd : '')}
               >
                 {!item.visitor && (
                   <Avatar className={classes.avatar}>
@@ -89,7 +85,7 @@ function Chat() {
                     />
                   </Avatar>
                 )}
-                <span className={clsx(classes.talk, !item.visitor ? classes.from : '')}>
+                <span className={cx(classes.talk, !item.visitor ? classes.from : '')}>
                   {item.text}
                 </span>
               </li>
@@ -98,6 +94,7 @@ function Chat() {
         </div>
         <div className={classes.form}>
           <TextField
+            variant="standard"
             onKeyPress={(e) => handleKeyPress(e)}
             onChange={(e) => handleChange(e)}
             value={message}
@@ -117,7 +114,7 @@ function Chat() {
         className={classes.chatButton}
         onClick={() => toggleChat()}
       >
-        <span className={clsx(classes.indicator, classes.online)} />
+        <span className={cx(classes.indicator, classes.online)} />
         <i className="ion-chatbox" />
       </Fab>
     </div>

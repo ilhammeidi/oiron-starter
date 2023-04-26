@@ -1,10 +1,10 @@
 import React, { useState, Fragment } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 // Use this below for Server Side Render/Translation (SSR)
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 // Use this below for Static Site Generation (SSG)
@@ -22,8 +22,8 @@ import Search from '~/components/Filter/Search';
 import Sidebar from '~/components/List/Sidebar';
 
 function Collection(props) {
-  const classes = useSpacing();
-  const text = useText();
+  const { classes } = useSpacing();
+  const { classes: text } = useText();
   const { onToggleDark, onToggleDir } = props;
   const [keyword, setKeyword] = useState('');
 
@@ -31,8 +31,7 @@ function Collection(props) {
     <Fragment>
       <Head>
         <title>
-          { brand.starter.name }
-          &nbsp; - Card Collection
+          { brand.starter.name + ' - Card Collection' }
         </title>
       </Head>
       <CssBaseline />

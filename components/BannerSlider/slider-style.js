@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const sliderStyle = makeStyles(theme => ({
+const sliderStyle = makeStyles({ uniqId: 'slider' })((theme, _params, classes) => ({
   bannerWrap: {
     position: 'relative',
     display: 'block',
@@ -10,7 +10,7 @@ const sliderStyle = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       height: 450
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(15, 0, 5)
     }
   },
@@ -29,7 +29,7 @@ const sliderStyle = makeStyles(theme => ({
       left: theme.direction === 'ltr' ? 'auto' : '10%',
       maxWidth: '50%',
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       margin: theme.spacing(4, 0)
     }
   },
@@ -37,7 +37,7 @@ const sliderStyle = makeStyles(theme => ({
     display: 'flex',
     height: '100%',
     alignItems: 'center',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       flexDirection: 'column',
       justifyContent: 'center'
     }
@@ -70,7 +70,7 @@ const sliderStyle = makeStyles(theme => ({
       display: 'block',
       fontWeight: theme.typography.fontWeightBold,
     },
-    '&$active': {
+    [`&.${classes.active}`]: {
       color: theme.palette.primary.main
     }
   },
@@ -79,4 +79,5 @@ const sliderStyle = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default sliderStyle;

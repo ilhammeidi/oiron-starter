@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 import useStyles from './paper-style';
 
 function PapperBlock(props) {
@@ -17,11 +16,11 @@ function PapperBlock(props) {
     icon
   } = props;
 
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <div>
-      <Paper className={clsx(classes.root, noMargin && classes.noMargin, colorMode && classes.colorMode)} elevation={0}>
+      <Paper className={cx(classes.root, noMargin && classes.noMargin, colorMode && classes.colorMode)} elevation={0}>
         <div className={classes.descBlock}>
           <span className={classes.iconTitle}>
             <i className={icon} />
@@ -35,7 +34,7 @@ function PapperBlock(props) {
             </Typography>
           </div>
         </div>
-        <section className={clsx(classes.content, whiteBg && classes.whiteBg, overflowX && classes.overflowX)}>
+        <section className={cx(classes.content, whiteBg && classes.whiteBg, overflowX && classes.overflowX)}>
           {children}
         </section>
       </Paper>

@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import CardMedia from '@mui/material/CardMedia';
 import { useTranslation } from 'next-i18next';
-import Box from '@material-ui/core/Box';
+import Box from '@mui/material/Box';
 import useStyles from './news-card-style';
 
 function NewsCard(props) {
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const {
     headline,
     title,
@@ -23,7 +22,7 @@ function NewsCard(props) {
   const { t } = useTranslation('common');
 
   return (
-    <Card className={clsx(classes.newsCard, classes[orientation], classes[type])}>
+    <Card className={cx(classes.newsCard, classes[orientation], classes[type])}>
       <div className={classes.figure}>
         <CardMedia className={classes.media} image={img} title="thumb" />
       </div>

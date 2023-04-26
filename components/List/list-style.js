@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({ uniqId: 'list' })((theme, _params, classes) => ({
   profileList: {
     padding: 0,
     margin: '0 -24px -24px',
@@ -30,9 +30,9 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 'none'
   },
   divider: {
-    margin: `${theme.spacing(2)}px 0`,
+    margin: `${theme.spacing(2)} 0`,
     [theme.breakpoints.up('sm')]: {
-      margin: `${theme.spacing(1.5)}px 0`,
+      margin: `${theme.spacing(1.5)} 0`,
     },
     background: 'none'
   },
@@ -61,14 +61,14 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     display: 'flex',
     marginBottom: theme.spacing(2),
-    '& $star': {
+    [`& .${classes.star}`]: {
       color: '#ff9500',
       marginRight: theme.spacing(2),
       '& i': {
         color: '#ff9500'
       }
     },
-    '7 $divider': {
+    [`7 .${classes.divider}`]: {
       background: 'none',
       borderLeft: '1px solid',
       borderColor: theme.palette.text.primary,
@@ -84,16 +84,16 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     width: '100%',
     alignItems: 'center',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       display: 'block',
       '& > *': {
         margin: theme.spacing(0, 0, 2),
       }
     },
-    '& $textBtn': {
+    [`& .${classes.textBtn}`]: {
       paddingLeft: 8,
       paddingRight: 8,
-      color: theme.palette.type === 'dark' ? theme.palette.secondary.light : theme.palette.secondary.main,
+      color: theme.palette.mode === 'dark' ? theme.palette.secondary.light : theme.palette.secondary.main,
       '& i': {
         fontSize: '1.3rem',
         marginRight: 4
@@ -101,7 +101,7 @@ const useStyles = makeStyles(theme => ({
     },
     '& > *': {
       marginRight: theme.spacing(2),
-      [theme.breakpoints.down('xs')]: {
+      [theme.breakpoints.down('sm')]: {
         width: '100%'
       }
     }
@@ -112,10 +112,10 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     width: '100%',
     alignItems: 'center',
-    '& $textBtn': {
+    [`& .${classes.textBtn}`]: {
       paddingLeft: 8,
       paddingRight: 8,
-      color: theme.palette.type === 'dark' ? theme.palette.secondary.light : theme.palette.secondary.main,
+      color: theme.palette.mode === 'dark' ? theme.palette.secondary.light : theme.palette.secondary.main,
       '& i': {
         fontSize: '1.3rem',
         marginRight: 4
@@ -155,7 +155,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: theme.rounded.small,
     width: '100%',
     height: 100,
-    '& $figure': {
+    [`& .${classes.figure}`]: {
       boxShadow: theme.shadow3,
       overflow: 'hidden',
       borderRadius: theme.rounded.big,
@@ -179,18 +179,18 @@ const useStyles = makeStyles(theme => ({
   },
   about: {
     padding: theme.spacing(5, 0),
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(2)
     },
     '& h4': {
       margin: 0,
     },
-    '& $btnArea': {
+    [`& .${classes.btnArea}`]: {
       marginTop: theme.spacing(6),
     },
   },
   helpPaper: {
-    backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+    backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     padding: theme.spacing(2, 1),
   },
   headline: {
@@ -203,7 +203,7 @@ const useStyles = makeStyles(theme => ({
   },
   item: {
     padding: theme.spacing(1),
-    '& $figure': {
+    [`& .${classes.figure}`]: {
       overflow: 'hidden',
       cursor: 'pointer',
     },
@@ -211,7 +211,7 @@ const useStyles = makeStyles(theme => ({
       display: 'block'
     },
     '&:hover': {
-      '& $zoomIcon': {
+      [`& .${classes.zoomIcon}`]: {
         opacity: 1
       }
     }
@@ -247,4 +247,5 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

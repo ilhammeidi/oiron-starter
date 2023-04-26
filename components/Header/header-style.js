@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 import flag from '~/public/images/flag-logo.png';
 
 const flagIcon = {
@@ -31,7 +31,7 @@ const flagIcon = {
   },
 };
 
-const headerStyles = makeStyles(theme => ({
+const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) => ({
   fixed: {},
   openDrawer: {},
   header: {
@@ -41,12 +41,12 @@ const headerStyles = makeStyles(theme => ({
     boxShadow: 'none',
     transition: 'all 0.3s ease',
     zIndex: 1000,
-    '&$fixed': {
+    [`&.${classes.fixed}`]: {
       background: theme.palette.background.paper,
       boxShadow: theme.shadows[2],
       top: 0,
       left: 0,
-      '& $logo': {
+      [`& .${classes.logo}`]: {
         '& img': {
           height: 40,
         }
@@ -54,11 +54,11 @@ const headerStyles = makeStyles(theme => ({
       '& nav': {
         padding: theme.spacing(1, 0),
       },
-      '& $vDivider': {
+      [`& .${classes.vDivider}`]: {
         minHeight: theme.spacing(3)
       }
     },
-    '&$openDrawer': {
+    [`&.${classes.openDrawer}`]: {
       zIndex: 1600,
       boxShadow: 'none',
     }
@@ -75,7 +75,7 @@ const headerStyles = makeStyles(theme => ({
       transition: 'all 0.3s ease',
       alignItems: 'center',
       padding: theme.spacing(2, 1),
-      [theme.breakpoints.down('md')]: {
+      [theme.breakpoints.down('lg')]: {
         padding: theme.spacing(1, 0),
       },
       display: 'flex'
@@ -127,6 +127,7 @@ const headerStyles = makeStyles(theme => ({
           }
         },
         '& button, & a': {
+          color: theme.palette.text.primary,
           background: 'none',
           textTransform: 'capitalize'
         }
@@ -148,7 +149,7 @@ const headerStyles = makeStyles(theme => ({
   mobileMenu: {
     marginRight: theme.spacing(1),
     padding: 0,
-    '& $bar': {
+    [`& .${classes.bar}`]: {
       backgroundColor: theme.palette.text.secondary,
       '&:after, &:before': {
         backgroundColor: theme.palette.text.secondary
@@ -163,10 +164,10 @@ const headerStyles = makeStyles(theme => ({
   },
   icon: {},
   setting: {
-    '& $icon': {
+    [`& .${classes.icon}`]: {
       transition: 'all 0.3s ease'
     },
-    '& $active': {
+    [`& .${classes.active}`]: {
       transform: 'rotate(30deg)'
     }
   },
@@ -220,8 +221,8 @@ const headerStyles = makeStyles(theme => ({
     }
   },
   current: {
-    background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
-    color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+    background: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
   },
   /* Search */
   short: {},
@@ -233,7 +234,7 @@ const headerStyles = makeStyles(theme => ({
     position: 'relative',
     display: 'flex',
     maxWidth: 600,
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       marginBottom: theme.spacing(2)
     },
     [theme.breakpoints.up('sm')]: {
@@ -245,10 +246,10 @@ const headerStyles = makeStyles(theme => ({
       width: '100%'
     },
     alignItems: 'center',
-    '&$short': {
+    [`&.${classes.short}`]: {
       width: 300
     },
-    '& $input': {
+    [`& .${classes.input}`]: {
       width: '100%',
       paddingRight: theme.spacing(2),
       background: theme.palette.background.paper,
@@ -269,14 +270,14 @@ const headerStyles = makeStyles(theme => ({
   invert: {},
   navLogo: {
     width: '100%',
-    '&$invert': {
-      '& $logo': {
+    [`&.${classes.invert}`]: {
+      [`& .${classes.logo}`]: {
         '& a': {
           color: theme.palette.text.primary,
         }
       },
-      '& $mobileMenu': {
-        '& $bar': {
+      [`& .${classes.mobileMenu}`]: {
+        [`& .${classes.bar}`]: {
           [theme.breakpoints.down('sm')]: {
             backgroundColor: theme.palette.text.secondary,
             '&:after, &:before': {
@@ -296,7 +297,7 @@ const headerStyles = makeStyles(theme => ({
     height: '100%',
   },
   mobileNav: {
-    '& $menu': {
+    [`& .${classes.menu}`]: {
       padding: theme.spacing(0, 2),
       overflow: 'auto',
       top: theme.spacing(15),
@@ -339,4 +340,5 @@ const headerStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default headerStyles;

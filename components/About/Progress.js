@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import ScrollAnimation from 'react-scroll-animation-wrapper';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import Typography from '@material-ui/core/Typography';
+import LinearProgress from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
 import { useText } from '~/theme/common';
 import useStyles from './about-style';
 
 function Progress() {
-  const classes = useStyles();
-  const text = useText();
+  const { classes } = useStyles();
+  const { classes: text } = useText();
 
   const [play, setPlay] = useState(false);
 

@@ -1,9 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import clsx from 'clsx';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import Head from 'next/head';
 import { useSpacing } from '~/theme/common';
 import brand from '~/public/text/brand';
@@ -19,7 +18,7 @@ import HelperWidget from '~/components/List/Sidebar/HelperWidget';
 import Footer from '~/components/Footer';
 
 function Faq(props) {
-  const classes = useSpacing();
+  const { classes, cx } = useSpacing();
   const { onToggleDark, onToggleDir } = props;
   const [keyword, setKeyword] = useState('');
 
@@ -27,8 +26,7 @@ function Faq(props) {
     <Fragment>
       <Head>
         <title>
-          { brand.starter.name }
-          &nbsp; - Faq
+          { brand.starter.name + ' - Faq' }
         </title>
       </Head>
       <CssBaseline />
@@ -39,7 +37,7 @@ function Faq(props) {
         />
         <Search value={keyword} updateValue={setKeyword} />
         <div className={classes.containerWrap}>
-          <div className={clsx(classes.containerGeneral, classes.spaceTopShort)}>
+          <div className={cx(classes.containerGeneral, classes.spaceTopShort)}>
             <Grid spacing={3} justifyContent="center" container>
               <Grid item md={6} xs={12}>
                 <Box px={3}>

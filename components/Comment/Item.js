@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import ListItem from '@material-ui/core/ListItem';
-import Avatar from '@material-ui/core/Avatar';
-import Divider from '@material-ui/core/Divider';
+import Typography from '@mui/material/Typography';
+import ListItem from '@mui/material/ListItem';
+import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
 import avatarDefault from '~/public/images/avatars/pp_boy4.svg';
 import useStyles from './comment-style';
 
@@ -16,7 +16,7 @@ function Item(props) {
     last
   } = props;
 
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <Fragment>

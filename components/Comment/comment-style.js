@@ -1,11 +1,11 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const styles = makeStyles(theme => ({
+const styles = makeStyles({ uniqId: 'comment' })((theme, _params, classes) => ({
   divider: {
-    margin: `${theme.spacing(1.5)}px 0`,
+    margin: `${theme.spacing(1.5)} 0`,
   },
   listPeople: {
-    padding: `${theme.spacing(0.5)}px ${theme.spacing(1)}px`,
+    padding: `${theme.spacing(0.5)} ${theme.spacing(1)}`,
   },
   comment: {
     '& h6': {
@@ -36,7 +36,7 @@ const styles = makeStyles(theme => ({
     marginRight: theme.spacing(3)
   },
   commentAction: {
-    background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+    background: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     margin: 0,
   },
   input: {},
@@ -50,7 +50,7 @@ const styles = makeStyles(theme => ({
     width: '100%',
     padding: '15px 20px',
     margin: 0,
-    '& $input': {
+    [`& .${classes.input}`]: {
       flex: 1,
       marginLeft: theme.spacing(1)
     }
@@ -73,4 +73,5 @@ const styles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default styles;

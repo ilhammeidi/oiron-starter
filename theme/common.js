@@ -1,12 +1,13 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
 const sectionMargin = margin => (margin * 20);
-export const useSpacing = makeStyles(theme => ({
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
+export const useSpacing = makeStyles({ uniqId: 'spacing' })(theme => ({
   mainWrap: {
     position: 'relative',
     width: '100%',
     overflow: 'hidden',
-    background: theme.palette.type === 'dark' ? theme.palette.background.default : theme.palette.background.paper,
+    background: theme.palette.mode === 'dark' ? theme.palette.background.default : theme.palette.background.paper,
     '& ul[class="slick-dots"]': {
       '& li': {
         '& button:before': {
@@ -22,25 +23,25 @@ export const useSpacing = makeStyles(theme => ({
   },
   spaceBottom: {
     marginBottom: sectionMargin(6),
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       marginBottom: sectionMargin(4)
     }
   },
   spaceTop: {
     marginTop: sectionMargin(6),
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       marginTop: sectionMargin(4)
     }
   },
   spaceBottomShort: {
     marginBottom: sectionMargin(4),
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       marginBottom: sectionMargin(2.4)
     }
   },
   spaceTopShort: {
     marginTop: sectionMargin(4),
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       marginTop: sectionMargin(2.4)
     }
   },
@@ -83,7 +84,8 @@ export const useSpacing = makeStyles(theme => ({
   }
 }));
 
-export const usePopup = makeStyles(theme => ({
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
+export const usePopup = makeStyles({ uniqId: 'popup' })(theme => ({
   appBar: {
     position: 'relative',
   },
@@ -93,7 +95,8 @@ export const usePopup = makeStyles(theme => ({
   },
 }));
 
-export const useTextAlign = makeStyles({
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
+export const useTextAlign = makeStyles({ uniqId: 'text_align' })({
   textCenter: {
     textAlign: 'center'
   },
@@ -105,7 +108,8 @@ export const useTextAlign = makeStyles({
   }
 });
 
-export const useFloat = makeStyles({
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
+export const useFloat = makeStyles({ uniqId: 'float' })({
   floatLeft: {
     float: 'left'
   },
@@ -114,16 +118,17 @@ export const useFloat = makeStyles({
   },
 });
 
-export const useText = makeStyles(theme => ({
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
+export const useText = makeStyles({ uniqId: 'text' })(theme => ({
   title: {
     fontWeight: theme.typography.fontWeightBold,
     fontSize: 48,
     lineHeight: '72px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: 38,
       lineHeight: '60px'
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: 28,
       lineHeight: '44px'
     },
@@ -132,11 +137,11 @@ export const useText = makeStyles(theme => ({
     fontSize: 36,
     lineHeight: '56px',
     fontWeight: theme.typography.fontWeightBold,
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: 32,
       lineHeight: '48px'
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: 24,
       lineHeight: '36px',
     }
@@ -145,11 +150,11 @@ export const useText = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightMedium,
     fontSize: 28,
     lineHeight: '44px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: 24,
       lineHeight: '36px',
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: 18,
       lineHeight: '28px',
     },
@@ -158,11 +163,11 @@ export const useText = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightRegular,
     fontSize: 22,
     lineHeight: '32px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: 20,
       lineHeight: '32px',
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: 16,
       lineHeight: '24px',
     },
@@ -176,7 +181,7 @@ export const useText = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightRegular,
     fontSize: 16,
     lineHeight: '24px',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: 14,
       lineHeight: '22px',
     },
@@ -201,24 +206,25 @@ export const useText = makeStyles(theme => ({
   }
 }));
 
-export const useHidden = makeStyles(theme => ({
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
+export const useHidden = makeStyles({ uniqId: 'hidden' })(theme => ({
   lgDown: {
     [theme.breakpoints.down('lg')]: {
       display: 'none'
     }
   },
   mdDown: {
-    [theme.breakpoints.down('md')]: {
-      display: 'none'
-    }
-  },
-  smDown: {
     [theme.breakpoints.down('sm')]: {
       display: 'none'
     }
   },
+  smDown: {
+    [theme.breakpoints.down('md')]: {
+      display: 'none'
+    }
+  },
   xsDown: {
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       display: 'none'
     }
   },
@@ -239,7 +245,8 @@ export const useHidden = makeStyles(theme => ({
   }
 }));
 
-export const useFlexBox = makeStyles(() => ({
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
+export const useFlexBox = makeStyles({ uniqId: 'flexbox' })(() => ({
   justifyStart: {
     justifyContent: 'flex-star'
   },
@@ -260,6 +267,9 @@ export const useFlexBox = makeStyles(() => ({
   },
 }));
 
-export const useFlipRtl = makeStyles(theme => ({
+// TODO jss-to-tss-react codemod: Unable to handle style definition reliably. Unsupported arrow function syntax.
+// Unexpected value type of ConditionalExpression.
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
+export const useFlipRtl = makeStyles({ uniqId: 'flip_rtl' })(theme => ({
   transform: theme.direction === 'rtl' ? 'scale(-1)' : 'none'
 }));

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import clsx from 'clsx';
-import Container from '@material-ui/core/Container';
-import Hidden from '@material-ui/core/Hidden';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import AppBar from '@mui/material/AppBar';
+import Container from '@mui/material/Container';
+import Hidden from '@mui/material/Hidden';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import Logo from '../Logo';
 import link from '~/public/text/link';
 import SearchField from './TopNav/SearchField';
@@ -14,7 +13,7 @@ import useStyles from './header-style';
 
 function Search(props) {
   const [fixed, setFixed] = useState(false);
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const theme = useTheme();
   const { onToggleDark, onToggleDir } = props;
   const isDesktop = useMediaQuery(theme.breakpoints.up('sm'));
@@ -38,14 +37,14 @@ function Search(props) {
     <AppBar
       position="relative"
       id="header"
-      className={clsx(
+      className={cx(
         classes.header,
         fixed && classes.fixed,
       )}
     >
       <Container>
         <div className={classes.headerContent}>
-          <nav className={clsx(classes.navMenu, classes.flex)}>
+          <nav className={cx(classes.navMenu, classes.flex)}>
             <div className={classes.logo}>
               <a href={link.starter.home}>
                 <Logo type="landscape" />

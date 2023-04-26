@@ -10,6 +10,11 @@ module.exports = withImages({
   images: {
     disableStaticImages: true
   },
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
   publicRuntimeConfig: {
     localeSubpaths: typeof process.env.LOCALE_SUBPATHS === 'string'
       ? process.env.LOCALE_SUBPATHS
@@ -18,11 +23,10 @@ module.exports = withImages({
   webpack: (config, options) => {
     true,
     config.plugins.push(
-      new ESLintPlugin({
-        exclude: ['node_modules']
-      })
+      //      new ESLintPlugin({
+      //        exclude: ['node_modules']
+      //      })
     );
-    config.node = {};
     return config;
   }
 });

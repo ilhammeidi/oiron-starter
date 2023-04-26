@@ -1,19 +1,19 @@
 import React, { Fragment, useState } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Box from '@material-ui/core/Box';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import AppBar from '@material-ui/core/AppBar';
-import Dialog from '@material-ui/core/Dialog';
-import Button from '@material-ui/core/Button';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
-import Slide from '@material-ui/core/Slide';
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import AppBar from '@mui/material/AppBar';
+import Dialog from '@mui/material/Dialog';
+import Button from '@mui/material/Button';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import CloseIcon from '@mui/icons-material/Close';
+import Slide from '@mui/material/Slide';
 // Use this below for Server Side Render/Translation (SSR)
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 // Use this below for Static Site Generation (SSG)
@@ -44,8 +44,8 @@ const Transition = React.forwardRef(function Transition(props, ref) { // eslint-
 function Products(props) {
   const { onToggleDark, onToggleDir } = props;
 
-  const classes = useSpacing();
-  const popup = usePopup();
+  const { classes } = useSpacing();
+  const { classes: popup } = usePopup();
   const isDesktop = useMediaQuery(theme => theme.breakpoints.up('md'));
 
   const [openFilter, setOpenFilter] = useState(false);
@@ -139,15 +139,20 @@ function Products(props) {
     <Fragment>
       <Head>
         <title>
-          { brand.starter.name }
-          &nbsp; - Product List
+          { brand.starter.name + ' - Product List' }
         </title>
       </Head>
       <CssBaseline />
       <Dialog fullScreen open={openFilter} onClose={handleFilterClose} TransitionComponent={Transition}>
         <AppBar className={popup.appBar}>
           <Toolbar>
-            <IconButton edge="start" color="inherit" onClick={handleFilterClose} aria-label="close">
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleFilterClose}
+              aria-label="close"
+              size="large"
+            >
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={popup.title}>

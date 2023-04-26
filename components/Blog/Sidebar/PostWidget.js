@@ -1,13 +1,13 @@
 import React from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../blog-style';
 
 function PostWidget() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { t } = useTranslation('common');
   const news = [{
     title: 'Vestibulum bibendum nisi eget magna',

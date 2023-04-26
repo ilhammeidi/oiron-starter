@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Rating from '@material-ui/lab/Rating';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
+import Rating from '@mui/material/Rating';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListSubheader from '@mui/material/ListSubheader';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Input from '@mui/material/Input';
+import Button from '@mui/material/Button';
+import Icon from '@mui/material/Icon';
 import { useTranslation } from 'next-i18next';
 import useStyles from './filter-style';
 
 function Filter(props) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { t } = useTranslation('common');
   const [range, setRange] = useState({ from: '', to: '' });
   const {
@@ -271,7 +271,7 @@ function Filter(props) {
           <FormLabel className={classes.titleLabel} component="legend">Filter Range</FormLabel>
           <Grid container>
             <Grid item xs={5}>
-              <FormControl component="div" className={classes.formControl}>
+              <FormControl variant="standard" component="div" className={classes.formControl}>
                 <Input placeholder="From" name="from" type="number" value={range.from} onChange={(e) => handleChangeRange(e)} />
               </FormControl>
             </Grid>
@@ -281,7 +281,7 @@ function Filter(props) {
               </Box>
             </Grid>
             <Grid item xs={5}>
-              <FormControl component="div" className={classes.formControl}>
+              <FormControl variant="standard" component="div" className={classes.formControl}>
                 <Input placeholder="To" name="to" type="number" value={range.to} onChange={(e) => handleChangeRange(e)} />
               </FormControl>
             </Grid>
@@ -304,7 +304,7 @@ function Filter(props) {
       <Box mb={6} px={2}>
         <div className={classes.filterBlock}>
           <List>
-            <FormControl component="div" className={classes.formControl}>
+            <FormControl variant="standard" component="div" className={classes.formControl}>
               <FormLabel className={classes.titleLabel} component="legend">Filter Check</FormLabel>
               <FormGroup>
                 <ListItem className={classes.checklist} button onClick={() => handleCheckAll()}>
@@ -396,7 +396,7 @@ function Filter(props) {
       {/* ======== Filter Radio ======== */}
       <Box mb={6} px={2}>
         <div className={classes.filterBlock}>
-          <FormControl component="fieldset">
+          <FormControl variant="standard" component="fieldset">
             <FormLabel className={classes.titleLabel} component="legend">Filter Radio</FormLabel>
             <RadioGroup aria-label="radio" name="radio" value={filterRadio} onChange={(event) => handleChangeRadio(event)}>
               <FormControlLabel value="all" control={<Radio />} label={t('list_filter')} />

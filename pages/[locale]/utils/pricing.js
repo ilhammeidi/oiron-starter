@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Box from '@material-ui/core/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
 import Head from 'next/head';
 // Use this below for Server Side Render/Translation (SSR)
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -15,15 +15,14 @@ import Footer from '~/components/Footer';
 import brand from '~/public/text/brand';
 
 function ContactPage(props) {
-  const classes = useSpacing();
+  const { classes } = useSpacing();
   const { onToggleDark, onToggleDir } = props;
 
   return (
     <Fragment>
       <Head>
         <title>
-          { brand.starter.name }
-          &nbsp; - Pricing
+          { brand.starter.name + ' - Pricing' }
         </title>
       </Head>
       <CssBaseline />

@@ -1,12 +1,12 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({ uniqId: 'paper' })((theme, _params, classes) => ({
   root: {
     padding: theme.spacing(3, 1),
     boxShadow: theme.shade.light,
     color: theme.palette.text.primary,
     overflow: 'hidden',
-    '&$noMargin': {
+    [`&.${classes.noMargin}`]: {
       margin: 0
     },
   },
@@ -26,8 +26,8 @@ const useStyles = makeStyles(theme => ({
     textTransform: 'capitalize',
     fontSize: 20,
     fontWeight: theme.typography.fontWeightBold,
-    color: theme.palette.type === 'dark' ? theme.palette.primary.main : theme.palette.primary.dark,
-    [theme.breakpoints.down('xs')]: {
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.main : theme.palette.primary.dark,
+    [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
       fontWeight: 600,
       marginBottom: theme.spacing(1)
@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   description: {
     maxWidth: 960,
     paddingTop: theme.spacing(0.5),
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       textAlign: 'center'
     }
   },
@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     lineHeight: '44px',
     verticalAlign: 'middle',
     marginRight: theme.spacing(2),
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       display: 'none'
     },
     '& i': {
@@ -76,17 +76,17 @@ const useStyles = makeStyles(theme => ({
     }
   },
   colorMode: {
-    backgroundColor: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.main,
-    '& $title': {
+    backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.main,
+    [`& .${classes.title}`]: {
       color: theme.palette.grey[100],
       '&:after': {
         borderBottom: `5px solid ${theme.palette.primary.light}`
       }
     },
-    '& $description': {
+    [`& .${classes.description}`]: {
       color: theme.palette.grey[100],
     },
-    '& $iconTitle': {
+    [`& .${classes.iconTitle}`]: {
       '& i': {
         color: theme.palette.common.white
       }
@@ -94,4 +94,5 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default useStyles;

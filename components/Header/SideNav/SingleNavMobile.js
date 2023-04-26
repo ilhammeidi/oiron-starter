@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import { useTranslation } from 'next-i18next';
 import link from '~/public/text/link';
 import useStyles from '../sidenav-style';
 import navMenu from '../data/single';
 
 function SingleNavMobile(props) {
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const { toggleDrawer, open } = props;
   const { t, i18n } = useTranslation('common');
 
@@ -33,7 +32,7 @@ function SingleNavMobile(props) {
       onClick={toggleDrawer}
       onKeyDown={toggleDrawer}
     >
-      <div className={clsx(classes.menu, open && classes.menuOpen)}>
+      <div className={cx(classes.menu, open && classes.menuOpen)}>
         <List className={classes.sideSinglelv}>
           {navMenu.map((item, index) => (
             <ListItem
@@ -52,7 +51,7 @@ function SingleNavMobile(props) {
           {['login', 'register'].map((text, index) => (
             <ListItem
               key={index.toString()}
-              className={clsx(classes.noChild, curURL === curOrigin + langPath + '/' + text ? classes.current : '')}
+              className={cx(classes.noChild, curURL === curOrigin + langPath + '/' + text ? classes.current : '')}
               component="a"
               href={link.starter[text]}
               button

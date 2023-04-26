@@ -1,18 +1,18 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
-import ImageList from '@material-ui/core/ImageList';
-import ImageListItem from '@material-ui/core/ImageListItem';
-import ImageListItemBar from '@material-ui/core/ImageListItemBar';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import IconButton from '@mui/material/IconButton';
+import InfoIcon from '@mui/icons-material/Info';
 import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../blog-style';
 
 function GalleryWidget() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { t } = useTranslation('common');
 
   const imgData = [{
@@ -49,7 +49,7 @@ function GalleryWidget() {
                       </span>
                     )}
                     actionIcon={(
-                      <IconButton className={classes.icon}>
+                      <IconButton className={classes.icon} size="large">
                         <InfoIcon />
                       </IconButton>
                     )}

@@ -1,21 +1,20 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import clsx from 'clsx';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 import { useTranslation } from 'next-i18next';
 import { useTextAlign } from '~/theme/common';
 import useStyles from '../list-style';
 
 function HelperWidget() {
   const { t } = useTranslation('common');
-  const classes = useStyles();
-  const align = useTextAlign();
+  const { classes, cx } = useStyles();
+  const { classes: align } = useTextAlign();
 
   return (
-    <Card className={clsx(classes.helpPaper, align.textCenter)}>
+    <Card className={cx(classes.helpPaper, align.textCenter)}>
       <CardContent>
         <Typography variant="h6" align="center">
           {t('faq_luck')}

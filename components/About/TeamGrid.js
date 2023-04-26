@@ -1,12 +1,12 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 import ScrollAnimation from 'react-scroll-animation-wrapper';
 import ProfileCard from '../Cards/ProfileCard';
 import useStyles from './about-style';
 
 function TeamGrid() {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <Box py={5}>

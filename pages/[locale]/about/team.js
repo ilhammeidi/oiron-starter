@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import clsx from 'clsx';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import Head from 'next/head';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 import { useTranslation } from 'next-i18next';
 // Use this below for Server Side Render/Translation (SSR)
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -26,22 +25,21 @@ import { useTextAlign, useText, useSpacing } from '~/theme/common';
 function Team(props) {
   // Theme breakpoints
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
    // Translation Function
   const { t } = useTranslation('common');
 
-  const classes = useSpacing();
-  const align = useTextAlign();
-  const text = useText();
+  const { classes, cx } = useSpacing();
+  const { classes: align } = useTextAlign();
+  const { classes: text } = useText();
 
   const { onToggleDark, onToggleDir } = props;
   return (
     <Fragment>
       <Head>
         <title>
-          { brand.starter.name }
-          &nbsp; - About
+          { brand.starter.name + ' - Team' }
         </title>
       </Head>
       <CssBaseline />
@@ -56,10 +54,10 @@ function Team(props) {
           <CompanyLogo />
         </div>
         <Counter />
-        <div className={clsx(classes.spaceTopShort, classes.spaceBottomShort)}>
+        <div className={cx(classes.spaceTopShort, classes.spaceBottomShort)}>
           <Container>
             <Box mb={3}>
-              <h4 className={clsx(text.title2, isMobile ? align.textCenter : align.textLeft)}>
+              <h4 className={cx(text.title2, isMobile ? align.textCenter : align.textLeft)}>
                 {t('about_team')}
               </h4>
             </Box>
@@ -69,7 +67,7 @@ function Team(props) {
             <TeamGrid />
           </Container>
         </div>
-        <div className={clsx(classes.spaceTopShort, classes.spaceBottomShort)}>
+        <div className={cx(classes.spaceTopShort, classes.spaceBottomShort)}>
           <PhotoSlider />
         </div>
         <CallAction />

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import clsx from 'clsx';
-import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import Carousel from 'react-slick';
 import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
@@ -9,8 +8,8 @@ import ProfileCard from '../Cards/ProfileCard';
 import useStyles from './about-style';
 
 function PhotoSlider() {
-  const classes = useStyles();
-  const text = useText();
+  const { classes, cx } = useStyles();
+  const { classes: text } = useText();
   const { t } = useTranslation('common');
 
   const [loaded, setLoaded] = useState(false);
@@ -44,7 +43,7 @@ function PhotoSlider() {
   }, []);
 
   return (
-    <div className={clsx(classes.teamRoot, classes.bgWrapper)}>
+    <div className={cx(classes.teamRoot, classes.bgWrapper)}>
       <Container>
         <Box mb={3}>
           <h4 className={text.title2}>

@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import CssBaseline from '@mui/material/CssBaseline';
 import Head from 'next/head';
-import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useTranslation } from 'next-i18next';
 // Use this below for Server Side Render/Translation (SSR)
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -23,7 +23,7 @@ import brand from '~/public/text/brand';
 import link from '~/public/text/link';
 
 function BlogHome(props) {
-  const classes = useSpacing();
+  const { classes } = useSpacing();
   const { onToggleDark, onToggleDir } = props;
   const { t } = useTranslation('common');
 
@@ -31,8 +31,7 @@ function BlogHome(props) {
     <Fragment>
       <Head>
         <title>
-          { brand.starter.name }
-          &nbsp; - Blog
+          { brand.starter.name + ' - Blog' }
         </title>
       </Head>
       <CssBaseline />

@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import Head from 'next/head';
-import Avatar from '@material-ui/core/Avatar';
-import Build from '@material-ui/icons/Build';
-import Hidden from '@material-ui/core/Hidden';
-import Settings from '@material-ui/icons/SettingsApplications';
-import Warning from '@material-ui/icons/Warning';
+import Avatar from '@mui/material/Avatar';
+import Build from '@mui/icons-material/Build';
+import Hidden from '@mui/material/Hidden';
+import Settings from '@mui/icons-material/SettingsApplications';
+import Warning from '@mui/icons-material/Warning';
 import { useTranslation } from 'next-i18next';
 // Use this below for Server Side Render/Translation (SSR)
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -18,17 +18,16 @@ import { useSpacing, useTextAlign, useText } from '~/theme/common';
 import brand from '~/public/text/brand';
 
 function Maintenance() {
-  const classes = useSpacing();
-  const align = useTextAlign();
-  const text = useText();
+  const { classes } = useSpacing();
+  const { classes: align } = useTextAlign();
+  const { classes: text } = useText();
   const { t } = useTranslation('common');
 
   return (
     <Fragment>
       <Head>
         <title>
-          { brand.starter.name }
-          &nbsp; - Maintenance
+          { brand.starter.name + ' - Maintenance' }
         </title>
       </Head>
       <CssBaseline />
@@ -38,10 +37,10 @@ function Maintenance() {
             <Grid item md={12} className={align.textCenter}>
               <Box display="flex" justifyContent="center">
                 <Avatar className={classes.maintenanceIcon}><Build /></Avatar>
-                <Hidden xsDown>
+                <Hidden smDown>
                   <Avatar className={classes.maintenanceIcon}><Settings /></Avatar>
                 </Hidden>
-                <Hidden xsDown>
+                <Hidden smDown>
                   <Avatar className={classes.maintenanceIcon}><Warning /></Avatar>
                 </Hidden>
               </Box>

@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const testiStyles = makeStyles(theme => ({
+const testiStyles = makeStyles({ uniqId: 'testi_card' })(theme => ({
   card: {
     padding: theme.spacing(3)
   },
@@ -19,4 +19,5 @@ const testiStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default testiStyles;

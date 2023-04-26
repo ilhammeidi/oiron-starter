@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const contactStyles = makeStyles(theme => ({
+const contactStyles = makeStyles({ uniqId: 'contact' })(theme => ({
   root: {
     textAlign: 'center',
     paddingBottom: theme.spacing(5),
@@ -12,7 +12,7 @@ const contactStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(5),
     fontSize: 18,
     fontWeight: theme.typography.fontWeightBold,
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       marginTop: theme.spacing(5)
     },
     '& img': {
@@ -31,12 +31,12 @@ const contactStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0),
     '& button': {
       margin: theme.spacing(),
-      color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
-      background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+      color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+      background: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
       width: 36,
       height: 36,
       '& i': {
-        color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark
+        color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark
       }
     },
     '& i': {
@@ -62,8 +62,8 @@ const contactStyles = makeStyles(theme => ({
   },
   title: {
     textAlign: 'left',
-    color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
-    [theme.breakpoints.down('xs')]: {
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
+    [theme.breakpoints.down('sm')]: {
       top: theme.spacing(3),
       position: 'relative'
     }
@@ -71,7 +71,7 @@ const contactStyles = makeStyles(theme => ({
   input: {
     width: '100%',
     marginBottom: theme.spacing(5),
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       marginBottom: theme.spacing(3)
     }
   },
@@ -95,4 +95,5 @@ const contactStyles = makeStyles(theme => ({
   },
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default contactStyles;

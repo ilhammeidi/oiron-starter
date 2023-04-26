@@ -1,18 +1,18 @@
 import React from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import LocalPhone from '@material-ui/icons/LocalPhone';
-import DateRange from '@material-ui/icons/DateRange';
-import LocationOn from '@material-ui/icons/LocationOn';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import LocalPhone from '@mui/icons-material/LocalPhone';
+import DateRange from '@mui/icons-material/DateRange';
+import LocationOn from '@mui/icons-material/LocationOn';
 import { useTranslation } from 'next-i18next';
 import Paper from '../../Paper';
 import useStyles from '../blog-style';
 
 function ProfileWidget() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { t } = useTranslation('common');
 
   return (

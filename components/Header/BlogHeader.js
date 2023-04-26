@@ -4,13 +4,12 @@ import React, {
   Fragment
 } from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import clsx from 'clsx';
-import IconButton from '@material-ui/core/IconButton';
-import Container from '@material-ui/core/Container';
-import Hidden from '@material-ui/core/Hidden';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
+import AppBar from '@mui/material/AppBar';
+import IconButton from '@mui/material/IconButton';
+import Container from '@mui/material/Container';
+import Hidden from '@mui/material/Hidden';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import Logo from '../Logo';
 import link from '~/public/text/link';
 import SearchField from './TopNav/SearchField';
@@ -38,11 +37,11 @@ function BlogHeader(props) {
     window.addEventListener('scroll', handleScroll);
   }, []);
 
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const theme = useTheme();
   const { onToggleDark, onToggleDir } = props;
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [openDrawer, setOpenDrawer] = useState(false);
   const handleOpenDrawer = () => {
     setOpenDrawer(!openDrawer);
@@ -53,7 +52,7 @@ function BlogHeader(props) {
       <AppBar
         position="relative"
         id="header"
-        className={clsx(
+        className={cx(
           classes.header,
           fixed && classes.fixed,
           openDrawer && classes.openDrawer
@@ -65,10 +64,11 @@ function BlogHeader(props) {
               { isMobile && (
                 <IconButton
                   onClick={handleOpenDrawer}
-                  className={clsx('hamburger hamburger--spin', classes.mobileMenu, openDrawer && 'is-active')}
+                  className={cx('hamburger hamburger--spin', classes.mobileMenu, openDrawer && 'is-active')}
+                  size="large"
                 >
                   <span className="hamburger-box">
-                    <span className={clsx(classes.bar, 'hamburger-inner')} />
+                    <span className={cx(classes.bar, 'hamburger-inner')} />
                   </span>
                 </IconButton>
               )}
@@ -84,7 +84,7 @@ function BlogHeader(props) {
               )}
             </nav>
             <nav>
-              <Hidden xsDown>
+              <Hidden smDown>
                 <SearchField short />
               </Hidden>
               { isDesktop && <span className={classes.vDivider} /> }

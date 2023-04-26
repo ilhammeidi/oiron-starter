@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Rating from '@material-ui/lab/Rating';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Rating from '@mui/material/Rating';
+import ButtonBase from '@mui/material/ButtonBase';
 import { useTranslation } from 'next-i18next';
 import useStyles from './product-card-style';
 
 function ProductCard(props) {
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const {
     img,
     title,
@@ -27,7 +26,7 @@ function ProductCard(props) {
   const { t } = useTranslation('common');
 
   return (
-    <Card className={clsx(classes.cardProduct, classes[orientation], classes[type])}>
+    <Card className={cx(classes.cardProduct, classes[orientation], classes[type])}>
       <ButtonBase focusRipple href={href} className={classes.hiddenLink}>&nbsp;</ButtonBase>
       <CardMedia
         className={classes.mediaProduct}

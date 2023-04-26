@@ -1,28 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
-import Favorite from '@material-ui/icons/Favorite';
-import PhotoLibrary from '@material-ui/icons/PhotoLibrary';
-import Divider from '@material-ui/core/Divider';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import SupervisorAccount from '@mui/icons-material/SupervisorAccount';
+import Favorite from '@mui/icons-material/Favorite';
+import PhotoLibrary from '@mui/icons-material/PhotoLibrary';
+import Divider from '@mui/material/Divider';
 import avatarDefault from '~/public/images/avatars/pp_boy4.svg';
 import useStyles from './profile-card-style';
 
 function ProfileCard(props) {
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
   const {
     cover,
     name,
@@ -37,7 +36,7 @@ function ProfileCard(props) {
   } = props;
 
   return (
-    <Card className={clsx(classes.profileCard, classes[orientation], classes[type])}>
+    <Card className={cx(classes.profileCard, classes[orientation], classes[type])}>
       <CardMedia
         className={classes.figure}
         image={cover}
@@ -47,7 +46,7 @@ function ProfileCard(props) {
         <Avatar
           alt="avatar"
           src={avatar}
-          className={clsx(classes.avatar, orientation === 'portrait' ? classes.avatarBig : classes.avatarSmall)}
+          className={cx(classes.avatar, orientation === 'portrait' ? classes.avatarBig : classes.avatarSmall)}
         />
         <div className={classes.properties}>
           <div>

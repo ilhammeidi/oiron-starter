@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
-const featureStyles = makeStyles(theme => ({
+const featureStyles = makeStyles({ uniqId: 'feature' })((theme, _params, classes) => ({
   mediaCard: {
     overflow: 'hidden',
     position: 'relative',
@@ -29,8 +29,8 @@ const featureStyles = makeStyles(theme => ({
       '&:before': {
         fontSize: 130,
         background: `linear-gradient(120deg, ${theme.palette.secondary.light}, ${theme.palette.primary.light})`,
-        '-webkit-background-clip': 'text',
-        '-webkit-text-fill-color': 'transparent'
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent'
       }
     }
   },
@@ -71,13 +71,13 @@ const featureStyles = makeStyles(theme => ({
   },
   /* Orientation */
   landscape: {
-    '& $mediaTitle': {
+    [`& .${classes.mediaTitle}`]: {
       textAlign: 'left'
     }
   },
   portrait: {
     maxWidth: 400,
-    '& $mediaTitle': {
+    [`& .${classes.mediaTitle}`]: {
       textAlign: 'center',
       justifyContent: 'center'
     }
@@ -88,4 +88,5 @@ const featureStyles = makeStyles(theme => ({
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default featureStyles;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import clsx from 'clsx';
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 import Carousel from 'react-slick';
 import { useTranslation } from 'next-i18next';
 import useStyle from './testi-style';
@@ -47,11 +46,11 @@ const testiContent = [
 ];
 
 function Testimonials() {
-  const classes = useStyle();
+  const { classes, cx } = useStyle();
   const { t } = useTranslation('common');
 
-  const align = useTextAlign();
-  const text = useText();
+  const { classes: align } = useTextAlign();
+  const { classes: text } = useText();
   const [loaded, setLoaded] = useState(false);
 
   const settings = {
@@ -89,7 +88,7 @@ function Testimonials() {
 
   return (
     <div className={classes.testimonialWrap}>
-      <Typography gutterBottom variant="h3" className={clsx(text.capitalize, align.textCenter)} display="block">
+      <Typography gutterBottom variant="h3" className={cx(text.capitalize, align.textCenter)} display="block">
         {t('starter-landing.header_testimonials')}
       </Typography>
       <Typography gutterBottom variant="body1" className={align.textCenter} display="block">

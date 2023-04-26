@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 
 const identation = 8;
-const sidenavStyles = makeStyles(theme => ({
+const sidenavStyles = makeStyles({ uniqId: 'sidenav' })((theme, _params, classes) => ({
   paperNav: {
     width: '100%',
     [theme.breakpoints.up(680)]: {
@@ -45,7 +45,7 @@ const sidenavStyles = makeStyles(theme => ({
   },
   sideGroup: {
     paddingLeft: identation * 2,
-    '& $menuList': {
+    [`& .${classes.menuList}`]: {
       padding: theme.spacing(1, 0),
     }
   },
@@ -62,17 +62,18 @@ const sidenavStyles = makeStyles(theme => ({
     color: theme.palette.primary.main
   },
   current: {
-    background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+    background: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     '& svg': {
       fill: theme.palette.primary.main
     }
   },
   currentParent: {
-    background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
+    background: theme.palette.mode === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
     '& svg': {
       fill: theme.palette.primary.main
     }
   }
 }));
 
+// TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default sidenavStyles;
